@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <title>MNU_ShopList</title>
+  <style type="text/css">
+    table, th, td {border: 1px solid #000000; border-collapse: collapse;}
+    table {border-width: 3px;}
+    th, td {padding: 0.1em 0.2em;}
+    tr.head th, tr.head td {border-bottom-width: 3px;}
+    th.colbreak, td.colbreak {border-right-width: 3px;}
+    th {text-align: center; position: sticky; top: -1px; background-color: #F0F0F0;}
+    .side {position: sticky; left: -1px; background-color: #F0F0F0;}
+    th.side {z-index: 3;}
+    td {text-align: left;}
+    td.right {text-align: right;}
+    .sortable tbody tr:nth-child(odd) {background: #F5F5F5;}
+    .sortable th {background: #E4E4E4; cursor: pointer; white-space: nowrap; vertical-align: middle;}
+    .sortable th.dir-d::after {content:" ▾"; vertical-align: inherit;}
+    .sortable th.dir-u::after {content:" ▴"; vertical-align: inherit;}
+    :target td {background-color: #CCCCCC !important;}
+  </style>
+  <script type="text/javascript">
+    function offsetAnchor() {
+      if (location.hash.length !== 0) {
+        window.scrollTo(window.scrollX, window.scrollY - document.getElementById("header").clientHeight);
+      }
+    }
+    window.addEventListener("hashchange", offsetAnchor);
+    window.setTimeout(offsetAnchor, 1);
+  </script>
+</head>
+<body>
+  <table class="sortable">
+    <h2>MNU_ShopList</h2>
+    <tr id="header">
+      <th class="side dir-d ">ID</th>
+      <th>Referenced By</th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>ShopType</th>
+      <th>TableID</th>
+    </tr>
+    <tr id="1">
+      <td class="side">1</td>
+      <td></td>
+      <td>&lt;4B5945DF&gt;</td>
+      <td>1</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#1">1</a></td>
+    </tr>
+    <tr id="2">
+      <td class="side">2</td>
+      <td></td>
+      <td>&lt;09DB2550&gt;</td>
+      <td>Colony 9 Commissary</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#2">2</a></td>
+    </tr>
+    <tr id="3">
+      <td class="side">3</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#110">FLD_NpcList#Camilla</a>
+        </details>
+      </td>
+      <td>&lt;1E9387DF&gt;</td>
+      <td>Colony 9 Commissary</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#3">3</a></td>
+    </tr>
+    <tr id="4">
+      <td class="side">4</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#132">FLD_NpcList#Colony 9 Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;BC83AB18&gt;</td>
+      <td>Colony 9 Caravan</td>
+      <td>0</td>
+      <td><a href="MNU_ShopTable.html#4">4</a></td>
+    </tr>
+    <tr id="5">
+      <td class="side">5</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#143">FLD_NpcList#Gamma Soldier</a>
+        </details>
+      </td>
+      <td>&lt;7D9461C3&gt;</td>
+      <td>Gamma Commissary</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#5">5</a></td>
+    </tr>
+    <tr id="6">
+      <td class="side">6</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#144">FLD_NpcList#Gamma Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;2C0905DA&gt;</td>
+      <td>Colony Gamma Caravan</td>
+      <td>0</td>
+      <td><a href="MNU_ShopTable.html#6">6</a></td>
+    </tr>
+    <tr id="7">
+      <td class="side">7</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#190">FLD_NpcList#Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;20F613E9&gt;</td>
+      <td>Valley Caravan</td>
+      <td>2</td>
+      <td><a href="MNU_ShopTable.html#7">7</a></td>
+    </tr>
+    <tr id="8">
+      <td class="side">8</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#191">FLD_NpcList#Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;A2C60341&gt;</td>
+      <td>Hilltop Caravan</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#8">8</a></td>
+    </tr>
+    <tr id="9">
+      <td class="side">9</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#192">FLD_NpcList#Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;3958EAF0&gt;</td>
+      <td>Battlescar Caravan</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#9">9</a></td>
+    </tr>
+    <tr id="10">
+      <td class="side">10</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#193">FLD_NpcList#Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;E0A7CD40&gt;</td>
+      <td>Peak Caravan</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#49">49</a></td>
+    </tr>
+    <tr id="11">
+      <td class="side">11</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#210">FLD_NpcList#Colony 4 Soldier</a>
+        </details>
+      </td>
+      <td>&lt;5F63BD8B&gt;</td>
+      <td>Colony 4 Commissary</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#11">11</a></td>
+    </tr>
+    <tr id="12">
+      <td class="side">12</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#211">FLD_NpcList#Colony 4 Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;2FA2E094&gt;</td>
+      <td>Colony 4 Caravan</td>
+      <td>0</td>
+      <td><a href="MNU_ShopTable.html#12">12</a></td>
+    </tr>
+    <tr id="13">
+      <td class="side">13</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#234">FLD_NpcList#Colony 30 Soldier</a>
+        </details>
+      </td>
+      <td>&lt;F00DE3AB&gt;</td>
+      <td>Colony 30 Commissary</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#13">13</a></td>
+    </tr>
+    <tr id="14">
+      <td class="side">14</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#235">FLD_NpcList#Colony 30 Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;6E374908&gt;</td>
+      <td>Colony 30 Caravan</td>
+      <td>0</td>
+      <td><a href="MNU_ShopTable.html#14">14</a></td>
+    </tr>
+    <tr id="15">
+      <td class="side">15</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#247">FLD_NpcList#Colony Iota Soldier</a>
+        </details>
+      </td>
+      <td>&lt;D6CA01AC&gt;</td>
+      <td>Colony Iota Commissary</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#15">15</a></td>
+    </tr>
+    <tr id="16">
+      <td class="side">16</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#248">FLD_NpcList#Iota Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;CC98E1B9&gt;</td>
+      <td>Colony Iota Caravan</td>
+      <td>0</td>
+      <td><a href="MNU_ShopTable.html#16">16</a></td>
+    </tr>
+    <tr id="17">
+      <td class="side">17</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#287">FLD_NpcList#Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;066440A0&gt;</td>
+      <td>Tableland Caravan</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#17">17</a></td>
+    </tr>
+    <tr id="18">
+      <td class="side">18</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#288">FLD_NpcList#Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;64B1B8AF&gt;</td>
+      <td>Desert Caravan</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#18">18</a></td>
+    </tr>
+    <tr id="19">
+      <td class="side">19</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#289">FLD_NpcList#Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;A009D173&gt;</td>
+      <td>Wilderness Caravan</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#19">19</a></td>
+    </tr>
+    <tr id="20">
+      <td class="side">20</td>
+      <td></td>
+      <td>&lt;9ED25D9C&gt;</td>
+      <td>Wilderness Caravan</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#20">20</a></td>
+    </tr>
+    <tr id="21">
+      <td class="side">21</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#290">FLD_NpcList#Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;B22F216E&gt;</td>
+      <td>Lakeside Caravan</td>
+      <td>2</td>
+      <td><a href="MNU_ShopTable.html#21">21</a></td>
+    </tr>
+    <tr id="22">
+      <td class="side">22</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#291">FLD_NpcList#Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;DB4F8302&gt;</td>
+      <td>Terrace Caravan</td>
+      <td>2</td>
+      <td><a href="MNU_ShopTable.html#27">27</a></td>
+    </tr>
+    <tr id="23">
+      <td class="side">23</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#304">FLD_NpcList#Lambda Soldier</a>
+        </details>
+      </td>
+      <td>&lt;32F129C4&gt;</td>
+      <td>Lambda Commissary</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#23">23</a></td>
+    </tr>
+    <tr id="24">
+      <td class="side">24</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#306">FLD_NpcList#Lambda Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;A93358C4&gt;</td>
+      <td>Colony Lambda Caravan</td>
+      <td>0</td>
+      <td><a href="MNU_ShopTable.html#24">24</a></td>
+    </tr>
+    <tr id="25">
+      <td class="side">25</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#322">FLD_NpcList#Colony Tau Soldier</a>
+        </details>
+      </td>
+      <td>&lt;3FD757AC&gt;</td>
+      <td>Colony Tau Commissary</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#25">25</a></td>
+    </tr>
+    <tr id="26">
+      <td class="side">26</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#323">FLD_NpcList#Tau Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;8DEE18BD&gt;</td>
+      <td>Colony Tau Caravan</td>
+      <td>0</td>
+      <td><a href="MNU_ShopTable.html#26">26</a></td>
+    </tr>
+    <tr id="27">
+      <td class="side">27</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#354">FLD_NpcList#Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;FCDDA5E3&gt;</td>
+      <td>Tunnel Caravan</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#17">17</a></td>
+    </tr>
+    <tr id="28">
+      <td class="side">28</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#358">FLD_NpcList#Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;9EDEEAFC&gt;</td>
+      <td>Cascade Caravan</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#28">28</a></td>
+    </tr>
+    <tr id="29">
+      <td class="side">29</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#356">FLD_NpcList#Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;D5499BAB&gt;</td>
+      <td>Old Way Caravan</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#25">25</a></td>
+    </tr>
+    <tr id="30">
+      <td class="side">30</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#357">FLD_NpcList#Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;88668C62&gt;</td>
+      <td>Clifftop Caravan</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#30">30</a></td>
+    </tr>
+    <tr id="31">
+      <td class="side">31</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#355">FLD_NpcList#Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;5895DC64&gt;</td>
+      <td>Pass Caravan</td>
+      <td>2</td>
+      <td><a href="MNU_ShopTable.html#31">31</a></td>
+    </tr>
+    <tr id="32">
+      <td class="side">32</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#376">FLD_NpcList#Colony 11 Soldier</a>
+        </details>
+      </td>
+      <td>&lt;86E48D8C&gt;</td>
+      <td>Colony 11 Commissary</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#32">32</a></td>
+    </tr>
+    <tr id="33">
+      <td class="side">33</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#377">FLD_NpcList#Colony 11 Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;5E1C6219&gt;</td>
+      <td>Colony 11 Caravan</td>
+      <td>0</td>
+      <td><a href="MNU_ShopTable.html#33">33</a></td>
+    </tr>
+    <tr id="34">
+      <td class="side">34</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#402">FLD_NpcList#Fort O'Virbus Soldier</a>
+        </details>
+      </td>
+      <td>&lt;704AA780&gt;</td>
+      <td>O'Virbus Commissary</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#34">34</a></td>
+    </tr>
+    <tr id="35">
+      <td class="side">35</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#403">FLD_NpcList#O'Virbus Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;8BC6ABD4&gt;</td>
+      <td>O'Virbus Caravan</td>
+      <td>0</td>
+      <td><a href="MNU_ShopTable.html#35">35</a></td>
+    </tr>
+    <tr id="36">
+      <td class="side">36</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#415">FLD_NpcList#Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;715F6215&gt;</td>
+      <td>Reef Caravan</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#32">32</a></td>
+    </tr>
+    <tr id="37">
+      <td class="side">37</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#510">FLD_NpcList#Colony Mu Soldier</a>
+        </details>
+      </td>
+      <td>&lt;415979B4&gt;</td>
+      <td>Colony Mu Commissary</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#37">37</a></td>
+    </tr>
+    <tr id="38">
+      <td class="side">38</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#511">FLD_NpcList#Mu Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;277C3F7A&gt;</td>
+      <td>Colony Mu Caravan</td>
+      <td>0</td>
+      <td><a href="MNU_ShopTable.html#38">38</a></td>
+    </tr>
+    <tr id="39">
+      <td class="side">39</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#317">FLD_NpcList#Korresia</a>
+        </details>
+      </td>
+      <td>&lt;00E8AC4A&gt;</td>
+      <td>Korresia's Shop</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#39">39</a></td>
+    </tr>
+    <tr id="40">
+      <td class="side">40</td>
+      <td>
+        <details>
+          <summary>2 refs</summary>
+               <a href="FLD_NpcList.html#162">FLD_NpcList#Wheelideeli</a>
+          <br/><a href="FLD_NpcList.html#331">FLD_NpcList#233</a>
+        </details>
+      </td>
+      <td>&lt;57AE59C6&gt;</td>
+      <td>Handypon</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#40">40</a></td>
+    </tr>
+    <tr id="41">
+      <td class="side">41</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#548">FLD_NpcList#Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;27D33654&gt;</td>
+      <td>Atoll Caravan</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#41">41</a></td>
+    </tr>
+    <tr id="42">
+      <td class="side">42</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#551">FLD_NpcList#Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;F540BF78&gt;</td>
+      <td>Island Caravan</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#37">37</a></td>
+    </tr>
+    <tr id="43">
+      <td class="side">43</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#550">FLD_NpcList#Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;AB55C2E2&gt;</td>
+      <td>Inlet Caravan</td>
+      <td>2</td>
+      <td><a href="MNU_ShopTable.html#43">43</a></td>
+    </tr>
+    <tr id="44">
+      <td class="side">44</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#552">FLD_NpcList#Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;2B25D482&gt;</td>
+      <td>Illicit Caravan</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#44">44</a></td>
+    </tr>
+    <tr id="45">
+      <td class="side">45</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#549">FLD_NpcList#Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;43F549C6&gt;</td>
+      <td>Sandbar Caravan</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#45">45</a></td>
+    </tr>
+    <tr id="46">
+      <td class="side">46</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#655">FLD_NpcList#Shopkeeper</a>
+        </details>
+      </td>
+      <td>&lt;D538914F&gt;</td>
+      <td>Drahaga Store</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#46">46</a></td>
+    </tr>
+    <tr id="47">
+      <td class="side">47</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#656">FLD_NpcList#City Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;22FBC8A1&gt;</td>
+      <td>City Caravan</td>
+      <td>0</td>
+      <td><a href="MNU_ShopTable.html#47">47</a></td>
+    </tr>
+    <tr id="48">
+      <td class="side">48</td>
+      <td></td>
+      <td>&lt;56E7045E&gt;</td>
+      <td>Wellwell's Emporium</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#48">48</a></td>
+    </tr>
+    <tr id="49">
+      <td class="side">49</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#581">FLD_NpcList#Castle Soldier</a>
+        </details>
+      </td>
+      <td>&lt;35B84D80&gt;</td>
+      <td>Castle Commissary</td>
+      <td>1</td>
+      <td><a href="MNU_ShopTable.html#49">49</a></td>
+    </tr>
+    <tr id="50">
+      <td class="side">50</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#582">FLD_NpcList#Ascended Traderpon</a>
+        </details>
+      </td>
+      <td>&lt;21C9BF1D&gt;</td>
+      <td>Ascension Caravan</td>
+      <td>0</td>
+      <td><a href="MNU_ShopTable.html#50">50</a></td>
+    </tr>
+    <tr id="51">
+      <td class="side">51</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#271">FLD_NpcList#Seekseek</a>
+        </details>
+      </td>
+      <td>&lt;FF85884D&gt;</td>
+      <td>Nopon Coin X-change</td>
+      <td>5</td>
+      <td><a href="MNU_ShopTable.html#51">51</a></td>
+    </tr>
+    <tr id="52">
+      <td class="side">52</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#604">FLD_NpcList#Wellwell</a>
+        </details>
+      </td>
+      <td>&lt;10EB9759&gt;</td>
+      <td>Wellwell's Emporium</td>
+      <td>3</td>
+      <td><a href="MNU_ShopTable.html#52">52</a></td>
+    </tr>
+    <tr id="53">
+      <td class="side">53</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="FLD_NpcList.html#650">FLD_NpcList#Torpedo Wrapsmith</a>
+        </details>
+      </td>
+      <td>&lt;03F03271&gt;</td>
+      <td>Runaeda Torpedo Wraps</td>
+      <td>3</td>
+      <td><a href="MNU_ShopTable.html#53">53</a></td>
+    </tr>
+  </table>
+</body>
+</html>

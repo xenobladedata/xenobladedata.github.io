@@ -1,0 +1,5155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <title>BTL_Talent</title>
+  <style type="text/css">
+    table, th, td {border: 1px solid #000000; border-collapse: collapse;}
+    table {border-width: 3px;}
+    th, td {padding: 0.1em 0.2em;}
+    tr.head th, tr.head td {border-bottom-width: 3px;}
+    th.colbreak, td.colbreak {border-right-width: 3px;}
+    th {text-align: center; position: sticky; top: -1px; background-color: #F0F0F0;}
+    .side {position: sticky; left: -1px; background-color: #F0F0F0;}
+    th.side {z-index: 3;}
+    td {text-align: left;}
+    td.right {text-align: right;}
+    .sortable tbody tr:nth-child(odd) {background: #F5F5F5;}
+    .sortable th {background: #E4E4E4; cursor: pointer; white-space: nowrap; vertical-align: middle;}
+    .sortable th.dir-d::after {content:" ▾"; vertical-align: inherit;}
+    .sortable th.dir-u::after {content:" ▴"; vertical-align: inherit;}
+    :target td {background-color: #CCCCCC !important;}
+  </style>
+  <script type="text/javascript">
+    function offsetAnchor() {
+      if (location.hash.length !== 0) {
+        window.scrollTo(window.scrollX, window.scrollY - document.getElementById("header").clientHeight);
+      }
+    }
+    window.addEventListener("hashchange", offsetAnchor);
+    window.setTimeout(offsetAnchor, 1);
+  </script>
+</head>
+<body>
+  <table class="sortable">
+    <h2>BTL_Talent</h2>
+    <tr id="header">
+      <th class="side dir-d ">ID</th>
+      <th>Referenced By</th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Caption</th>
+      <th>DebugName</th>
+      <th>PcTalentParts</th>
+      <th>Role</th>
+      <th>Region</th>
+      <th>WeaponType</th>
+      <th>WeaponType2</th>
+      <th>AiRole</th>
+      <th>AiPosition1</th>
+      <th>AiPosition2</th>
+      <th>AiPosition3</th>
+      <th>AiCycle</th>
+      <th>SpMax1</th>
+      <th>SpMax2</th>
+      <th>field_F5879741</th>
+      <th>field_3250D218</th>
+      <th>field_F5EB2655</th>
+      <th>field_10417A75</th>
+      <th>TalentParamRev</th>
+      <th>PArmor1</th>
+      <th>PArmor2</th>
+      <th>EArmor1</th>
+      <th>EArmor2</th>
+      <th>HpMaxRev1</th>
+      <th>HpMaxRev2</th>
+      <th>StrengthRev1</th>
+      <th>StrengthRev2</th>
+      <th>PowHealRev1</th>
+      <th>PowHealRev2</th>
+      <th>DexRev1</th>
+      <th>DexRev2</th>
+      <th>AgilityRev1</th>
+      <th>AgilityRev2</th>
+      <th>ArtsSlotType1</th>
+      <th>ArtsSlotType2</th>
+      <th>ArtsSlotType3</th>
+      <th>ArtsSlotType4</th>
+      <th>ArtsSlotType5</th>
+      <th>ArtsSlotType6</th>
+      <th>AddSkillSlot</th>
+      <th>GemSlot</th>
+      <th>field_62F3F067</th>
+      <th>NeedTalentPoint1</th>
+      <th>NeedTalentPoint2</th>
+      <th>NeedTalentPoint3</th>
+      <th>NeedTalentPoint4</th>
+      <th>NeedTalentPoint5</th>
+      <th>NeedTalentPoint6</th>
+      <th>NeedExpLv02</th>
+      <th>NeedExpLv03</th>
+      <th>NeedExpLv04</th>
+      <th>NeedExpLv05</th>
+      <th>NeedExpLv06</th>
+      <th>NeedExpLv07</th>
+      <th>NeedExpLv08</th>
+      <th>NeedExpLv09</th>
+      <th>NeedExpLv10</th>
+      <th>NeedExpLv11</th>
+      <th>NeedExpLv12</th>
+      <th>NeedExpLv13</th>
+      <th>NeedExpLv14</th>
+      <th>NeedExpLv15</th>
+      <th>NeedExpLv16</th>
+      <th>NeedExpLv17</th>
+      <th>NeedExpLv18</th>
+      <th>NeedExpLv19</th>
+      <th>NeedExpLv20</th>
+      <th>GrowSetting</th>
+      <th>field_F15C4844</th>
+      <th>Value1</th>
+      <th>Value2</th>
+      <th>Value3</th>
+      <th>Value4</th>
+      <th>NpType02</th>
+      <th>NpNum02</th>
+      <th>NpType03</th>
+      <th>NpNum03</th>
+      <th>NpType04</th>
+      <th>NpNum04</th>
+      <th>NpType05</th>
+      <th>NpNum05</th>
+      <th>NpType06</th>
+      <th>NpNum06</th>
+      <th>NpType07</th>
+      <th>NpNum07</th>
+      <th>NpType08</th>
+      <th>NpNum08</th>
+      <th>NpType09</th>
+      <th>NpNum09</th>
+      <th>NpType10</th>
+      <th>NpNum10</th>
+      <th>NpType11</th>
+      <th>NpNum11</th>
+      <th>NpType12</th>
+      <th>NpNum12</th>
+      <th>NpType13</th>
+      <th>NpNum13</th>
+      <th>NpType14</th>
+      <th>NpNum14</th>
+      <th>NpType15</th>
+      <th>NpNum15</th>
+      <th>NpType16</th>
+      <th>NpNum16</th>
+      <th>NpType17</th>
+      <th>NpNum17</th>
+      <th>NpType18</th>
+      <th>NpNum18</th>
+      <th>NpType19</th>
+      <th>NpNum19</th>
+      <th>NpType20</th>
+      <th>NpNum20</th>
+      <th>TalentAptitude1</th>
+      <th>TalentAptitude2</th>
+      <th>TalentAptitude3</th>
+      <th>TalentAptitude4</th>
+      <th>TalentAptitude5</th>
+      <th>TalentAptitude6</th>
+      <th>DirArtsNum</th>
+      <th>SetArtsNum</th>
+      <th>GetNumber</th>
+      <th>AutoSet1</th>
+      <th>AutoSet2</th>
+      <th>AutoSet3</th>
+    </tr>
+    <tr id="1">
+      <td class="side">1</td>
+      <td>
+        <details>
+          <summary>28 refs</summary>
+               <a href="5F654D94.html#500">5F654D94#500</a>
+          <br/><a href="5F654D94.html#524">5F654D94#524</a>
+          <br/><a href="5F654D94.html#548">5F654D94#548</a>
+          <br/><a href="5F654D94.html#572">5F654D94#572</a>
+          <br/><a href="B971C420.html#1">B971C420#1</a>
+          <br/><a href="B971C420.html#25">B971C420#25</a>
+          <br/><a href="B971C420.html#49">B971C420#49</a>
+          <br/><a href="B971C420.html#73">B971C420#73</a>
+          <br/><a href="B971C420.html#97">B971C420#97</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#1">BTL_Arts_Chain_Set#1</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#2">BTL_Arts_Chain_Set#2</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#3">BTL_Arts_Chain_Set#3</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#4">BTL_Arts_Chain_Set#4</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#5">BTL_Arts_Chain_Set#5</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#6">BTL_Arts_Chain_Set#6</a>
+          <br/><a href="BTL_Skill_PC.html#1">BTL_Skill_PC#必殺剣</a>
+          <br/><a href="BTL_Skill_PC.html#2">BTL_Skill_PC#鷹の目</a>
+          <br/><a href="BTL_Skill_PC.html#3">BTL_Skill_PC#気配殺し</a>
+          <br/><a href="BTL_Skill_PC.html#4">BTL_Skill_PC#有名狩り</a>
+          <br/><a href="CHR_PC.html#1">CHR_PC#ノア</a>
+          <br/><a href="CHR_PC.html#30">CHR_PC#ノア</a>
+          <br/><a href="FLD_ConditionClassLv.html#1">FLD_ConditionClassLv#1</a>
+          <br/><a href="MNU_HeroDictionary.html#1">MNU_HeroDictionary#1</a>
+          <br/><a href="SYS_TrialPcInfo.html#1">SYS_TrialPcInfo#1</a>
+          <br/><a href="SYS_TrialPcInfo.html#4">SYS_TrialPcInfo#4</a>
+          <br/><a href="SYS_TrialPcInfo.html#12">SYS_TrialPcInfo#12</a>
+          <br/><a href="SYS_TrialPcInfo.html#15">SYS_TrialPcInfo#15</a>
+          <br/><a href="SYS_TrialPcInfo.html#16">SYS_TrialPcInfo#16</a>
+        </details>
+      </td>
+      <td>&lt;CA43F6DA&gt;</td>
+      <td>ソードファイター</td>
+      <td>大剣で洗練された攻撃を行うアタッカー<br />攻守のバランスに優れ攻撃の起点を担う</td>
+      <td>509</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td><a href="BTL_WpnType.html#1">ヒドゥンソード</a></td>
+      <td><a href="BTL_WpnType.html#28">28</a></td>
+      <td>4</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>80</td>
+      <td>120</td>
+      <td>50</td>
+      <td>60</td>
+      <td>70</td>
+      <td>80</td>
+      <td><a href="BTL_TL_PrmRev01.html">BTL_TL_PrmRev01</a></td>
+      <td>10</td>
+      <td>15</td>
+      <td>10</td>
+      <td>15</td>
+      <td>80</td>
+      <td>85</td>
+      <td>100</td>
+      <td>110</td>
+      <td>100</td>
+      <td>110</td>
+      <td>100</td>
+      <td>105</td>
+      <td>90</td>
+      <td>95</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2365</td>
+      <td>3940</td>
+      <td>1575</td>
+      <td>3150</td>
+      <td>140</td>
+      <td>140</td>
+      <td>175</td>
+      <td>175</td>
+      <td>210</td>
+      <td>210</td>
+      <td>225</td>
+      <td>225</td>
+      <td>245</td>
+      <td>340</td>
+      <td>340</td>
+      <td>455</td>
+      <td>455</td>
+      <td>570</td>
+      <td>570</td>
+      <td>680</td>
+      <td>680</td>
+      <td>740</td>
+      <td>855</td>
+      <td>1</td>
+      <td>23451</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="2">
+      <td class="side">2</td>
+      <td>
+        <details>
+          <summary>27 refs</summary>
+               <a href="5F654D94.html#501">5F654D94#501</a>
+          <br/><a href="5F654D94.html#525">5F654D94#525</a>
+          <br/><a href="5F654D94.html#549">5F654D94#549</a>
+          <br/><a href="5F654D94.html#573">5F654D94#573</a>
+          <br/><a href="B971C420.html#2">B971C420#2</a>
+          <br/><a href="B971C420.html#26">B971C420#26</a>
+          <br/><a href="B971C420.html#50">B971C420#50</a>
+          <br/><a href="B971C420.html#74">B971C420#74</a>
+          <br/><a href="B971C420.html#98">B971C420#98</a>
+          <br/><a href="B971C420.html#123">B971C420#123</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#7">BTL_Arts_Chain_Set#7</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#8">BTL_Arts_Chain_Set#8</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#9">BTL_Arts_Chain_Set#9</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#10">BTL_Arts_Chain_Set#10</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#11">BTL_Arts_Chain_Set#11</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#12">BTL_Arts_Chain_Set#12</a>
+          <br/><a href="BTL_Skill_PC.html#5">BTL_Skill_PC#舞い風</a>
+          <br/><a href="BTL_Skill_PC.html#6">BTL_Skill_PC#エーテルの守り</a>
+          <br/><a href="BTL_Skill_PC.html#7">BTL_Skill_PC#後の先</a>
+          <br/><a href="BTL_Skill_PC.html#8">BTL_Skill_PC#私が防ぐ</a>
+          <br/><a href="CHR_PC.html#2">CHR_PC#ミオ</a>
+          <br/><a href="CHR_PC.html#31">CHR_PC#ミオ</a>
+          <br/><a href="FLD_ConditionClassLv.html#2">FLD_ConditionClassLv#2</a>
+          <br/><a href="MNU_HeroDictionary.html#2">MNU_HeroDictionary#2</a>
+          <br/><a href="SYS_TrialPcInfo.html#7">SYS_TrialPcInfo#7</a>
+          <br/><a href="SYS_TrialPcInfo.html#10">SYS_TrialPcInfo#10</a>
+          <br/><a href="SYS_TrialPcInfo.html#14">SYS_TrialPcInfo#14</a>
+        </details>
+      </td>
+      <td>&lt;6DCA55AD&gt;</td>
+      <td>疾風士</td>
+      <td>高速の動きで敵を翻弄するディフェンダー<br />攻撃を回避し強力なカウンターを放つ</td>
+      <td>509</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td><a href="BTL_WpnType.html#2">双月輪</a></td>
+      <td></td>
+      <td>2</td>
+      <td>1</td>
+      <td>15</td>
+      <td>0</td>
+      <td>20</td>
+      <td>100</td>
+      <td>150</td>
+      <td>70</td>
+      <td>80</td>
+      <td>90</td>
+      <td>100</td>
+      <td><a href="BTL_TL_PrmRev02.html">BTL_TL_PrmRev02</a></td>
+      <td>30</td>
+      <td>35</td>
+      <td>40</td>
+      <td>50</td>
+      <td>100</td>
+      <td>110</td>
+      <td>80</td>
+      <td>90</td>
+      <td>90</td>
+      <td>100</td>
+      <td>110</td>
+      <td>120</td>
+      <td>120</td>
+      <td>130</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3940</td>
+      <td>2365</td>
+      <td>3150</td>
+      <td>1575</td>
+      <td>155</td>
+      <td>155</td>
+      <td>195</td>
+      <td>195</td>
+      <td>235</td>
+      <td>235</td>
+      <td>250</td>
+      <td>250</td>
+      <td>270</td>
+      <td>355</td>
+      <td>355</td>
+      <td>470</td>
+      <td>470</td>
+      <td>590</td>
+      <td>590</td>
+      <td>705</td>
+      <td>705</td>
+      <td>760</td>
+      <td>880</td>
+      <td>2</td>
+      <td>23452</td>
+      <td>3</td>
+      <td>4</td>
+      <td>2</td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="3">
+      <td class="side">3</td>
+      <td>
+        <details>
+          <summary>24 refs</summary>
+               <a href="5F654D94.html#502">5F654D94#502</a>
+          <br/><a href="5F654D94.html#526">5F654D94#526</a>
+          <br/><a href="5F654D94.html#550">5F654D94#550</a>
+          <br/><a href="5F654D94.html#574">5F654D94#574</a>
+          <br/><a href="B971C420.html#3">B971C420#3</a>
+          <br/><a href="B971C420.html#27">B971C420#27</a>
+          <br/><a href="B971C420.html#51">B971C420#51</a>
+          <br/><a href="B971C420.html#75">B971C420#75</a>
+          <br/><a href="B971C420.html#99">B971C420#99</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#13">BTL_Arts_Chain_Set#13</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#14">BTL_Arts_Chain_Set#14</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#15">BTL_Arts_Chain_Set#15</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#16">BTL_Arts_Chain_Set#16</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#17">BTL_Arts_Chain_Set#17</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#18">BTL_Arts_Chain_Set#18</a>
+          <br/><a href="BTL_Skill_PC.html#9">BTL_Skill_PC#悠久の円陣</a>
+          <br/><a href="BTL_Skill_PC.html#10">BTL_Skill_PC#癒しの才器</a>
+          <br/><a href="BTL_Skill_PC.html#11">BTL_Skill_PC#全力救助</a>
+          <br/><a href="BTL_Skill_PC.html#12">BTL_Skill_PC#密かな癒し</a>
+          <br/><a href="CHR_PC.html#3">CHR_PC#ユーニ</a>
+          <br/><a href="FLD_ConditionClassLv.html#3">FLD_ConditionClassLv#3</a>
+          <br/><a href="MNU_HeroDictionary.html#3">MNU_HeroDictionary#3</a>
+          <br/><a href="SYS_TrialPcInfo.html#3">SYS_TrialPcInfo#3</a>
+          <br/><a href="SYS_TrialPcInfo.html#6">SYS_TrialPcInfo#6</a>
+        </details>
+      </td>
+      <td>&lt;750DA54A&gt;</td>
+      <td>メディックガンナー</td>
+      <td>フィールドを展開し広範囲の味方を回復する<br />さらに強化も行うことのできるヒーラー</td>
+      <td>509</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1</td>
+      <td><a href="BTL_WpnType.html#3">ガンロッド</a></td>
+      <td></td>
+      <td>5</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>15</td>
+      <td>140</td>
+      <td>210</td>
+      <td>110</td>
+      <td>120</td>
+      <td>130</td>
+      <td>140</td>
+      <td><a href="BTL_TL_PrmRev03.html">BTL_TL_PrmRev03</a></td>
+      <td>5</td>
+      <td>15</td>
+      <td>20</td>
+      <td>25</td>
+      <td>55</td>
+      <td>60</td>
+      <td>60</td>
+      <td>65</td>
+      <td>115</td>
+      <td>120</td>
+      <td>100</td>
+      <td>105</td>
+      <td>80</td>
+      <td>85</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2365</td>
+      <td>3940</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1575</td>
+      <td>3150</td>
+      <td>170</td>
+      <td>170</td>
+      <td>210</td>
+      <td>210</td>
+      <td>255</td>
+      <td>255</td>
+      <td>270</td>
+      <td>270</td>
+      <td>295</td>
+      <td>375</td>
+      <td>375</td>
+      <td>495</td>
+      <td>495</td>
+      <td>620</td>
+      <td>620</td>
+      <td>745</td>
+      <td>745</td>
+      <td>805</td>
+      <td>925</td>
+      <td>3</td>
+      <td>23453</td>
+      <td>1</td>
+      <td>1</td>
+      <td>5</td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="4">
+      <td class="side">4</td>
+      <td>
+        <details>
+          <summary>23 refs</summary>
+               <a href="5F654D94.html#503">5F654D94#503</a>
+          <br/><a href="5F654D94.html#527">5F654D94#527</a>
+          <br/><a href="5F654D94.html#551">5F654D94#551</a>
+          <br/><a href="5F654D94.html#575">5F654D94#575</a>
+          <br/><a href="B971C420.html#4">B971C420#4</a>
+          <br/><a href="B971C420.html#28">B971C420#28</a>
+          <br/><a href="B971C420.html#52">B971C420#52</a>
+          <br/><a href="B971C420.html#76">B971C420#76</a>
+          <br/><a href="B971C420.html#100">B971C420#100</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#19">BTL_Arts_Chain_Set#19</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#20">BTL_Arts_Chain_Set#20</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#21">BTL_Arts_Chain_Set#21</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#22">BTL_Arts_Chain_Set#22</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#23">BTL_Arts_Chain_Set#23</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#24">BTL_Arts_Chain_Set#24</a>
+          <br/><a href="BTL_Skill_PC.html#13">BTL_Skill_PC#エーテルの才器</a>
+          <br/><a href="BTL_Skill_PC.html#14">BTL_Skill_PC#貫きの一撃</a>
+          <br/><a href="BTL_Skill_PC.html#15">BTL_Skill_PC#永劫の呪い</a>
+          <br/><a href="BTL_Skill_PC.html#16">BTL_Skill_PC#絶対回避</a>
+          <br/><a href="CHR_PC.html#4">CHR_PC#タイオン</a>
+          <br/><a href="FLD_ConditionClassLv.html#4">FLD_ConditionClassLv#4</a>
+          <br/><a href="MNU_HeroDictionary.html#4">MNU_HeroDictionary#4</a>
+          <br/><a href="SYS_TrialPcInfo.html#8">SYS_TrialPcInfo#8</a>
+        </details>
+      </td>
+      <td>&lt;E78D1EEB&gt;</td>
+      <td>戦術士</td>
+      <td>術札で敵を幻惑するヒーラー<br />味方の支援、敵のかく乱を得意とする</td>
+      <td>509</td>
+      <td>4</td>
+      <td>3</td>
+      <td>2</td>
+      <td><a href="BTL_WpnType.html#4">術札・主水</a></td>
+      <td></td>
+      <td>6</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>15</td>
+      <td>150</td>
+      <td>225</td>
+      <td>120</td>
+      <td>130</td>
+      <td>140</td>
+      <td>150</td>
+      <td><a href="BTL_TL_PrmRev04.html">BTL_TL_PrmRev04</a></td>
+      <td>5</td>
+      <td>10</td>
+      <td>25</td>
+      <td>30</td>
+      <td>60</td>
+      <td>65</td>
+      <td>65</td>
+      <td>70</td>
+      <td>110</td>
+      <td>115</td>
+      <td>105</td>
+      <td>110</td>
+      <td>100</td>
+      <td>110</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3150</td>
+      <td>1575</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3940</td>
+      <td>2365</td>
+      <td>170</td>
+      <td>170</td>
+      <td>210</td>
+      <td>210</td>
+      <td>255</td>
+      <td>255</td>
+      <td>270</td>
+      <td>270</td>
+      <td>295</td>
+      <td>390</td>
+      <td>390</td>
+      <td>525</td>
+      <td>525</td>
+      <td>650</td>
+      <td>650</td>
+      <td>780</td>
+      <td>780</td>
+      <td>850</td>
+      <td>975</td>
+      <td>4</td>
+      <td>23454</td>
+      <td>2</td>
+      <td>1</td>
+      <td>4</td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>4</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="5">
+      <td class="side">5</td>
+      <td>
+        <details>
+          <summary>24 refs</summary>
+               <a href="5F654D94.html#504">5F654D94#504</a>
+          <br/><a href="5F654D94.html#528">5F654D94#528</a>
+          <br/><a href="5F654D94.html#552">5F654D94#552</a>
+          <br/><a href="5F654D94.html#576">5F654D94#576</a>
+          <br/><a href="B971C420.html#5">B971C420#5</a>
+          <br/><a href="B971C420.html#29">B971C420#29</a>
+          <br/><a href="B971C420.html#53">B971C420#53</a>
+          <br/><a href="B971C420.html#77">B971C420#77</a>
+          <br/><a href="B971C420.html#101">B971C420#101</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#25">BTL_Arts_Chain_Set#25</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#26">BTL_Arts_Chain_Set#26</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#27">BTL_Arts_Chain_Set#27</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#28">BTL_Arts_Chain_Set#28</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#29">BTL_Arts_Chain_Set#29</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#30">BTL_Arts_Chain_Set#30</a>
+          <br/><a href="BTL_Skill_PC.html#17">BTL_Skill_PC#防御の鬼</a>
+          <br/><a href="BTL_Skill_PC.html#18">BTL_Skill_PC#俺が守る</a>
+          <br/><a href="BTL_Skill_PC.html#19">BTL_Skill_PC#逆境の護り</a>
+          <br/><a href="BTL_Skill_PC.html#20">BTL_Skill_PC#挑発</a>
+          <br/><a href="CHR_PC.html#5">CHR_PC#ランツ</a>
+          <br/><a href="FLD_ConditionClassLv.html#5">FLD_ConditionClassLv#5</a>
+          <br/><a href="MNU_HeroDictionary.html#5">MNU_HeroDictionary#5</a>
+          <br/><a href="SYS_TrialPcInfo.html#2">SYS_TrialPcInfo#2</a>
+          <br/><a href="SYS_TrialPcInfo.html#5">SYS_TrialPcInfo#5</a>
+        </details>
+      </td>
+      <td>&lt;FAD9AEDF&gt;</td>
+      <td>ヘヴィガード</td>
+      <td>巨大な武器で味方を守護するディフェンダー<br />敵を引きつけるアーツを得意とする</td>
+      <td>509</td>
+      <td>5</td>
+      <td>1</td>
+      <td>1</td>
+      <td><a href="BTL_WpnType.html#5">シールドブレード</a></td>
+      <td></td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>120</td>
+      <td>180</td>
+      <td>90</td>
+      <td>100</td>
+      <td>110</td>
+      <td>120</td>
+      <td><a href="BTL_TL_PrmRev05.html">BTL_TL_PrmRev05</a></td>
+      <td>40</td>
+      <td>50</td>
+      <td>30</td>
+      <td>35</td>
+      <td>120</td>
+      <td>125</td>
+      <td>90</td>
+      <td>95</td>
+      <td>70</td>
+      <td>80</td>
+      <td>90</td>
+      <td>100</td>
+      <td>70</td>
+      <td>75</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1575</td>
+      <td>3150</td>
+      <td>2365</td>
+      <td>3940</td>
+      <td>0</td>
+      <td>0</td>
+      <td>155</td>
+      <td>155</td>
+      <td>195</td>
+      <td>195</td>
+      <td>235</td>
+      <td>235</td>
+      <td>250</td>
+      <td>250</td>
+      <td>270</td>
+      <td>345</td>
+      <td>345</td>
+      <td>455</td>
+      <td>455</td>
+      <td>570</td>
+      <td>570</td>
+      <td>685</td>
+      <td>685</td>
+      <td>740</td>
+      <td>850</td>
+      <td>5</td>
+      <td>23455</td>
+      <td>2</td>
+      <td>5</td>
+      <td>1</td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>5</td>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="6">
+      <td class="side">6</td>
+      <td>
+        <details>
+          <summary>24 refs</summary>
+               <a href="5F654D94.html#505">5F654D94#505</a>
+          <br/><a href="5F654D94.html#529">5F654D94#529</a>
+          <br/><a href="5F654D94.html#553">5F654D94#553</a>
+          <br/><a href="5F654D94.html#577">5F654D94#577</a>
+          <br/><a href="B971C420.html#6">B971C420#6</a>
+          <br/><a href="B971C420.html#30">B971C420#30</a>
+          <br/><a href="B971C420.html#54">B971C420#54</a>
+          <br/><a href="B971C420.html#78">B971C420#78</a>
+          <br/><a href="B971C420.html#102">B971C420#102</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#31">BTL_Arts_Chain_Set#31</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#32">BTL_Arts_Chain_Set#32</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#33">BTL_Arts_Chain_Set#33</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#34">BTL_Arts_Chain_Set#34</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#35">BTL_Arts_Chain_Set#35</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#36">BTL_Arts_Chain_Set#36</a>
+          <br/><a href="BTL_Skill_PC.html#21">BTL_Skill_PC#攻撃の才器</a>
+          <br/><a href="BTL_Skill_PC.html#22">BTL_Skill_PC#転倒殺し</a>
+          <br/><a href="BTL_Skill_PC.html#23">BTL_Skill_PC#元気爆発</a>
+          <br/><a href="BTL_Skill_PC.html#24">BTL_Skill_PC#超ぶっとばし</a>
+          <br/><a href="CHR_PC.html#6">CHR_PC#セナ</a>
+          <br/><a href="FLD_ConditionClassLv.html#6">FLD_ConditionClassLv#6</a>
+          <br/><a href="FLD_ConditionClassLv.html#33">FLD_ConditionClassLv#33</a>
+          <br/><a href="MNU_HeroDictionary.html#6">MNU_HeroDictionary#6</a>
+          <br/><a href="SYS_TrialPcInfo.html#9">SYS_TrialPcInfo#9</a>
+        </details>
+      </td>
+      <td>&lt;88B5FF46&gt;</td>
+      <td>破砕士</td>
+      <td>超重量のハンマーで敵を粉砕するアタッカー<br />豪快なアーツは敵の防御を許さない</td>
+      <td>509</td>
+      <td>6</td>
+      <td>2</td>
+      <td>2</td>
+      <td><a href="BTL_WpnType.html#6">大彗槌</a></td>
+      <td></td>
+      <td>3</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>80</td>
+      <td>120</td>
+      <td>50</td>
+      <td>60</td>
+      <td>70</td>
+      <td>80</td>
+      <td><a href="BTL_TL_PrmRev06.html">BTL_TL_PrmRev06</a></td>
+      <td>15</td>
+      <td>20</td>
+      <td>5</td>
+      <td>10</td>
+      <td>85</td>
+      <td>90</td>
+      <td>110</td>
+      <td>120</td>
+      <td>85</td>
+      <td>95</td>
+      <td>90</td>
+      <td>100</td>
+      <td>85</td>
+      <td>90</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3940</td>
+      <td>1575</td>
+      <td>3150</td>
+      <td>2365</td>
+      <td>0</td>
+      <td>0</td>
+      <td>140</td>
+      <td>140</td>
+      <td>175</td>
+      <td>175</td>
+      <td>210</td>
+      <td>210</td>
+      <td>225</td>
+      <td>225</td>
+      <td>245</td>
+      <td>320</td>
+      <td>320</td>
+      <td>425</td>
+      <td>425</td>
+      <td>535</td>
+      <td>535</td>
+      <td>640</td>
+      <td>640</td>
+      <td>690</td>
+      <td>800</td>
+      <td>6</td>
+      <td>23456</td>
+      <td>5</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>6</td>
+      <td>6</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="7">
+      <td class="side">7</td>
+      <td>
+        <details>
+          <summary>25 refs</summary>
+               <a href="5F654D94.html#506">5F654D94#506</a>
+          <br/><a href="5F654D94.html#530">5F654D94#530</a>
+          <br/><a href="5F654D94.html#554">5F654D94#554</a>
+          <br/><a href="5F654D94.html#578">5F654D94#578</a>
+          <br/><a href="B971C420.html#7">B971C420#7</a>
+          <br/><a href="B971C420.html#31">B971C420#31</a>
+          <br/><a href="B971C420.html#55">B971C420#55</a>
+          <br/><a href="B971C420.html#79">B971C420#79</a>
+          <br/><a href="B971C420.html#103">B971C420#103</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#37">BTL_Arts_Chain_Set#37</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#38">BTL_Arts_Chain_Set#38</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#39">BTL_Arts_Chain_Set#39</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#40">BTL_Arts_Chain_Set#40</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#41">BTL_Arts_Chain_Set#41</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#42">BTL_Arts_Chain_Set#42</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#43">BTL_Arts_Chain_Set#43</a>
+          <br/><a href="BTL_Skill_PC.html#25">BTL_Skill_PC#先手必勝</a>
+          <br/><a href="BTL_Skill_PC.html#26">BTL_Skill_PC#いつでもやれる</a>
+          <br/><a href="BTL_Skill_PC.html#27">BTL_Skill_PC#急所突き</a>
+          <br/><a href="BTL_Skill_PC.html#28">BTL_Skill_PC#闘争本能</a>
+          <br/><a href="CHR_PC.html#7">CHR_PC#エセル</a>
+          <br/><a href="FLD_ConditionClassLv.html#7">FLD_ConditionClassLv#7</a>
+          <br/><a href="MNU_HeroDictionary.html#7">MNU_HeroDictionary#7</a>
+          <br/><a href="MNU_HeroList.html#1">MNU_HeroList#1</a>
+          <br/><a href="SYS_TrialPcInfo.html#11">SYS_TrialPcInfo#11</a>
+        </details>
+      </td>
+      <td>&lt;6A2EB9F0&gt;</td>
+      <td>フラッシュフェンサー</td>
+      <td>二刀の斬撃で敵を圧倒するアタッカー<br />短期決戦を得意とし迅速に敵を殲滅する</td>
+      <td>509</td>
+      <td>7</td>
+      <td>2</td>
+      <td>1</td>
+      <td><a href="BTL_WpnType.html#7">ダブルレイピア</a></td>
+      <td></td>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>80</td>
+      <td>120</td>
+      <td>50</td>
+      <td>60</td>
+      <td>70</td>
+      <td>80</td>
+      <td><a href="BTL_TL_PrmRev07.html">BTL_TL_PrmRev07</a></td>
+      <td>10</td>
+      <td>15</td>
+      <td>10</td>
+      <td>15</td>
+      <td>80</td>
+      <td>85</td>
+      <td>100</td>
+      <td>110</td>
+      <td>100</td>
+      <td>110</td>
+      <td>100</td>
+      <td>105</td>
+      <td>90</td>
+      <td>95</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3300</td>
+      <td>5775</td>
+      <td>4125</td>
+      <td>4950</td>
+      <td>2475</td>
+      <td>185</td>
+      <td>185</td>
+      <td>230</td>
+      <td>230</td>
+      <td>280</td>
+      <td>280</td>
+      <td>300</td>
+      <td>300</td>
+      <td>325</td>
+      <td>355</td>
+      <td>355</td>
+      <td>470</td>
+      <td>470</td>
+      <td>585</td>
+      <td>585</td>
+      <td>705</td>
+      <td>705</td>
+      <td>765</td>
+      <td>880</td>
+      <td>7</td>
+      <td>23457</td>
+      <td>5</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>7</td>
+      <td>7</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="8">
+      <td class="side">8</td>
+      <td>
+        <details>
+          <summary>25 refs</summary>
+               <a href="5F654D94.html#507">5F654D94#507</a>
+          <br/><a href="5F654D94.html#531">5F654D94#531</a>
+          <br/><a href="5F654D94.html#555">5F654D94#555</a>
+          <br/><a href="5F654D94.html#579">5F654D94#579</a>
+          <br/><a href="B971C420.html#8">B971C420#8</a>
+          <br/><a href="B971C420.html#32">B971C420#32</a>
+          <br/><a href="B971C420.html#56">B971C420#56</a>
+          <br/><a href="B971C420.html#80">B971C420#80</a>
+          <br/><a href="B971C420.html#104">B971C420#104</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#44">BTL_Arts_Chain_Set#44</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#45">BTL_Arts_Chain_Set#45</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#46">BTL_Arts_Chain_Set#46</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#47">BTL_Arts_Chain_Set#47</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#48">BTL_Arts_Chain_Set#48</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#49">BTL_Arts_Chain_Set#49</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#50">BTL_Arts_Chain_Set#50</a>
+          <br/><a href="BTL_Skill_PC.html#29">BTL_Skill_PC#じわじわ削るも！</a>
+          <br/><a href="BTL_Skill_PC.html#30">BTL_Skill_PC#大爆発も！</a>
+          <br/><a href="BTL_Skill_PC.html#31">BTL_Skill_PC#きっと弱まるも！</a>
+          <br/><a href="BTL_Skill_PC.html#32">BTL_Skill_PC#連携準備も！</a>
+          <br/><a href="CHR_PC.html#8">CHR_PC#リク＆マナナ</a>
+          <br/><a href="FLD_ConditionClassLv.html#8">FLD_ConditionClassLv#8</a>
+          <br/><a href="MNU_HeroDictionary.html#8">MNU_HeroDictionary#8</a>
+          <br/><a href="MNU_HeroDictionary.html#9">MNU_HeroDictionary#9</a>
+          <br/><a href="MNU_HeroList.html#2">MNU_HeroList#2</a>
+        </details>
+      </td>
+      <td>&lt;77E2964D&gt;</td>
+      <td>ヤムスミス</td>
+      <td>搦め手を得意とする変幻自在のアタッカー<br />デバフで敵を弱体化し戦況を好転させる</td>
+      <td>509</td>
+      <td>8</td>
+      <td>2</td>
+      <td>1</td>
+      <td><a href="BTL_WpnType.html#8">ヴァリアブルアームズ</a></td>
+      <td></td>
+      <td>4</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>80</td>
+      <td>120</td>
+      <td>50</td>
+      <td>60</td>
+      <td>70</td>
+      <td>80</td>
+      <td><a href="BTL_TL_PrmRev08.html">BTL_TL_PrmRev08</a></td>
+      <td>10</td>
+      <td>15</td>
+      <td>10</td>
+      <td>15</td>
+      <td>80</td>
+      <td>85</td>
+      <td>100</td>
+      <td>110</td>
+      <td>100</td>
+      <td>110</td>
+      <td>100</td>
+      <td>105</td>
+      <td>90</td>
+      <td>95</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2550</td>
+      <td>4250</td>
+      <td>5100</td>
+      <td>3400</td>
+      <td>5950</td>
+      <td>0</td>
+      <td>220</td>
+      <td>220</td>
+      <td>270</td>
+      <td>270</td>
+      <td>325</td>
+      <td>325</td>
+      <td>355</td>
+      <td>355</td>
+      <td>380</td>
+      <td>355</td>
+      <td>355</td>
+      <td>470</td>
+      <td>470</td>
+      <td>590</td>
+      <td>590</td>
+      <td>705</td>
+      <td>705</td>
+      <td>760</td>
+      <td>880</td>
+      <td>8</td>
+      <td>23458</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>11</td>
+      <td>8</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="9">
+      <td class="side">9</td>
+      <td>
+        <details>
+          <summary>24 refs</summary>
+               <a href="5F654D94.html#508">5F654D94#508</a>
+          <br/><a href="5F654D94.html#532">5F654D94#532</a>
+          <br/><a href="5F654D94.html#556">5F654D94#556</a>
+          <br/><a href="5F654D94.html#580">5F654D94#580</a>
+          <br/><a href="B971C420.html#9">B971C420#9</a>
+          <br/><a href="B971C420.html#33">B971C420#33</a>
+          <br/><a href="B971C420.html#57">B971C420#57</a>
+          <br/><a href="B971C420.html#81">B971C420#81</a>
+          <br/><a href="B971C420.html#105">B971C420#105</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#51">BTL_Arts_Chain_Set#51</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#52">BTL_Arts_Chain_Set#52</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#53">BTL_Arts_Chain_Set#53</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#54">BTL_Arts_Chain_Set#54</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#55">BTL_Arts_Chain_Set#55</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#56">BTL_Arts_Chain_Set#56</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#57">BTL_Arts_Chain_Set#57</a>
+          <br/><a href="BTL_Skill_PC.html#33">BTL_Skill_PC#強化延長の計</a>
+          <br/><a href="BTL_Skill_PC.html#34">BTL_Skill_PC#攻守一体の計</a>
+          <br/><a href="BTL_Skill_PC.html#35">BTL_Skill_PC#弱体延長の計</a>
+          <br/><a href="BTL_Skill_PC.html#36">BTL_Skill_PC#先制強化の計</a>
+          <br/><a href="CHR_PC.html#10">CHR_PC#イスルギ</a>
+          <br/><a href="FLD_ConditionClassLv.html#9">FLD_ConditionClassLv#9</a>
+          <br/><a href="MNU_HeroDictionary.html#10">MNU_HeroDictionary#10</a>
+          <br/><a href="MNU_HeroList.html#3">MNU_HeroList#3</a>
+        </details>
+      </td>
+      <td>&lt;140EBCB0&gt;</td>
+      <td>戦略士</td>
+      <td>特殊な銃で味方を支援し敵を弱体化する<br />様々な役割を果たせる戦略型ヒーラー</td>
+      <td>509</td>
+      <td>9</td>
+      <td>3</td>
+      <td>2</td>
+      <td><a href="BTL_WpnType.html#9">盤銃</a></td>
+      <td></td>
+      <td>6</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>15</td>
+      <td>150</td>
+      <td>225</td>
+      <td>120</td>
+      <td>130</td>
+      <td>140</td>
+      <td>150</td>
+      <td><a href="BTL_TL_PrmRev09.html">BTL_TL_PrmRev09</a></td>
+      <td>5</td>
+      <td>10</td>
+      <td>25</td>
+      <td>30</td>
+      <td>60</td>
+      <td>65</td>
+      <td>65</td>
+      <td>70</td>
+      <td>110</td>
+      <td>115</td>
+      <td>105</td>
+      <td>110</td>
+      <td>100</td>
+      <td>110</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3450</td>
+      <td>4315</td>
+      <td>2590</td>
+      <td>0</td>
+      <td>6040</td>
+      <td>5175</td>
+      <td>250</td>
+      <td>250</td>
+      <td>310</td>
+      <td>310</td>
+      <td>375</td>
+      <td>375</td>
+      <td>405</td>
+      <td>405</td>
+      <td>435</td>
+      <td>390</td>
+      <td>390</td>
+      <td>525</td>
+      <td>525</td>
+      <td>650</td>
+      <td>650</td>
+      <td>780</td>
+      <td>780</td>
+      <td>850</td>
+      <td>975</td>
+      <td>9</td>
+      <td>23459</td>
+      <td>3</td>
+      <td>1</td>
+      <td>4</td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>13</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="10">
+      <td class="side">10</td>
+      <td>
+        <details>
+          <summary>25 refs</summary>
+               <a href="5F654D94.html#509">5F654D94#509</a>
+          <br/><a href="5F654D94.html#533">5F654D94#533</a>
+          <br/><a href="5F654D94.html#557">5F654D94#557</a>
+          <br/><a href="5F654D94.html#581">5F654D94#581</a>
+          <br/><a href="B971C420.html#10">B971C420#10</a>
+          <br/><a href="B971C420.html#34">B971C420#34</a>
+          <br/><a href="B971C420.html#58">B971C420#58</a>
+          <br/><a href="B971C420.html#82">B971C420#82</a>
+          <br/><a href="B971C420.html#106">B971C420#106</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#58">BTL_Arts_Chain_Set#58</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#59">BTL_Arts_Chain_Set#59</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#60">BTL_Arts_Chain_Set#60</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#61">BTL_Arts_Chain_Set#61</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#62">BTL_Arts_Chain_Set#62</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#63">BTL_Arts_Chain_Set#63</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#64">BTL_Arts_Chain_Set#64</a>
+          <br/><a href="BTL_Skill_PC.html#37">BTL_Skill_PC#神速の調べ</a>
+          <br/><a href="BTL_Skill_PC.html#38">BTL_Skill_PC#終の調べ</a>
+          <br/><a href="BTL_Skill_PC.html#39">BTL_Skill_PC#連撃の舞</a>
+          <br/><a href="BTL_Skill_PC.html#40">BTL_Skill_PC#命の舞</a>
+          <br/><a href="CHR_PC.html#11">CHR_PC#ミヤビ</a>
+          <br/><a href="FLD_ConditionClassLv.html#10">FLD_ConditionClassLv#10</a>
+          <br/><a href="MNU_HeroDictionary.html#11">MNU_HeroDictionary#11</a>
+          <br/><a href="MNU_HeroList.html#4">MNU_HeroList#4</a>
+          <br/><a href="SYS_TrialPcInfo.html#13">SYS_TrialPcInfo#13</a>
+        </details>
+      </td>
+      <td>&lt;6E911FE7&gt;</td>
+      <td>雅楽士</td>
+      <td>味方の攻撃頻度を高める特殊なヒーラー<br />さらに笛の音色で味方全体を大幅に強化する</td>
+      <td>509</td>
+      <td>10</td>
+      <td>3</td>
+      <td>2</td>
+      <td><a href="BTL_WpnType.html#10">真流・葛</a></td>
+      <td></td>
+      <td>6</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>15</td>
+      <td>150</td>
+      <td>225</td>
+      <td>120</td>
+      <td>130</td>
+      <td>140</td>
+      <td>150</td>
+      <td><a href="BTL_TL_PrmRev10.html">BTL_TL_PrmRev10</a></td>
+      <td>5</td>
+      <td>10</td>
+      <td>25</td>
+      <td>30</td>
+      <td>60</td>
+      <td>65</td>
+      <td>65</td>
+      <td>70</td>
+      <td>110</td>
+      <td>115</td>
+      <td>105</td>
+      <td>110</td>
+      <td>100</td>
+      <td>110</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5850</td>
+      <td>0</td>
+      <td>6825</td>
+      <td>4875</td>
+      <td>2925</td>
+      <td>3900</td>
+      <td>290</td>
+      <td>290</td>
+      <td>355</td>
+      <td>355</td>
+      <td>430</td>
+      <td>430</td>
+      <td>465</td>
+      <td>465</td>
+      <td>500</td>
+      <td>430</td>
+      <td>430</td>
+      <td>565</td>
+      <td>565</td>
+      <td>705</td>
+      <td>705</td>
+      <td>850</td>
+      <td>850</td>
+      <td>920</td>
+      <td>1060</td>
+      <td>10</td>
+      <td>23460</td>
+      <td>2</td>
+      <td>1</td>
+      <td>4</td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>21</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="11">
+      <td class="side">11</td>
+      <td>
+        <details>
+          <summary>24 refs</summary>
+               <a href="5F654D94.html#510">5F654D94#510</a>
+          <br/><a href="5F654D94.html#534">5F654D94#534</a>
+          <br/><a href="5F654D94.html#558">5F654D94#558</a>
+          <br/><a href="5F654D94.html#582">5F654D94#582</a>
+          <br/><a href="B971C420.html#11">B971C420#11</a>
+          <br/><a href="B971C420.html#35">B971C420#35</a>
+          <br/><a href="B971C420.html#59">B971C420#59</a>
+          <br/><a href="B971C420.html#83">B971C420#83</a>
+          <br/><a href="B971C420.html#107">B971C420#107</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#65">BTL_Arts_Chain_Set#65</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#66">BTL_Arts_Chain_Set#66</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#67">BTL_Arts_Chain_Set#67</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#68">BTL_Arts_Chain_Set#68</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#69">BTL_Arts_Chain_Set#69</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#70">BTL_Arts_Chain_Set#70</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#71">BTL_Arts_Chain_Set#71</a>
+          <br/><a href="BTL_Skill_PC.html#41">BTL_Skill_PC#修羅化</a>
+          <br/><a href="BTL_Skill_PC.html#42">BTL_Skill_PC#天地滅殺</a>
+          <br/><a href="BTL_Skill_PC.html#43">BTL_Skill_PC#一騎当千</a>
+          <br/><a href="BTL_Skill_PC.html#44">BTL_Skill_PC#ど根性</a>
+          <br/><a href="CHR_PC.html#12">CHR_PC#カムナビ</a>
+          <br/><a href="FLD_ConditionClassLv.html#11">FLD_ConditionClassLv#11</a>
+          <br/><a href="MNU_HeroDictionary.html#12">MNU_HeroDictionary#12</a>
+          <br/><a href="MNU_HeroList.html#5">MNU_HeroList#5</a>
+        </details>
+      </td>
+      <td>&lt;57BC14CD&gt;</td>
+      <td>武翔士</td>
+      <td>圧倒的な攻撃力で自身も損傷を受けるが<br />それすらも力へ変える勇猛なアタッカー</td>
+      <td>509</td>
+      <td>11</td>
+      <td>2</td>
+      <td>2</td>
+      <td><a href="BTL_WpnType.html#11">陽炎戟</a></td>
+      <td></td>
+      <td>3</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>80</td>
+      <td>120</td>
+      <td>50</td>
+      <td>60</td>
+      <td>70</td>
+      <td>80</td>
+      <td><a href="BTL_TL_PrmRev11.html">BTL_TL_PrmRev11</a></td>
+      <td>15</td>
+      <td>20</td>
+      <td>5</td>
+      <td>10</td>
+      <td>85</td>
+      <td>90</td>
+      <td>110</td>
+      <td>120</td>
+      <td>85</td>
+      <td>95</td>
+      <td>90</td>
+      <td>100</td>
+      <td>85</td>
+      <td>90</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6915</td>
+      <td>5925</td>
+      <td>2965</td>
+      <td>0</td>
+      <td>3950</td>
+      <td>4940</td>
+      <td>265</td>
+      <td>265</td>
+      <td>330</td>
+      <td>330</td>
+      <td>400</td>
+      <td>400</td>
+      <td>430</td>
+      <td>430</td>
+      <td>465</td>
+      <td>395</td>
+      <td>395</td>
+      <td>520</td>
+      <td>520</td>
+      <td>645</td>
+      <td>645</td>
+      <td>780</td>
+      <td>780</td>
+      <td>845</td>
+      <td>970</td>
+      <td>11</td>
+      <td>23461</td>
+      <td>5</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>22</td>
+      <td>11</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="12">
+      <td class="side">12</td>
+      <td>
+        <details>
+          <summary>24 refs</summary>
+               <a href="5F654D94.html#511">5F654D94#511</a>
+          <br/><a href="5F654D94.html#535">5F654D94#535</a>
+          <br/><a href="5F654D94.html#559">5F654D94#559</a>
+          <br/><a href="5F654D94.html#583">5F654D94#583</a>
+          <br/><a href="B971C420.html#12">B971C420#12</a>
+          <br/><a href="B971C420.html#36">B971C420#36</a>
+          <br/><a href="B971C420.html#60">B971C420#60</a>
+          <br/><a href="B971C420.html#84">B971C420#84</a>
+          <br/><a href="B971C420.html#108">B971C420#108</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#72">BTL_Arts_Chain_Set#72</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#73">BTL_Arts_Chain_Set#73</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#74">BTL_Arts_Chain_Set#74</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#75">BTL_Arts_Chain_Set#75</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#76">BTL_Arts_Chain_Set#76</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#77">BTL_Arts_Chain_Set#77</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#78">BTL_Arts_Chain_Set#78</a>
+          <br/><a href="BTL_Skill_PC.html#45">BTL_Skill_PC#近寄るな</a>
+          <br/><a href="BTL_Skill_PC.html#46">BTL_Skill_PC#かかって来い</a>
+          <br/><a href="BTL_Skill_PC.html#47">BTL_Skill_PC#これが戦術だ</a>
+          <br/><a href="BTL_Skill_PC.html#48">BTL_Skill_PC#やらせはしない</a>
+          <br/><a href="CHR_PC.html#13">CHR_PC#モニカ</a>
+          <br/><a href="FLD_ConditionClassLv.html#12">FLD_ConditionClassLv#12</a>
+          <br/><a href="MNU_HeroDictionary.html#13">MNU_HeroDictionary#13</a>
+          <br/><a href="MNU_HeroList.html#6">MNU_HeroList#6</a>
+        </details>
+      </td>
+      <td>&lt;CF14E6C9&gt;</td>
+      <td>ロストヴァンガード</td>
+      <td>巨大な盾とアーツで周囲の味方を守り<br />メイスで敵を粉砕する剛腕ディフェンダー</td>
+      <td>509</td>
+      <td>12</td>
+      <td>1</td>
+      <td>2</td>
+      <td><a href="BTL_WpnType.html#12">ディフェンスメイス</a></td>
+      <td></td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>120</td>
+      <td>180</td>
+      <td>90</td>
+      <td>100</td>
+      <td>110</td>
+      <td>120</td>
+      <td><a href="BTL_TL_PrmRev12.html">BTL_TL_PrmRev12</a></td>
+      <td>40</td>
+      <td>50</td>
+      <td>30</td>
+      <td>35</td>
+      <td>120</td>
+      <td>125</td>
+      <td>100</td>
+      <td>105</td>
+      <td>70</td>
+      <td>80</td>
+      <td>90</td>
+      <td>100</td>
+      <td>70</td>
+      <td>75</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3750</td>
+      <td>4690</td>
+      <td>0</td>
+      <td>2815</td>
+      <td>5625</td>
+      <td>6565</td>
+      <td>265</td>
+      <td>265</td>
+      <td>330</td>
+      <td>330</td>
+      <td>400</td>
+      <td>400</td>
+      <td>435</td>
+      <td>435</td>
+      <td>460</td>
+      <td>380</td>
+      <td>380</td>
+      <td>510</td>
+      <td>510</td>
+      <td>635</td>
+      <td>635</td>
+      <td>760</td>
+      <td>760</td>
+      <td>825</td>
+      <td>950</td>
+      <td>12</td>
+      <td>23462</td>
+      <td>2</td>
+      <td>5</td>
+      <td>3</td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>17</td>
+      <td>12</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="13">
+      <td class="side">13</td>
+      <td>
+        <details>
+          <summary>4 refs</summary>
+               <a href="CHR_PC.html#14">CHR_PC#ヨラン</a>
+          <br/><a href="FLD_ConditionClassLv.html#13">FLD_ConditionClassLv#13</a>
+          <br/><a href="MNU_HeroDictionary.html#14">MNU_HeroDictionary#14</a>
+          <br/><a href="MNU_HeroList.html#7">MNU_HeroList#7</a>
+        </details>
+      </td>
+      <td>&lt;F07CEEE0&gt;</td>
+      <td></td>
+      <td></td>
+      <td>509</td>
+      <td>13</td>
+      <td>3</td>
+      <td>1</td>
+      <td><a href="BTL_WpnType.html#13">13</a></td>
+      <td></td>
+      <td>6</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>15</td>
+      <td>150</td>
+      <td>225</td>
+      <td>120</td>
+      <td>130</td>
+      <td>140</td>
+      <td>150</td>
+      <td><a href="BTL_TL_PrmRev13.html">BTL_TL_PrmRev13</a></td>
+      <td>5</td>
+      <td>10</td>
+      <td>25</td>
+      <td>30</td>
+      <td>60</td>
+      <td>65</td>
+      <td>65</td>
+      <td>70</td>
+      <td>110</td>
+      <td>115</td>
+      <td>105</td>
+      <td>110</td>
+      <td>100</td>
+      <td>110</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>13</td>
+      <td>23463</td>
+      <td>4</td>
+      <td>1</td>
+      <td>4</td>
+      <td>4</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="14">
+      <td class="side">14</td>
+      <td>
+        <details>
+          <summary>24 refs</summary>
+               <a href="5F654D94.html#512">5F654D94#512</a>
+          <br/><a href="5F654D94.html#536">5F654D94#536</a>
+          <br/><a href="5F654D94.html#560">5F654D94#560</a>
+          <br/><a href="5F654D94.html#584">5F654D94#584</a>
+          <br/><a href="B971C420.html#13">B971C420#13</a>
+          <br/><a href="B971C420.html#37">B971C420#37</a>
+          <br/><a href="B971C420.html#61">B971C420#61</a>
+          <br/><a href="B971C420.html#85">B971C420#85</a>
+          <br/><a href="B971C420.html#109">B971C420#109</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#79">BTL_Arts_Chain_Set#79</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#80">BTL_Arts_Chain_Set#80</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#81">BTL_Arts_Chain_Set#81</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#82">BTL_Arts_Chain_Set#82</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#83">BTL_Arts_Chain_Set#83</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#84">BTL_Arts_Chain_Set#84</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#85">BTL_Arts_Chain_Set#85</a>
+          <br/><a href="BTL_Skill_PC.html#49">BTL_Skill_PC#変わらぬ想い</a>
+          <br/><a href="BTL_Skill_PC.html#50">BTL_Skill_PC#瞬間超再生</a>
+          <br/><a href="BTL_Skill_PC.html#51">BTL_Skill_PC#大活性細胞</a>
+          <br/><a href="BTL_Skill_PC.html#52">BTL_Skill_PC#豊穣の大海</a>
+          <br/><a href="CHR_PC.html#15">CHR_PC#ニア</a>
+          <br/><a href="FLD_ConditionClassLv.html#14">FLD_ConditionClassLv#14</a>
+          <br/><a href="MNU_HeroDictionary.html#15">MNU_HeroDictionary#15</a>
+          <br/><a href="MNU_HeroList.html#8">MNU_HeroList#8</a>
+        </details>
+      </td>
+      <td>&lt;5C9F3FB4&gt;</td>
+      <td>命巫女</td>
+      <td>ヒーラーでありながら強力な攻撃も持つ<br />水の力で敵を屠り味方を癒す戦場の救世主</td>
+      <td>509</td>
+      <td>14</td>
+      <td>3</td>
+      <td>2</td>
+      <td><a href="BTL_WpnType.html#14">再生の剣</a></td>
+      <td></td>
+      <td>5</td>
+      <td>2</td>
+      <td>7</td>
+      <td>0</td>
+      <td>15</td>
+      <td>140</td>
+      <td>210</td>
+      <td>110</td>
+      <td>120</td>
+      <td>130</td>
+      <td>140</td>
+      <td><a href="BTL_TL_PrmRev14.html">BTL_TL_PrmRev14</a></td>
+      <td>5</td>
+      <td>15</td>
+      <td>20</td>
+      <td>25</td>
+      <td>55</td>
+      <td>60</td>
+      <td>60</td>
+      <td>65</td>
+      <td>115</td>
+      <td>120</td>
+      <td>100</td>
+      <td>105</td>
+      <td>80</td>
+      <td>85</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7440</td>
+      <td>0</td>
+      <td>5315</td>
+      <td>4250</td>
+      <td>3190</td>
+      <td>6375</td>
+      <td>360</td>
+      <td>360</td>
+      <td>445</td>
+      <td>445</td>
+      <td>535</td>
+      <td>535</td>
+      <td>580</td>
+      <td>580</td>
+      <td>625</td>
+      <td>510</td>
+      <td>510</td>
+      <td>680</td>
+      <td>680</td>
+      <td>845</td>
+      <td>845</td>
+      <td>1015</td>
+      <td>1015</td>
+      <td>1100</td>
+      <td>1270</td>
+      <td>14</td>
+      <td>23464</td>
+      <td>4</td>
+      <td>2</td>
+      <td>5</td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>7</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>7</td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>24</td>
+      <td>13</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="15">
+      <td class="side">15</td>
+      <td>
+        <details>
+          <summary>24 refs</summary>
+               <a href="5F654D94.html#513">5F654D94#513</a>
+          <br/><a href="5F654D94.html#537">5F654D94#537</a>
+          <br/><a href="5F654D94.html#561">5F654D94#561</a>
+          <br/><a href="5F654D94.html#585">5F654D94#585</a>
+          <br/><a href="B971C420.html#14">B971C420#14</a>
+          <br/><a href="B971C420.html#38">B971C420#38</a>
+          <br/><a href="B971C420.html#62">B971C420#62</a>
+          <br/><a href="B971C420.html#86">B971C420#86</a>
+          <br/><a href="B971C420.html#110">B971C420#110</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#86">BTL_Arts_Chain_Set#86</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#87">BTL_Arts_Chain_Set#87</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#88">BTL_Arts_Chain_Set#88</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#89">BTL_Arts_Chain_Set#89</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#90">BTL_Arts_Chain_Set#90</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#91">BTL_Arts_Chain_Set#91</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#92">BTL_Arts_Chain_Set#92</a>
+          <br/><a href="BTL_Skill_PC.html#53">BTL_Skill_PC#エレメンタルブースト</a>
+          <br/><a href="BTL_Skill_PC.html#54">BTL_Skill_PC#エーテルの神髄</a>
+          <br/><a href="BTL_Skill_PC.html#55">BTL_Skill_PC#エーテル超ガード</a>
+          <br/><a href="BTL_Skill_PC.html#56">BTL_Skill_PC#我ここに立つ</a>
+          <br/><a href="CHR_PC.html#16">CHR_PC#メリア</a>
+          <br/><a href="FLD_ConditionClassLv.html#15">FLD_ConditionClassLv#15</a>
+          <br/><a href="MNU_HeroDictionary.html#16">MNU_HeroDictionary#16</a>
+          <br/><a href="MNU_HeroList.html#9">MNU_HeroList#9</a>
+        </details>
+      </td>
+      <td>&lt;749A21DD&gt;</td>
+      <td>ロイヤルサモナー</td>
+      <td>エレメントを駆使する超強力なアタッカー<br />圧倒的な攻撃力と支援能力を兼ね備える</td>
+      <td>509</td>
+      <td>15</td>
+      <td>2</td>
+      <td>1</td>
+      <td><a href="BTL_WpnType.html#15">エレメンタルスタッフ</a></td>
+      <td></td>
+      <td>4</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>80</td>
+      <td>120</td>
+      <td>50</td>
+      <td>60</td>
+      <td>70</td>
+      <td>80</td>
+      <td><a href="BTL_TL_PrmRev15.html">BTL_TL_PrmRev15</a></td>
+      <td>10</td>
+      <td>15</td>
+      <td>10</td>
+      <td>15</td>
+      <td>80</td>
+      <td>85</td>
+      <td>100</td>
+      <td>110</td>
+      <td>100</td>
+      <td>110</td>
+      <td>100</td>
+      <td>105</td>
+      <td>90</td>
+      <td>95</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7440</td>
+      <td>4250</td>
+      <td>6375</td>
+      <td>3190</td>
+      <td>5315</td>
+      <td>360</td>
+      <td>360</td>
+      <td>445</td>
+      <td>445</td>
+      <td>535</td>
+      <td>535</td>
+      <td>580</td>
+      <td>580</td>
+      <td>625</td>
+      <td>510</td>
+      <td>510</td>
+      <td>680</td>
+      <td>680</td>
+      <td>845</td>
+      <td>845</td>
+      <td>1015</td>
+      <td>1015</td>
+      <td>1100</td>
+      <td>1270</td>
+      <td>15</td>
+      <td>23465</td>
+      <td>5</td>
+      <td>1</td>
+      <td>3</td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>7</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>7</td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>25</td>
+      <td>14</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="16">
+      <td class="side">16</td>
+      <td>
+        <details>
+          <summary>24 refs</summary>
+               <a href="5F654D94.html#514">5F654D94#514</a>
+          <br/><a href="5F654D94.html#538">5F654D94#538</a>
+          <br/><a href="5F654D94.html#562">5F654D94#562</a>
+          <br/><a href="5F654D94.html#586">5F654D94#586</a>
+          <br/><a href="B971C420.html#15">B971C420#15</a>
+          <br/><a href="B971C420.html#39">B971C420#39</a>
+          <br/><a href="B971C420.html#63">B971C420#63</a>
+          <br/><a href="B971C420.html#87">B971C420#87</a>
+          <br/><a href="B971C420.html#111">B971C420#111</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#93">BTL_Arts_Chain_Set#93</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#94">BTL_Arts_Chain_Set#94</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#95">BTL_Arts_Chain_Set#95</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#96">BTL_Arts_Chain_Set#96</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#97">BTL_Arts_Chain_Set#97</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#98">BTL_Arts_Chain_Set#98</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#99">BTL_Arts_Chain_Set#99</a>
+          <br/><a href="BTL_Skill_PC.html#57">BTL_Skill_PC#回復エンジン</a>
+          <br/><a href="BTL_Skill_PC.html#58">BTL_Skill_PC#治療ライセンス</a>
+          <br/><a href="BTL_Skill_PC.html#59">BTL_Skill_PC#救助ライセンス</a>
+          <br/><a href="BTL_Skill_PC.html#60">BTL_Skill_PC#セルフ抗体システム</a>
+          <br/><a href="CHR_PC.html#17">CHR_PC#ルディ</a>
+          <br/><a href="FLD_ConditionClassLv.html#16">FLD_ConditionClassLv#16</a>
+          <br/><a href="MNU_HeroDictionary.html#17">MNU_HeroDictionary#17</a>
+          <br/><a href="MNU_HeroList.html#10">MNU_HeroList#10</a>
+        </details>
+      </td>
+      <td>&lt;F3507C79&gt;</td>
+      <td>ウォーメディック</td>
+      <td>回復やバフでパーティの継続戦闘を支援する<br />戦場で欠かすことのできないヒーラー</td>
+      <td>509</td>
+      <td>16</td>
+      <td>3</td>
+      <td>1</td>
+      <td><a href="BTL_WpnType.html#16">ヒーリングライフル</a></td>
+      <td></td>
+      <td>5</td>
+      <td>2</td>
+      <td>7</td>
+      <td>0</td>
+      <td>15</td>
+      <td>140</td>
+      <td>210</td>
+      <td>110</td>
+      <td>120</td>
+      <td>130</td>
+      <td>140</td>
+      <td><a href="BTL_TL_PrmRev16.html">BTL_TL_PrmRev16</a></td>
+      <td>5</td>
+      <td>15</td>
+      <td>20</td>
+      <td>25</td>
+      <td>55</td>
+      <td>60</td>
+      <td>60</td>
+      <td>65</td>
+      <td>115</td>
+      <td>120</td>
+      <td>100</td>
+      <td>105</td>
+      <td>80</td>
+      <td>85</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5025</td>
+      <td>2515</td>
+      <td>4190</td>
+      <td>3350</td>
+      <td>0</td>
+      <td>5865</td>
+      <td>230</td>
+      <td>230</td>
+      <td>285</td>
+      <td>285</td>
+      <td>345</td>
+      <td>345</td>
+      <td>375</td>
+      <td>375</td>
+      <td>400</td>
+      <td>370</td>
+      <td>370</td>
+      <td>490</td>
+      <td>490</td>
+      <td>610</td>
+      <td>610</td>
+      <td>730</td>
+      <td>730</td>
+      <td>790</td>
+      <td>915</td>
+      <td>16</td>
+      <td>23466</td>
+      <td>1</td>
+      <td>1</td>
+      <td>5</td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>8</td>
+      <td>15</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="17">
+      <td class="side">17</td>
+      <td>
+        <details>
+          <summary>24 refs</summary>
+               <a href="5F654D94.html#515">5F654D94#515</a>
+          <br/><a href="5F654D94.html#539">5F654D94#539</a>
+          <br/><a href="5F654D94.html#563">5F654D94#563</a>
+          <br/><a href="5F654D94.html#587">5F654D94#587</a>
+          <br/><a href="B971C420.html#16">B971C420#16</a>
+          <br/><a href="B971C420.html#40">B971C420#40</a>
+          <br/><a href="B971C420.html#64">B971C420#64</a>
+          <br/><a href="B971C420.html#88">B971C420#88</a>
+          <br/><a href="B971C420.html#112">B971C420#112</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#100">BTL_Arts_Chain_Set#100</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#101">BTL_Arts_Chain_Set#101</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#102">BTL_Arts_Chain_Set#102</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#103">BTL_Arts_Chain_Set#103</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#104">BTL_Arts_Chain_Set#104</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#105">BTL_Arts_Chain_Set#105</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#106">BTL_Arts_Chain_Set#106</a>
+          <br/><a href="BTL_Skill_PC.html#61">BTL_Skill_PC#防御の天才</a>
+          <br/><a href="BTL_Skill_PC.html#62">BTL_Skill_PC#俺が助ける</a>
+          <br/><a href="BTL_Skill_PC.html#63">BTL_Skill_PC#戦士の底力</a>
+          <br/><a href="BTL_Skill_PC.html#64">BTL_Skill_PC#守護者の誇り</a>
+          <br/><a href="CHR_PC.html#18">CHR_PC#ゼオン</a>
+          <br/><a href="FLD_ConditionClassLv.html#17">FLD_ConditionClassLv#17</a>
+          <br/><a href="MNU_HeroDictionary.html#18">MNU_HeroDictionary#18</a>
+          <br/><a href="MNU_HeroList.html#11">MNU_HeroList#11</a>
+        </details>
+      </td>
+      <td>&lt;00547E96&gt;</td>
+      <td>ガーディアンコマンダー</td>
+      <td>逆境で能力が高まるディフェンダー<br />その姿は戦場で味方の希望となる</td>
+      <td>509</td>
+      <td>17</td>
+      <td>1</td>
+      <td>1</td>
+      <td><a href="BTL_WpnType.html#17">ガッツグラディウス</a></td>
+      <td></td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>120</td>
+      <td>180</td>
+      <td>90</td>
+      <td>100</td>
+      <td>110</td>
+      <td>120</td>
+      <td><a href="BTL_TL_PrmRev17.html">BTL_TL_PrmRev17</a></td>
+      <td>40</td>
+      <td>50</td>
+      <td>30</td>
+      <td>35</td>
+      <td>120</td>
+      <td>125</td>
+      <td>100</td>
+      <td>105</td>
+      <td>70</td>
+      <td>80</td>
+      <td>90</td>
+      <td>100</td>
+      <td>70</td>
+      <td>75</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4250</td>
+      <td>5100</td>
+      <td>5950</td>
+      <td>3400</td>
+      <td>2550</td>
+      <td>220</td>
+      <td>220</td>
+      <td>270</td>
+      <td>270</td>
+      <td>325</td>
+      <td>325</td>
+      <td>355</td>
+      <td>355</td>
+      <td>380</td>
+      <td>355</td>
+      <td>355</td>
+      <td>470</td>
+      <td>470</td>
+      <td>590</td>
+      <td>590</td>
+      <td>705</td>
+      <td>705</td>
+      <td>760</td>
+      <td>880</td>
+      <td>17</td>
+      <td>23467</td>
+      <td>2</td>
+      <td>4</td>
+      <td>2</td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>9</td>
+      <td>16</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="18">
+      <td class="side">18</td>
+      <td>
+        <details>
+          <summary>26 refs</summary>
+               <a href="5F654D94.html#516">5F654D94#516</a>
+          <br/><a href="5F654D94.html#540">5F654D94#540</a>
+          <br/><a href="5F654D94.html#564">5F654D94#564</a>
+          <br/><a href="5F654D94.html#588">5F654D94#588</a>
+          <br/><a href="B971C420.html#17">B971C420#17</a>
+          <br/><a href="B971C420.html#41">B971C420#41</a>
+          <br/><a href="B971C420.html#65">B971C420#65</a>
+          <br/><a href="B971C420.html#89">B971C420#89</a>
+          <br/><a href="B971C420.html#113">B971C420#113</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#107">BTL_Arts_Chain_Set#107</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#108">BTL_Arts_Chain_Set#108</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#109">BTL_Arts_Chain_Set#109</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#110">BTL_Arts_Chain_Set#110</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#111">BTL_Arts_Chain_Set#111</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#112">BTL_Arts_Chain_Set#112</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#113">BTL_Arts_Chain_Set#113</a>
+          <br/><a href="BTL_Skill_PC.html#65">BTL_Skill_PC#生々流転</a>
+          <br/><a href="BTL_Skill_PC.html#66">BTL_Skill_PC#軽功</a>
+          <br/><a href="BTL_Skill_PC.html#67">BTL_Skill_PC#真気功</a>
+          <br/><a href="BTL_Skill_PC.html#68">BTL_Skill_PC#活人拳</a>
+          <br/><a href="CHR_PC.html#19">CHR_PC#シドウ</a>
+          <br/><a href="FLD_ConditionClassLv.html#18">FLD_ConditionClassLv#18</a>
+          <br/><a href="FLD_ConditionClassLv.html#34">FLD_ConditionClassLv#34</a>
+          <br/><a href="MNU_HeroDictionary.html#19">MNU_HeroDictionary#19</a>
+          <br/><a href="MNU_HeroList.html#12">MNU_HeroList#12</a>
+          <br/><a href="SYS_FlowEventArtsSet.html#6">SYS_FlowEventArtsSet#6</a>
+        </details>
+      </td>
+      <td>&lt;6EE60463&gt;</td>
+      <td>錬世士</td>
+      <td>回復だけでなく攻撃も得意とするヒーラー<br />強力な打撃を敵に与えつつ味方を癒す</td>
+      <td>509</td>
+      <td>18</td>
+      <td>3</td>
+      <td>2</td>
+      <td><a href="BTL_WpnType.html#18">双節棍</a></td>
+      <td></td>
+      <td>6</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>15</td>
+      <td>150</td>
+      <td>225</td>
+      <td>120</td>
+      <td>130</td>
+      <td>140</td>
+      <td>150</td>
+      <td><a href="BTL_TL_PrmRev18.html">BTL_TL_PrmRev18</a></td>
+      <td>5</td>
+      <td>10</td>
+      <td>25</td>
+      <td>30</td>
+      <td>60</td>
+      <td>65</td>
+      <td>65</td>
+      <td>70</td>
+      <td>110</td>
+      <td>115</td>
+      <td>105</td>
+      <td>110</td>
+      <td>100</td>
+      <td>110</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5950</td>
+      <td>0</td>
+      <td>3400</td>
+      <td>5100</td>
+      <td>2550</td>
+      <td>4250</td>
+      <td>230</td>
+      <td>230</td>
+      <td>285</td>
+      <td>285</td>
+      <td>340</td>
+      <td>340</td>
+      <td>370</td>
+      <td>370</td>
+      <td>400</td>
+      <td>370</td>
+      <td>370</td>
+      <td>490</td>
+      <td>490</td>
+      <td>620</td>
+      <td>620</td>
+      <td>740</td>
+      <td>740</td>
+      <td>795</td>
+      <td>920</td>
+      <td>18</td>
+      <td>23468</td>
+      <td>3</td>
+      <td>2</td>
+      <td>4</td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>10</td>
+      <td>17</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="19">
+      <td class="side">19</td>
+      <td>
+        <details>
+          <summary>24 refs</summary>
+               <a href="5F654D94.html#517">5F654D94#517</a>
+          <br/><a href="5F654D94.html#541">5F654D94#541</a>
+          <br/><a href="5F654D94.html#565">5F654D94#565</a>
+          <br/><a href="5F654D94.html#589">5F654D94#589</a>
+          <br/><a href="B971C420.html#18">B971C420#18</a>
+          <br/><a href="B971C420.html#42">B971C420#42</a>
+          <br/><a href="B971C420.html#66">B971C420#66</a>
+          <br/><a href="B971C420.html#90">B971C420#90</a>
+          <br/><a href="B971C420.html#114">B971C420#114</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#114">BTL_Arts_Chain_Set#114</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#115">BTL_Arts_Chain_Set#115</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#116">BTL_Arts_Chain_Set#116</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#117">BTL_Arts_Chain_Set#117</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#118">BTL_Arts_Chain_Set#118</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#119">BTL_Arts_Chain_Set#119</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#120">BTL_Arts_Chain_Set#120</a>
+          <br/><a href="BTL_Skill_PC.html#69">BTL_Skill_PC#冴え渡る刃</a>
+          <br/><a href="BTL_Skill_PC.html#70">BTL_Skill_PC#急所の見極め</a>
+          <br/><a href="BTL_Skill_PC.html#71">BTL_Skill_PC#浮遊殺し</a>
+          <br/><a href="BTL_Skill_PC.html#72">BTL_Skill_PC#集中力</a>
+          <br/><a href="CHR_PC.html#20">CHR_PC#ニイナ</a>
+          <br/><a href="FLD_ConditionClassLv.html#19">FLD_ConditionClassLv#19</a>
+          <br/><a href="MNU_HeroDictionary.html#20">MNU_HeroDictionary#20</a>
+          <br/><a href="MNU_HeroList.html#13">MNU_HeroList#13</a>
+        </details>
+      </td>
+      <td>&lt;74C87B34&gt;</td>
+      <td>攻騎士</td>
+      <td>華麗な剣技で敵を切り刻むアタッカー<br />クリティカルによって刃の鋭さが増していく</td>
+      <td>509</td>
+      <td>19</td>
+      <td>2</td>
+      <td>2</td>
+      <td><a href="BTL_WpnType.html#19">無限刃</a></td>
+      <td></td>
+      <td>3</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>80</td>
+      <td>120</td>
+      <td>50</td>
+      <td>60</td>
+      <td>70</td>
+      <td>80</td>
+      <td><a href="BTL_TL_PrmRev19.html">BTL_TL_PrmRev19</a></td>
+      <td>15</td>
+      <td>20</td>
+      <td>5</td>
+      <td>10</td>
+      <td>85</td>
+      <td>90</td>
+      <td>110</td>
+      <td>120</td>
+      <td>85</td>
+      <td>95</td>
+      <td>90</td>
+      <td>100</td>
+      <td>85</td>
+      <td>90</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6300</td>
+      <td>5400</td>
+      <td>2700</td>
+      <td>0</td>
+      <td>4500</td>
+      <td>3600</td>
+      <td>220</td>
+      <td>220</td>
+      <td>270</td>
+      <td>270</td>
+      <td>325</td>
+      <td>325</td>
+      <td>355</td>
+      <td>355</td>
+      <td>380</td>
+      <td>325</td>
+      <td>325</td>
+      <td>435</td>
+      <td>435</td>
+      <td>540</td>
+      <td>540</td>
+      <td>650</td>
+      <td>650</td>
+      <td>705</td>
+      <td>810</td>
+      <td>19</td>
+      <td>23469</td>
+      <td>5</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>16</td>
+      <td>18</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="20">
+      <td class="side">20</td>
+      <td>
+        <details>
+          <summary>24 refs</summary>
+               <a href="5F654D94.html#518">5F654D94#518</a>
+          <br/><a href="5F654D94.html#542">5F654D94#542</a>
+          <br/><a href="5F654D94.html#566">5F654D94#566</a>
+          <br/><a href="5F654D94.html#590">5F654D94#590</a>
+          <br/><a href="B971C420.html#19">B971C420#19</a>
+          <br/><a href="B971C420.html#43">B971C420#43</a>
+          <br/><a href="B971C420.html#67">B971C420#67</a>
+          <br/><a href="B971C420.html#91">B971C420#91</a>
+          <br/><a href="B971C420.html#115">B971C420#115</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#121">BTL_Arts_Chain_Set#121</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#122">BTL_Arts_Chain_Set#122</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#123">BTL_Arts_Chain_Set#123</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#124">BTL_Arts_Chain_Set#124</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#125">BTL_Arts_Chain_Set#125</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#126">BTL_Arts_Chain_Set#126</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#127">BTL_Arts_Chain_Set#127</a>
+          <br/><a href="BTL_Skill_PC.html#73">BTL_Skill_PC#明鏡止水</a>
+          <br/><a href="BTL_Skill_PC.html#74">BTL_Skill_PC#すみやかな死</a>
+          <br/><a href="BTL_Skill_PC.html#75">BTL_Skill_PC#出血追い打ち</a>
+          <br/><a href="BTL_Skill_PC.html#76">BTL_Skill_PC#身かわし</a>
+          <br/><a href="CHR_PC.html#21">CHR_PC#ユズリハ</a>
+          <br/><a href="FLD_ConditionClassLv.html#20">FLD_ConditionClassLv#20</a>
+          <br/><a href="MNU_HeroDictionary.html#21">MNU_HeroDictionary#21</a>
+          <br/><a href="MNU_HeroList.html#14">MNU_HeroList#14</a>
+        </details>
+      </td>
+      <td>&lt;7F818533&gt;</td>
+      <td>幻弓士</td>
+      <td>弓による死角からの一撃が強力なアタッカー<br />気配を消すことで安全に敵を狩る</td>
+      <td>509</td>
+      <td>20</td>
+      <td>2</td>
+      <td>2</td>
+      <td><a href="BTL_WpnType.html#20">光燐弓</a></td>
+      <td></td>
+      <td>4</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>80</td>
+      <td>120</td>
+      <td>50</td>
+      <td>60</td>
+      <td>70</td>
+      <td>80</td>
+      <td><a href="BTL_TL_PrmRev20.html">BTL_TL_PrmRev20</a></td>
+      <td>10</td>
+      <td>15</td>
+      <td>10</td>
+      <td>15</td>
+      <td>80</td>
+      <td>85</td>
+      <td>100</td>
+      <td>110</td>
+      <td>100</td>
+      <td>110</td>
+      <td>100</td>
+      <td>105</td>
+      <td>90</td>
+      <td>95</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6125</td>
+      <td>3500</td>
+      <td>4375</td>
+      <td>5250</td>
+      <td>2625</td>
+      <td>225</td>
+      <td>225</td>
+      <td>275</td>
+      <td>275</td>
+      <td>335</td>
+      <td>335</td>
+      <td>360</td>
+      <td>360</td>
+      <td>385</td>
+      <td>340</td>
+      <td>340</td>
+      <td>450</td>
+      <td>450</td>
+      <td>565</td>
+      <td>565</td>
+      <td>675</td>
+      <td>675</td>
+      <td>725</td>
+      <td>840</td>
+      <td>20</td>
+      <td>23470</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>14</td>
+      <td>19</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="21">
+      <td class="side">21</td>
+      <td>
+        <details>
+          <summary>24 refs</summary>
+               <a href="5F654D94.html#519">5F654D94#519</a>
+          <br/><a href="5F654D94.html#543">5F654D94#543</a>
+          <br/><a href="5F654D94.html#567">5F654D94#567</a>
+          <br/><a href="5F654D94.html#591">5F654D94#591</a>
+          <br/><a href="B971C420.html#20">B971C420#20</a>
+          <br/><a href="B971C420.html#44">B971C420#44</a>
+          <br/><a href="B971C420.html#68">B971C420#68</a>
+          <br/><a href="B971C420.html#92">B971C420#92</a>
+          <br/><a href="B971C420.html#116">B971C420#116</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#128">BTL_Arts_Chain_Set#128</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#129">BTL_Arts_Chain_Set#129</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#130">BTL_Arts_Chain_Set#130</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#131">BTL_Arts_Chain_Set#131</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#132">BTL_Arts_Chain_Set#132</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#133">BTL_Arts_Chain_Set#133</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#134">BTL_Arts_Chain_Set#134</a>
+          <br/><a href="BTL_Skill_PC.html#77">BTL_Skill_PC#誘いの一撃</a>
+          <br/><a href="BTL_Skill_PC.html#78">BTL_Skill_PC#生存本能</a>
+          <br/><a href="BTL_Skill_PC.html#79">BTL_Skill_PC#戦闘狂</a>
+          <br/><a href="BTL_Skill_PC.html#80">BTL_Skill_PC#私がやり返す</a>
+          <br/><a href="CHR_PC.html#22">CHR_PC#アシェラ</a>
+          <br/><a href="FLD_ConditionClassLv.html#21">FLD_ConditionClassLv#21</a>
+          <br/><a href="MNU_HeroDictionary.html#22">MNU_HeroDictionary#22</a>
+          <br/><a href="MNU_HeroList.html#15">MNU_HeroList#15</a>
+        </details>
+      </td>
+      <td>&lt;EAF6BBA1&gt;</td>
+      <td>ローンエグザイル</td>
+      <td>武器を振り回して放つ素早く強力な斬撃で、<br />敵を引きつける超攻撃型ディフェンダー</td>
+      <td>509</td>
+      <td>21</td>
+      <td>1</td>
+      <td>1</td>
+      <td><a href="BTL_WpnType.html#21">ツインセイバー</a></td>
+      <td></td>
+      <td>2</td>
+      <td>1</td>
+      <td>7</td>
+      <td>0</td>
+      <td>20</td>
+      <td>100</td>
+      <td>150</td>
+      <td>70</td>
+      <td>80</td>
+      <td>90</td>
+      <td>100</td>
+      <td><a href="BTL_TL_PrmRev21.html">BTL_TL_PrmRev21</a></td>
+      <td>30</td>
+      <td>35</td>
+      <td>40</td>
+      <td>50</td>
+      <td>100</td>
+      <td>110</td>
+      <td>80</td>
+      <td>90</td>
+      <td>90</td>
+      <td>100</td>
+      <td>110</td>
+      <td>120</td>
+      <td>120</td>
+      <td>130</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5325</td>
+      <td>3550</td>
+      <td>0</td>
+      <td>2665</td>
+      <td>4440</td>
+      <td>6215</td>
+      <td>250</td>
+      <td>250</td>
+      <td>305</td>
+      <td>305</td>
+      <td>370</td>
+      <td>370</td>
+      <td>400</td>
+      <td>400</td>
+      <td>435</td>
+      <td>395</td>
+      <td>395</td>
+      <td>525</td>
+      <td>525</td>
+      <td>660</td>
+      <td>660</td>
+      <td>785</td>
+      <td>785</td>
+      <td>855</td>
+      <td>985</td>
+      <td>21</td>
+      <td>23471</td>
+      <td>4</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>15</td>
+      <td>20</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="22">
+      <td class="side">22</td>
+      <td>
+        <details>
+          <summary>101 refs</summary>
+               <a href="BTL_Arts_Chain_Set.html#135">BTL_Arts_Chain_Set#135</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#136">BTL_Arts_Chain_Set#136</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#137">BTL_Arts_Chain_Set#137</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#138">BTL_Arts_Chain_Set#138</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#139">BTL_Arts_Chain_Set#139</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#140">BTL_Arts_Chain_Set#140</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#141">BTL_Arts_Chain_Set#141</a>
+          <br/><a href="BTL_Skill_PC.html#178">BTL_Skill_PC#冥界レイジ</a>
+          <br/><a href="BTL_Skill_PC.html#179">BTL_Skill_PC#アメージング成長</a>
+          <br/><a href="BTL_Skill_PC.html#180">BTL_Skill_PC#声援リチャージ</a>
+          <br/><a href="BTL_Skill_PC.html#181">BTL_Skill_PC#呪術変換エンジン</a>
+          <br/><a href="BTL_Skill_PC.html#182">BTL_Skill_PC#魂ハッキング</a>
+          <br/><a href="BTL_Skill_PC.html#183">BTL_Skill_PC#タフネス魂</a>
+          <br/><a href="BTL_Skill_PC.html#184">BTL_Skill_PC#ドッジ魂</a>
+          <br/><a href="BTL_Skill_PC.html#185">BTL_Skill_PC#パワー魂</a>
+          <br/><a href="BTL_Skill_PC.html#186">BTL_Skill_PC#ヒット魂</a>
+          <br/><a href="BTL_Skill_PC.html#187">BTL_Skill_PC#ヒール魂</a>
+          <br/><a href="BTL_Skill_PC.html#188">BTL_Skill_PC#マルチ魂</a>
+          <br/><a href="BTL_Skill_PC.html#189">BTL_Skill_PC#大地カインドネス</a>
+          <br/><a href="BTL_Skill_PC.html#190">BTL_Skill_PC#空気ボディ</a>
+          <br/><a href="BTL_Skill_PC.html#191">BTL_Skill_PC#エマージェンシー加速</a>
+          <br/><a href="BTL_Skill_PC.html#192">BTL_Skill_PC#超擬態テクニック</a>
+          <br/><a href="BTL_Skill_PC.html#193">BTL_Skill_PC#拳カウンター</a>
+          <br/><a href="BTL_Skill_PC.html#194">BTL_Skill_PC#システマチック防衛</a>
+          <br/><a href="BTL_Skill_PC.html#195">BTL_Skill_PC#自己犠牲ヒール</a>
+          <br/><a href="BTL_Skill_PC.html#196">BTL_Skill_PC#帝王ハート</a>
+          <br/><a href="BTL_Skill_PC.html#197">BTL_Skill_PC#ノンストップ攻撃</a>
+          <br/><a href="BTL_Skill_PC.html#198">BTL_Skill_PC#リトル休止</a>
+          <br/><a href="BTL_Skill_PC.html#199">BTL_Skill_PC#超大ボイス</a>
+          <br/><a href="BTL_Skill_PC.html#200">BTL_Skill_PC#冥界レイジ</a>
+          <br/><a href="BTL_Skill_PC.html#201">BTL_Skill_PC#アタック回避</a>
+          <br/><a href="BTL_Skill_PC.html#202">BTL_Skill_PC#キング威光</a>
+          <br/><a href="BTL_Skill_PC.html#203">BTL_Skill_PC#アメージング成長</a>
+          <br/><a href="BTL_Skill_PC.html#204">BTL_Skill_PC#砂スモーク</a>
+          <br/><a href="BTL_Skill_PC.html#205">BTL_Skill_PC#デンジャー爪</a>
+          <br/><a href="BTL_Skill_PC.html#206">BTL_Skill_PC#燃えろスピリット</a>
+          <br/><a href="BTL_Skill_PC.html#207">BTL_Skill_PC#バーニング士気</a>
+          <br/><a href="BTL_Skill_PC.html#208">BTL_Skill_PC#双角プレッシャー</a>
+          <br/><a href="BTL_Skill_PC.html#209">BTL_Skill_PC#ヘヴィ鎧</a>
+          <br/><a href="BTL_Skill_PC.html#210">BTL_Skill_PC#薬草ナレッジ</a>
+          <br/><a href="BTL_Skill_PC.html#211">BTL_Skill_PC#覇者オブスカイ</a>
+          <br/><a href="BTL_Skill_PC.html#212">BTL_Skill_PC#這い寄るプレデター</a>
+          <br/><a href="BTL_Skill_PC.html#213">BTL_Skill_PC#女王プライド</a>
+          <br/><a href="BTL_Skill_PC.html#214">BTL_Skill_PC#ニードル皮膚</a>
+          <br/><a href="BTL_Skill_PC.html#215">BTL_Skill_PC#王家ヘルパー</a>
+          <br/><a href="BTL_Skill_PC.html#216">BTL_Skill_PC#剛力サポート</a>
+          <br/><a href="BTL_Skill_PC.html#217">BTL_Skill_PC#アタック回復</a>
+          <br/><a href="BTL_Skill_PC.html#218">BTL_Skill_PC#パワフル充填</a>
+          <br/><a href="BTL_Skill_PC.html#219">BTL_Skill_PC#戦闘ラヴァー</a>
+          <br/><a href="BTL_Skill_PC.html#220">BTL_Skill_PC#過剰アタッカー</a>
+          <br/><a href="BTL_Skill_PC.html#221">BTL_Skill_PC#狼スピリット</a>
+          <br/><a href="BTL_Skill_PC.html#222">BTL_Skill_PC#ワイルド体質</a>
+          <br/><a href="BTL_Skill_PC.html#223">BTL_Skill_PC#アタッカー皆伝</a>
+          <br/><a href="BTL_Skill_PC.html#224">BTL_Skill_PC#ディフェンダー皆伝</a>
+          <br/><a href="BTL_Skill_PC.html#225">BTL_Skill_PC#ヒーラー皆伝</a>
+          <br/><a href="BTL_Skill_PC.html#226">BTL_Skill_PC#省エネ機関</a>
+          <br/><a href="BTL_Skill_PC.html#227">BTL_Skill_PC#戦術アイ</a>
+          <br/><a href="BTL_Skill_PC.html#228">BTL_Skill_PC#トゥーマッチ装甲</a>
+          <br/><a href="BTL_Skill_PC.html#229">BTL_Skill_PC#クライシス察知</a>
+          <br/><a href="BTL_Skill_PC.html#230">BTL_Skill_PC#ディフェンシブ時間</a>
+          <br/><a href="BTL_Skill_PC.html#231">BTL_Skill_PC#瞬間チャージ</a>
+          <br/><a href="BTL_Skill_PC.html#232">BTL_Skill_PC#ドレイン盾</a>
+          <br/><a href="BTL_Skill_PC.html#233">BTL_Skill_PC#サドン一撃</a>
+          <br/><a href="BTL_Skill_PC.html#234">BTL_Skill_PC#リザーブ生命</a>
+          <br/><a href="BTL_Skill_PC.html#235">BTL_Skill_PC#復讐リバイバル</a>
+          <br/><a href="BTL_Skill_PC.html#236">BTL_Skill_PC#超エクスプロージョン</a>
+          <br/><a href="BTL_Skill_PC.html#237">BTL_Skill_PC#寝起きバイオレンス</a>
+          <br/><a href="BTL_Skill_PC.html#238">BTL_Skill_PC#散り散りヒール</a>
+          <br/><a href="BTL_Skill_PC.html#239">BTL_Skill_PC#被害シェアリング</a>
+          <br/><a href="BTL_Skill_PC.html#240">BTL_Skill_PC#闘鳥ラッシュ</a>
+          <br/><a href="BTL_Skill_PC.html#241">BTL_Skill_PC#大規模ショック</a>
+          <br/><a href="BTL_Skill_PC.html#242">BTL_Skill_PC#アクション反作用</a>
+          <br/><a href="BTL_Skill_PC.html#243">BTL_Skill_PC#余剰パワー</a>
+          <br/><a href="BTL_Skill_PC.html#244">BTL_Skill_PC#装甲リフレクション</a>
+          <br/><a href="BTL_Skill_PC.html#245">BTL_Skill_PC#アクア戦士</a>
+          <br/><a href="BTL_Skill_PC.html#246">BTL_Skill_PC#えらブレス</a>
+          <br/><a href="BTL_Skill_PC.html#247">BTL_Skill_PC#ランド戦士</a>
+          <br/><a href="BTL_Skill_PC.html#248">BTL_Skill_PC#大地エナジー</a>
+          <br/><a href="BTL_Skill_PC.html#249">BTL_Skill_PC#反デバフ体質</a>
+          <br/><a href="BTL_Skill_PC.html#250">BTL_Skill_PC#声援リチャージ</a>
+          <br/><a href="BTL_Skill_PC.html#251">BTL_Skill_PC#マンツーマン回避</a>
+          <br/><a href="BTL_Skill_PC.html#252">BTL_Skill_PC#バーサーカー思考</a>
+          <br/><a href="BTL_Skill_PC.html#253">BTL_Skill_PC#呪術変換エンジン</a>
+          <br/><a href="BTL_Skill_PC.html#254">BTL_Skill_PC#鎧オーバーラップ</a>
+          <br/><a href="BTL_Skill_PC.html#255">BTL_Skill_PC#ひらりムーブ</a>
+          <br/><a href="BTL_Skill_PC.html#256">BTL_Skill_PC#加速度アタック</a>
+          <br/><a href="BTL_Skill_PC.html#257">BTL_Skill_PC#ブラスト震脚</a>
+          <br/><a href="BTL_Skill_PC.html#258">BTL_Skill_PC#天然ガード</a>
+          <br/><a href="BTL_Skill_PC.html#259">BTL_Skill_PC#アクセラレーター器官</a>
+          <br/><a href="BTL_Skill_PC.html#260">BTL_Skill_PC#超無効シールド</a>
+          <br/><a href="BTL_Skill_PC.html#261">BTL_Skill_PC#物性アブソーバー</a>
+          <br/><a href="BTL_Skill_PC.html#262">BTL_Skill_PC#霊性アブソーバー</a>
+          <br/><a href="BTL_Skill_PC.html#263">BTL_Skill_PC#バイオレント帝王</a>
+          <br/><a href="BTL_Skill_PC.html#264">BTL_Skill_PC#マーシフル女王</a>
+          <br/><a href="BTL_Skill_PC.html#265">BTL_Skill_PC#ディープ戦術</a>
+          <br/><a href="BTL_Skill_PC.html#266">BTL_Skill_PC#方位アタッカー</a>
+          <br/><a href="BTL_Skill_PC.html#267">BTL_Skill_PC#ドッジ加速</a>
+          <br/><a href="CHR_PC.html#23">CHR_PC#トライデン</a>
+          <br/><a href="FLD_ConditionClassLv.html#22">FLD_ConditionClassLv#22</a>
+          <br/><a href="MNU_HeroDictionary.html#23">MNU_HeroDictionary#23</a>
+          <br/><a href="MNU_HeroList.html#16">MNU_HeroList#16</a>
+        </details>
+      </td>
+      <td>&lt;F7AEC423&gt;</td>
+      <td>ソウルハッカー</td>
+      <td>エネミーから奪い取ったアーツとスキルで<br />変幻自在の戦いが可能な特殊クラス</td>
+      <td>509</td>
+      <td>22</td>
+      <td>2</td>
+      <td>1</td>
+      <td><a href="BTL_WpnType.html#22">ミミックナックル</a></td>
+      <td></td>
+      <td>4</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>80</td>
+      <td>120</td>
+      <td>50</td>
+      <td>60</td>
+      <td>70</td>
+      <td>80</td>
+      <td><a href="BTL_TL_PrmRev22.html">BTL_TL_PrmRev22</a></td>
+      <td>15</td>
+      <td>20</td>
+      <td>5</td>
+      <td>10</td>
+      <td>85</td>
+      <td>90</td>
+      <td>110</td>
+      <td>120</td>
+      <td>85</td>
+      <td>95</td>
+      <td>90</td>
+      <td>100</td>
+      <td>85</td>
+      <td>90</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5625</td>
+      <td>2815</td>
+      <td>4690</td>
+      <td>6565</td>
+      <td>0</td>
+      <td>3750</td>
+      <td>230</td>
+      <td>230</td>
+      <td>285</td>
+      <td>285</td>
+      <td>345</td>
+      <td>345</td>
+      <td>375</td>
+      <td>375</td>
+      <td>400</td>
+      <td>335</td>
+      <td>335</td>
+      <td>450</td>
+      <td>450</td>
+      <td>560</td>
+      <td>560</td>
+      <td>670</td>
+      <td>670</td>
+      <td>725</td>
+      <td>840</td>
+      <td>31</td>
+      <td>23472</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>19</td>
+      <td>25</td>
+      <td>26</td>
+      <td>27</td>
+    </tr>
+    <tr id="23">
+      <td class="side">23</td>
+      <td>
+        <details>
+          <summary>26 refs</summary>
+               <a href="5F654D94.html#520">5F654D94#520</a>
+          <br/><a href="5F654D94.html#544">5F654D94#544</a>
+          <br/><a href="5F654D94.html#568">5F654D94#568</a>
+          <br/><a href="5F654D94.html#592">5F654D94#592</a>
+          <br/><a href="B971C420.html#21">B971C420#21</a>
+          <br/><a href="B971C420.html#45">B971C420#45</a>
+          <br/><a href="B971C420.html#69">B971C420#69</a>
+          <br/><a href="B971C420.html#93">B971C420#93</a>
+          <br/><a href="B971C420.html#117">B971C420#117</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#142">BTL_Arts_Chain_Set#142</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#143">BTL_Arts_Chain_Set#143</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#144">BTL_Arts_Chain_Set#144</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#145">BTL_Arts_Chain_Set#145</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#146">BTL_Arts_Chain_Set#146</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#147">BTL_Arts_Chain_Set#147</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#148">BTL_Arts_Chain_Set#148</a>
+          <br/><a href="BTL_Skill_PC.html#81">BTL_Skill_PC#みんな元気</a>
+          <br/><a href="BTL_Skill_PC.html#82">BTL_Skill_PC#もっと頑張れる</a>
+          <br/><a href="BTL_Skill_PC.html#83">BTL_Skill_PC#たくさん応援するね</a>
+          <br/><a href="BTL_Skill_PC.html#84">BTL_Skill_PC#いちばん星の煌き</a>
+          <br/><a href="BTL_Skill_PC.html#268">BTL_Skill_PC#支援は得意なんです</a>
+          <br/><a href="BTL_Skill_PC.html#270">BTL_Skill_PC#みんな元気</a>
+          <br/><a href="CHR_PC.html#24">CHR_PC#マシロ</a>
+          <br/><a href="FLD_ConditionClassLv.html#23">FLD_ConditionClassLv#23</a>
+          <br/><a href="MNU_HeroDictionary.html#24">MNU_HeroDictionary#24</a>
+          <br/><a href="MNU_HeroList.html#17">MNU_HeroList#17</a>
+        </details>
+      </td>
+      <td>&lt;2C4E2B0D&gt;</td>
+      <td>星輝士</td>
+      <td>戦場での支援に特化した特殊ヒーラー<br />バフを駆使し味方の能力を底上げする</td>
+      <td>509</td>
+      <td>23</td>
+      <td>3</td>
+      <td>2</td>
+      <td><a href="BTL_WpnType.html#23">戦援旗</a></td>
+      <td></td>
+      <td>6</td>
+      <td>1</td>
+      <td>7</td>
+      <td>0</td>
+      <td>15</td>
+      <td>150</td>
+      <td>225</td>
+      <td>120</td>
+      <td>130</td>
+      <td>140</td>
+      <td>150</td>
+      <td><a href="BTL_TL_PrmRev23.html">BTL_TL_PrmRev23</a></td>
+      <td>5</td>
+      <td>10</td>
+      <td>25</td>
+      <td>30</td>
+      <td>60</td>
+      <td>65</td>
+      <td>65</td>
+      <td>70</td>
+      <td>110</td>
+      <td>115</td>
+      <td>105</td>
+      <td>110</td>
+      <td>100</td>
+      <td>110</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6565</td>
+      <td>2815</td>
+      <td>3750</td>
+      <td>4690</td>
+      <td>0</td>
+      <td>5625</td>
+      <td>280</td>
+      <td>280</td>
+      <td>345</td>
+      <td>345</td>
+      <td>415</td>
+      <td>415</td>
+      <td>450</td>
+      <td>450</td>
+      <td>480</td>
+      <td>390</td>
+      <td>390</td>
+      <td>525</td>
+      <td>525</td>
+      <td>650</td>
+      <td>650</td>
+      <td>780</td>
+      <td>780</td>
+      <td>850</td>
+      <td>975</td>
+      <td>22</td>
+      <td>23473</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>18</td>
+      <td>21</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="24">
+      <td class="side">24</td>
+      <td>
+        <details>
+          <summary>24 refs</summary>
+               <a href="5F654D94.html#521">5F654D94#521</a>
+          <br/><a href="5F654D94.html#545">5F654D94#545</a>
+          <br/><a href="5F654D94.html#569">5F654D94#569</a>
+          <br/><a href="5F654D94.html#593">5F654D94#593</a>
+          <br/><a href="B971C420.html#22">B971C420#22</a>
+          <br/><a href="B971C420.html#46">B971C420#46</a>
+          <br/><a href="B971C420.html#70">B971C420#70</a>
+          <br/><a href="B971C420.html#94">B971C420#94</a>
+          <br/><a href="B971C420.html#118">B971C420#118</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#149">BTL_Arts_Chain_Set#149</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#150">BTL_Arts_Chain_Set#150</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#151">BTL_Arts_Chain_Set#151</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#152">BTL_Arts_Chain_Set#152</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#153">BTL_Arts_Chain_Set#153</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#154">BTL_Arts_Chain_Set#154</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#155">BTL_Arts_Chain_Set#155</a>
+          <br/><a href="BTL_Skill_PC.html#85">BTL_Skill_PC#カースエッジ</a>
+          <br/><a href="BTL_Skill_PC.html#86">BTL_Skill_PC#ケイオスチェイン</a>
+          <br/><a href="BTL_Skill_PC.html#87">BTL_Skill_PC#アンチ弱体ボディ</a>
+          <br/><a href="BTL_Skill_PC.html#88">BTL_Skill_PC#ファントムヒット</a>
+          <br/><a href="CHR_PC.html#25">CHR_PC#ナギリ</a>
+          <br/><a href="FLD_ConditionClassLv.html#24">FLD_ConditionClassLv#24</a>
+          <br/><a href="MNU_HeroDictionary.html#25">MNU_HeroDictionary#25</a>
+          <br/><a href="MNU_HeroList.html#18">MNU_HeroList#18</a>
+        </details>
+      </td>
+      <td>&lt;531F3DA4&gt;</td>
+      <td>マシンアサシン</td>
+      <td>デバフで敵を追い詰めるアタッカー<br />弱体化した敵を双斧で刈り取る</td>
+      <td>509</td>
+      <td>24</td>
+      <td>2</td>
+      <td>1</td>
+      <td><a href="BTL_WpnType.html#24">ドゥームアックス</a></td>
+      <td></td>
+      <td>4</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>80</td>
+      <td>120</td>
+      <td>50</td>
+      <td>60</td>
+      <td>70</td>
+      <td>80</td>
+      <td><a href="BTL_TL_PrmRev24.html">BTL_TL_PrmRev24</a></td>
+      <td>15</td>
+      <td>20</td>
+      <td>5</td>
+      <td>10</td>
+      <td>85</td>
+      <td>90</td>
+      <td>110</td>
+      <td>120</td>
+      <td>85</td>
+      <td>95</td>
+      <td>90</td>
+      <td>100</td>
+      <td>85</td>
+      <td>90</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2965</td>
+      <td>5925</td>
+      <td>4940</td>
+      <td>3950</td>
+      <td>6915</td>
+      <td>0</td>
+      <td>265</td>
+      <td>265</td>
+      <td>330</td>
+      <td>330</td>
+      <td>400</td>
+      <td>400</td>
+      <td>430</td>
+      <td>430</td>
+      <td>465</td>
+      <td>395</td>
+      <td>395</td>
+      <td>520</td>
+      <td>520</td>
+      <td>645</td>
+      <td>645</td>
+      <td>780</td>
+      <td>780</td>
+      <td>845</td>
+      <td>970</td>
+      <td>23</td>
+      <td>23474</td>
+      <td>4</td>
+      <td>2</td>
+      <td>1</td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>23</td>
+      <td>22</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="25">
+      <td class="side">25</td>
+      <td>
+        <details>
+          <summary>24 refs</summary>
+               <a href="5F654D94.html#522">5F654D94#522</a>
+          <br/><a href="5F654D94.html#546">5F654D94#546</a>
+          <br/><a href="5F654D94.html#570">5F654D94#570</a>
+          <br/><a href="5F654D94.html#594">5F654D94#594</a>
+          <br/><a href="B971C420.html#23">B971C420#23</a>
+          <br/><a href="B971C420.html#47">B971C420#47</a>
+          <br/><a href="B971C420.html#71">B971C420#71</a>
+          <br/><a href="B971C420.html#95">B971C420#95</a>
+          <br/><a href="B971C420.html#119">B971C420#119</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#156">BTL_Arts_Chain_Set#156</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#157">BTL_Arts_Chain_Set#157</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#158">BTL_Arts_Chain_Set#158</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#159">BTL_Arts_Chain_Set#159</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#160">BTL_Arts_Chain_Set#160</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#161">BTL_Arts_Chain_Set#161</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#162">BTL_Arts_Chain_Set#162</a>
+          <br/><a href="BTL_Skill_PC.html#89">BTL_Skill_PC#疾風怒濤</a>
+          <br/><a href="BTL_Skill_PC.html#90">BTL_Skill_PC#奮迅連撃</a>
+          <br/><a href="BTL_Skill_PC.html#91">BTL_Skill_PC#閃光パンチ</a>
+          <br/><a href="BTL_Skill_PC.html#92">BTL_Skill_PC#キャット空中回転</a>
+          <br/><a href="CHR_PC.html#26">CHR_PC#ゴンドウ</a>
+          <br/><a href="FLD_ConditionClassLv.html#25">FLD_ConditionClassLv#25</a>
+          <br/><a href="MNU_HeroDictionary.html#26">MNU_HeroDictionary#26</a>
+          <br/><a href="MNU_HeroList.html#19">MNU_HeroList#19</a>
+        </details>
+      </td>
+      <td>&lt;D20B35F2&gt;</td>
+      <td>マーシャルアーティスト</td>
+      <td>超連打で畳みかける格闘アタッカー<br />敵に反撃の暇を与えず粉砕する</td>
+      <td>509</td>
+      <td>25</td>
+      <td>2</td>
+      <td>2</td>
+      <td><a href="BTL_WpnType.html#25">ラピッドセスタス</a></td>
+      <td></td>
+      <td>3</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>80</td>
+      <td>120</td>
+      <td>50</td>
+      <td>60</td>
+      <td>70</td>
+      <td>80</td>
+      <td><a href="BTL_TL_PrmRev25.html">BTL_TL_PrmRev25</a></td>
+      <td>10</td>
+      <td>15</td>
+      <td>10</td>
+      <td>15</td>
+      <td>80</td>
+      <td>85</td>
+      <td>100</td>
+      <td>110</td>
+      <td>100</td>
+      <td>110</td>
+      <td>100</td>
+      <td>105</td>
+      <td>90</td>
+      <td>95</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2850</td>
+      <td>4750</td>
+      <td>6650</td>
+      <td>5700</td>
+      <td>3800</td>
+      <td>0</td>
+      <td>285</td>
+      <td>285</td>
+      <td>350</td>
+      <td>350</td>
+      <td>420</td>
+      <td>420</td>
+      <td>460</td>
+      <td>460</td>
+      <td>495</td>
+      <td>400</td>
+      <td>400</td>
+      <td>530</td>
+      <td>530</td>
+      <td>660</td>
+      <td>660</td>
+      <td>795</td>
+      <td>795</td>
+      <td>860</td>
+      <td>990</td>
+      <td>24</td>
+      <td>23475</td>
+      <td>4</td>
+      <td>2</td>
+      <td>1</td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>20</td>
+      <td>23</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="26">
+      <td class="side">26</td>
+      <td>
+        <details>
+          <summary>25 refs</summary>
+               <a href="5F654D94.html#523">5F654D94#523</a>
+          <br/><a href="5F654D94.html#547">5F654D94#547</a>
+          <br/><a href="5F654D94.html#571">5F654D94#571</a>
+          <br/><a href="5F654D94.html#595">5F654D94#595</a>
+          <br/><a href="B971C420.html#24">B971C420#24</a>
+          <br/><a href="B971C420.html#48">B971C420#48</a>
+          <br/><a href="B971C420.html#72">B971C420#72</a>
+          <br/><a href="B971C420.html#96">B971C420#96</a>
+          <br/><a href="B971C420.html#120">B971C420#120</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#163">BTL_Arts_Chain_Set#163</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#164">BTL_Arts_Chain_Set#164</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#165">BTL_Arts_Chain_Set#165</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#166">BTL_Arts_Chain_Set#166</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#167">BTL_Arts_Chain_Set#167</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#168">BTL_Arts_Chain_Set#168</a>
+          <br/><a href="BTL_Arts_Chain_Set.html#169">BTL_Arts_Chain_Set#169</a>
+          <br/><a href="BTL_Skill_PC.html#93">BTL_Skill_PC#連弾</a>
+          <br/><a href="BTL_Skill_PC.html#94">BTL_Skill_PC#合わせ撃ち</a>
+          <br/><a href="BTL_Skill_PC.html#95">BTL_Skill_PC#第六感</a>
+          <br/><a href="BTL_Skill_PC.html#96">BTL_Skill_PC#精密射撃</a>
+          <br/><a href="BTL_Skill_PC.html#269">BTL_Skill_PC#位置取りの極意</a>
+          <br/><a href="CHR_PC.html#27">CHR_PC#グレイ</a>
+          <br/><a href="FLD_ConditionClassLv.html#26">FLD_ConditionClassLv#26</a>
+          <br/><a href="MNU_HeroDictionary.html#27">MNU_HeroDictionary#27</a>
+          <br/><a href="MNU_HeroList.html#20">MNU_HeroList#20</a>
+        </details>
+      </td>
+      <td>&lt;EEF4ACE7&gt;</td>
+      <td>フルメタルジャガー</td>
+      <td>二丁拳銃とフラップで広範囲の敵を攻撃する<br />命中する程その銃撃は洗練されていく</td>
+      <td>509</td>
+      <td>26</td>
+      <td>2</td>
+      <td>1</td>
+      <td><a href="BTL_WpnType.html#26">ガンフラップ</a></td>
+      <td></td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>80</td>
+      <td>120</td>
+      <td>50</td>
+      <td>60</td>
+      <td>70</td>
+      <td>80</td>
+      <td><a href="BTL_TL_PrmRev26.html">BTL_TL_PrmRev26</a></td>
+      <td>10</td>
+      <td>15</td>
+      <td>10</td>
+      <td>15</td>
+      <td>80</td>
+      <td>85</td>
+      <td>100</td>
+      <td>110</td>
+      <td>100</td>
+      <td>110</td>
+      <td>100</td>
+      <td>105</td>
+      <td>90</td>
+      <td>95</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3400</td>
+      <td>5100</td>
+      <td>0</td>
+      <td>2550</td>
+      <td>5950</td>
+      <td>4250</td>
+      <td>210</td>
+      <td>210</td>
+      <td>260</td>
+      <td>260</td>
+      <td>310</td>
+      <td>310</td>
+      <td>340</td>
+      <td>340</td>
+      <td>365</td>
+      <td>340</td>
+      <td>340</td>
+      <td>450</td>
+      <td>450</td>
+      <td>565</td>
+      <td>565</td>
+      <td>675</td>
+      <td>675</td>
+      <td>725</td>
+      <td>840</td>
+      <td>25</td>
+      <td>23476</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>2</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>3</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>4</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>5</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="ITM_Precious.html#16090">ノポンコイン・銀</a></td>
+      <td>6</td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td><a href="BTL_TalentAptitude.html#2">2</a></td>
+      <td><a href="BTL_TalentAptitude.html#5">5</a></td>
+      <td><a href="BTL_TalentAptitude.html#4">4</a></td>
+      <td><a href="BTL_TalentAptitude.html#1">1</a></td>
+      <td><a href="BTL_TalentAptitude.html#3">3</a></td>
+      <td>2</td>
+      <td>1</td>
+      <td>12</td>
+      <td>24</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="27">
+      <td class="side">27</td>
+      <td>
+        <details>
+          <summary>3 refs</summary>
+               <a href="CHR_PC.html#28">CHR_PC#ナミ</a>
+          <br/><a href="FLD_ConditionClassLv.html#27">FLD_ConditionClassLv#27</a>
+          <br/><a href="MNU_HeroList.html#21">MNU_HeroList#21</a>
+        </details>
+      </td>
+      <td>&lt;3117B5B1&gt;</td>
+      <td></td>
+      <td></td>
+      <td>509</td>
+      <td>27</td>
+      <td>3</td>
+      <td>2</td>
+      <td><a href="BTL_WpnType.html#27">27</a></td>
+      <td></td>
+      <td>6</td>
+      <td>3</td>
+      <td>4</td>
+      <td>0</td>
+      <td>15</td>
+      <td>150</td>
+      <td>225</td>
+      <td>120</td>
+      <td>130</td>
+      <td>140</td>
+      <td>150</td>
+      <td><a href="BTL_TL_PrmRev27.html">BTL_TL_PrmRev27</a></td>
+      <td>5</td>
+      <td>10</td>
+      <td>25</td>
+      <td>30</td>
+      <td>60</td>
+      <td>65</td>
+      <td>65</td>
+      <td>70</td>
+      <td>110</td>
+      <td>115</td>
+      <td>105</td>
+      <td>110</td>
+      <td>100</td>
+      <td>110</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>26</td>
+      <td>23477</td>
+      <td>4</td>
+      <td>1</td>
+      <td>4</td>
+      <td>4</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="28">
+      <td class="side">28</td>
+      <td>
+        <details>
+          <summary>7 refs</summary>
+               <a href="BTL_Arts_Chain_Set.html#170">BTL_Arts_Chain_Set#170</a>
+          <br/><a href="BTL_Skill_PC.html#97">BTL_Skill_PC#97</a>
+          <br/><a href="BTL_Skill_PC.html#98">BTL_Skill_PC#98</a>
+          <br/><a href="BTL_Skill_PC.html#99">BTL_Skill_PC#99</a>
+          <br/><a href="BTL_Skill_PC.html#100">BTL_Skill_PC#100</a>
+          <br/><a href="FLD_ConditionClassLv.html#28">FLD_ConditionClassLv#28</a>
+          <br/><a href="SYS_FlowEventArtsSet.html#3">SYS_FlowEventArtsSet#3</a>
+        </details>
+      </td>
+      <td>&lt;C8CF1A6D&gt;</td>
+      <td>ソードファイター</td>
+      <td></td>
+      <td>509</td>
+      <td>28</td>
+      <td>1</td>
+      <td>1</td>
+      <td><a href="BTL_WpnType.html#28">28</a></td>
+      <td></td>
+      <td>4</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>80</td>
+      <td>120</td>
+      <td>50</td>
+      <td>60</td>
+      <td>70</td>
+      <td>80</td>
+      <td><a href="BTL_TL_PrmRev28.html">BTL_TL_PrmRev28</a></td>
+      <td>60</td>
+      <td>60</td>
+      <td>60</td>
+      <td>60</td>
+      <td>120</td>
+      <td>120</td>
+      <td>100</td>
+      <td>100</td>
+      <td>50</td>
+      <td>50</td>
+      <td>150</td>
+      <td>150</td>
+      <td>150</td>
+      <td>150</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>27</td>
+      <td>23478</td>
+      <td>4</td>
+      <td>5</td>
+      <td>3</td>
+      <td>5</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="29">
+      <td class="side">29</td>
+      <td>
+        <details>
+          <summary>7 refs</summary>
+               <a href="BTL_Arts_Chain_Set.html#171">BTL_Arts_Chain_Set#171</a>
+          <br/><a href="BTL_Skill_PC.html#101">BTL_Skill_PC#101</a>
+          <br/><a href="BTL_Skill_PC.html#102">BTL_Skill_PC#102</a>
+          <br/><a href="BTL_Skill_PC.html#103">BTL_Skill_PC#103</a>
+          <br/><a href="BTL_Skill_PC.html#104">BTL_Skill_PC#104</a>
+          <br/><a href="FLD_ConditionClassLv.html#29">FLD_ConditionClassLv#29</a>
+          <br/><a href="SYS_FlowEventArtsSet.html#4">SYS_FlowEventArtsSet#4</a>
+        </details>
+      </td>
+      <td>&lt;9671DAA8&gt;</td>
+      <td>ソードファイター</td>
+      <td></td>
+      <td>509</td>
+      <td>28</td>
+      <td>2</td>
+      <td>1</td>
+      <td><a href="BTL_WpnType.html#28">28</a></td>
+      <td></td>
+      <td>4</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>80</td>
+      <td>120</td>
+      <td>50</td>
+      <td>60</td>
+      <td>70</td>
+      <td>80</td>
+      <td><a href="BTL_TL_PrmRev29.html">BTL_TL_PrmRev29</a></td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>30</td>
+      <td>90</td>
+      <td>90</td>
+      <td>150</td>
+      <td>150</td>
+      <td>50</td>
+      <td>50</td>
+      <td>150</td>
+      <td>150</td>
+      <td>100</td>
+      <td>100</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>28</td>
+      <td>23479</td>
+      <td>5</td>
+      <td>4</td>
+      <td>3</td>
+      <td>5</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="30">
+      <td class="side">30</td>
+      <td>
+        <details>
+          <summary>7 refs</summary>
+               <a href="BTL_Arts_Chain_Set.html#172">BTL_Arts_Chain_Set#172</a>
+          <br/><a href="BTL_Skill_PC.html#105">BTL_Skill_PC#105</a>
+          <br/><a href="BTL_Skill_PC.html#106">BTL_Skill_PC#106</a>
+          <br/><a href="BTL_Skill_PC.html#107">BTL_Skill_PC#107</a>
+          <br/><a href="BTL_Skill_PC.html#108">BTL_Skill_PC#108</a>
+          <br/><a href="FLD_ConditionClassLv.html#30">FLD_ConditionClassLv#30</a>
+          <br/><a href="SYS_FlowEventArtsSet.html#5">SYS_FlowEventArtsSet#5</a>
+        </details>
+      </td>
+      <td>&lt;976E30CD&gt;</td>
+      <td>ソードファイター</td>
+      <td></td>
+      <td>509</td>
+      <td>28</td>
+      <td>3</td>
+      <td>1</td>
+      <td><a href="BTL_WpnType.html#28">28</a></td>
+      <td></td>
+      <td>4</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>15</td>
+      <td>80</td>
+      <td>120</td>
+      <td>50</td>
+      <td>60</td>
+      <td>70</td>
+      <td>80</td>
+      <td><a href="BTL_TL_PrmRev30.html">BTL_TL_PrmRev30</a></td>
+      <td>20</td>
+      <td>20</td>
+      <td>40</td>
+      <td>40</td>
+      <td>80</td>
+      <td>80</td>
+      <td>90</td>
+      <td>90</td>
+      <td>150</td>
+      <td>150</td>
+      <td>150</td>
+      <td>150</td>
+      <td>100</td>
+      <td>100</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>29</td>
+      <td>23480</td>
+      <td>4</td>
+      <td>4</td>
+      <td>5</td>
+      <td>5</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="31">
+      <td class="side">31</td>
+      <td>
+        <details>
+          <summary>8 refs</summary>
+               <a href="BTL_Arts_Chain_Set.html#173">BTL_Arts_Chain_Set#173</a>
+          <br/><a href="BTL_Skill_PC.html#109">BTL_Skill_PC#狙い撃ち</a>
+          <br/><a href="BTL_Skill_PC.html#110">BTL_Skill_PC#狙撃手の心構え</a>
+          <br/><a href="BTL_Skill_PC.html#111">BTL_Skill_PC#生き延びるんだ</a>
+          <br/><a href="BTL_Skill_PC.html#112">BTL_Skill_PC#全力射撃</a>
+          <br/><a href="CHR_PC.html#29">CHR_PC#ムンバ</a>
+          <br/><a href="FLD_ConditionClassLv.html#31">FLD_ConditionClassLv#31</a>
+          <br/><a href="MNU_HeroList.html#22">MNU_HeroList#22</a>
+        </details>
+      </td>
+      <td>&lt;CDB19FC2&gt;</td>
+      <td>シャープシューター</td>
+      <td></td>
+      <td>509</td>
+      <td>29</td>
+      <td>2</td>
+      <td>1</td>
+      <td><a href="BTL_WpnType.html#29">29</a></td>
+      <td></td>
+      <td>4</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>20</td>
+      <td>80</td>
+      <td>120</td>
+      <td>50</td>
+      <td>60</td>
+      <td>70</td>
+      <td>80</td>
+      <td><a href="BTL_TL_PrmRev31.html">BTL_TL_PrmRev31</a></td>
+      <td>10</td>
+      <td>15</td>
+      <td>10</td>
+      <td>15</td>
+      <td>80</td>
+      <td>85</td>
+      <td>100</td>
+      <td>110</td>
+      <td>100</td>
+      <td>110</td>
+      <td>100</td>
+      <td>105</td>
+      <td>90</td>
+      <td>95</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>30</td>
+      <td>23481</td>
+      <td>3</td>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>31</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="32">
+      <td class="side">32</td>
+      <td>
+        <details>
+          <summary>3 refs</summary>
+               <a href="BTL_Arts_Chain_Set.html#174">BTL_Arts_Chain_Set#174</a>
+          <br/><a href="CHR_PC.html#9">CHR_PC#マナナ</a>
+          <br/><a href="FLD_ConditionClassLv.html#32">FLD_ConditionClassLv#32</a>
+        </details>
+      </td>
+      <td>&lt;D3AB6717&gt;</td>
+      <td>ヤムスミス</td>
+      <td>搦め手を得意とする変幻自在のアタッカー<br />デバフで敵を弱体化し戦況を好転させる</td>
+      <td>509</td>
+      <td>8</td>
+      <td>2</td>
+      <td>2</td>
+      <td><a href="BTL_WpnType.html#30">ヴァリアブルアームズ</a></td>
+      <td></td>
+      <td>4</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>80</td>
+      <td>120</td>
+      <td>50</td>
+      <td>60</td>
+      <td>70</td>
+      <td>80</td>
+      <td><a href="BTL_TL_PrmRev08.html">BTL_TL_PrmRev08</a></td>
+      <td>10</td>
+      <td>15</td>
+      <td>10</td>
+      <td>15</td>
+      <td>80</td>
+      <td>85</td>
+      <td>100</td>
+      <td>110</td>
+      <td>100</td>
+      <td>110</td>
+      <td>100</td>
+      <td>105</td>
+      <td>90</td>
+      <td>95</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>8</td>
+      <td>23482</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>5</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </table>
+</body>
+</html>

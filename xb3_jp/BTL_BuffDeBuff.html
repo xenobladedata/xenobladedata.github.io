@@ -1,0 +1,2544 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <title>BTL_BuffDeBuff</title>
+  <style type="text/css">
+    table, th, td {border: 1px solid #000000; border-collapse: collapse;}
+    table {border-width: 3px;}
+    th, td {padding: 0.1em 0.2em;}
+    tr.head th, tr.head td {border-bottom-width: 3px;}
+    th.colbreak, td.colbreak {border-right-width: 3px;}
+    th {text-align: center; position: sticky; top: -1px; background-color: #F0F0F0;}
+    .side {position: sticky; left: -1px; background-color: #F0F0F0;}
+    th.side {z-index: 3;}
+    td {text-align: left;}
+    td.right {text-align: right;}
+    .sortable tbody tr:nth-child(odd) {background: #F5F5F5;}
+    .sortable th {background: #E4E4E4; cursor: pointer; white-space: nowrap; vertical-align: middle;}
+    .sortable th.dir-d::after {content:" ▾"; vertical-align: inherit;}
+    .sortable th.dir-u::after {content:" ▴"; vertical-align: inherit;}
+    :target td {background-color: #CCCCCC !important;}
+  </style>
+  <script type="text/javascript">
+    function offsetAnchor() {
+      if (location.hash.length !== 0) {
+        window.scrollTo(window.scrollX, window.scrollY - document.getElementById("header").clientHeight);
+      }
+    }
+    window.addEventListener("hashchange", offsetAnchor);
+    window.setTimeout(offsetAnchor, 1);
+  </script>
+</head>
+<body>
+  <table class="sortable">
+    <h2>BTL_BuffDeBuff</h2>
+    <tr id="header">
+      <th class="side dir-d ">ID</th>
+      <th>Referenced By</th>
+      <th>ID</th>
+      <th>Name</th>
+      <th>DebugName</th>
+      <th>Caption</th>
+      <th>Type</th>
+      <th>DeBuffType</th>
+      <th>BaseNum</th>
+      <th>BaseNum2</th>
+      <th>BaseNum3</th>
+      <th>BaseTime</th>
+      <th>MaxTimeRate</th>
+      <th>BaseProb</th>
+      <th>Interval</th>
+      <th>PriorityUI</th>
+      <th>DirectionID</th>
+      <th>DirectionType</th>
+      <th>Effect</th>
+      <th>EffectID</th>
+      <th>EffectPoint</th>
+      <th>EffectScale</th>
+      <th>SE</th>
+      <th>TargetRole1</th>
+      <th>TargetRole2</th>
+      <th>OtherRole</th>
+      <th>HealType</th>
+      <th>DeBuffPoint</th>
+      <th>EnhanceRandom</th>
+      <th>NoClear</th>
+      <th>Icon</th>
+      <th>NoUro</th>
+      <th>SpProb</th>
+    </tr>
+    <tr id="1">
+      <td class="side">1</td>
+      <td>
+        <details>
+          <summary>13 refs</summary>
+               <a href="BTL_Arts_En.html#28">BTL_Arts_En#ビーストハウリング</a>
+          <br/><a href="BTL_Arts_En.html#287">BTL_Arts_En#ハウリング</a>
+          <br/><a href="BTL_Arts_En.html#292">BTL_Arts_En#バーンシャウト</a>
+          <br/><a href="BTL_Arts_En.html#390">BTL_Arts_En#ギアアップ</a>
+          <br/><a href="BTL_Arts_En.html#482">BTL_Arts_En#ラウンドブースト</a>
+          <br/><a href="BTL_Arts_En.html#483">BTL_Arts_En#ラウンドブースト</a>
+          <br/><a href="BTL_Arts_En.html#556">BTL_Arts_En#ギアチェンジ</a>
+          <br/><a href="BTL_Arts_En.html#759">BTL_Arts_En#祖の雄叫び</a>
+          <br/><a href="BTL_Arts_En.html#947">BTL_Arts_En#セルフチューニング</a>
+          <br/><a href="BTL_Arts_En.html#1123">BTL_Arts_En#センセーション</a>
+          <br/><a href="BTL_Arts_En.html#1461">BTL_Arts_En#パワードトリガー</a>
+          <br/><a href="BTL_Arts_PC.html#470">BTL_Arts_PC#パワードトリガー</a>
+          <br/><a href="BTL_SetUp.html#1">BTL_SetUp#クリティカルアップ</a>
+        </details>
+      </td>
+      <td>&lt;92363CFF&gt;</td>
+      <td>クリティカルアップ</td>
+      <td>133</td>
+      <td>クリティカル率がアップ</td>
+      <td>0</td>
+      <td>0</td>
+      <td>25</td>
+      <td>0</td>
+      <td>0</td>
+      <td>600</td>
+      <td>200</td>
+      <td>0</td>
+      <td>0</td>
+      <td>16</td>
+      <td>59</td>
+      <td>0</td>
+      <td></td>
+      <td>17</td>
+      <td>EFP_SYS_000</td>
+      <td>0</td>
+      <td>buff_effect</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="2">
+      <td class="side">2</td>
+      <td>
+        <details>
+          <summary>21 refs</summary>
+               <a href="BTL_Arts_En.html#159">BTL_Arts_En#ウォークライ</a>
+          <br/><a href="BTL_Arts_En.html#402">BTL_Arts_En#オーラエール</a>
+          <br/><a href="BTL_Arts_En.html#412">BTL_Arts_En#クールダウン</a>
+          <br/><a href="BTL_Arts_En.html#463">BTL_Arts_En#フォーカスエイム</a>
+          <br/><a href="BTL_Arts_En.html#464">BTL_Arts_En#フォーカスエイム</a>
+          <br/><a href="BTL_Arts_En.html#473">BTL_Arts_En#フォーカスエイム</a>
+          <br/><a href="BTL_Arts_En.html#478">BTL_Arts_En#フォーカスエイム</a>
+          <br/><a href="BTL_Arts_En.html#486">BTL_Arts_En#カスタムアップ</a>
+          <br/><a href="BTL_Arts_En.html#544">BTL_Arts_En#次弾装填</a>
+          <br/><a href="BTL_Arts_En.html#550">BTL_Arts_En#次弾装填</a>
+          <br/><a href="BTL_Arts_En.html#552">BTL_Arts_En#次弾装填</a>
+          <br/><a href="BTL_Arts_En.html#600">BTL_Arts_En#ライズスピア</a>
+          <br/><a href="BTL_Arts_En.html#629">BTL_Arts_En#アップリフト</a>
+          <br/><a href="BTL_Arts_En.html#630">BTL_Arts_En#アップリフト</a>
+          <br/><a href="BTL_Arts_En.html#644">BTL_Arts_En#ブーストアウトプット</a>
+          <br/><a href="BTL_Arts_En.html#1458">BTL_Arts_En#ドライブバレット</a>
+          <br/><a href="BTL_Arts_PC.html#426">BTL_Arts_PC#デッドゾーン</a>
+          <br/><a href="BTL_Arts_PC.html#432">BTL_Arts_PC#デッドゾーン</a>
+          <br/><a href="BTL_Arts_PC.html#433">BTL_Arts_PC#デッドゾーン</a>
+          <br/><a href="BTL_Arts_PC.html#467">BTL_Arts_PC#ドライブバレット</a>
+          <br/><a href="BTL_SetUp.html#2">BTL_SetUp#命中アップ</a>
+        </details>
+      </td>
+      <td>&lt;A94B632B&gt;</td>
+      <td>命中アップ</td>
+      <td>133</td>
+      <td>命中率がアップ</td>
+      <td>0</td>
+      <td>0</td>
+      <td>25</td>
+      <td>0</td>
+      <td>0</td>
+      <td>600</td>
+      <td>200</td>
+      <td>0</td>
+      <td>0</td>
+      <td>17</td>
+      <td>59</td>
+      <td>0</td>
+      <td></td>
+      <td>17</td>
+      <td>EFP_SYS_000</td>
+      <td>0</td>
+      <td>buff_effect</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="3">
+      <td class="side">3</td>
+      <td>
+        <details>
+          <summary>13 refs</summary>
+               <a href="BTL_Arts_En.html#29">BTL_Arts_En#ビーストハウリング</a>
+          <br/><a href="BTL_Arts_En.html#437">BTL_Arts_En#アグレッション</a>
+          <br/><a href="BTL_Arts_En.html#443">BTL_Arts_En#アグレッション</a>
+          <br/><a href="BTL_Arts_En.html#607">BTL_Arts_En#エネルギーチャージ</a>
+          <br/><a href="BTL_Arts_En.html#624">BTL_Arts_En#エネルギーチャージ</a>
+          <br/><a href="BTL_Arts_En.html#757">BTL_Arts_En#グレイスオブオーシャン</a>
+          <br/><a href="BTL_Arts_En.html#1074">BTL_Arts_En#フォースシャウト</a>
+          <br/><a href="BTL_Arts_En.html#1101">BTL_Arts_En#アニムスシャウト</a>
+          <br/><a href="BTL_Arts_En.html#1102">BTL_Arts_En#アニムスシャウト</a>
+          <br/><a href="BTL_Arts_En.html#1177">BTL_Arts_En#1177</a>
+          <br/><a href="BTL_Arts_PC.html#152">BTL_Arts_PC#この刃はトクベツ製も</a>
+          <br/><a href="BTL_Arts_PC.html#478">BTL_Arts_PC#グローリーウイング</a>
+          <br/><a href="BTL_Arts_PC.html#578">BTL_Arts_PC#ドラゴンオーダー</a>
+        </details>
+      </td>
+      <td>&lt;B65A78B8&gt;</td>
+      <td>パワーチャージ</td>
+      <td>133</td>
+      <td>次に実行するアーツのダメージがアップ</td>
+      <td>0</td>
+      <td>0</td>
+      <td>50</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7</td>
+      <td>59</td>
+      <td>0</td>
+      <td></td>
+      <td>17</td>
+      <td>EFP_SYS_000</td>
+      <td>0</td>
+      <td>buff_effect</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>6</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="4">
+      <td class="side">4</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_SetUp.html#3">BTL_SetUp#ダメージアーマー</a>
+        </details>
+      </td>
+      <td>&lt;B82E84F4&gt;</td>
+      <td>ダメージアーマー</td>
+      <td>133</td>
+      <td>ダメージを一定値吸収</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>66</td>
+      <td>0</td>
+      <td></td>
+      <td>17</td>
+      <td>EFP_SYS_000</td>
+      <td>0</td>
+      <td>buff_effect</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>7</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="5">
+      <td class="side">5</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_Arts_PC.html#225">BTL_Arts_PC#ウォールシールド</a>
+        </details>
+      </td>
+      <td>&lt;754286C9&gt;</td>
+      <td>エーテルアンカー</td>
+      <td>133</td>
+      <td>コンボ、リアクションを一定回数無効化</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>600</td>
+      <td>200</td>
+      <td>0</td>
+      <td>0</td>
+      <td>18</td>
+      <td>59</td>
+      <td>0</td>
+      <td></td>
+      <td>17</td>
+      <td>EFP_SYS_000</td>
+      <td>0</td>
+      <td>buff_effect</td>
+      <td>1</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="6">
+      <td class="side">6</td>
+      <td>
+        <details>
+          <summary>39 refs</summary>
+               <a href="BTL_Arts_En.html#56">BTL_Arts_En#ドラム・ザ・ワイルド</a>
+          <br/><a href="BTL_Arts_En.html#131">BTL_Arts_En#クイーンズフォース</a>
+          <br/><a href="BTL_Arts_En.html#144">BTL_Arts_En#ビーウィッチング</a>
+          <br/><a href="BTL_Arts_En.html#274">BTL_Arts_En#ヒュドラオーダー</a>
+          <br/><a href="BTL_Arts_En.html#322">BTL_Arts_En#ブレイブクライ</a>
+          <br/><a href="BTL_Arts_En.html#327">BTL_Arts_En#トモシビランタン</a>
+          <br/><a href="BTL_Arts_En.html#328">BTL_Arts_En#トモシビランタン</a>
+          <br/><a href="BTL_Arts_En.html#368">BTL_Arts_En#イライラダンス</a>
+          <br/><a href="BTL_Arts_En.html#384">BTL_Arts_En#フィジカルアップ</a>
+          <br/><a href="BTL_Arts_En.html#398">BTL_Arts_En#ビルドフォース</a>
+          <br/><a href="BTL_Arts_En.html#399">BTL_Arts_En#ビルドフォース</a>
+          <br/><a href="BTL_Arts_En.html#422">BTL_Arts_En#リベリオンソウル</a>
+          <br/><a href="BTL_Arts_En.html#605">BTL_Arts_En#エネルギーチャージ</a>
+          <br/><a href="BTL_Arts_En.html#608">BTL_Arts_En#クオーターチャージ</a>
+          <br/><a href="BTL_Arts_En.html#609">BTL_Arts_En#ハーフチャージ</a>
+          <br/><a href="BTL_Arts_En.html#618">BTL_Arts_En#エネルギーチャージ</a>
+          <br/><a href="BTL_Arts_En.html#621">BTL_Arts_En#エネルギーチャージ</a>
+          <br/><a href="BTL_Arts_En.html#623">BTL_Arts_En#エネルギーチャージ</a>
+          <br/><a href="BTL_Arts_En.html#731">BTL_Arts_En#バーンシャウト</a>
+          <br/><a href="BTL_Arts_En.html#780">BTL_Arts_En#滅却</a>
+          <br/><a href="BTL_Arts_En.html#783">BTL_Arts_En#滅却</a>
+          <br/><a href="BTL_Arts_En.html#799">BTL_Arts_En#滅却</a>
+          <br/><a href="BTL_Arts_En.html#802">BTL_Arts_En#滅却</a>
+          <br/><a href="BTL_Arts_En.html#824">BTL_Arts_En#ブレイブアクト</a>
+          <br/><a href="BTL_Arts_En.html#974">BTL_Arts_En#グランドマスター</a>
+          <br/><a href="BTL_Arts_En.html#983">BTL_Arts_En#グランドマスター</a>
+          <br/><a href="BTL_Arts_En.html#984">BTL_Arts_En#グランドマスター</a>
+          <br/><a href="BTL_Arts_En.html#1116">BTL_Arts_En#トーチャーティーチ</a>
+          <br/><a href="BTL_Arts_En.html#1137">BTL_Arts_En#メンタルフォーカス</a>
+          <br/><a href="BTL_Arts_En.html#1148">BTL_Arts_En#バイオレンスソウル</a>
+          <br/><a href="BTL_Arts_En.html#1245">BTL_Arts_En#1245</a>
+          <br/><a href="BTL_Arts_PC.html#7">BTL_Arts_PC#シャドーアイ</a>
+          <br/><a href="BTL_Arts_PC.html#13">BTL_Arts_PC#シャドーアイ</a>
+          <br/><a href="BTL_Arts_PC.html#14">BTL_Arts_PC#シャドーアイ</a>
+          <br/><a href="BTL_Arts_PC.html#304">BTL_Arts_PC#天勁</a>
+          <br/><a href="BTL_Arts_PC.html#309">BTL_Arts_PC#翔流</a>
+          <br/><a href="BTL_Arts_PC.html#310">BTL_Arts_PC#翔流</a>
+          <br/><a href="BTL_Arts_PC.html#562">BTL_Arts_PC#バトルフェロモン</a>
+          <br/><a href="BTL_SetUp.html#4">BTL_SetUp#攻撃アップ</a>
+        </details>
+      </td>
+      <td>&lt;C6B43C17&gt;</td>
+      <td>攻撃アップ</td>
+      <td>133</td>
+      <td>与ダメージがアップ</td>
+      <td>0</td>
+      <td>0</td>
+      <td>25</td>
+      <td>0</td>
+      <td>0</td>
+      <td>600</td>
+      <td>200</td>
+      <td>0</td>
+      <td>0</td>
+      <td>10</td>
+      <td>59</td>
+      <td>0</td>
+      <td></td>
+      <td>17</td>
+      <td>EFP_SYS_000</td>
+      <td>0</td>
+      <td>buff_effect</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="7">
+      <td class="side">7</td>
+      <td></td>
+      <td>&lt;D363F93F&gt;</td>
+      <td>クリティカル強化</td>
+      <td>133</td>
+      <td>クリティカルのダメージボーナスがアップ</td>
+      <td>0</td>
+      <td>0</td>
+      <td>50</td>
+      <td>0</td>
+      <td>0</td>
+      <td>600</td>
+      <td>200</td>
+      <td>0</td>
+      <td>0</td>
+      <td>14</td>
+      <td>59</td>
+      <td>0</td>
+      <td></td>
+      <td>17</td>
+      <td>EFP_SYS_000</td>
+      <td>0</td>
+      <td>buff_effect</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="8">
+      <td class="side">8</td>
+      <td>
+        <details>
+          <summary>2 refs</summary>
+               <a href="BTL_Arts_En.html#432">BTL_Arts_En#フィジカルブースト</a>
+          <br/><a href="BTL_Arts_En.html#515">BTL_Arts_En#バトルアシスト</a>
+        </details>
+      </td>
+      <td>&lt;8F917B85&gt;</td>
+      <td>回復アップ</td>
+      <td>133</td>
+      <td>HPの回復量がアップ</td>
+      <td>0</td>
+      <td>0</td>
+      <td>50</td>
+      <td>0</td>
+      <td>0</td>
+      <td>600</td>
+      <td>200</td>
+      <td>0</td>
+      <td>0</td>
+      <td>15</td>
+      <td>59</td>
+      <td>0</td>
+      <td></td>
+      <td>17</td>
+      <td>EFP_SYS_000</td>
+      <td>0</td>
+      <td>buff_effect</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>13</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="9">
+      <td class="side">9</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_Arts_PC.html#273">BTL_Arts_PC#バイタルバレット</a>
+        </details>
+      </td>
+      <td>&lt;A80907F1&gt;</td>
+      <td>ディレイヒール</td>
+      <td>133</td>
+      <td>HPが一定以下になった時、HP回復</td>
+      <td>0</td>
+      <td>0</td>
+      <td>30</td>
+      <td>15</td>
+      <td>0</td>
+      <td>600</td>
+      <td>200</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>59</td>
+      <td>0</td>
+      <td></td>
+      <td>17</td>
+      <td>EFP_SYS_000</td>
+      <td>0</td>
+      <td>buff_effect</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="10">
+      <td class="side">10</td>
+      <td>
+        <details>
+          <summary>4 refs</summary>
+               <a href="BTL_Arts_En.html#1181">BTL_Arts_En#1181</a>
+          <br/><a href="BTL_Arts_PC.html#160">BTL_Arts_PC#鏡返し</a>
+          <br/><a href="BTL_Arts_PC.html#166">BTL_Arts_PC#鏡返し</a>
+          <br/><a href="BTL_Arts_PC.html#167">BTL_Arts_PC#鏡返し</a>
+        </details>
+      </td>
+      <td>&lt;C5880BE5&gt;</td>
+      <td>カウンターヒール</td>
+      <td>133</td>
+      <td>攻撃を受けた時、一定回数HP回復</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>3</td>
+      <td>0</td>
+      <td>450</td>
+      <td>200</td>
+      <td>0</td>
+      <td>0</td>
+      <td>6</td>
+      <td>59</td>
+      <td>0</td>
+      <td></td>
+      <td>17</td>
+      <td>EFP_SYS_000</td>
+      <td>0</td>
+      <td>buff_effect</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>14</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="11">
+      <td class="side">11</td>
+      <td>
+        <details>
+          <summary>4 refs</summary>
+               <a href="BTL_Arts_En.html#1193">BTL_Arts_En#1193</a>
+          <br/><a href="BTL_Arts_En.html#1349">BTL_Arts_En#輝きの調べ</a>
+          <br/><a href="BTL_Arts_PC.html#191">BTL_Arts_PC#輝きの調べ</a>
+          <br/><a href="BTL_Arts_PC.html#192">BTL_Arts_PC#輝きの調べ</a>
+        </details>
+      </td>
+      <td>&lt;9818BC08&gt;</td>
+      <td>バフ時間停止</td>
+      <td>133</td>
+      <td>他のバフの有効時間が減少しなくなる</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>600</td>
+      <td>200</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>59</td>
+      <td>0</td>
+      <td></td>
+      <td>17</td>
+      <td>EFP_SYS_000</td>
+      <td>0</td>
+      <td>buff_effect</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>15</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="12">
+      <td class="side">12</td>
+      <td>
+        <details>
+          <summary>3 refs</summary>
+               <a href="BTL_Arts_En.html#943">BTL_Arts_En#エーテルプロテクション</a>
+          <br/><a href="BTL_Arts_PC.html#19">BTL_Arts_PC#アンリミテッドソード</a>
+          <br/><a href="BTL_Arts_PC.html#447">BTL_Arts_PC#パワーレイザー</a>
+        </details>
+      </td>
+      <td>&lt;C0592E81&gt;</td>
+      <td>無敵</td>
+      <td>133</td>
+      <td>敵からの攻撃を無効化</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>300</td>
+      <td>200</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>7</td>
+      <td></td>
+      <td>17</td>
+      <td>EFP_SYS_000</td>
+      <td>0</td>
+      <td>buff_effect</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>16</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="13">
+      <td class="side">13</td>
+      <td>
+        <details>
+          <summary>12 refs</summary>
+               <a href="BTL_Arts_En.html#112">BTL_Arts_En#アドレナリンサージ</a>
+          <br/><a href="BTL_Arts_En.html#301">BTL_Arts_En#レイジハウリング</a>
+          <br/><a href="BTL_Arts_En.html#302">BTL_Arts_En#レイジハウリング</a>
+          <br/><a href="BTL_Arts_En.html#351">BTL_Arts_En#ディープブレス</a>
+          <br/><a href="BTL_Arts_En.html#610">BTL_Arts_En#フルチャージ</a>
+          <br/><a href="BTL_Arts_En.html#732">BTL_Arts_En#バーンシャウト</a>
+          <br/><a href="BTL_Arts_En.html#760">BTL_Arts_En#祖の雄叫び</a>
+          <br/><a href="BTL_Arts_En.html#813">BTL_Arts_En#滅却・極意</a>
+          <br/><a href="BTL_Arts_En.html#955">BTL_Arts_En#支援機能駆動</a>
+          <br/><a href="BTL_Arts_En.html#1149">BTL_Arts_En#バイオレンスソウル</a>
+          <br/><a href="BTL_Arts_En.html#1378">BTL_Arts_En#天勁</a>
+          <br/><a href="BTL_Arts_En.html#1382">BTL_Arts_En#天勁</a>
+        </details>
+      </td>
+      <td>&lt;142E6BF5&gt;</td>
+      <td>覚醒</td>
+      <td>133</td>
+      <td>攻撃、防御、リキャストが強化</td>
+      <td>0</td>
+      <td>0</td>
+      <td>75</td>
+      <td>25</td>
+      <td>50</td>
+      <td>600</td>
+      <td>200</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>6</td>
+      <td></td>
+      <td>17</td>
+      <td>EFP_SYS_000</td>
+      <td>0</td>
+      <td>buff_effect</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>17</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="14">
+      <td class="side">14</td>
+      <td>
+        <details>
+          <summary>14 refs</summary>
+               <a href="BTL_Arts_En.html#181">BTL_Arts_En#シェルガード</a>
+          <br/><a href="BTL_Arts_En.html#416">BTL_Arts_En#プロテクションシフト</a>
+          <br/><a href="BTL_Arts_En.html#451">BTL_Arts_En#リジッドボディ</a>
+          <br/><a href="BTL_Arts_En.html#498">BTL_Arts_En#ガードポジション</a>
+          <br/><a href="BTL_Arts_En.html#504">BTL_Arts_En#ガードポジション</a>
+          <br/><a href="BTL_Arts_En.html#526">BTL_Arts_En#防護の構え</a>
+          <br/><a href="BTL_Arts_En.html#532">BTL_Arts_En#防護の構え</a>
+          <br/><a href="BTL_Arts_En.html#570">BTL_Arts_En#アイアンクラッド</a>
+          <br/><a href="BTL_Arts_En.html#575">BTL_Arts_En#ハイパフォーマンス</a>
+          <br/><a href="BTL_Arts_En.html#917">BTL_Arts_En#ヒールライト</a>
+          <br/><a href="BTL_Arts_En.html#921">BTL_Arts_En#ヒールライト</a>
+          <br/><a href="BTL_Arts_En.html#1363">BTL_Arts_En#ハイパーリロード</a>
+          <br/><a href="BTL_Arts_PC.html#550">BTL_Arts_PC#バタフライパウダー</a>
+          <br/><a href="BTL_SetUp.html#5">BTL_SetUp#防御アップ</a>
+        </details>
+      </td>
+      <td>&lt;1B2724D8&gt;</td>
+      <td>防御アップ</td>
+      <td>133</td>
+      <td>被ダメージがダウン</td>
+      <td>0</td>
+      <td>0</td>
+      <td>15</td>
+      <td>0</td>
+      <td>0</td>
+      <td>600</td>
+      <td>200</td>
+      <td>0</td>
+      <td>0</td>
+      <td>11</td>
+      <td>59</td>
+      <td>0</td>
+      <td></td>
+      <td>17</td>
+      <td>EFP_SYS_000</td>
+      <td>0</td>
+      <td>buff_effect</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>18</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="15">
+      <td class="side">15</td>
+      <td>
+        <details>
+          <summary>4 refs</summary>
+               <a href="BTL_Arts_En.html#223">BTL_Arts_En#ピョンピョン</a>
+          <br/><a href="BTL_Arts_En.html#227">BTL_Arts_En#ピョンピョン</a>
+          <br/><a href="BTL_Arts_En.html#1323">BTL_Arts_En#朧影</a>
+          <br/><a href="BTL_SetUp.html#7">BTL_SetUp#身代わり</a>
+        </details>
+      </td>
+      <td>&lt;A8F329DB&gt;</td>
+      <td>身代わり</td>
+      <td>133</td>
+      <td>敵の攻撃を一定回数回避</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>600</td>
+      <td>200</td>
+      <td>0</td>
+      <td>0</td>
+      <td>12</td>
+      <td>72</td>
+      <td>0</td>
+      <td></td>
+      <td>17</td>
+      <td>EFP_SYS_000</td>
+      <td>0</td>
+      <td>buff_effect</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>8</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="16">
+      <td class="side">16</td>
+      <td>
+        <details>
+          <summary>5 refs</summary>
+               <a href="BTL_Arts_En.html#1227">BTL_Arts_En#1227</a>
+          <br/><a href="BTL_Arts_En.html#1360">BTL_Arts_En#キュアバレット</a>
+          <br/><a href="BTL_Arts_PC.html#266">BTL_Arts_PC#キュアバレット</a>
+          <br/><a href="BTL_Arts_PC.html#271">BTL_Arts_PC#キュアバレット</a>
+          <br/><a href="BTL_Arts_PC.html#272">BTL_Arts_PC#キュアバレット</a>
+        </details>
+      </td>
+      <td>&lt;36EE70F0&gt;</td>
+      <td>デバフバリア</td>
+      <td>133</td>
+      <td>敵からのデバフを一定回数無効化</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>600</td>
+      <td>200</td>
+      <td>0</td>
+      <td>0</td>
+      <td>13</td>
+      <td>71</td>
+      <td>0</td>
+      <td></td>
+      <td>17</td>
+      <td>EFP_SYS_000</td>
+      <td>0</td>
+      <td>buff_effect</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="17">
+      <td class="side">17</td>
+      <td>
+        <details>
+          <summary>14 refs</summary>
+               <a href="BTL_Arts_En.html#267">BTL_Arts_En#キングスグローリー</a>
+          <br/><a href="BTL_Arts_En.html#407">BTL_Arts_En#サポートバレット</a>
+          <br/><a href="BTL_Arts_En.html#408">BTL_Arts_En#サポートバレット</a>
+          <br/><a href="BTL_Arts_En.html#539">BTL_Arts_En#強化弾</a>
+          <br/><a href="BTL_Arts_En.html#540">BTL_Arts_En#強化弾</a>
+          <br/><a href="BTL_Arts_En.html#547">BTL_Arts_En#強化弾</a>
+          <br/><a href="BTL_Arts_En.html#1029">BTL_Arts_En#デュエルシャウト</a>
+          <br/><a href="BTL_Arts_En.html#1037">BTL_Arts_En#デュエルシャウト</a>
+          <br/><a href="BTL_Arts_En.html#1200">BTL_Arts_En#1200</a>
+          <br/><a href="BTL_Arts_En.html#1347">BTL_Arts_En#虚蝉</a>
+          <br/><a href="BTL_Arts_En.html#1356">BTL_Arts_En#怒髪衝天</a>
+          <br/><a href="BTL_Arts_PC.html#201">BTL_Arts_PC#怒髪衝天</a>
+          <br/><a href="BTL_Arts_PC.html#577">BTL_Arts_PC#ソウコウゲキ</a>
+          <br/><a href="BTL_SetUp.html#6">BTL_SetUp#リキャストアップ</a>
+        </details>
+      </td>
+      <td>&lt;A66E1D37&gt;</td>
+      <td>リキャストアップ</td>
+      <td>133</td>
+      <td>リキャストの増加量がアップ</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>0</td>
+      <td>0</td>
+      <td>600</td>
+      <td>200</td>
+      <td>0</td>
+      <td>0</td>
+      <td>9</td>
+      <td>59</td>
+      <td>0</td>
+      <td></td>
+      <td>17</td>
+      <td>EFP_SYS_000</td>
+      <td>0</td>
+      <td>buff_effect</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>19</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="18">
+      <td class="side">18</td>
+      <td>
+        <details>
+          <summary>11 refs</summary>
+               <a href="BTL_Arts_En.html#500">BTL_Arts_En#エナジーシールド</a>
+          <br/><a href="BTL_Arts_En.html#506">BTL_Arts_En#エナジーシールド</a>
+          <br/><a href="BTL_Arts_En.html#528">BTL_Arts_En#不動の決意</a>
+          <br/><a href="BTL_Arts_En.html#534">BTL_Arts_En#不動の決意</a>
+          <br/><a href="BTL_Arts_En.html#572">BTL_Arts_En#リカバリーシールド</a>
+          <br/><a href="BTL_Arts_En.html#633">BTL_Arts_En#エーテルシールド</a>
+          <br/><a href="BTL_Arts_En.html#634">BTL_Arts_En#エーテルシールド</a>
+          <br/><a href="BTL_Arts_En.html#635">BTL_Arts_En#エーテルシールド</a>
+          <br/><a href="BTL_Arts_En.html#1030">BTL_Arts_En#リフレクトシェル</a>
+          <br/><a href="BTL_Arts_En.html#1375">BTL_Arts_En#冥加</a>
+          <br/><a href="BTL_Arts_En.html#1383">BTL_Arts_En#冥加</a>
+        </details>
+      </td>
+      <td>&lt;3620A1DC&gt;</td>
+      <td>ダメージアーマー</td>
+      <td>133</td>
+      <td>ダメージを一定値吸収</td>
+      <td>0</td>
+      <td>0</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>66</td>
+      <td>0</td>
+      <td></td>
+      <td>17</td>
+      <td>EFP_SYS_000</td>
+      <td>0</td>
+      <td>buff_effect</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>7</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="19">
+      <td class="side">19</td>
+      <td>
+        <details>
+          <summary>2 refs</summary>
+               <a href="BTL_Arts_En.html#426">BTL_Arts_En#クリティカルアヴェンジ</a>
+          <br/><a href="BTL_Arts_En.html#427">BTL_Arts_En#クリティカルアヴェンジ</a>
+        </details>
+      </td>
+      <td>&lt;836729A4&gt;</td>
+      <td>無敵</td>
+      <td>133</td>
+      <td>敵からの攻撃を無効化</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>59</td>
+      <td>0</td>
+      <td></td>
+      <td>17</td>
+      <td>EFP_SYS_000</td>
+      <td>0</td>
+      <td>buff_effect</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>16</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="20">
+      <td class="side">20</td>
+      <td></td>
+      <td>&lt;5A2E5DA4&gt;</td>
+      <td>18</td>
+      <td>133</td>
+      <td>メビウスの精気があらゆる攻撃を無効化</td>
+      <td>0</td>
+      <td>0</td>
+      <td>100</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td>17</td>
+      <td>EFP_SYS_000</td>
+      <td>0</td>
+      <td>buff_effect</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="21">
+      <td class="side">21</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_SetUp.html#8">BTL_SetUp#回避アップ</a>
+        </details>
+      </td>
+      <td>&lt;2A7456C0&gt;</td>
+      <td>回避アップ</td>
+      <td>133</td>
+      <td>回避率がアップ</td>
+      <td>0</td>
+      <td>0</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>600</td>
+      <td>200</td>
+      <td>0</td>
+      <td>0</td>
+      <td>12</td>
+      <td>59</td>
+      <td>0</td>
+      <td></td>
+      <td>17</td>
+      <td>EFP_SYS_000</td>
+      <td>0</td>
+      <td>buff_effect</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>21</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="22">
+      <td class="side">22</td>
+      <td>
+        <details>
+          <summary>13 refs</summary>
+               <a href="BTL_Arts_En.html#106">BTL_Arts_En#スネークアイズ</a>
+          <br/><a href="BTL_Arts_En.html#107">BTL_Arts_En#スネークアイズ</a>
+          <br/><a href="BTL_Arts_En.html#1031">BTL_Arts_En#アグリアスナックル</a>
+          <br/><a href="BTL_Arts_En.html#1034">BTL_Arts_En#アグリアスナックル</a>
+          <br/><a href="BTL_Arts_En.html#1185">BTL_Arts_En#1185</a>
+          <br/><a href="BTL_Arts_En.html#1228">BTL_Arts_En#1228</a>
+          <br/><a href="BTL_Arts_En.html#1361">BTL_Arts_En#サプライズビート</a>
+          <br/><a href="BTL_Arts_PC.html#172">BTL_Arts_PC#不知火</a>
+          <br/><a href="BTL_Arts_PC.html#173">BTL_Arts_PC#不知火</a>
+          <br/><a href="BTL_Arts_PC.html#267">BTL_Arts_PC#サプライズビート</a>
+          <br/><a href="BTL_Arts_PC.html#475">BTL_Arts_PC#ドラゴンテイル</a>
+          <br/><a href="BTL_Arts_PC.html#572">BTL_Arts_PC#アクアボール</a>
+          <br/><a href="BTL_SetUp.html#9">BTL_SetUp#攻撃ダウン</a>
+        </details>
+      </td>
+      <td>&lt;4D3723CB&gt;</td>
+      <td>攻撃ダウン</td>
+      <td>133</td>
+      <td>与ダメージがダウン</td>
+      <td>1</td>
+      <td>0</td>
+      <td>25</td>
+      <td>0</td>
+      <td>0</td>
+      <td>450</td>
+      <td>200</td>
+      <td>75</td>
+      <td>0</td>
+      <td>12</td>
+      <td>60</td>
+      <td>0</td>
+      <td></td>
+      <td>19</td>
+      <td>EFP_SYS_010</td>
+      <td>0</td>
+      <td>debuff_effect</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>22</td>
+      <td>0</td>
+      <td>75</td>
+    </tr>
+    <tr id="23">
+      <td class="side">23</td>
+      <td>
+        <details>
+          <summary>26 refs</summary>
+               <a href="BTL_Arts_En.html#66">BTL_Arts_En#ガストリックジューシー</a>
+          <br/><a href="BTL_Arts_En.html#290">BTL_Arts_En#クラッシュバイト</a>
+          <br/><a href="BTL_Arts_En.html#725">BTL_Arts_En#クラッシュバイト</a>
+          <br/><a href="BTL_Arts_En.html#726">BTL_Arts_En#クラッシュバイト</a>
+          <br/><a href="BTL_Arts_En.html#727">BTL_Arts_En#クラッシュバイト</a>
+          <br/><a href="BTL_Arts_En.html#728">BTL_Arts_En#クラッシュバイト</a>
+          <br/><a href="BTL_Arts_En.html#770">BTL_Arts_En#煌星扇</a>
+          <br/><a href="BTL_Arts_En.html#771">BTL_Arts_En#煌星扇</a>
+          <br/><a href="BTL_Arts_En.html#777">BTL_Arts_En#案山子崩</a>
+          <br/><a href="BTL_Arts_En.html#786">BTL_Arts_En#案山子崩</a>
+          <br/><a href="BTL_Arts_En.html#789">BTL_Arts_En#案山子崩</a>
+          <br/><a href="BTL_Arts_En.html#794">BTL_Arts_En#案山子崩</a>
+          <br/><a href="BTL_Arts_En.html#804">BTL_Arts_En#案山子崩</a>
+          <br/><a href="BTL_Arts_En.html#810">BTL_Arts_En#案山子崩</a>
+          <br/><a href="BTL_Arts_En.html#925">BTL_Arts_En#アナライズアイ</a>
+          <br/><a href="BTL_Arts_En.html#1115">BTL_Arts_En#デススクリーム</a>
+          <br/><a href="BTL_Arts_En.html#1124">BTL_Arts_En#ウィークネス</a>
+          <br/><a href="BTL_Arts_En.html#1135">BTL_Arts_En#トキシックバレット</a>
+          <br/><a href="BTL_Arts_En.html#1180">BTL_Arts_En#1180</a>
+          <br/><a href="BTL_Arts_PC.html#159">BTL_Arts_PC#無相刃</a>
+          <br/><a href="BTL_Arts_PC.html#164">BTL_Arts_PC#無相刃</a>
+          <br/><a href="BTL_Arts_PC.html#165">BTL_Arts_PC#無相刃</a>
+          <br/><a href="BTL_Arts_PC.html#523">BTL_Arts_PC#ヘルバウンド</a>
+          <br/><a href="BTL_Arts_PC.html#566">BTL_Arts_PC#ダブルスラップ</a>
+          <br/><a href="BTL_Arts_PC.html#601">BTL_Arts_PC#エリミネイトビーム</a>
+          <br/><a href="BTL_SetUp.html#10">BTL_SetUp#物理防御ダウン</a>
+        </details>
+      </td>
+      <td>&lt;244AC00D&gt;</td>
+      <td>物理防御ダウン</td>
+      <td>133</td>
+      <td>物理防御がダウン</td>
+      <td>1</td>
+      <td>0</td>
+      <td>25</td>
+      <td>0</td>
+      <td>0</td>
+      <td>450</td>
+      <td>200</td>
+      <td>75</td>
+      <td>0</td>
+      <td>9</td>
+      <td>60</td>
+      <td>0</td>
+      <td></td>
+      <td>19</td>
+      <td>EFP_SYS_010</td>
+      <td>0</td>
+      <td>debuff_effect</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>23</td>
+      <td>0</td>
+      <td>75</td>
+    </tr>
+    <tr id="24">
+      <td class="side">24</td>
+      <td>
+        <details>
+          <summary>15 refs</summary>
+               <a href="BTL_Arts_En.html#149">BTL_Arts_En#クライサウンド</a>
+          <br/><a href="BTL_Arts_En.html#174">BTL_Arts_En#バルーンガス</a>
+          <br/><a href="BTL_Arts_En.html#175">BTL_Arts_En#バルーンガス</a>
+          <br/><a href="BTL_Arts_En.html#178">BTL_Arts_En#オーシャンバブル</a>
+          <br/><a href="BTL_Arts_En.html#304">BTL_Arts_En#ブルータルキャノン</a>
+          <br/><a href="BTL_Arts_En.html#305">BTL_Arts_En#ブルータルキャノン</a>
+          <br/><a href="BTL_Arts_En.html#636">BTL_Arts_En#ボディキャノン</a>
+          <br/><a href="BTL_Arts_En.html#740">BTL_Arts_En#オーシャンヘイロー</a>
+          <br/><a href="BTL_Arts_En.html#748">BTL_Arts_En#オーシャンヘイロー</a>
+          <br/><a href="BTL_Arts_En.html#949">BTL_Arts_En#レクイエムレイン</a>
+          <br/><a href="BTL_Arts_En.html#1320">BTL_Arts_En#逆浪</a>
+          <br/><a href="BTL_Arts_PC.html#62">BTL_Arts_PC#逆浪</a>
+          <br/><a href="BTL_Arts_PC.html#67">BTL_Arts_PC#逆浪</a>
+          <br/><a href="BTL_Arts_PC.html#587">BTL_Arts_PC#ガトリングビーク</a>
+          <br/><a href="BTL_SetUp.html#11">BTL_SetUp#エーテル防御ダウン</a>
+        </details>
+      </td>
+      <td>&lt;C1011E12&gt;</td>
+      <td>エーテル防御ダウン</td>
+      <td>133</td>
+      <td>エーテル防御がダウン</td>
+      <td>1</td>
+      <td>1</td>
+      <td>25</td>
+      <td>0</td>
+      <td>0</td>
+      <td>450</td>
+      <td>200</td>
+      <td>75</td>
+      <td>0</td>
+      <td>10</td>
+      <td>60</td>
+      <td>0</td>
+      <td></td>
+      <td>19</td>
+      <td>EFP_SYS_010</td>
+      <td>0</td>
+      <td>debuff_effect</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>24</td>
+      <td>0</td>
+      <td>75</td>
+    </tr>
+    <tr id="25">
+      <td class="side">25</td>
+      <td>
+        <details>
+          <summary>5 refs</summary>
+               <a href="BTL_Arts_En.html#42">BTL_Arts_En#ストームブレス</a>
+          <br/><a href="BTL_Arts_En.html#749">BTL_Arts_En#オーシャンヘイロー</a>
+          <br/><a href="BTL_Arts_En.html#833">BTL_Arts_En#蛮行への諫言</a>
+          <br/><a href="BTL_Arts_En.html#1084">BTL_Arts_En#パイルメーザー</a>
+          <br/><a href="BTL_Arts_PC.html#598">BTL_Arts_PC#ヒドラガス</a>
+        </details>
+      </td>
+      <td>&lt;850576A9&gt;</td>
+      <td>レジストダウン</td>
+      <td>133</td>
+      <td>デバフに対する抵抗率がダウン</td>
+      <td>1</td>
+      <td>1</td>
+      <td>25</td>
+      <td>0</td>
+      <td>0</td>
+      <td>450</td>
+      <td>200</td>
+      <td>75</td>
+      <td>0</td>
+      <td>13</td>
+      <td>60</td>
+      <td>0</td>
+      <td></td>
+      <td>19</td>
+      <td>EFP_SYS_010</td>
+      <td>0</td>
+      <td>debuff_effect</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>26</td>
+      <td>0</td>
+      <td>60</td>
+    </tr>
+    <tr id="26">
+      <td class="side">26</td>
+      <td>
+        <details>
+          <summary>9 refs</summary>
+               <a href="BTL_Arts_En.html#367">BTL_Arts_En#サイミンランタン</a>
+          <br/><a href="BTL_Arts_En.html#375">BTL_Arts_En#催眠術</a>
+          <br/><a href="BTL_Arts_En.html#860">BTL_Arts_En#セイレーン・ラブ</a>
+          <br/><a href="BTL_Arts_En.html#1127">BTL_Arts_En#スリープショット</a>
+          <br/><a href="BTL_Arts_En.html#1139">BTL_Arts_En#ポイゾナススパークル</a>
+          <br/><a href="BTL_Arts_En.html#1324">BTL_Arts_En#闇纏い</a>
+          <br/><a href="BTL_Arts_PC.html#65">BTL_Arts_PC#闇纏い</a>
+          <br/><a href="BTL_Arts_PC.html#71">BTL_Arts_PC#闇纏い</a>
+          <br/><a href="BTL_Arts_PC.html#72">BTL_Arts_PC#闇纏い</a>
+        </details>
+      </td>
+      <td>&lt;FFAE2E7B&gt;</td>
+      <td>スリープ</td>
+      <td>133</td>
+      <td>行動不能となる。被ダメージで解除</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>600</td>
+      <td>150</td>
+      <td>60</td>
+      <td>0</td>
+      <td>8</td>
+      <td>0</td>
+      <td>2</td>
+      <td></td>
+      <td>20</td>
+      <td>EFP_SYS_010</td>
+      <td>1</td>
+      <td>debuff_effect</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>1</td>
+      <td>0</td>
+      <td>28</td>
+      <td>1</td>
+      <td>40</td>
+    </tr>
+    <tr id="27">
+      <td class="side">27</td>
+      <td>
+        <details>
+          <summary>6 refs</summary>
+               <a href="BTL_Arts_En.html#649">BTL_Arts_En#サイコウェーブ</a>
+          <br/><a href="BTL_Arts_En.html#743">BTL_Arts_En#ロードオブオーシャン</a>
+          <br/><a href="BTL_Arts_En.html#755">BTL_Arts_En#ロードオブオーシャン</a>
+          <br/><a href="BTL_Arts_En.html#756">BTL_Arts_En#ロードオブオーシャン</a>
+          <br/><a href="BTL_Arts_En.html#941">BTL_Arts_En#マインドブラスト</a>
+          <br/><a href="BTL_Arts_En.html#942">BTL_Arts_En#マインドブラスト</a>
+        </details>
+      </td>
+      <td>&lt;BB160148&gt;</td>
+      <td>アーツ封鎖</td>
+      <td>133</td>
+      <td>アーツが使用できなくなる</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>450</td>
+      <td>200</td>
+      <td>75</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>3</td>
+      <td></td>
+      <td>21</td>
+      <td>EFP_SYS_010</td>
+      <td>0</td>
+      <td>debuff_effect</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>29</td>
+      <td>0</td>
+      <td>75</td>
+    </tr>
+    <tr id="28">
+      <td class="side">28</td>
+      <td>
+        <details>
+          <summary>14 refs</summary>
+               <a href="BTL_Arts_En.html#43">BTL_Arts_En#アイスブレス</a>
+          <br/><a href="BTL_Arts_En.html#68">BTL_Arts_En#フルーツジューシー</a>
+          <br/><a href="BTL_Arts_En.html#130">BTL_Arts_En#バトルフェロモン</a>
+          <br/><a href="BTL_Arts_En.html#164">BTL_Arts_En#バタフライパウダー</a>
+          <br/><a href="BTL_Arts_En.html#170">BTL_Arts_En#テリブルブレス</a>
+          <br/><a href="BTL_Arts_En.html#297">BTL_Arts_En#クランチショック</a>
+          <br/><a href="BTL_Arts_En.html#746">BTL_Arts_En#アクアインパルス</a>
+          <br/><a href="BTL_Arts_En.html#747">BTL_Arts_En#アクアインパルス</a>
+          <br/><a href="BTL_Arts_En.html#877">BTL_Arts_En#オーバー・ザ・デス</a>
+          <br/><a href="BTL_Arts_En.html#897">BTL_Arts_En#オーバー・ザ・デス</a>
+          <br/><a href="BTL_Arts_En.html#909">BTL_Arts_En#オーバー・ザ・デス</a>
+          <br/><a href="BTL_Arts_En.html#910">BTL_Arts_En#オーバー・ザ・デス</a>
+          <br/><a href="BTL_Arts_En.html#1089">BTL_Arts_En#カースダンシング</a>
+          <br/><a href="BTL_Arts_En.html#1138">BTL_Arts_En#ミザリーバースト</a>
+        </details>
+      </td>
+      <td>&lt;88A3046C&gt;</td>
+      <td>回復封鎖</td>
+      <td>133</td>
+      <td>HPが回復しなくなる</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>450</td>
+      <td>200</td>
+      <td>75</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>5</td>
+      <td></td>
+      <td>19</td>
+      <td>EFP_SYS_010</td>
+      <td>0</td>
+      <td>debuff_effect</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>30</td>
+      <td>1</td>
+      <td>75</td>
+    </tr>
+    <tr id="29">
+      <td class="side">29</td>
+      <td>
+        <details>
+          <summary>22 refs</summary>
+               <a href="BTL_Arts_En.html#67">BTL_Arts_En#フルーツジューシー</a>
+          <br/><a href="BTL_Arts_En.html#344">BTL_Arts_En#キラープレス</a>
+          <br/><a href="BTL_Arts_En.html#424">BTL_Arts_En#アースバイド</a>
+          <br/><a href="BTL_Arts_En.html#648">BTL_Arts_En#スプレットレイン</a>
+          <br/><a href="BTL_Arts_En.html#712">BTL_Arts_En#ハイペリオンレイ</a>
+          <br/><a href="BTL_Arts_En.html#821">BTL_Arts_En#ドミニオンフラワー</a>
+          <br/><a href="BTL_Arts_En.html#1094">BTL_Arts_En#バインドサージ</a>
+          <br/><a href="BTL_Arts_En.html#1136">BTL_Arts_En#イービルパウダー</a>
+          <br/><a href="BTL_Arts_En.html#1144">BTL_Arts_En#フリジッドメイデン</a>
+          <br/><a href="BTL_Arts_En.html#1145">BTL_Arts_En#フリジッドメイデン</a>
+          <br/><a href="BTL_Arts_En.html#1182">BTL_Arts_En#1182</a>
+          <br/><a href="BTL_Arts_En.html#1209">BTL_Arts_En#1209</a>
+          <br/><a href="BTL_Arts_En.html#1244">BTL_Arts_En#1244</a>
+          <br/><a href="BTL_Arts_En.html#1377">BTL_Arts_En#烈閃</a>
+          <br/><a href="BTL_Arts_PC.html#161">BTL_Arts_PC#影月</a>
+          <br/><a href="BTL_Arts_PC.html#168">BTL_Arts_PC#地縛り</a>
+          <br/><a href="BTL_Arts_PC.html#169">BTL_Arts_PC#地縛り</a>
+          <br/><a href="BTL_Arts_PC.html#227">BTL_Arts_PC#サンダースティール</a>
+          <br/><a href="BTL_Arts_PC.html#228">BTL_Arts_PC#サンダースティール</a>
+          <br/><a href="BTL_Arts_PC.html#303">BTL_Arts_PC#烈閃</a>
+          <br/><a href="BTL_Arts_PC.html#308">BTL_Arts_PC#鋒穿</a>
+          <br/><a href="BTL_Arts_PC.html#559">BTL_Arts_PC#催眠術</a>
+        </details>
+      </td>
+      <td>&lt;9B735A02&gt;</td>
+      <td>バインド</td>
+      <td>133</td>
+      <td>行動不能となる</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>225</td>
+      <td>150</td>
+      <td>60</td>
+      <td>0</td>
+      <td>7</td>
+      <td>0</td>
+      <td>4</td>
+      <td></td>
+      <td>22</td>
+      <td>EFP_SYS_010</td>
+      <td>0</td>
+      <td>debuff_effect</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>1</td>
+      <td>0</td>
+      <td>31</td>
+      <td>0</td>
+      <td>40</td>
+    </tr>
+    <tr id="30">
+      <td class="side">30</td>
+      <td>
+        <details>
+          <summary>29 refs</summary>
+               <a href="BTL_Arts_En.html#37">BTL_Arts_En#タンクマーチ</a>
+          <br/><a href="BTL_Arts_En.html#264">BTL_Arts_En#キングスガス</a>
+          <br/><a href="BTL_Arts_En.html#280">BTL_Arts_En#ライノキャノン</a>
+          <br/><a href="BTL_Arts_En.html#281">BTL_Arts_En#ライノキャノン</a>
+          <br/><a href="BTL_Arts_En.html#420">BTL_Arts_En#タウントハウル</a>
+          <br/><a href="BTL_Arts_En.html#421">BTL_Arts_En#タウントハウル</a>
+          <br/><a href="BTL_Arts_En.html#490">BTL_Arts_En#プライドコール</a>
+          <br/><a href="BTL_Arts_En.html#491">BTL_Arts_En#プライドコール</a>
+          <br/><a href="BTL_Arts_En.html#492">BTL_Arts_En#プライドコール</a>
+          <br/><a href="BTL_Arts_En.html#493">BTL_Arts_En#プライドコール</a>
+          <br/><a href="BTL_Arts_En.html#494">BTL_Arts_En#プライドコール</a>
+          <br/><a href="BTL_Arts_En.html#501">BTL_Arts_En#プライドコール</a>
+          <br/><a href="BTL_Arts_En.html#519">BTL_Arts_En#挑発</a>
+          <br/><a href="BTL_Arts_En.html#520">BTL_Arts_En#挑発</a>
+          <br/><a href="BTL_Arts_En.html#521">BTL_Arts_En#挑発</a>
+          <br/><a href="BTL_Arts_En.html#522">BTL_Arts_En#挑発</a>
+          <br/><a href="BTL_Arts_En.html#529">BTL_Arts_En#挑発</a>
+          <br/><a href="BTL_Arts_En.html#565">BTL_Arts_En#ロックオン</a>
+          <br/><a href="BTL_Arts_En.html#566">BTL_Arts_En#ロックオン</a>
+          <br/><a href="BTL_Arts_En.html#567">BTL_Arts_En#ロックオン</a>
+          <br/><a href="BTL_Arts_En.html#1004">BTL_Arts_En#蒼炎烈槍</a>
+          <br/><a href="BTL_Arts_En.html#1012">BTL_Arts_En#輝炎激槍</a>
+          <br/><a href="BTL_Arts_En.html#1053">BTL_Arts_En#タウントシャウト</a>
+          <br/><a href="BTL_Arts_En.html#1317">BTL_Arts_En#グロウサークル</a>
+          <br/><a href="BTL_Arts_PC.html#29">BTL_Arts_PC#グロウサークル</a>
+          <br/><a href="BTL_Arts_PC.html#37">BTL_Arts_PC#グロウサークル</a>
+          <br/><a href="BTL_Arts_PC.html#448">BTL_Arts_PC#ナイトブレイカー</a>
+          <br/><a href="BTL_Arts_PC.html#484">BTL_Arts_PC#レイディアントリング</a>
+          <br/><a href="BTL_Arts_PC.html#556">BTL_Arts_PC#ドラゴンガス</a>
+        </details>
+      </td>
+      <td>&lt;73DF4C2E&gt;</td>
+      <td>ターゲットロック</td>
+      <td>133</td>
+      <td>ターゲットがデバフ実行者に固定される</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>300</td>
+      <td>150</td>
+      <td>100</td>
+      <td>0</td>
+      <td>4</td>
+      <td>60</td>
+      <td>0</td>
+      <td></td>
+      <td>19</td>
+      <td>EFP_SYS_010</td>
+      <td>0</td>
+      <td>debuff_effect</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>32</td>
+      <td>0</td>
+      <td>100</td>
+    </tr>
+    <tr id="31">
+      <td class="side">31</td>
+      <td>
+        <details>
+          <summary>4 refs</summary>
+               <a href="BTL_Arts_En.html#1171">BTL_Arts_En#1171</a>
+          <br/><a href="BTL_Arts_PC.html#151">BTL_Arts_PC#この刃はトクベツ製も</a>
+          <br/><a href="BTL_Arts_PC.html#153">BTL_Arts_PC#ブレイブソード</a>
+          <br/><a href="BTL_Arts_PC.html#154">BTL_Arts_PC#ブレイブソード</a>
+        </details>
+      </td>
+      <td>&lt;281B1440&gt;</td>
+      <td>ダメージリンク</td>
+      <td>133</td>
+      <td>被ダメージが一定範囲内の味方に連鎖する</td>
+      <td>1</td>
+      <td>1</td>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>450</td>
+      <td>200</td>
+      <td>100</td>
+      <td>0</td>
+      <td>6</td>
+      <td>70</td>
+      <td>0</td>
+      <td></td>
+      <td>19</td>
+      <td>EFP_SYS_010</td>
+      <td>0</td>
+      <td>debuff_effect</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>37</td>
+      <td>0</td>
+      <td>100</td>
+    </tr>
+    <tr id="32">
+      <td class="side">32</td>
+      <td>
+        <details>
+          <summary>16 refs</summary>
+               <a href="BTL_Arts_En.html#69">BTL_Arts_En#フルーツジューシー</a>
+          <br/><a href="BTL_Arts_En.html#116">BTL_Arts_En#スパイダーネット</a>
+          <br/><a href="BTL_Arts_En.html#117">BTL_Arts_En#スパイダーネット</a>
+          <br/><a href="BTL_Arts_En.html#219">BTL_Arts_En#スィートガス</a>
+          <br/><a href="BTL_Arts_En.html#296">BTL_Arts_En#クランチショック</a>
+          <br/><a href="BTL_Arts_En.html#298">BTL_Arts_En#クランチショック</a>
+          <br/><a href="BTL_Arts_En.html#333">BTL_Arts_En#バイオレーザー</a>
+          <br/><a href="BTL_Arts_En.html#745">BTL_Arts_En#アクアインパルス</a>
+          <br/><a href="BTL_Arts_En.html#951">BTL_Arts_En#光剣</a>
+          <br/><a href="BTL_Arts_En.html#952">BTL_Arts_En#光剣</a>
+          <br/><a href="BTL_Arts_En.html#1015">BTL_Arts_En#マイティボール</a>
+          <br/><a href="BTL_Arts_En.html#1169">BTL_Arts_En#1169</a>
+          <br/><a href="BTL_Arts_PC.html#137">BTL_Arts_PC#インドーを渡してやるも</a>
+          <br/><a href="BTL_Arts_PC.html#148">BTL_Arts_PC#エクステンドスラッシュ</a>
+          <br/><a href="BTL_Arts_PC.html#513">BTL_Arts_PC#ギガンティックナックル</a>
+          <br/><a href="BTL_Arts_PC.html#574">BTL_Arts_PC#アサルトクラブ</a>
+        </details>
+      </td>
+      <td>&lt;1607C442&gt;</td>
+      <td>ガード封鎖</td>
+      <td>133</td>
+      <td>ガード不能となる</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>450</td>
+      <td>200</td>
+      <td>75</td>
+      <td>0</td>
+      <td>5</td>
+      <td>69</td>
+      <td>0</td>
+      <td></td>
+      <td>19</td>
+      <td>EFP_SYS_010</td>
+      <td>0</td>
+      <td>debuff_effect</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>1</td>
+      <td>0</td>
+      <td>27</td>
+      <td>0</td>
+      <td>75</td>
+    </tr>
+    <tr id="33">
+      <td class="side">33</td>
+      <td>
+        <details>
+          <summary>23 refs</summary>
+               <a href="BTL_Arts_En.html#27">BTL_Arts_En#ビーストハウリング</a>
+          <br/><a href="BTL_Arts_En.html#75">BTL_Arts_En#ホッピングホーン</a>
+          <br/><a href="BTL_Arts_En.html#77">BTL_Arts_En#ダイブホーン</a>
+          <br/><a href="BTL_Arts_En.html#176">BTL_Arts_En#バルーンガス</a>
+          <br/><a href="BTL_Arts_En.html#321">BTL_Arts_En#アクアバレット</a>
+          <br/><a href="BTL_Arts_En.html#342">BTL_Arts_En#エリミネイトビーム</a>
+          <br/><a href="BTL_Arts_En.html#350">BTL_Arts_En#ボイドランチャー</a>
+          <br/><a href="BTL_Arts_En.html#481">BTL_Arts_En#ウィークブラスター</a>
+          <br/><a href="BTL_Arts_En.html#615">BTL_Arts_En#イレイザーバスター</a>
+          <br/><a href="BTL_Arts_En.html#711">BTL_Arts_En#ハイペリオンレイ</a>
+          <br/><a href="BTL_Arts_En.html#972">BTL_Arts_En#グラビティカタストロフ</a>
+          <br/><a href="BTL_Arts_En.html#979">BTL_Arts_En#グラビティカタストロフ</a>
+          <br/><a href="BTL_Arts_En.html#980">BTL_Arts_En#グラビティカタストロフ</a>
+          <br/><a href="BTL_Arts_En.html#1033">BTL_Arts_En#カラミティチャージ</a>
+          <br/><a href="BTL_Arts_En.html#1036">BTL_Arts_En#カラミティチャージ</a>
+          <br/><a href="BTL_Arts_En.html#1095">BTL_Arts_En#ジャミングミスト</a>
+          <br/><a href="BTL_Arts_En.html#1168">BTL_Arts_En#1168</a>
+          <br/><a href="BTL_Arts_PC.html#47">BTL_Arts_PC#エーテルキャノン</a>
+          <br/><a href="BTL_Arts_PC.html#53">BTL_Arts_PC#エーテルキャノン</a>
+          <br/><a href="BTL_Arts_PC.html#136">BTL_Arts_PC#わくわくクッキング</a>
+          <br/><a href="BTL_Arts_PC.html#462">BTL_Arts_PC#ナイトブレイカー</a>
+          <br/><a href="BTL_Arts_PC.html#497">BTL_Arts_PC#ラプターレイド</a>
+          <br/><a href="BTL_Arts_PC.html#554">BTL_Arts_PC#ウォータジェット</a>
+        </details>
+      </td>
+      <td>&lt;D695097E&gt;</td>
+      <td>命中ダウン</td>
+      <td>133</td>
+      <td>命中率がダウン</td>
+      <td>1</td>
+      <td>0</td>
+      <td>25</td>
+      <td>0</td>
+      <td>0</td>
+      <td>450</td>
+      <td>200</td>
+      <td>75</td>
+      <td>0</td>
+      <td>14</td>
+      <td>60</td>
+      <td>0</td>
+      <td></td>
+      <td>19</td>
+      <td>EFP_SYS_010</td>
+      <td>0</td>
+      <td>debuff_effect</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>25</td>
+      <td>0</td>
+      <td>75</td>
+    </tr>
+    <tr id="34">
+      <td class="side">34</td>
+      <td>
+        <details>
+          <summary>20 refs</summary>
+               <a href="BTL_Arts_En.html#86">BTL_Arts_En#アクアボール</a>
+          <br/><a href="BTL_Arts_En.html#406">BTL_Arts_En#アシッドファイア</a>
+          <br/><a href="BTL_Arts_En.html#538">BTL_Arts_En#弱化弾</a>
+          <br/><a href="BTL_Arts_En.html#546">BTL_Arts_En#弱化弾</a>
+          <br/><a href="BTL_Arts_En.html#694">BTL_Arts_En#ストームブレス</a>
+          <br/><a href="BTL_Arts_En.html#695">BTL_Arts_En#ストームブレス</a>
+          <br/><a href="BTL_Arts_En.html#845">BTL_Arts_En#リゾルートショック</a>
+          <br/><a href="BTL_Arts_En.html#846">BTL_Arts_En#リゾルートショック</a>
+          <br/><a href="BTL_Arts_En.html#1032">BTL_Arts_En#ガイアシェイク</a>
+          <br/><a href="BTL_Arts_En.html#1035">BTL_Arts_En#ガイアシェイク</a>
+          <br/><a href="BTL_Arts_En.html#1307">BTL_Arts_En#1307</a>
+          <br/><a href="BTL_Arts_En.html#1325">BTL_Arts_En#荒鷲</a>
+          <br/><a href="BTL_Arts_En.html#1452">BTL_Arts_En#ショウダウン</a>
+          <br/><a href="BTL_Arts_PC.html#66">BTL_Arts_PC#荒鷲</a>
+          <br/><a href="BTL_Arts_PC.html#73">BTL_Arts_PC#荒鷲</a>
+          <br/><a href="BTL_Arts_PC.html#74">BTL_Arts_PC#荒鷲</a>
+          <br/><a href="BTL_Arts_PC.html#427">BTL_Arts_PC#ショウダウン</a>
+          <br/><a href="BTL_Arts_PC.html#434">BTL_Arts_PC#テンペスト</a>
+          <br/><a href="BTL_Arts_PC.html#435">BTL_Arts_PC#テンペスト</a>
+          <br/><a href="BTL_Arts_PC.html#557">BTL_Arts_PC#サイミンランタン</a>
+        </details>
+      </td>
+      <td>&lt;7ED9B8C8&gt;</td>
+      <td>回避ダウン</td>
+      <td>133</td>
+      <td>回避率がダウン</td>
+      <td>1</td>
+      <td>0</td>
+      <td>25</td>
+      <td>0</td>
+      <td>0</td>
+      <td>450</td>
+      <td>200</td>
+      <td>75</td>
+      <td>0</td>
+      <td>15</td>
+      <td>60</td>
+      <td>0</td>
+      <td></td>
+      <td>19</td>
+      <td>EFP_SYS_010</td>
+      <td>0</td>
+      <td>debuff_effect</td>
+      <td>1</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>38</td>
+      <td>0</td>
+      <td>75</td>
+    </tr>
+    <tr id="35">
+      <td class="side">35</td>
+      <td>
+        <details>
+          <summary>2 refs</summary>
+               <a href="BTL_SetUp.html#12">BTL_SetUp#リキャストダウン</a>
+          <br/><a href="BTL_SetUp.html#13">BTL_SetUp#[ML:space ]</a>
+        </details>
+      </td>
+      <td>&lt;12E16917&gt;</td>
+      <td>リキャストダウン</td>
+      <td>133</td>
+      <td>リキャスト増加量がダウン</td>
+      <td>1</td>
+      <td>1</td>
+      <td>25</td>
+      <td>0</td>
+      <td>0</td>
+      <td>450</td>
+      <td>200</td>
+      <td>75</td>
+      <td>0</td>
+      <td>11</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td>EFP_SYS_010</td>
+      <td>0</td>
+      <td>debuff_effect</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>39</td>
+      <td>0</td>
+      <td>75</td>
+    </tr>
+    <tr id="36">
+      <td class="side">36</td>
+      <td>
+        <details>
+          <summary>2 refs</summary>
+               <a href="BTL_Arts_En.html#387">BTL_Arts_En#グレネード発射</a>
+          <br/><a href="BTL_Arts_En.html#440">BTL_Arts_En#グレネード発射</a>
+        </details>
+      </td>
+      <td>&lt;91D32B03&gt;</td>
+      <td>リキャストダウン</td>
+      <td>133</td>
+      <td>リキャスト増加量がダウン</td>
+      <td>1</td>
+      <td>1</td>
+      <td>25</td>
+      <td>0</td>
+      <td>0</td>
+      <td>450</td>
+      <td>150</td>
+      <td>60</td>
+      <td>0</td>
+      <td>11</td>
+      <td>60</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td>EFP_SYS_010</td>
+      <td>0</td>
+      <td>debuff_effect</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>39</td>
+      <td>0</td>
+      <td>75</td>
+    </tr>
+    <tr id="37">
+      <td class="side">37</td>
+      <td>
+        <details>
+          <summary>2 refs</summary>
+               <a href="BTL_Arts_En.html#819">BTL_Arts_En#エクリプスソウル</a>
+          <br/><a href="BTL_Arts_En.html#820">BTL_Arts_En#エクリプスソウル</a>
+        </details>
+      </td>
+      <td>&lt;9DC73B06&gt;</td>
+      <td>エクリプスソウル</td>
+      <td>133</td>
+      <td>意識を奪われて味方を攻撃するようになる</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>200</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>9</td>
+      <td></td>
+      <td>0</td>
+      <td>EFP_SYS_010</td>
+      <td>0</td>
+      <td>debuff_effect</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>40</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="38">
+      <td class="side">38</td>
+      <td>
+        <details>
+          <summary>4 refs</summary>
+               <a href="BTL_Arts_En.html#1108">BTL_Arts_En#ステイシスオーダー</a>
+          <br/><a href="BTL_Arts_En.html#1109">BTL_Arts_En#ステイシスオーダー</a>
+          <br/><a href="BTL_Arts_En.html#1110">BTL_Arts_En#ステイシスオーダー</a>
+          <br/><a href="BTL_Arts_En.html#1111">BTL_Arts_En#ステイシスオーダー</a>
+        </details>
+      </td>
+      <td>&lt;A880E45C&gt;</td>
+      <td>メビウスの枷</td>
+      <td>133</td>
+      <td>一切の動きが取れなくなる</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>450</td>
+      <td>200</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>11</td>
+      <td></td>
+      <td>0</td>
+      <td>EFP_SYS_010</td>
+      <td>0</td>
+      <td>debuff_effect</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>46</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="39">
+      <td class="side">39</td>
+      <td>
+        <details>
+          <summary>4 refs</summary>
+               <a href="BTL_Arts_En.html#1046">BTL_Arts_En#メビウスドミニオン・盾</a>
+          <br/><a href="BTL_Arts_En.html#1066">BTL_Arts_En#メビウスドミニオン・盾</a>
+          <br/><a href="BTL_Arts_En.html#1093">BTL_Arts_En#メビウスドミニオン・盾</a>
+          <br/><a href="BTL_Arts_En.html#1134">BTL_Arts_En#メビウスドミニオン・盾</a>
+        </details>
+      </td>
+      <td>&lt;F8E00A28&gt;</td>
+      <td>盾の拘束</td>
+      <td>133</td>
+      <td>ディフェンダーが行動不能となる</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>600</td>
+      <td>100</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>10</td>
+      <td></td>
+      <td>0</td>
+      <td>EFP_SYS_010</td>
+      <td>0</td>
+      <td>debuff_effect</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>41</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="40">
+      <td class="side">40</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_Arts_En.html#1143">BTL_Arts_En#メビウスドミニオン・剣</a>
+        </details>
+      </td>
+      <td>&lt;45B37337&gt;</td>
+      <td>剣の拘束</td>
+      <td>133</td>
+      <td>アタッカーが行動不能となる</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>600</td>
+      <td>100</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>10</td>
+      <td></td>
+      <td>0</td>
+      <td>EFP_SYS_010</td>
+      <td>0</td>
+      <td>debuff_effect</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>42</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="41">
+      <td class="side">41</td>
+      <td>
+        <details>
+          <summary>2 refs</summary>
+               <a href="BTL_Arts_En.html#1021">BTL_Arts_En#メビウスドミニオン・癒</a>
+          <br/><a href="BTL_Arts_En.html#1083">BTL_Arts_En#メビウスドミニオン・癒</a>
+        </details>
+      </td>
+      <td>&lt;FAA00581&gt;</td>
+      <td>癒の拘束</td>
+      <td>133</td>
+      <td>ヒーラーが行動不能となる</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>600</td>
+      <td>100</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>10</td>
+      <td></td>
+      <td>0</td>
+      <td>EFP_SYS_010</td>
+      <td>0</td>
+      <td>debuff_effect</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>43</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="42">
+      <td class="side">42</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_Arts_En.html#835">BTL_Arts_En#835</a>
+        </details>
+      </td>
+      <td>&lt;CB6B41E1&gt;</td>
+      <td>インタリンク封印</td>
+      <td>133</td>
+      <td>メビウスの力でインタリンクできなくなる</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>100</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>8</td>
+      <td></td>
+      <td>0</td>
+      <td>EFP_SYS_010</td>
+      <td>0</td>
+      <td>debuff_effect</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>44</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="43">
+      <td class="side">43</td>
+      <td></td>
+      <td>&lt;C4EB30B6&gt;</td>
+      <td>火時計不足　攻撃ダウン</td>
+      <td>133</td>
+      <td>与ダメージがダウン</td>
+      <td>1</td>
+      <td>1</td>
+      <td>25</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>100</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>60</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td>EFP_SYS_010</td>
+      <td>0</td>
+      <td>debuff_effect</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>45</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="44">
+      <td class="side">44</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_Arts_PC.html#481">BTL_Arts_PC#オリジンブレイド</a>
+        </details>
+      </td>
+      <td>&lt;AB026CC0&gt;</td>
+      <td>全能力ダウン</td>
+      <td>133</td>
+      <td>与ダメージ・命中・回避・防御がダウン</td>
+      <td>1</td>
+      <td>1</td>
+      <td>30</td>
+      <td>50</td>
+      <td>30</td>
+      <td>1800</td>
+      <td>100</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>60</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td>EFP_SYS_010</td>
+      <td>0</td>
+      <td>debuff_effect</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>47</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="45">
+      <td class="side">45</td>
+      <td>
+        <details>
+          <summary>47 refs</summary>
+               <a href="BTL_Arts_En.html#20">BTL_Arts_En#ダイバーファング</a>
+          <br/><a href="BTL_Arts_En.html#115">BTL_Arts_En#ダイブバイト</a>
+          <br/><a href="BTL_Arts_En.html#121">BTL_Arts_En#クイーンバイト</a>
+          <br/><a href="BTL_Arts_En.html#123">BTL_Arts_En#クイーンアタック</a>
+          <br/><a href="BTL_Arts_En.html#235">BTL_Arts_En#ハンターノイチゲキ</a>
+          <br/><a href="BTL_Arts_En.html#236">BTL_Arts_En#ハンターノイチゲキ</a>
+          <br/><a href="BTL_Arts_En.html#343">BTL_Arts_En#キラープレス</a>
+          <br/><a href="BTL_Arts_En.html#453">BTL_Arts_En#キラースタブ</a>
+          <br/><a href="BTL_Arts_En.html#577">BTL_Arts_En#ハードスピア</a>
+          <br/><a href="BTL_Arts_En.html#588">BTL_Arts_En#ネックスライス</a>
+          <br/><a href="BTL_Arts_En.html#589">BTL_Arts_En#ネックスライス</a>
+          <br/><a href="BTL_Arts_En.html#729">BTL_Arts_En#テイルストライク</a>
+          <br/><a href="BTL_Arts_En.html#730">BTL_Arts_En#テイルストライク</a>
+          <br/><a href="BTL_Arts_En.html#775">BTL_Arts_En#紅月</a>
+          <br/><a href="BTL_Arts_En.html#779">BTL_Arts_En#鬼哭奏刃</a>
+          <br/><a href="BTL_Arts_En.html#782">BTL_Arts_En#久遠光陰</a>
+          <br/><a href="BTL_Arts_En.html#784">BTL_Arts_En#紅月</a>
+          <br/><a href="BTL_Arts_En.html#790">BTL_Arts_En#紅月</a>
+          <br/><a href="BTL_Arts_En.html#792">BTL_Arts_En#紅月</a>
+          <br/><a href="BTL_Arts_En.html#797">BTL_Arts_En#鬼哭奏刃</a>
+          <br/><a href="BTL_Arts_En.html#798">BTL_Arts_En#鬼哭奏刃・極意</a>
+          <br/><a href="BTL_Arts_En.html#801">BTL_Arts_En#久遠光陰</a>
+          <br/><a href="BTL_Arts_En.html#803">BTL_Arts_En#鬼哭奏刃・極意</a>
+          <br/><a href="BTL_Arts_En.html#807">BTL_Arts_En#紅月</a>
+          <br/><a href="BTL_Arts_En.html#814">BTL_Arts_En#久遠光陰</a>
+          <br/><a href="BTL_Arts_En.html#826">BTL_Arts_En#キラーピアシング</a>
+          <br/><a href="BTL_Arts_En.html#861">BTL_Arts_En#ネックハント</a>
+          <br/><a href="BTL_Arts_En.html#862">BTL_Arts_En#ネックハント</a>
+          <br/><a href="BTL_Arts_En.html#924">BTL_Arts_En#サプライズバルーン</a>
+          <br/><a href="BTL_Arts_En.html#963">BTL_Arts_En#インフィニットフィナーレ</a>
+          <br/><a href="BTL_Arts_En.html#990">BTL_Arts_En#アンハッピーバルーン</a>
+          <br/><a href="BTL_Arts_En.html#1049">BTL_Arts_En#グロリアスタイフーン</a>
+          <br/><a href="BTL_Arts_En.html#1106">BTL_Arts_En#ウェッジペイン</a>
+          <br/><a href="BTL_Arts_En.html#1159">BTL_Arts_En#1159</a>
+          <br/><a href="BTL_Arts_En.html#1339">BTL_Arts_En#ミリオンフラッシュ</a>
+          <br/><a href="BTL_Arts_En.html#1340">BTL_Arts_En#ミリオンフラッシュ</a>
+          <br/><a href="BTL_Arts_En.html#1404">BTL_Arts_En#鎌鼬</a>
+          <br/><a href="BTL_Arts_En.html#1408">BTL_Arts_En#鎌鼬</a>
+          <br/><a href="BTL_Arts_En.html#1423">BTL_Arts_En#セヴンスエッジ</a>
+          <br/><a href="BTL_Arts_En.html#1435">BTL_Arts_En#セヴンスエッジ</a>
+          <br/><a href="BTL_Arts_En.html#1436">BTL_Arts_En#セヴンスエッジ</a>
+          <br/><a href="BTL_Arts_En.html#1439">BTL_Arts_En#セヴンスエッジ</a>
+          <br/><a href="BTL_Arts_PC.html#119">BTL_Arts_PC#ミリオンフラッシュ</a>
+          <br/><a href="BTL_Arts_PC.html#124">BTL_Arts_PC#ハイドスパイク</a>
+          <br/><a href="BTL_Arts_PC.html#489">BTL_Arts_PC#ジャガースクラッチ</a>
+          <br/><a href="BTL_Arts_PC.html#552">BTL_Arts_PC#ポイズンソーダー</a>
+          <br/><a href="BTL_Arts_PC.html#571">BTL_Arts_PC#スピニングボルト</a>
+        </details>
+      </td>
+      <td>&lt;515FD4AB&gt;</td>
+      <td>出血</td>
+      <td>133</td>
+      <td>一定間隔でダメージ</td>
+      <td>2</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1380</td>
+      <td>200</td>
+      <td>100</td>
+      <td>60</td>
+      <td>16</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>36</td>
+      <td>0</td>
+      <td>100</td>
+    </tr>
+    <tr id="46">
+      <td class="side">46</td>
+      <td>
+        <details>
+          <summary>51 refs</summary>
+               <a href="BTL_Arts_En.html#53">BTL_Arts_En#ワイルドガスバースト</a>
+          <br/><a href="BTL_Arts_En.html#54">BTL_Arts_En#ワイルドガスバースト</a>
+          <br/><a href="BTL_Arts_En.html#55">BTL_Arts_En#ワイルドガスバースト</a>
+          <br/><a href="BTL_Arts_En.html#192">BTL_Arts_En#コモドファイア</a>
+          <br/><a href="BTL_Arts_En.html#193">BTL_Arts_En#コモドファイア</a>
+          <br/><a href="BTL_Arts_En.html#221">BTL_Arts_En#ヒートガス</a>
+          <br/><a href="BTL_Arts_En.html#239">BTL_Arts_En#ハンターノホノオ</a>
+          <br/><a href="BTL_Arts_En.html#240">BTL_Arts_En#ハンターノホノオ</a>
+          <br/><a href="BTL_Arts_En.html#262">BTL_Arts_En#ドラゴンシュート</a>
+          <br/><a href="BTL_Arts_En.html#294">BTL_Arts_En#ヘルフレイム</a>
+          <br/><a href="BTL_Arts_En.html#611">BTL_Arts_En#ヒートインジェクション</a>
+          <br/><a href="BTL_Arts_En.html#612">BTL_Arts_En#ウルトラインジェクション</a>
+          <br/><a href="BTL_Arts_En.html#619">BTL_Arts_En#ヒートインジェクション</a>
+          <br/><a href="BTL_Arts_En.html#672">BTL_Arts_En#火送刃</a>
+          <br/><a href="BTL_Arts_En.html#673">BTL_Arts_En#火送刃</a>
+          <br/><a href="BTL_Arts_En.html#706">BTL_Arts_En#ハイペリオンブレイズ</a>
+          <br/><a href="BTL_Arts_En.html#708">BTL_Arts_En#ブラストキャノン</a>
+          <br/><a href="BTL_Arts_En.html#736">BTL_Arts_En#ヘルフレイム</a>
+          <br/><a href="BTL_Arts_En.html#737">BTL_Arts_En#ヘルフレイム</a>
+          <br/><a href="BTL_Arts_En.html#840">BTL_Arts_En#840</a>
+          <br/><a href="BTL_Arts_En.html#865">BTL_Arts_En#スピアネイル</a>
+          <br/><a href="BTL_Arts_En.html#866">BTL_Arts_En#スピアネイル</a>
+          <br/><a href="BTL_Arts_En.html#871">BTL_Arts_En#アミナスレイン</a>
+          <br/><a href="BTL_Arts_En.html#880">BTL_Arts_En#スピアネイル</a>
+          <br/><a href="BTL_Arts_En.html#885">BTL_Arts_En#スピアネイル</a>
+          <br/><a href="BTL_Arts_En.html#886">BTL_Arts_En#スピアネイル</a>
+          <br/><a href="BTL_Arts_En.html#891">BTL_Arts_En#アミナスレイン</a>
+          <br/><a href="BTL_Arts_En.html#892">BTL_Arts_En#アミナスレイン</a>
+          <br/><a href="BTL_Arts_En.html#900">BTL_Arts_En#スピアネイル</a>
+          <br/><a href="BTL_Arts_En.html#903">BTL_Arts_En#アミナスレイン</a>
+          <br/><a href="BTL_Arts_En.html#940">BTL_Arts_En#エレメント・フレア</a>
+          <br/><a href="BTL_Arts_En.html#973">BTL_Arts_En#アストライア</a>
+          <br/><a href="BTL_Arts_En.html#981">BTL_Arts_En#アストライア</a>
+          <br/><a href="BTL_Arts_En.html#982">BTL_Arts_En#アストライア</a>
+          <br/><a href="BTL_Arts_En.html#1001">BTL_Arts_En#滝穿破</a>
+          <br/><a href="BTL_Arts_En.html#1009">BTL_Arts_En#山壊破</a>
+          <br/><a href="BTL_Arts_En.html#1020">BTL_Arts_En#1020</a>
+          <br/><a href="BTL_Arts_En.html#1024">BTL_Arts_En#ブレイズパーティ</a>
+          <br/><a href="BTL_Arts_En.html#1067">BTL_Arts_En#ファイアバレット</a>
+          <br/><a href="BTL_Arts_En.html#1068">BTL_Arts_En#フレイムピラー</a>
+          <br/><a href="BTL_Arts_En.html#1199">BTL_Arts_En#1199</a>
+          <br/><a href="BTL_Arts_En.html#1201">BTL_Arts_En#1201</a>
+          <br/><a href="BTL_Arts_En.html#1355">BTL_Arts_En#天之逆鉾</a>
+          <br/><a href="BTL_Arts_En.html#1357">BTL_Arts_En#烽火連天</a>
+          <br/><a href="BTL_Arts_PC.html#200">BTL_Arts_PC#天之逆鉾</a>
+          <br/><a href="BTL_Arts_PC.html#205">BTL_Arts_PC#猛火乱舞</a>
+          <br/><a href="BTL_Arts_PC.html#206">BTL_Arts_PC#猛火乱舞</a>
+          <br/><a href="BTL_Arts_PC.html#209">BTL_Arts_PC#烽火連天</a>
+          <br/><a href="BTL_Arts_PC.html#210">BTL_Arts_PC#烽火連天</a>
+          <br/><a href="BTL_Arts_PC.html#507">BTL_Arts_PC#微塵隠れ</a>
+          <br/><a href="BTL_Arts_PC.html#524">BTL_Arts_PC#フレイムノヴァ</a>
+        </details>
+      </td>
+      <td>&lt;C8A78F23&gt;</td>
+      <td>炎熱</td>
+      <td>133</td>
+      <td>一定間隔でダメージ</td>
+      <td>2</td>
+      <td>1</td>
+      <td>8</td>
+      <td>0</td>
+      <td>0</td>
+      <td>300</td>
+      <td>200</td>
+      <td>100</td>
+      <td>30</td>
+      <td>17</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>34</td>
+      <td>0</td>
+      <td>100</td>
+    </tr>
+    <tr id="47">
+      <td class="side">47</td>
+      <td>
+        <details>
+          <summary>15 refs</summary>
+               <a href="BTL_Arts_En.html#44">BTL_Arts_En#アイスブレス</a>
+          <br/><a href="BTL_Arts_En.html#62">BTL_Arts_En#アイスピストル</a>
+          <br/><a href="BTL_Arts_En.html#696">BTL_Arts_En#アイスブレス</a>
+          <br/><a href="BTL_Arts_En.html#697">BTL_Arts_En#アイスブレス</a>
+          <br/><a href="BTL_Arts_En.html#698">BTL_Arts_En#アイスブレス</a>
+          <br/><a href="BTL_Arts_En.html#715">BTL_Arts_En#フロストキャノン</a>
+          <br/><a href="BTL_Arts_En.html#716">BTL_Arts_En#フロストキャノン</a>
+          <br/><a href="BTL_Arts_En.html#717">BTL_Arts_En#フロストキャノン</a>
+          <br/><a href="BTL_Arts_En.html#718">BTL_Arts_En#フロストキャノン</a>
+          <br/><a href="BTL_Arts_En.html#1075">BTL_Arts_En#フロストギフト</a>
+          <br/><a href="BTL_Arts_En.html#1078">BTL_Arts_En#フリージングラッシュ</a>
+          <br/><a href="BTL_Arts_En.html#1146">BTL_Arts_En#フリーズスピン</a>
+          <br/><a href="BTL_Arts_En.html#1147">BTL_Arts_En#フリーズスピン</a>
+          <br/><a href="BTL_Arts_En.html#1150">BTL_Arts_En#ブリザードストリーム</a>
+          <br/><a href="BTL_Arts_En.html#1151">BTL_Arts_En#ブリザードストリーム</a>
+        </details>
+      </td>
+      <td>&lt;EF0B0858&gt;</td>
+      <td>氷結</td>
+      <td>133</td>
+      <td>一定間隔でダメージ</td>
+      <td>2</td>
+      <td>1</td>
+      <td>6</td>
+      <td>0</td>
+      <td>0</td>
+      <td>645</td>
+      <td>200</td>
+      <td>100</td>
+      <td>45</td>
+      <td>18</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>35</td>
+      <td>0</td>
+      <td>100</td>
+    </tr>
+    <tr id="48">
+      <td class="side">48</td>
+      <td>
+        <details>
+          <summary>24 refs</summary>
+               <a href="BTL_Arts_En.html#45">BTL_Arts_En#ポイズンブレス</a>
+          <br/><a href="BTL_Arts_En.html#46">BTL_Arts_En#ポイズンブレス</a>
+          <br/><a href="BTL_Arts_En.html#87">BTL_Arts_En#アースボール</a>
+          <br/><a href="BTL_Arts_En.html#134">BTL_Arts_En#ポイズンソーダー</a>
+          <br/><a href="BTL_Arts_En.html#138">BTL_Arts_En#ポイズンソーダー</a>
+          <br/><a href="BTL_Arts_En.html#169">BTL_Arts_En#ポイズンブレス</a>
+          <br/><a href="BTL_Arts_En.html#237">BTL_Arts_En#ハンターノドクヤ</a>
+          <br/><a href="BTL_Arts_En.html#238">BTL_Arts_En#ハンターノドクヤ</a>
+          <br/><a href="BTL_Arts_En.html#261">BTL_Arts_En#ドラゴンシュート</a>
+          <br/><a href="BTL_Arts_En.html#331">BTL_Arts_En#ヴェノムガス</a>
+          <br/><a href="BTL_Arts_En.html#364">BTL_Arts_En#ドゥームバット</a>
+          <br/><a href="BTL_Arts_En.html#632">BTL_Arts_En#632</a>
+          <br/><a href="BTL_Arts_En.html#637">BTL_Arts_En#ポルーションキャノン</a>
+          <br/><a href="BTL_Arts_En.html#699">BTL_Arts_En#ポイズンブレス</a>
+          <br/><a href="BTL_Arts_En.html#700">BTL_Arts_En#ポイズンブレス</a>
+          <br/><a href="BTL_Arts_En.html#701">BTL_Arts_En#ポイズンブレス</a>
+          <br/><a href="BTL_Arts_En.html#939">BTL_Arts_En#エレメント・アース</a>
+          <br/><a href="BTL_Arts_En.html#965">BTL_Arts_En#メビウスブレス</a>
+          <br/><a href="BTL_Arts_En.html#975">BTL_Arts_En#メビウスブレス</a>
+          <br/><a href="BTL_Arts_En.html#1085">BTL_Arts_En#キリングミスト</a>
+          <br/><a href="BTL_Arts_En.html#1086">BTL_Arts_En#キリングミスト</a>
+          <br/><a href="BTL_Arts_En.html#1087">BTL_Arts_En#キリングミスト</a>
+          <br/><a href="BTL_Arts_En.html#1096">BTL_Arts_En#ビーストテイル</a>
+          <br/><a href="BTL_Arts_En.html#1097">BTL_Arts_En#アサルトレイジ</a>
+        </details>
+      </td>
+      <td>&lt;F4925AB4&gt;</td>
+      <td>猛毒</td>
+      <td>133</td>
+      <td>一定間隔でダメージ</td>
+      <td>2</td>
+      <td>1</td>
+      <td>12</td>
+      <td>0</td>
+      <td>0</td>
+      <td>720</td>
+      <td>200</td>
+      <td>100</td>
+      <td>120</td>
+      <td>19</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>33</td>
+      <td>0</td>
+      <td>100</td>
+    </tr>
+    <tr id="49">
+      <td class="side">49</td>
+      <td>
+        <details>
+          <summary>5 refs</summary>
+               <a href="BTL_Arts_En.html#1190">BTL_Arts_En#1190</a>
+          <br/><a href="BTL_Arts_PC.html#180">BTL_Arts_PC#風香</a>
+          <br/><a href="BTL_Arts_PC.html#186">BTL_Arts_PC#叢時雨</a>
+          <br/><a href="BTL_Arts_PC.html#187">BTL_Arts_PC#叢時雨</a>
+          <br/><a href="BTL_Arts_PC.html#505">BTL_Arts_PC#鏡花水月</a>
+        </details>
+      </td>
+      <td>&lt;F4D00A92&gt;</td>
+      <td>リジェネレーション</td>
+      <td>133</td>
+      <td>一定間隔で回復</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1.5</td>
+      <td>0</td>
+      <td>0</td>
+      <td>900</td>
+      <td>200</td>
+      <td>0</td>
+      <td>45</td>
+      <td>8</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>11</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="50">
+      <td class="side">50</td>
+      <td>
+        <details>
+          <summary>3 refs</summary>
+               <a href="BTL_Arts_En.html#1126">BTL_Arts_En#アシストフォース</a>
+          <br/><a href="BTL_Arts_En.html#1128">BTL_Arts_En#アシストフォース</a>
+          <br/><a href="BTL_Arts_En.html#1129">BTL_Arts_En#アシストフォース</a>
+        </details>
+      </td>
+      <td>&lt;296EB3CF&gt;</td>
+      <td>リジェネレーション</td>
+      <td>133</td>
+      <td>一定間隔で回復</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0.25</td>
+      <td>0</td>
+      <td>0</td>
+      <td>900</td>
+      <td>200</td>
+      <td>0</td>
+      <td>45</td>
+      <td>8</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>11</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </table>
+</body>
+</html>
