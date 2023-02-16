@@ -1,0 +1,743 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <title>MNU_MapInfo</title>
+  <style type="text/css">
+    table, th, td {border: 1px solid #000000; border-collapse: collapse;}
+    table {border-width: 3px;}
+    th, td {padding: 0.1em 0.2em;}
+    tr.head th, tr.head td {border-bottom-width: 3px;}
+    th.colbreak, td.colbreak {border-right-width: 3px;}
+    th {text-align: center; position: sticky; top: -1px; background-color: #F0F0F0;}
+    .side {position: sticky; left: -1px; background-color: #F0F0F0;}
+    th.side {z-index: 3;}
+    td {text-align: left;}
+    td.right {text-align: right;}
+    .sortable tbody tr:nth-child(odd) {background: #F5F5F5;}
+    .sortable th {background: #E4E4E4; cursor: pointer; white-space: nowrap; vertical-align: middle;}
+    .sortable th.dir-d::after {content:" ▾"; vertical-align: inherit;}
+    .sortable th.dir-u::after {content:" ▴"; vertical-align: inherit;}
+    :target td {background-color: #CCCCCC !important;}
+  </style>
+  <script type="text/javascript">
+    function offsetAnchor() {
+      if (location.hash.length !== 0) {
+        window.scrollTo(window.scrollX, window.scrollY - document.getElementById("header").clientHeight);
+      }
+    }
+    window.addEventListener("hashchange", offsetAnchor);
+    window.setTimeout(offsetAnchor, 1);
+  </script>
+</head>
+<body>
+  <table class="sortable">
+    <h2>MNU_MapInfo</h2>
+    <tr id="header">
+      <th class="side dir-d ">ID</th>
+      <th>Referenced By</th>
+      <th>ID</th>
+      <th>level_name</th>
+      <th>disp_name</th>
+      <th>level_priority</th>
+      <th>LinkMapID</th>
+      <th>mask_color</th>
+      <th>cond_location</th>
+      <th>condition</th>
+      <th>level_name2</th>
+      <th>condition2</th>
+      <th>level_name3</th>
+      <th>condition3</th>
+      <th>level_name4</th>
+      <th>condition4</th>
+      <th>level_name5</th>
+      <th>condition5</th>
+      <th>scale_min</th>
+      <th>scale_max</th>
+      <th>field_D4E00368</th>
+      <th>field_68D105F6</th>
+    </tr>
+    <tr id="1">
+      <td class="side">1</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_MapInfoFile.html#1">MNU_MapInfoFile#1</a>
+        </details>
+      </td>
+      <td>&lt;505ACADB&gt;</td>
+      <td>ma01a_01</td>
+      <td>アエティア地方全図</td>
+      <td>8</td>
+      <td><a href="SYS_MapList.html#18">アエティア地方</a></td>
+      <td>10000639</td>
+      <td>0</td>
+      <td>0</td>
+      <td>ma01a_01_ex</td>
+      <td><a href="FLD_ConditionList.html#11796">11796</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>5</td>
+    </tr>
+    <tr id="2">
+      <td class="side">2</td>
+      <td></td>
+      <td>&lt;96CBA576&gt;</td>
+      <td>ma01a_02</td>
+      <td>アエティア地方上層部</td>
+      <td>6</td>
+      <td><a href="SYS_MapList.html#18">アエティア地方</a></td>
+      <td>10000639</td>
+      <td>0</td>
+      <td>0</td>
+      <td>ma01a_02_ex</td>
+      <td><a href="FLD_ConditionList.html#11997">11997</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.2</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr id="3">
+      <td class="side">3</td>
+      <td></td>
+      <td>&lt;333D8205&gt;</td>
+      <td>ma01a_03</td>
+      <td>エルガレス地下洞窟</td>
+      <td>5</td>
+      <td><a href="SYS_MapList.html#18">アエティア地方</a></td>
+      <td>10000639</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.9</td>
+      <td>2.5</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="4">
+      <td class="side">4</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_MapInfoFile.html#2">MNU_MapInfoFile#2</a>
+        </details>
+      </td>
+      <td>&lt;FB0568FC&gt;</td>
+      <td>ma04a_01</td>
+      <td>フォーニス地方全図</td>
+      <td>8</td>
+      <td><a href="SYS_MapList.html#19">フォーニス地方</a></td>
+      <td>16747898</td>
+      <td>0</td>
+      <td>0</td>
+      <td>ma04a_01_ex</td>
+      <td><a href="FLD_ConditionList.html#11477">11477</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.08</td>
+      <td>2</td>
+      <td>2</td>
+      <td>5</td>
+    </tr>
+    <tr id="5">
+      <td class="side">5</td>
+      <td></td>
+      <td>&lt;739CC61A&gt;</td>
+      <td>ma04a_02</td>
+      <td>円環の洞窟</td>
+      <td>5</td>
+      <td><a href="SYS_MapList.html#19">フォーニス地方</a></td>
+      <td>16747898</td>
+      <td>1</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.5</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="6">
+      <td class="side">6</td>
+      <td></td>
+      <td>&lt;F16B3740&gt;</td>
+      <td>ma04a_03</td>
+      <td>ミリオのカラクリ洞窟</td>
+      <td>5</td>
+      <td><a href="SYS_MapList.html#19">フォーニス地方</a></td>
+      <td>16747898</td>
+      <td>1</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.6</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="7">
+      <td class="side">7</td>
+      <td></td>
+      <td>&lt;6FE14296&gt;</td>
+      <td>ma04a_04</td>
+      <td>ペラト洞窟</td>
+      <td>127</td>
+      <td><a href="SYS_MapList.html#19">フォーニス地方</a></td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.6</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="8">
+      <td class="side">8</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_MapInfoFile.html#3">MNU_MapInfoFile#3</a>
+        </details>
+      </td>
+      <td>&lt;0FE834DE&gt;</td>
+      <td>ma07a_01</td>
+      <td>ペンテラス地方全図</td>
+      <td>8</td>
+      <td><a href="SYS_MapList.html#20">ペンテラス地方</a></td>
+      <td>10936575</td>
+      <td>0</td>
+      <td>0</td>
+      <td>ma07a_01_ex</td>
+      <td><a href="FLD_ConditionList.html#11796">11796</a></td>
+      <td>ma07a_01_ex02</td>
+      <td><a href="FLD_ConditionList.html#12161">12161</a></td>
+      <td>ma07a_01_ex03</td>
+      <td><a href="FLD_ConditionList.html#12170">12170</a></td>
+      <td></td>
+      <td></td>
+      <td>0.15</td>
+      <td>1.7</td>
+      <td>2</td>
+      <td>5</td>
+    </tr>
+    <tr id="9">
+      <td class="side">9</td>
+      <td></td>
+      <td>&lt;B2C557BE&gt;</td>
+      <td>ma07a_02</td>
+      <td>コロニーラムダ</td>
+      <td>5</td>
+      <td><a href="SYS_MapList.html#20">ペンテラス地方</a></td>
+      <td>10936575</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.5</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="10">
+      <td class="side">10</td>
+      <td></td>
+      <td>&lt;D112E5A5&gt;</td>
+      <td>ma07a_03</td>
+      <td>モルクナ大森林下層</td>
+      <td>5</td>
+      <td><a href="SYS_MapList.html#20">ペンテラス地方</a></td>
+      <td>10936575</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.3</td>
+      <td>1.8</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr id="11">
+      <td class="side">11</td>
+      <td></td>
+      <td>&lt;104D66D2&gt;</td>
+      <td>ma07a_04</td>
+      <td>忘却の大洞穴</td>
+      <td>127</td>
+      <td><a href="SYS_MapList.html#20">ペンテラス地方</a></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.65</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="12">
+      <td class="side">12</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_MapInfoFile.html#4">MNU_MapInfoFile#4</a>
+        </details>
+      </td>
+      <td>&lt;0CDE3378&gt;</td>
+      <td>ma09a_01</td>
+      <td>シウェラ浮遊岩礁地帯全図</td>
+      <td>8</td>
+      <td><a href="SYS_MapList.html#21">ケヴェスキャッスル地方</a></td>
+      <td>9568168</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.1</td>
+      <td>1.8</td>
+      <td>2</td>
+      <td>5</td>
+    </tr>
+    <tr id="13">
+      <td class="side">13</td>
+      <td></td>
+      <td>&lt;4E710751&gt;</td>
+      <td>ma09a_02</td>
+      <td>キャッスル第一階層</td>
+      <td>5</td>
+      <td><a href="SYS_MapList.html#21">ケヴェスキャッスル地方</a></td>
+      <td>9568168</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.4</td>
+      <td>1.8</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="14">
+      <td class="side">14</td>
+      <td></td>
+      <td>&lt;F9B45A14&gt;</td>
+      <td>ma09a_03</td>
+      <td>キャッスル第二階層</td>
+      <td>5</td>
+      <td><a href="SYS_MapList.html#21">ケヴェスキャッスル地方</a></td>
+      <td>9568168</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.35</td>
+      <td>1.8</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="15">
+      <td class="side">15</td>
+      <td></td>
+      <td>&lt;2666CDE1&gt;</td>
+      <td>ma09a_04</td>
+      <td>キャッスル第三階層</td>
+      <td>5</td>
+      <td><a href="SYS_MapList.html#21">ケヴェスキャッスル地方</a></td>
+      <td>9568168</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.35</td>
+      <td>1.8</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr id="16">
+      <td class="side">16</td>
+      <td></td>
+      <td>&lt;C523A819&gt;</td>
+      <td>ma09a_05</td>
+      <td>キャッスル第四階層</td>
+      <td>5</td>
+      <td><a href="SYS_MapList.html#21">ケヴェスキャッスル地方</a></td>
+      <td>9568168</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.35</td>
+      <td>1.8</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr id="17">
+      <td class="side">17</td>
+      <td></td>
+      <td>&lt;F04CA0A4&gt;</td>
+      <td>ma09a_06</td>
+      <td>キャッスル第五階層</td>
+      <td>5</td>
+      <td><a href="SYS_MapList.html#21">ケヴェスキャッスル地方</a></td>
+      <td>9568168</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.7</td>
+      <td>1.8</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="18">
+      <td class="side">18</td>
+      <td></td>
+      <td>&lt;FB32FF05&gt;</td>
+      <td>ma09a_07</td>
+      <td>キャッスル排水路区画</td>
+      <td>5</td>
+      <td><a href="SYS_MapList.html#21">ケヴェスキャッスル地方</a></td>
+      <td>9568168</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.6</td>
+      <td>1.6</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="19">
+      <td class="side">19</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_MapInfoFile.html#5">MNU_MapInfoFile#5</a>
+        </details>
+      </td>
+      <td>&lt;E3D63AB7&gt;</td>
+      <td>ma11a_01</td>
+      <td>カデンシア全図</td>
+      <td>8</td>
+      <td><a href="SYS_MapList.html#22">カデンシア地方</a></td>
+      <td>16743140</td>
+      <td>0</td>
+      <td>0</td>
+      <td>ma11a_01_ex01</td>
+      <td><a href="FLD_ConditionList.html#11796">11796</a></td>
+      <td>ma11a_01_ex02</td>
+      <td><a href="FLD_ConditionList.html#1810">1810</a></td>
+      <td>ma11a_01_ex03</td>
+      <td><a href="FLD_ConditionList.html#1808">1808</a></td>
+      <td>ma11a_01_ex04</td>
+      <td><a href="FLD_ConditionList.html#1809">1809</a></td>
+      <td>0.025</td>
+      <td>1.8</td>
+      <td>4</td>
+      <td>10</td>
+    </tr>
+    <tr id="20">
+      <td class="side">20</td>
+      <td></td>
+      <td>&lt;026D4720&gt;</td>
+      <td>ma11a_02</td>
+      <td>リ・ガート収容所</td>
+      <td>5</td>
+      <td><a href="SYS_MapList.html#22">カデンシア地方</a></td>
+      <td>16743140</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.9</td>
+      <td>1.8</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="21">
+      <td class="side">21</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_MapInfoFile.html#6">MNU_MapInfoFile#6</a>
+        </details>
+      </td>
+      <td>&lt;B6406ADC&gt;</td>
+      <td>ma14a_01</td>
+      <td>天還の処刑場</td>
+      <td>8</td>
+      <td><a href="SYS_MapList.html#23">アグヌスキャッスル</a></td>
+      <td>5765631</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.8</td>
+      <td>1.8</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="22">
+      <td class="side">22</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_MapInfoFile.html#7">MNU_MapInfoFile#7</a>
+        </details>
+      </td>
+      <td>&lt;2AD9B1ED&gt;</td>
+      <td>ma15a_01</td>
+      <td>大剣上層部</td>
+      <td>8</td>
+      <td><a href="SYS_MapList.html#24">大剣</a></td>
+      <td>15990638</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.4</td>
+      <td>1.8</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="23">
+      <td class="side">23</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_MapInfoFile.html#8">MNU_MapInfoFile#8</a>
+        </details>
+      </td>
+      <td>&lt;2052183E&gt;</td>
+      <td>ma17a_01</td>
+      <td>オリジン内部</td>
+      <td>8</td>
+      <td><a href="SYS_MapList.html#25">オリジン</a></td>
+      <td>16753292</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.17</td>
+      <td>1.8</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr id="24">
+      <td class="side">24</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_MapInfoFile.html#9">MNU_MapInfoFile#9</a>
+        </details>
+      </td>
+      <td>&lt;30FDBE42&gt;</td>
+      <td>ma22a_01</td>
+      <td>大剣上層部</td>
+      <td>8</td>
+      <td><a href="SYS_MapList.html#29">大剣</a></td>
+      <td>9474192</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.4</td>
+      <td>1.8</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="25">
+      <td class="side">25</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_MapInfoFile.html#10">MNU_MapInfoFile#10</a>
+        </details>
+      </td>
+      <td>&lt;D69F8BBB&gt;</td>
+      <td>ma21a_01</td>
+      <td>シティー内部</td>
+      <td>8</td>
+      <td><a href="SYS_MapList.html#28">シティー</a></td>
+      <td>13421772</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0.4</td>
+      <td>1.8</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="26">
+      <td class="side">26</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_MapInfoFile.html#11">MNU_MapInfoFile#11</a>
+        </details>
+      </td>
+      <td>&lt;222966DF&gt;</td>
+      <td>ma25a_01</td>
+      <td></td>
+      <td>8</td>
+      <td><a href="SYS_MapList.html#56">挑戦の地</a></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </table>
+</body>
+</html>

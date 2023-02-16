@@ -1,0 +1,4965 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <title>MNU_ShopTable</title>
+  <style type="text/css">
+    table, th, td {border: 1px solid #000000; border-collapse: collapse;}
+    table {border-width: 3px;}
+    th, td {padding: 0.1em 0.2em;}
+    tr.head th, tr.head td {border-bottom-width: 3px;}
+    th.colbreak, td.colbreak {border-right-width: 3px;}
+    th {text-align: center; position: sticky; top: -1px; background-color: #F0F0F0;}
+    .side {position: sticky; left: -1px; background-color: #F0F0F0;}
+    th.side {z-index: 3;}
+    td {text-align: left;}
+    td.right {text-align: right;}
+    .sortable tbody tr:nth-child(odd) {background: #F5F5F5;}
+    .sortable th {background: #E4E4E4; cursor: pointer; white-space: nowrap; vertical-align: middle;}
+    .sortable th.dir-d::after {content:" ▾"; vertical-align: inherit;}
+    .sortable th.dir-u::after {content:" ▴"; vertical-align: inherit;}
+    :target td {background-color: #CCCCCC !important;}
+  </style>
+  <script type="text/javascript">
+    function offsetAnchor() {
+      if (location.hash.length !== 0) {
+        window.scrollTo(window.scrollX, window.scrollY - document.getElementById("header").clientHeight);
+      }
+    }
+    window.addEventListener("hashchange", offsetAnchor);
+    window.setTimeout(offsetAnchor, 1);
+  </script>
+</head>
+<body>
+  <table class="sortable">
+    <h2>MNU_ShopTable</h2>
+    <tr id="header">
+      <th class="side dir-d ">ID</th>
+      <th>Referenced By</th>
+      <th>ID</th>
+      <th>ShopItem1</th>
+      <th>AddCondition1</th>
+      <th>ShopItem2</th>
+      <th>AddCondition2</th>
+      <th>ShopItem3</th>
+      <th>AddCondition3</th>
+      <th>ShopItem4</th>
+      <th>AddCondition4</th>
+      <th>ShopItem5</th>
+      <th>AddCondition5</th>
+      <th>ShopItem6</th>
+      <th>AddCondition6</th>
+      <th>ShopItem7</th>
+      <th>AddCondition7</th>
+      <th>ShopItem8</th>
+      <th>AddCondition8</th>
+      <th>ShopItem9</th>
+      <th>AddCondition9</th>
+      <th>ShopItem10</th>
+      <th>AddCondition10</th>
+      <th>ShopItem11</th>
+      <th>AddCondition11</th>
+      <th>ShopItem12</th>
+      <th>AddCondition12</th>
+      <th>ShopItem13</th>
+      <th>AddCondition13</th>
+      <th>ShopItem14</th>
+      <th>AddCondition14</th>
+      <th>ShopItem15</th>
+      <th>AddCondition15</th>
+      <th>ShopItem16</th>
+      <th>AddCondition16</th>
+      <th>ShopItem17</th>
+      <th>AddCondition17</th>
+      <th>ShopItem18</th>
+      <th>AddCondition18</th>
+      <th>ShopItem19</th>
+      <th>AddCondition19</th>
+      <th>ShopItem20</th>
+      <th>AddCondition20</th>
+      <th>field_6143991F</th>
+      <th>field_B8160E53</th>
+      <th>field_D300BEDD</th>
+      <th>field_15D65328</th>
+      <th>field_42B919EA</th>
+      <th>field_B8E0F3C8</th>
+      <th>field_51AEBC0B</th>
+      <th>field_16E7BF2B</th>
+      <th>field_C4D98229</th>
+      <th>field_5CC8C870</th>
+      <th>field_FE1886F6</th>
+      <th>field_FEAF9101</th>
+      <th>field_BD8CD1E4</th>
+      <th>field_65C38551</th>
+      <th>field_EC889C32</th>
+      <th>field_9980A011</th>
+      <th>field_6A7B5A78</th>
+      <th>field_EB0C57FC</th>
+      <th>field_58182C18</th>
+      <th>field_42F3EBAC</th>
+      <th>field_08BA68C9</th>
+      <th>field_BA7E776D</th>
+      <th>field_22312C2F</th>
+      <th>field_84827B31</th>
+      <th>field_3D40B9C3</th>
+      <th>field_C69719DF</th>
+      <th>field_6D7CE3AB</th>
+      <th>field_CCD4120B</th>
+      <th>field_7121ACF7</th>
+      <th>field_57300836</th>
+      <th>field_7CD1D104</th>
+      <th>field_C4B205DB</th>
+      <th>field_5DFFAC73</th>
+      <th>field_1A648107</th>
+      <th>field_127DF955</th>
+      <th>field_4DCC6915</th>
+      <th>field_37C4D963</th>
+      <th>field_6DB4A42D</th>
+      <th>field_ECED6BA7</th>
+      <th>field_CA393343</th>
+    </tr>
+    <tr id="1">
+      <td class="side">1</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#1">MNU_ShopList#1</a>
+        </details>
+      </td>
+      <td>&lt;698121FA&gt;</td>
+      <td><a href="ITM_Accessory.html#1">ブロンズテンプルガード</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#2">アイアンテンプルガード</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#3">チタンテンプルガード</a></td>
+      <td><a href="FLD_ConditionList.html#5716">5716</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="2">
+      <td class="side">2</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#2">MNU_ShopList#コロニー9輜重科</a>
+        </details>
+      </td>
+      <td>&lt;C7EE8495&gt;</td>
+      <td><a href="ITM_Accessory.html#1">ブロンズテンプルガード</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#20">ペイルメモリ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#76">虹色グローブ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#84">黒鋼の腕輪</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#94">白銀のネックレス</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#98">祈りの首飾り</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#110">クロムマフラー</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#153">ライトウィークガード</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#226">シェルカメオ</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="3">
+      <td class="side">3</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#3">MNU_ShopList#コロニー9輜重科</a>
+        </details>
+      </td>
+      <td>&lt;2F41A3AB&gt;</td>
+      <td><a href="ITM_Accessory.html#1">ブロンズテンプルガード</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#20">ペイルメモリ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#76">虹色グローブ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#84">黒鋼の腕輪</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#94">白銀のネックレス</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#98">祈りの首飾り</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#110">クロムマフラー</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#153">ライトウィークガード</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#226">シェルカメオ</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="4">
+      <td class="side">4</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#4">MNU_ShopList#コロニー9キャラバン</a>
+        </details>
+      </td>
+      <td>&lt;8B188826&gt;</td>
+      <td><a href="ITM_Collection.html#2006">カリナッツ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2007">ミルキーソイ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2011">トンガラッツ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2031">インゴットキャロット</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2033">シャクリョク</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2015">マジバジル</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2014">デオパセリ</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="5">
+      <td class="side">5</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#5">MNU_ShopList#コロニーガンマ輜重科</a>
+        </details>
+      </td>
+      <td>&lt;E6AC2102&gt;</td>
+      <td><a href="ITM_Accessory.html#2">アイアンテンプルガード</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#48">プロテクトインナー</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#144">シロオビ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#162">ウィンドレッグフレーム</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#227">鮮やかな腕章</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="6">
+      <td class="side">6</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#6">MNU_ShopList#コロニーガンマキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;EE82935F&gt;</td>
+      <td><a href="ITM_Collection.html#2035">マンプクネギ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2008">ペーストインゲン</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2019">ジャスパークチー</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2016">プレートラオブ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2039">ミニマッシュ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2023">セキゲッカ</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="7">
+      <td class="side">7</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#7">MNU_ShopList#渓谷のキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;11C97881&gt;</td>
+      <td><a href="ITM_Cylinder.html#6001">エーテルシリンダー</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="8">
+      <td class="side">8</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#8">MNU_ShopList#丘陵のキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;E8952991&gt;</td>
+      <td><a href="ITM_Accessory.html#7">サーチヘッド</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#51">水心の肌着</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#108">バニットチョーカー</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#113">豊穣の首飾り</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#180">防止のカフス</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#202">友情の指輪</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#223">極彩鳥の羽飾り</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#752">羽の首飾り</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="9">
+      <td class="side">9</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#9">MNU_ShopList#古戦場跡のキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;FB73E26A&gt;</td>
+      <td><a href="ITM_Accessory.html#6">英知のサークレット</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#30">真紅のはちまき</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#47">狂戦士のプロテクトシャツ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#55">チタニウムサポーター</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#118">賢者の護符</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#130">ハーネスベルト</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#140">セラミックベルト</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#237">ラベンダーポプリ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#239">優雅な香水</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="10">
+      <td class="side">10</td>
+      <td></td>
+      <td>&lt;30181D55&gt;</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="11">
+      <td class="side">11</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#11">MNU_ShopList#コロニー4輜重科</a>
+        </details>
+      </td>
+      <td>&lt;4A563B5A&gt;</td>
+      <td><a href="ITM_Accessory.html#21">ライトメモリ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#28">氷紋はちまき</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#53">ギアサポーター</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#77">英傑のグローブ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#138">スチームベルト</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="12">
+      <td class="side">12</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#12">MNU_ShopList#コロニー4キャラバン</a>
+        </details>
+      </td>
+      <td>&lt;051CAC64&gt;</td>
+      <td><a href="ITM_Collection.html#2077">ラズベタービーンズ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2098">ファイアンズ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2105">コメットキャロット</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2108">イロドリセロリ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2112">モヤパラガス</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2118">グンタイシメジ</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="13">
+      <td class="side">13</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#13">MNU_ShopList#コロニー30輜重科</a>
+        </details>
+      </td>
+      <td>&lt;BD60A0D3&gt;</td>
+      <td><a href="ITM_Accessory.html#4">知識のサークレット</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#45">闘士のプロテクトシャツ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#111">ユニコーンマフラー</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#141">獣皮のベルト</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#154">ヘヴィウィークガード</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="14">
+      <td class="side">14</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#14">MNU_ShopList#コロニー30キャラバン</a>
+        </details>
+      </td>
+      <td>&lt;2566DC43&gt;</td>
+      <td><a href="ITM_Collection.html#2078">ピチナッツ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2088">コナムギ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2107">シオツキャベツ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2100">キーニ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2111">シシキピーマン</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2101">ヨロイグリ</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="15">
+      <td class="side">15</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#15">MNU_ShopList#コロニーイオタ輜重科</a>
+        </details>
+      </td>
+      <td>&lt;3C4AC639&gt;</td>
+      <td><a href="ITM_Accessory.html#59">パワーバングル</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#73">青銅製の手袋</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#100">鋭牙の首飾り</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#191">サファイア</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#196">ソルジャーリング</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#220">光るメダル</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="16">
+      <td class="side">16</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#16">MNU_ShopList#コロニーイオタキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;5EE80C9B&gt;</td>
+      <td><a href="ITM_Collection.html#2102">エレガントランカ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2103">ベニライシー</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2096">ルージュパイン</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2106">エンプレタス</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2109">ドッペルイモ</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="17">
+      <td class="side">17</td>
+      <td>
+        <details>
+          <summary>2 refs</summary>
+               <a href="MNU_ShopList.html#17">MNU_ShopList#高原のキャラバン</a>
+          <br/><a href="MNU_ShopList.html#27">MNU_ShopList#坑道のキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;CFE5D1CA&gt;</td>
+      <td><a href="ITM_Accessory.html#122">ワークベルト</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#127">ショットウェポンベルト</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#208">フレンドシップバッチ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#174">伝令の膝当て</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#217">ひび割れた水晶</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="18">
+      <td class="side">18</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#18">MNU_ShopList#砂漠のキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;D0943F3B&gt;</td>
+      <td><a href="ITM_Accessory.html#11">シャドウマスク</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#16">ブラックフェザーバンド</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#79">レザーグローブ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#147">フットプロテクター</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#200">アサルトストーン</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="19">
+      <td class="side">19</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#19">MNU_ShopList#荒野のキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;81966E17&gt;</td>
+      <td><a href="ITM_Accessory.html#67">ワークグラブ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#99">獣牙の首飾り</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#102">旋風のネックレス</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#167">シェルプロテクター</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#177">グラファイトの膝当て</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#190">ガーネット</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="20">
+      <td class="side">20</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#20">MNU_ShopList#荒野のキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;18482C9B&gt;</td>
+      <td><a href="ITM_Accessory.html#67">ワークグラブ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#99">獣牙の首飾り</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#102">旋風のネックレス</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#167">シェルプロテクター</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#177">グラファイトの膝当て</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#190">ガーネット</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="21">
+      <td class="side">21</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#21">MNU_ShopList#湖のキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;685DBBFD&gt;</td>
+      <td><a href="ITM_Cylinder.html#6001">エーテルシリンダー</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="22">
+      <td class="side">22</td>
+      <td></td>
+      <td>&lt;0220E639&gt;</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="23">
+      <td class="side">23</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#23">MNU_ShopList#コロニーラムダ輜重科</a>
+        </details>
+      </td>
+      <td>&lt;0F5D5BAF&gt;</td>
+      <td><a href="ITM_Accessory.html#8">ディテクトヘッド</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#64">ホワイトバンテージ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#85">青金の腕輪</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#95">黄金のネックレス</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#114">慈愛の首飾り</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#132">琥珀の玉帯</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="24">
+      <td class="side">24</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#24">MNU_ShopList#コロニーラムダキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;1A898C70&gt;</td>
+      <td><a href="ITM_Collection.html#2161">ギンナッツ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2162">アンバイシード</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2172">キングマリーゴールド</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2186">タテヨコシマウリ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2182">ミリオンセロリ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2187">ベミニーオニオン</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="25">
+      <td class="side">25</td>
+      <td>
+        <details>
+          <summary>2 refs</summary>
+               <a href="MNU_ShopList.html#25">MNU_ShopList#コロニータウ輜重科</a>
+          <br/><a href="MNU_ShopList.html#29">MNU_ShopList#古道のキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;F9D0826E&gt;</td>
+      <td><a href="ITM_Accessory.html#13">兵士の額当て</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#52">玉水の肌着</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#68">エンジニアグラブ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#168">スマートプロテクター</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#203">親愛の指輪</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#224">銀鳥の羽飾り</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="26">
+      <td class="side">26</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#26">MNU_ShopList#コロニータウキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;666EA980&gt;</td>
+      <td><a href="ITM_Collection.html#2167">キノウアシタバ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2168">ニュウレンソウ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2177">ジュシブドウ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2163">オイルビーンズ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2197">エメブラッド</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2188">クレクレタス</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="27">
+      <td class="side">27</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#22">MNU_ShopList#段丘のキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;029D0E93&gt;</td>
+      <td><a href="ITM_Cylinder.html#6001">エーテルシリンダー</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="28">
+      <td class="side">28</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#28">MNU_ShopList#滝間のキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;EA469CF8&gt;</td>
+      <td><a href="ITM_Accessory.html#35">高機能聴覚センサー</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#150">柔軟な繊維の足布</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#82">闘士の腕輪</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#232">真白な欠けたブローチ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#87">鉄糸のミサンガ</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="29">
+      <td class="side">29</td>
+      <td></td>
+      <td>&lt;26A40077&gt;</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="30">
+      <td class="side">30</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#30">MNU_ShopList#崖上のキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;FB2963D9&gt;</td>
+      <td><a href="ITM_Accessory.html#211">黄金のブローチ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#105">七色貝のチョーカー</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#194">イレイザーオーブ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#234">真黒な欠けたブローチ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#27">ロングレンジメモリ</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="31">
+      <td class="side">31</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#31">MNU_ShopList#峠のキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;9098FBCF&gt;</td>
+      <td><a href="ITM_Cylinder.html#6001">エーテルシリンダー</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="32">
+      <td class="side">32</td>
+      <td>
+        <details>
+          <summary>2 refs</summary>
+               <a href="MNU_ShopList.html#32">MNU_ShopList#コロニー11輜重科</a>
+          <br/><a href="MNU_ShopList.html#36">MNU_ShopList#浮遊岩礁のキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;CB7092E5&gt;</td>
+      <td><a href="ITM_Accessory.html#56">スパイクショルダー</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#103">烈風のネックレス</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#178">青金の膝当て</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#181">拒絶のカフス</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#186">シグネットリング</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#755">献身の首飾り</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="33">
+      <td class="side">33</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#33">MNU_ShopList#コロニー11キャラバン</a>
+        </details>
+      </td>
+      <td>&lt;BE5B7927&gt;</td>
+      <td><a href="ITM_Collection.html#2222">ノワールグレープ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2225">ヴァロチーニ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2226">ゲルゲルノコ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2223">アコガレモン</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2224">ミズミズシイタケ</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="34">
+      <td class="side">34</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#34">MNU_ShopList#オービルブス要塞輜重科</a>
+        </details>
+      </td>
+      <td>&lt;6C4E0E3F&gt;</td>
+      <td><a href="ITM_Accessory.html#50">アサイラムインナー</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#72">勝利者の手袋</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#120">シールドベルト</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#229">艶やかな腕章</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#32">ギリーマスク</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#143">チャンピオンベルト</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#146">プラチナオビ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#160">ムーンアンクレット</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="35">
+      <td class="side">35</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#35">MNU_ShopList#オービルブスキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;7459C94E&gt;</td>
+      <td><a href="ITM_Collection.html#2022">ポポンタンポポ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2291">カナグリイモ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2309">ノイズバイト</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2341">キキカイ貝</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2343">ソラシジミ</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="36">
+      <td class="side">36</td>
+      <td></td>
+      <td>&lt;80259751&gt;</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="37">
+      <td class="side">37</td>
+      <td>
+        <details>
+          <summary>2 refs</summary>
+               <a href="MNU_ShopList.html#37">MNU_ShopList#コロニーミュー輜重科</a>
+          <br/><a href="MNU_ShopList.html#42">MNU_ShopList#島のキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;379B47BF&gt;</td>
+      <td><a href="ITM_Accessory.html#5">知恵のサークレット</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#43">ファイバーアンダーガード</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#49">シェルインナー</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#112">クアンタムマフラー</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#117">知者の護符</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#119">プレートベルト</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#155">ソリッドウィークガード</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#228">華やかな腕章</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#236">ミントポプリ</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="38">
+      <td class="side">38</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#38">MNU_ShopList#コロニーミューキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;F8B63750&gt;</td>
+      <td><a href="ITM_Collection.html#2259">ネオクルーミー</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2256">プロップブランチ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2277">ナナイロボロニア</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2283">バビブベリー</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2293">テッカイモ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2290">カギバリネギ</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="39">
+      <td class="side">39</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#39">MNU_ShopList#コトの店</a>
+        </details>
+      </td>
+      <td>&lt;89CD586F&gt;</td>
+      <td><a href="ITM_Accessory.html#133">翡翠の玉帯</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#57">ジェットショルダー</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#65">レザーバンテージ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#197">ベルセルクリング</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#221">煌めくメダル</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#101">龍牙の首飾り</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#192">ダイアモンド</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#74">金剛製の手袋</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#89">お守りバングル</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#96">星のネックレス</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="40">
+      <td class="side">40</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#40">MNU_ShopList#便利屋</a>
+        </details>
+      </td>
+      <td>&lt;786444BE&gt;</td>
+      <td><a href="ITM_Accessory.html#6">英知のサークレット</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#30">真紅のはちまき</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#32">ギリーマスク</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#47">狂戦士のプロテクトシャツ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#50">アサイラムインナー</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#55">チタニウムサポーター</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#72">勝利者の手袋</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#120">シールドベルト</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#140">セラミックベルト</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#229">艶やかな腕章</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="41">
+      <td class="side">41</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#41">MNU_ShopList#環礁のキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;A631AF87&gt;</td>
+      <td><a href="ITM_Accessory.html#83">英雄の腕輪</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#88">鳥羽根のミサンガ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#195">ブラッディーオーブ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#206">活性のアミュレット</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#233">真白な歪なブローチ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#235">真黒な歪なブローチ</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="42">
+      <td class="side">42</td>
+      <td></td>
+      <td>&lt;373C8191&gt;</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="43">
+      <td class="side">43</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#43">MNU_ShopList#入り江のキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;0362F1C3&gt;</td>
+      <td><a href="ITM_Cylinder.html#6001">エーテルシリンダー</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="44">
+      <td class="side">44</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#44">MNU_ShopList#闇流しのキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;284F3126&gt;</td>
+      <td><a href="ITM_Accessory.html#22">ブーストメモリ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#31">ビーストマスク</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#142">ムキムキベルト</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#145">クロオビ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#159">スターアンクレット</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#163">ゲイルレッグフレーム</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#173">結晶のアンクレット</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="45">
+      <td class="side">45</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#45">MNU_ShopList#砂丘島のキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;C42E879A&gt;</td>
+      <td><a href="ITM_Accessory.html#80">スミスグローブ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#149">メタルフットプロテクター</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#166">剛健のアンクレット</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#176">生還者の膝当て</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#219">きれいな水晶</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="46">
+      <td class="side">46</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#46">MNU_ShopList#ドラハガ商店</a>
+        </details>
+      </td>
+      <td>&lt;E267D223&gt;</td>
+      <td><a href="ITM_Accessory.html#3">チタンテンプルガード</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#29">光学式はちまき</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#46">猛者のプロテクトシャツ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#54">ジェイドサポーター</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#71">挑戦者の手袋</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#78">カーボングローブ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#109">ゴールドギアチョーカー</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#129">アシストベルト</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#139">シルバーベルト</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#238">穏やかな香水</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="47">
+      <td class="side">47</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#47">MNU_ShopList#シティーキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;14E7AD92&gt;</td>
+      <td><a href="ITM_Collection.html#2281">リングワーサー</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2294">マキシマッシュ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2355">サイセージ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2351">ラッキーラッツ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2287">アスパラボム</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2288">サウザントニンジン</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#3303">モノッソイソース</a></td>
+      <td><a href="FLD_ConditionList.html#7908">7908</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="48">
+      <td class="side">48</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#48">MNU_ShopList#ウェルウェルショップ</a>
+        </details>
+      </td>
+      <td>&lt;441F81A8&gt;</td>
+      <td><a href="ITM_Precious.html#16020">アルマのきもち</a></td>
+      <td><a href="FLD_ConditionList.html#2647">2647</a></td>
+      <td><a href="ITM_Precious.html#16021">アルドンのきもち</a></td>
+      <td><a href="FLD_ConditionList.html#2647">2647</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="49">
+      <td class="side">49</td>
+      <td>
+        <details>
+          <summary>2 refs</summary>
+               <a href="MNU_ShopList.html#10">MNU_ShopList#山嶺のキャラバン</a>
+          <br/><a href="MNU_ShopList.html#49">MNU_ShopList#キャッスル輜重科</a>
+        </details>
+      </td>
+      <td>&lt;58D5E737&gt;</td>
+      <td><a href="ITM_Accessory.html#9">サーモヘッド</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#14">兵士長の額当て</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#60">ストライクバングル</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#69">タクティカルグラブ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#104">暴風のネックレス</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#115">清浄の首飾り</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#169">ハイパープロテクター</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#179">金の膝当て</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#187">チャンピオンリング</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#225">幻鳥の羽飾り</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="50">
+      <td class="side">50</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#50">MNU_ShopList#天還のキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;C11FCA0C&gt;</td>
+      <td><a href="ITM_Collection.html#2266">ディッシュリーフ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2271">ギャラクシソ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2279">アメシストレモン</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2289">モンゼツワサビ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2293">テッカイモ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2295">グミキクラゲ</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="51">
+      <td class="side">51</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#51">MNU_ShopList#ノポンコイン交換所</a>
+        </details>
+      </td>
+      <td>&lt;7F371F82&gt;</td>
+      <td><a href="ITM_Accessory.html#278">貝殻のネックレス</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#272">慈悲のイヤリング</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#273">闘気のはちまき</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#275">救急バンダナ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#274">グラスメモリ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#277">拡張ホルダー</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#279">ノポンのストラップ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#276">ガチガチサポーター</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#767">アナライザー</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#25">オーガメモリ</a></td>
+      <td></td>
+      <td><a href="ITM_Accessory.html#116">思い出のロケット</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="52">
+      <td class="side">52</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#52">MNU_ShopList#ウェルウェルショップ</a>
+        </details>
+      </td>
+      <td>&lt;7CA2531F&gt;</td>
+      <td><a href="ITM_Precious.html#16076">始祖行録　最新刊</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="53">
+      <td class="side">53</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#53">MNU_ShopList#ルナエダ・バスティール</a>
+        </details>
+      </td>
+      <td>&lt;B1FC69C1&gt;</td>
+      <td><a href="ITM_Precious.html#16068">バスティール</a></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr id="54">
+      <td class="side">54</td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="MNU_ShopList.html#56">MNU_ShopList#テルニーとオキニーのキャラバン</a>
+        </details>
+      </td>
+      <td>&lt;93774683&gt;</td>
+      <td><a href="ITM_Collection.html#2646">サモンのさっぱり白身</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2110">キラボシダイコン</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#3293">あまあまういんな</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2475">ギラフェの顔ヒレ</a></td>
+      <td></td>
+      <td><a href="ITM_Collection.html#2439">アルドンの芳醇肉</a></td>
+      <td><a href="FLD_ConditionList.html#14422">14422</a></td>
+      <td><a href="ITM_Collection.html#2424">アルマの熟成サーロイン</a></td>
+      <td><a href="FLD_ConditionList.html#14422">14422</a></td>
+      <td><a href="ITM_Collection.html#2595">スキートの蜜</a></td>
+      <td><a href="FLD_ConditionList.html#14422">14422</a></td>
+      <td><a href="ITM_Collection.html#2588">アンセルの圧縮肉</a></td>
+      <td><a href="FLD_ConditionList.html#14423">14423</a></td>
+      <td><a href="ITM_Collection.html#2180">モモンマンゴー</a></td>
+      <td><a href="FLD_ConditionList.html#14423">14423</a></td>
+      <td><a href="ITM_Collection.html#2184">シロタマウリ</a></td>
+      <td><a href="FLD_ConditionList.html#14423">14423</a></td>
+      <td><a href="ITM_Collection.html#2165">ライムギュ</a></td>
+      <td><a href="FLD_ConditionList.html#14424">14424</a></td>
+      <td><a href="ITM_Collection.html#2671">ロドンの大トロ</a></td>
+      <td><a href="FLD_ConditionList.html#14424">14424</a></td>
+      <td><a href="ITM_Collection.html#2647">サモンのさっぱり白身</a></td>
+      <td><a href="FLD_ConditionList.html#14424">14424</a></td>
+      <td><a href="ITM_Collection.html#2286">ミツゴトマト</a></td>
+      <td><a href="FLD_ConditionList.html#14424">14424</a></td>
+      <td><a href="ITM_Collection.html#2755">ギアークの発光ヒレ</a></td>
+      <td><a href="FLD_ConditionList.html#14456">14456</a></td>
+      <td><a href="ITM_Collection.html#2653">クラディの極上赤身</a></td>
+      <td><a href="FLD_ConditionList.html#14456">14456</a></td>
+      <td><a href="ITM_Collection.html#2262">エッグシード</a></td>
+      <td><a href="FLD_ConditionList.html#14456">14456</a></td>
+      <td><a href="ITM_Collection.html#2174">サニーサイドフラワー</a></td>
+      <td><a href="FLD_ConditionList.html#14456">14456</a></td>
+      <td><a href="ITM_Collection.html#2612">モラモラの肉厚ヒレ</a></td>
+      <td><a href="FLD_ConditionList.html#14456">14456</a></td>
+      <td><a href="ITM_Collection.html#2018">シャリウマイネ</a></td>
+      <td><a href="FLD_ConditionList.html#14456">14456</a></td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </table>
+</body>
+</html>
