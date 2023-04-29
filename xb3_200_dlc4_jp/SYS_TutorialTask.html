@@ -1,0 +1,978 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <title>SYS_TutorialTask</title>
+  <style type="text/css">
+    table, th, td {border: 1px solid #000000; border-collapse: collapse;}
+    table {border-width: 3px;}
+    th, td {padding: 0.1em 0.2em;}
+    tr.head th, tr.head td {border-bottom-width: 3px;}
+    th.colbreak, td.colbreak {border-right-width: 3px;}
+    th {text-align: center; position: sticky; top: -1px; background-color: #F0F0F0;}
+    .side {position: sticky; left: -1px; background-color: #F0F0F0;}
+    th.side {z-index: 3;}
+    td {text-align: left;}
+    td.right {text-align: right;}
+    .sortable tbody tr:nth-child(odd) {background: #F5F5F5;}
+    .sortable th {background: #E4E4E4; cursor: pointer; white-space: nowrap; vertical-align: middle;}
+    .sortable th.dir-d::after {content:" ▾"; vertical-align: inherit;}
+    .sortable th.dir-u::after {content:" ▴"; vertical-align: inherit;}
+    :target td {background-color: #CCCCCC !important;}
+  </style>
+  <script type="text/javascript">
+    function offsetAnchor() {
+      if (location.hash.length !== 0) {
+        window.scrollTo(window.scrollX, window.scrollY - document.getElementById("header").clientHeight);
+      }
+    }
+    window.addEventListener("hashchange", offsetAnchor);
+    window.setTimeout(offsetAnchor, 1);
+  </script>
+</head>
+<body>
+  <table class="sortable">
+    <h2>SYS_TutorialTask</h2>
+    <tr id="header">
+      <th class="side dir-d ">ID</th>
+      <th>Referenced By</th>
+      <th>ID</th>
+      <th>AchievementCount</th>
+      <th>Title</th>
+    </tr>
+    <tr id="1">
+      <td class="side">1</td>
+      <td></td>
+      <td>&lt;E1579BDC&gt;</td>
+      <td>1</td>
+      <td></td>
+    </tr>
+    <tr id="2">
+      <td class="side">2</td>
+      <td></td>
+      <td>&lt;EBF2E47A&gt;</td>
+      <td>1</td>
+      <td>接近してエネミーを倒す</td>
+    </tr>
+    <tr id="3">
+      <td class="side">3</td>
+      <td></td>
+      <td>&lt;C2C81A2F&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_a ]で抜刀</td>
+    </tr>
+    <tr id="4">
+      <td class="side">4</td>
+      <td></td>
+      <td>&lt;E361A417&gt;</td>
+      <td>5</td>
+      <td>[ML:icon icon=btn_x ] [ML:icon icon=btn_y ] [ML:icon icon=btn_b ] のどれかで5回攻撃</td>
+    </tr>
+    <tr id="5">
+      <td class="side">5</td>
+      <td></td>
+      <td>&lt;256CAD36&gt;</td>
+      <td>1</td>
+      <td>ロールアクトをしてゲージを溜める</td>
+    </tr>
+    <tr id="6">
+      <td class="side">6</td>
+      <td></td>
+      <td>&lt;FD33B992&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_a ]のタレントアーツで攻撃する</td>
+    </tr>
+    <tr id="7">
+      <td class="side">7</td>
+      <td></td>
+      <td>&lt;86741F25&gt;</td>
+      <td>1</td>
+      <td>グラウンドビートで<br />ヘイトを獲得する</td>
+    </tr>
+    <tr id="8">
+      <td class="side">8</td>
+      <td></td>
+      <td>&lt;4D135832&gt;</td>
+      <td>1</td>
+      <td>エネミーの背面に回り込む</td>
+    </tr>
+    <tr id="9">
+      <td class="side">9</td>
+      <td></td>
+      <td>&lt;1EB6F43F&gt;</td>
+      <td>1</td>
+      <td>背面からスラストエッジを撃つ</td>
+    </tr>
+    <tr id="10">
+      <td class="side">10</td>
+      <td></td>
+      <td>&lt;5FB4E63E&gt;</td>
+      <td>1</td>
+      <td>エネミーの側面に回り込む</td>
+    </tr>
+    <tr id="11">
+      <td class="side">11</td>
+      <td></td>
+      <td>&lt;C4D72CF3&gt;</td>
+      <td>1</td>
+      <td>ソードストライクを使う</td>
+    </tr>
+    <tr id="12">
+      <td class="side">12</td>
+      <td></td>
+      <td>&lt;8291AFC9&gt;</td>
+      <td>1</td>
+      <td>ランツがダウンさせるのを待つ</td>
+    </tr>
+    <tr id="13">
+      <td class="side">13</td>
+      <td></td>
+      <td>&lt;86462768&gt;</td>
+      <td>1</td>
+      <td>ユーニがスタンさせるのを待つ</td>
+    </tr>
+    <tr id="14">
+      <td class="side">14</td>
+      <td></td>
+      <td>&lt;DBA808E3&gt;</td>
+      <td>1</td>
+      <td>バタフライエッジを使う</td>
+    </tr>
+    <tr id="15">
+      <td class="side">15</td>
+      <td></td>
+      <td>&lt;764B685A&gt;</td>
+      <td>1</td>
+      <td>オートアタックでゲージ回復</td>
+    </tr>
+    <tr id="16">
+      <td class="side">16</td>
+      <td></td>
+      <td>&lt;E8CD2EC7&gt;</td>
+      <td>1</td>
+      <td>2つのアーツを使用可能にする</td>
+    </tr>
+    <tr id="17">
+      <td class="side">17</td>
+      <td></td>
+      <td>&lt;65C406E9&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_zr ] でアーツを融合させる</td>
+    </tr>
+    <tr id="18">
+      <td class="side">18</td>
+      <td></td>
+      <td>&lt;7B4A77DA&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_zr ] を押しながらアーツを使う</td>
+    </tr>
+    <tr id="19">
+      <td class="side">19</td>
+      <td></td>
+      <td>&lt;4E6E3044&gt;</td>
+      <td>1</td>
+      <td>チェインゲージを溜める</td>
+    </tr>
+    <tr id="20">
+      <td class="side">20</td>
+      <td></td>
+      <td>&lt;838023DA&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_plus ] でチェインアタック開始</td>
+    </tr>
+    <tr id="21">
+      <td class="side">21</td>
+      <td></td>
+      <td>&lt;7F822AE6&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=pad_left ] でインタリンク開始</td>
+    </tr>
+    <tr id="22">
+      <td class="side">22</td>
+      <td></td>
+      <td>&lt;0CA9BD0C&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=pad_left ] でインタリンク開始</td>
+    </tr>
+    <tr id="23">
+      <td class="side">23</td>
+      <td></td>
+      <td>&lt;0D08540A&gt;</td>
+      <td>1</td>
+      <td>インタリンク解除まで戦おう</td>
+    </tr>
+    <tr id="24">
+      <td class="side">24</td>
+      <td></td>
+      <td>&lt;A9481380&gt;</td>
+      <td>1</td>
+      <td>ウロボロスオーダーの説明</td>
+    </tr>
+    <tr id="25">
+      <td class="side">25</td>
+      <td></td>
+      <td>&lt;D417DE44&gt;</td>
+      <td>1</td>
+      <td>回復サークルの中に入ろう</td>
+    </tr>
+    <tr id="26">
+      <td class="side">26</td>
+      <td></td>
+      <td>&lt;D6CF9950&gt;</td>
+      <td>1</td>
+      <td>回復サークルの中に入ろう</td>
+    </tr>
+    <tr id="27">
+      <td class="side">27</td>
+      <td></td>
+      <td>&lt;DBEC4359&gt;</td>
+      <td>1</td>
+      <td>HPを全回復させよう</td>
+    </tr>
+    <tr id="28">
+      <td class="side">28</td>
+      <td></td>
+      <td>&lt;192E7E2A&gt;</td>
+      <td>1</td>
+      <td>戦闘に勝利する</td>
+    </tr>
+    <tr id="29">
+      <td class="side">29</td>
+      <td></td>
+      <td>&lt;6859E0EE&gt;</td>
+      <td>3</td>
+      <td>オートアタックで攻撃する</td>
+    </tr>
+    <tr id="30">
+      <td class="side">30</td>
+      <td></td>
+      <td>&lt;525A00CF&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_zl ] で作戦パレットを表示する</td>
+    </tr>
+    <tr id="31">
+      <td class="side">31</td>
+      <td></td>
+      <td>&lt;F5FE355A&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_r ] でターゲットを切り替える</td>
+    </tr>
+    <tr id="32">
+      <td class="side">32</td>
+      <td></td>
+      <td>&lt;59D53A2A&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_zl ]＋[ML:icon icon=pad_up ] で集中攻撃を選択</td>
+    </tr>
+    <tr id="33">
+      <td class="side">33</td>
+      <td></td>
+      <td>&lt;0E95AB93&gt;</td>
+      <td>1</td>
+      <td>ランツとユーニから離れる</td>
+    </tr>
+    <tr id="34">
+      <td class="side">34</td>
+      <td></td>
+      <td>&lt;0C605593&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_zl ]＋[ML:icon icon=pad_down ] で集合を選択</td>
+    </tr>
+    <tr id="35">
+      <td class="side">35</td>
+      <td></td>
+      <td>&lt;F1AA6D7A&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_a ] 長押しでランツを助け起こす</td>
+    </tr>
+    <tr id="36">
+      <td class="side">36</td>
+      <td></td>
+      <td>&lt;17FAEC6C&gt;</td>
+      <td>1</td>
+      <td>ノアがブレイクさせるのを待つ</td>
+    </tr>
+    <tr id="37">
+      <td class="side">37</td>
+      <td></td>
+      <td>&lt;3C5B52C0&gt;</td>
+      <td>1</td>
+      <td>ヘヴィチャージを使う</td>
+    </tr>
+    <tr id="38">
+      <td class="side">38</td>
+      <td></td>
+      <td>&lt;E74266EC&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_zl ]＋[ML:icon icon=pad_left ] でスマッシュを指示</td>
+    </tr>
+    <tr id="39">
+      <td class="side">39</td>
+      <td></td>
+      <td>&lt;1E896CAC&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_zl ]＋[ML:icon icon=pad_left ] でバーストを指示</td>
+    </tr>
+    <tr id="40">
+      <td class="side">40</td>
+      <td></td>
+      <td>&lt;3DFDA979&gt;</td>
+      <td>1</td>
+      <td>ノアがブレイクさせるのを待つ</td>
+    </tr>
+    <tr id="41">
+      <td class="side">41</td>
+      <td></td>
+      <td>&lt;12A18B8C&gt;</td>
+      <td>1</td>
+      <td>ランツがダウンさせるのを待つ</td>
+    </tr>
+    <tr id="42">
+      <td class="side">42</td>
+      <td></td>
+      <td>&lt;DF295351&gt;</td>
+      <td>1</td>
+      <td>プレッシャードロップを使う</td>
+    </tr>
+    <tr id="43">
+      <td class="side">43</td>
+      <td></td>
+      <td>&lt;4D2F733B&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_zl ]＋[ML:icon icon=pad_left ] でスマッシュを指示</td>
+    </tr>
+    <tr id="44">
+      <td class="side">44</td>
+      <td></td>
+      <td>&lt;9098058A&gt;</td>
+      <td>1</td>
+      <td>ミオがブレイクさせるのを待つ</td>
+    </tr>
+    <tr id="45">
+      <td class="side">45</td>
+      <td></td>
+      <td>&lt;D61BFD44&gt;</td>
+      <td>1</td>
+      <td>ランツがダウンさせるのを待つ</td>
+    </tr>
+    <tr id="46">
+      <td class="side">46</td>
+      <td></td>
+      <td>&lt;C1CAC48D&gt;</td>
+      <td>1</td>
+      <td>セナがライジングさせるのを待つ</td>
+    </tr>
+    <tr id="47">
+      <td class="side">47</td>
+      <td></td>
+      <td>&lt;DB1060B5&gt;</td>
+      <td>1</td>
+      <td>セイバーストライクを使う</td>
+    </tr>
+    <tr id="48">
+      <td class="side">48</td>
+      <td></td>
+      <td>&lt;2E6B155F&gt;</td>
+      <td>1</td>
+      <td>ノアがブレイクさせるのを待つ</td>
+    </tr>
+    <tr id="49">
+      <td class="side">49</td>
+      <td></td>
+      <td>&lt;E97AA7D2&gt;</td>
+      <td>1</td>
+      <td>ランツがダウンさせるのを待つ</td>
+    </tr>
+    <tr id="50">
+      <td class="side">50</td>
+      <td></td>
+      <td>&lt;EC5EDFBB&gt;</td>
+      <td>1</td>
+      <td>スプラッシュブラストを使う</td>
+    </tr>
+    <tr id="51">
+      <td class="side">51</td>
+      <td></td>
+      <td>&lt;99C9532C&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_zl ]＋[ML:icon icon=pad_left ] でバーストを指示</td>
+    </tr>
+    <tr id="52">
+      <td class="side">52</td>
+      <td></td>
+      <td>&lt;BD9CF065&gt;</td>
+      <td>1</td>
+      <td>ノアがブレイクさせるのを待つ</td>
+    </tr>
+    <tr id="53">
+      <td class="side">53</td>
+      <td></td>
+      <td>&lt;4671B4B6&gt;</td>
+      <td>1</td>
+      <td>ランツがダウンさせるのを待つ</td>
+    </tr>
+    <tr id="54">
+      <td class="side">54</td>
+      <td></td>
+      <td>&lt;6D79E001&gt;</td>
+      <td>1</td>
+      <td>ユーニがスタンさせるのを待つ</td>
+    </tr>
+    <tr id="55">
+      <td class="side">55</td>
+      <td></td>
+      <td>&lt;FF6E33D5&gt;</td>
+      <td>1</td>
+      <td>道反しを使う</td>
+    </tr>
+    <tr id="56">
+      <td class="side">56</td>
+      <td></td>
+      <td>&lt;00D03160&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_plus ] でチェインアタックを終了</td>
+    </tr>
+    <tr id="57">
+      <td class="side">57</td>
+      <td></td>
+      <td>&lt;64FBF9D5&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_left ] でインタリンクする</td>
+    </tr>
+    <tr id="58">
+      <td class="side">58</td>
+      <td></td>
+      <td>&lt;4E6BF6E9&gt;</td>
+      <td>1</td>
+      <td>タレントアーツのゲージを溜める</td>
+    </tr>
+    <tr id="59">
+      <td class="side">59</td>
+      <td></td>
+      <td>&lt;472B1B30&gt;</td>
+      <td>1</td>
+      <td>メガスピンエッジを使う</td>
+    </tr>
+    <tr id="60">
+      <td class="side">60</td>
+      <td></td>
+      <td>&lt;66D29379&gt;</td>
+      <td>3</td>
+      <td>[ML:icon icon=pad_left ]＋[ML:icon icon=btn_x ]、[ML:icon icon=btn_y ]、[ML:icon icon=btn_b ] でインタリンク</td>
+    </tr>
+    <tr id="61">
+      <td class="side">61</td>
+      <td></td>
+      <td>&lt;91C26855&gt;</td>
+      <td>1</td>
+      <td>インタリンクレベルを１にする</td>
+    </tr>
+    <tr id="62">
+      <td class="side">62</td>
+      <td></td>
+      <td>&lt;B5EA348A&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_zl ]＋[ML:icon icon=pad_right ] でアーツ融合重視に変更</td>
+    </tr>
+    <tr id="63">
+      <td class="side">63</td>
+      <td></td>
+      <td>&lt;E0388A08&gt;</td>
+      <td>1</td>
+      <td>インタリンクレベルを３にする</td>
+    </tr>
+    <tr id="64">
+      <td class="side">64</td>
+      <td></td>
+      <td>&lt;BDC36B83&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_left ] でインタリンクする</td>
+    </tr>
+    <tr id="65">
+      <td class="side">65</td>
+      <td></td>
+      <td>&lt;D19FF532&gt;</td>
+      <td>1</td>
+      <td>キャンセルでゲージを溜める</td>
+    </tr>
+    <tr id="66">
+      <td class="side">66</td>
+      <td></td>
+      <td>&lt;43E4DA6F&gt;</td>
+      <td>1</td>
+      <td>メガスピンエッジを使う</td>
+    </tr>
+    <tr id="67">
+      <td class="side">67</td>
+      <td></td>
+      <td>&lt;0C9E3A34&gt;</td>
+      <td>1</td>
+      <td>融合アーツを使う</td>
+    </tr>
+    <tr id="68">
+      <td class="side">68</td>
+      <td></td>
+      <td>&lt;8E464070&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_left ] でインタリンクする</td>
+    </tr>
+    <tr id="69">
+      <td class="side">69</td>
+      <td></td>
+      <td>&lt;4C89989A&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_plus ] でチェインアタックを開始</td>
+    </tr>
+    <tr id="70">
+      <td class="side">70</td>
+      <td></td>
+      <td>&lt;BDAE977C&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_zl ]＋[ML:icon icon=pad_right ] でアーツ融合重視に変更</td>
+    </tr>
+    <tr id="71">
+      <td class="side">71</td>
+      <td></td>
+      <td>&lt;AEC883AD&gt;</td>
+      <td>1</td>
+      <td>２つのアーツを使用可能にする</td>
+    </tr>
+    <tr id="72">
+      <td class="side">72</td>
+      <td></td>
+      <td>&lt;06AD7CCD&gt;</td>
+      <td>1</td>
+      <td>接近してエネミーを倒す</td>
+    </tr>
+    <tr id="73">
+      <td class="side">73</td>
+      <td></td>
+      <td>&lt;F3C0100C&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_zl ]＋[ML:icon icon=pad_down ] で集合を選択</td>
+    </tr>
+    <tr id="74">
+      <td class="side">74</td>
+      <td></td>
+      <td>&lt;6B9A6D57&gt;</td>
+      <td>1</td>
+      <td>接近してエネミーを倒す</td>
+    </tr>
+    <tr id="75">
+      <td class="side">75</td>
+      <td></td>
+      <td>&lt;A4EB00C2&gt;</td>
+      <td>1</td>
+      <td>オートアタックをキャンセルする</td>
+    </tr>
+    <tr id="76">
+      <td class="side">76</td>
+      <td></td>
+      <td>&lt;125CA389&gt;</td>
+      <td>1</td>
+      <td>アーツをキャンセルする</td>
+    </tr>
+    <tr id="77">
+      <td class="side">77</td>
+      <td></td>
+      <td>&lt;3866D38B&gt;</td>
+      <td>1</td>
+      <td>ユーニがスタンさせるのを待つ</td>
+    </tr>
+    <tr id="78">
+      <td class="side">78</td>
+      <td></td>
+      <td>&lt;A0ABB0CD&gt;</td>
+      <td>1</td>
+      <td>ヘイトをとり続ける</td>
+    </tr>
+    <tr id="79">
+      <td class="side">79</td>
+      <td></td>
+      <td>&lt;62BF8B65&gt;</td>
+      <td>1</td>
+      <td>ロールアクトをしてゲージを溜める</td>
+    </tr>
+    <tr id="80">
+      <td class="side">80</td>
+      <td></td>
+      <td>&lt;B0067F51&gt;</td>
+      <td>1</td>
+      <td>マッドタウントで挑発する</td>
+    </tr>
+    <tr id="81">
+      <td class="side">81</td>
+      <td></td>
+      <td>&lt;998EEE8A&gt;</td>
+      <td>1</td>
+      <td>ノアを防御サークルに入れる</td>
+    </tr>
+    <tr id="82">
+      <td class="side">82</td>
+      <td></td>
+      <td>&lt;09CF5B56&gt;</td>
+      <td>1</td>
+      <td>エネミーを全て倒す</td>
+    </tr>
+    <tr id="83">
+      <td class="side">83</td>
+      <td></td>
+      <td>&lt;C2F734C7&gt;</td>
+      <td>1</td>
+      <td>フィールド設置アーツを使う</td>
+    </tr>
+    <tr id="84">
+      <td class="side">84</td>
+      <td></td>
+      <td>&lt;211EDF7F&gt;</td>
+      <td>1</td>
+      <td>ロールアクトをしてゲージを溜める</td>
+    </tr>
+    <tr id="85">
+      <td class="side">85</td>
+      <td></td>
+      <td>&lt;CD0D81E3&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_a ] 長押しでランツを助け起こす</td>
+    </tr>
+    <tr id="86">
+      <td class="side">86</td>
+      <td></td>
+      <td>&lt;E8586111&gt;</td>
+      <td>1</td>
+      <td>ヒーリングサークルで回復する</td>
+    </tr>
+    <tr id="87">
+      <td class="side">87</td>
+      <td></td>
+      <td>&lt;AA0E145C&gt;</td>
+      <td>1</td>
+      <td>カミラに話しかける</td>
+    </tr>
+    <tr id="88">
+      <td class="side">88</td>
+      <td></td>
+      <td>&lt;BB4D382D&gt;</td>
+      <td>1</td>
+      <td>買うを選ぶ</td>
+    </tr>
+    <tr id="89">
+      <td class="side">89</td>
+      <td></td>
+      <td>&lt;D8740B6F&gt;</td>
+      <td>1</td>
+      <td>ブロンズテンプルガードを選ぶ</td>
+    </tr>
+    <tr id="90">
+      <td class="side">90</td>
+      <td></td>
+      <td>&lt;7B17D4BF&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_x ] でメインメニューを開く</td>
+    </tr>
+    <tr id="91">
+      <td class="side">91</td>
+      <td></td>
+      <td>&lt;B6C24F39&gt;</td>
+      <td>1</td>
+      <td>パーティを選ぶ</td>
+    </tr>
+    <tr id="92">
+      <td class="side">92</td>
+      <td></td>
+      <td>&lt;3C4A886A&gt;</td>
+      <td>1</td>
+      <td>キャラクターを選ぶ</td>
+    </tr>
+    <tr id="93">
+      <td class="side">93</td>
+      <td></td>
+      <td>&lt;28A8B460&gt;</td>
+      <td>1</td>
+      <td>アクセサリーを選ぶ</td>
+    </tr>
+    <tr id="94">
+      <td class="side">94</td>
+      <td></td>
+      <td>&lt;B290B16C&gt;</td>
+      <td>1</td>
+      <td>スロットを選ぶ</td>
+    </tr>
+    <tr id="95">
+      <td class="side">95</td>
+      <td></td>
+      <td>&lt;E7E1D4B7&gt;</td>
+      <td>1</td>
+      <td>ブロンズテンプルガードを選ぶ</td>
+    </tr>
+    <tr id="96">
+      <td class="side">96</td>
+      <td></td>
+      <td>&lt;FFC41F94&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_x ] でメインメニューを開く</td>
+    </tr>
+    <tr id="97">
+      <td class="side">97</td>
+      <td></td>
+      <td>&lt;ABD70363&gt;</td>
+      <td>1</td>
+      <td>クエストを選ぶ</td>
+    </tr>
+    <tr id="98">
+      <td class="side">98</td>
+      <td></td>
+      <td>&lt;8C3D65EA&gt;</td>
+      <td>1</td>
+      <td>コレペディアカードを選ぶ</td>
+    </tr>
+    <tr id="99">
+      <td class="side">99</td>
+      <td></td>
+      <td>&lt;A75449E4&gt;</td>
+      <td>1</td>
+      <td>ロアーの依頼を確認する</td>
+    </tr>
+    <tr id="100">
+      <td class="side">100</td>
+      <td></td>
+      <td>&lt;EB74A09A&gt;</td>
+      <td>1</td>
+      <td>アイテムを登録しよう</td>
+    </tr>
+    <tr id="101">
+      <td class="side">101</td>
+      <td></td>
+      <td>&lt;CD2DD1B8&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_x ] でメインメニューを開く</td>
+    </tr>
+    <tr id="102">
+      <td class="side">102</td>
+      <td></td>
+      <td>&lt;99CBF333&gt;</td>
+      <td>1</td>
+      <td>パーティを選ぶ</td>
+    </tr>
+    <tr id="103">
+      <td class="side">103</td>
+      <td></td>
+      <td>&lt;3118BA69&gt;</td>
+      <td>1</td>
+      <td>キャラクターを選ぶ</td>
+    </tr>
+    <tr id="104">
+      <td class="side">104</td>
+      <td></td>
+      <td>&lt;0458B3FB&gt;</td>
+      <td>1</td>
+      <td>アーツを選ぶ</td>
+    </tr>
+    <tr id="105">
+      <td class="side">105</td>
+      <td></td>
+      <td>&lt;70DBB0EC&gt;</td>
+      <td>1</td>
+      <td>グラウンドビートを選ぶ</td>
+    </tr>
+    <tr id="106">
+      <td class="side">106</td>
+      <td></td>
+      <td>&lt;A5823CD7&gt;</td>
+      <td>1</td>
+      <td>エアスラッシュを選ぶ</td>
+    </tr>
+    <tr id="107">
+      <td class="side">107</td>
+      <td></td>
+      <td>&lt;09310667&gt;</td>
+      <td>1</td>
+      <td>先陣の野営地にアクセスする</td>
+    </tr>
+    <tr id="108">
+      <td class="side">108</td>
+      <td></td>
+      <td>&lt;FFFB2B5E&gt;</td>
+      <td>1</td>
+      <td>レベルアップを選ぶ</td>
+    </tr>
+    <tr id="109">
+      <td class="side">109</td>
+      <td></td>
+      <td>&lt;BAF73BB6&gt;</td>
+      <td>1</td>
+      <td>ノアを選ぶ</td>
+    </tr>
+    <tr id="110">
+      <td class="side">110</td>
+      <td></td>
+      <td>&lt;683674E3&gt;</td>
+      <td>1</td>
+      <td>ノアのレベルを上げる</td>
+    </tr>
+    <tr id="111">
+      <td class="side">111</td>
+      <td></td>
+      <td>&lt;6668ECB3&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_x ] でメインメニューを開く</td>
+    </tr>
+    <tr id="112">
+      <td class="side">112</td>
+      <td></td>
+      <td>&lt;3BF5C0EF&gt;</td>
+      <td>1</td>
+      <td>レセント湖の休息地にアクセスする</td>
+    </tr>
+    <tr id="113">
+      <td class="side">113</td>
+      <td></td>
+      <td>&lt;23A1935D&gt;</td>
+      <td>1</td>
+      <td>レセント湖の休息地にアクセスする</td>
+    </tr>
+    <tr id="114">
+      <td class="side">114</td>
+      <td></td>
+      <td>&lt;E03F404D&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_x ] でメインメニューを開く</td>
+    </tr>
+    <tr id="115">
+      <td class="side">115</td>
+      <td></td>
+      <td>&lt;55610430&gt;</td>
+      <td>1</td>
+      <td>コロニー4野外食堂にアクセスする</td>
+    </tr>
+    <tr id="116">
+      <td class="side">116</td>
+      <td></td>
+      <td>&lt;EF449DBC&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_x ] でメインメニューを開く</td>
+    </tr>
+    <tr id="117">
+      <td class="side">117</td>
+      <td></td>
+      <td>&lt;48216920&gt;</td>
+      <td>1</td>
+      <td>コンテナを開けてアイテムを拾う</td>
+    </tr>
+    <tr id="118">
+      <td class="side">118</td>
+      <td></td>
+      <td>&lt;F2A489B9&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_x ] でメインメニューを開く</td>
+    </tr>
+    <tr id="119">
+      <td class="side">119</td>
+      <td></td>
+      <td>&lt;3F187365&gt;</td>
+      <td>1</td>
+      <td>[ML:icon icon=btn_zr ]で投下物資を注目する</td>
+    </tr>
+    <tr id="120">
+      <td class="side">120</td>
+      <td></td>
+      <td>&lt;FCA6D5EE&gt;</td>
+      <td>0</td>
+      <td>[ML:icon icon=btn_x ] でメインメニューを開く</td>
+    </tr>
+    <tr id="121">
+      <td class="side">121</td>
+      <td></td>
+      <td>&lt;652636FB&gt;</td>
+      <td>0</td>
+      <td>シティーの休息地にアクセスする</td>
+    </tr>
+    <tr id="122">
+      <td class="side">122</td>
+      <td></td>
+      <td>&lt;AA6F94D5&gt;</td>
+      <td>0</td>
+      <td>[ML:icon icon=btn_x ] でメインメニューを開く</td>
+    </tr>
+    <tr id="123">
+      <td class="side">123</td>
+      <td></td>
+      <td>&lt;5E1B1E0C&gt;</td>
+      <td>0</td>
+      <td>アーツを使ってゲージを溜める</td>
+    </tr>
+    <tr id="124">
+      <td class="side">124</td>
+      <td></td>
+      <td>&lt;948B6E73&gt;</td>
+      <td>0</td>
+      <td>敵をライジング状態にする</td>
+    </tr>
+    <tr id="125">
+      <td class="side">125</td>
+      <td></td>
+      <td>&lt;278F0250&gt;</td>
+      <td>0</td>
+      <td>ライジング対象に[ML:icon icon=pad_left ]で必殺技を撃つ</td>
+    </tr>
+    <tr id="126">
+      <td class="side">126</td>
+      <td></td>
+      <td>&lt;0B9B2F0B&gt;</td>
+      <td>0</td>
+      <td>戦闘に勝利する</td>
+    </tr>
+    <tr id="127">
+      <td class="side">127</td>
+      <td></td>
+      <td>&lt;9212C9E5&gt;</td>
+      <td>0</td>
+      <td>[ML:icon icon=btn_zl ]+[ML:icon icon=btn_r ]でエイに操作変更する</td>
+    </tr>
+    <tr id="128">
+      <td class="side">128</td>
+      <td></td>
+      <td>&lt;3BFE6563&gt;</td>
+      <td>0</td>
+      <td>[ML:icon icon=btn_a ]でビジョンを使用する</td>
+    </tr>
+    <tr id="129">
+      <td class="side">129</td>
+      <td></td>
+      <td>&lt;25D6408C&gt;</td>
+      <td>0</td>
+      <td>2つのアーツを使用可能にする</td>
+    </tr>
+    <tr id="130">
+      <td class="side">130</td>
+      <td></td>
+      <td>&lt;B84E129C&gt;</td>
+      <td>0</td>
+      <td>[ML:icon icon=btn_zr ] でアーツを融合させる</td>
+    </tr>
+    <tr id="131">
+      <td class="side">131</td>
+      <td></td>
+      <td>&lt;D84311E5&gt;</td>
+      <td>0</td>
+      <td>[ML:icon icon=btn_zr ] を押しながらアーツを使う</td>
+    </tr>
+    <tr id="132">
+      <td class="side">132</td>
+      <td></td>
+      <td>&lt;D9ABA85D&gt;</td>
+      <td>0</td>
+      <td>[ML:icon icon=btn_x ] でメインメニューを開く</td>
+    </tr>
+    <tr id="133">
+      <td class="side">133</td>
+      <td></td>
+      <td>&lt;BF901B6B&gt;</td>
+      <td>0</td>
+      <td>[ML:icon icon=btn_x ] でメインメニューを開く</td>
+    </tr>
+  </table>
+</body>
+</html>
