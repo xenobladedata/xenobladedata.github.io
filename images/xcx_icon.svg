@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) by Sir Teatei Moonlight for www.xenoserieswiki.org -->
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xlink="http://www.w3.org/1999/xlink" width="256" height="256" viewBox="0 0 256 256">
+	<defs id="defs4">
+		<path id="xShape" d="m 29.149628,75.4528 31.207031,53.73486 -51.75586,60.45117 h 10.413575 l 37.882324,-41.04052 -33.865722,41.04052 h 28.174804 l 25.045894,-33.90087 16.082516,33.90087 h 43.71533 l -33.22119,-58.91894 46.53956,-55.26709 h -13.9087 l -33.36181,37.138183 30.58447,-37.138183 h -25.62891 l -21.559566,31.277343 -12.95068,-31.277343 z"/>
+		<path id="cShape" d="m 162.07957,203.00851 c -1.82688,8.22096 -6.91605,14.35404 -15.91995,14.35404 -13.17962,0 -15.0065,-12.00519 -15.0065,-19.70418 0,-13.17963 5.74162,-31.44841 21.66156,-31.44841 8.87341,0 13.04913,4.95867 12.78815,13.70158 h 27.1422 c -0.52197,-27.92514 -19.05174,-36.92904 -39.79986,-36.92904 -31.70939,0 -50.50014,25.05433 -50.50014,55.19783 0,24.92385 13.04913,42.40969 40.06083,42.40969 38.75593,0 46.06344,-28.05564 47.75983,-37.58151 z"/>
+		<path id="bigXShape" d="m 22.049138,221.0152 170.673572,-202.066781 h 13.48799 l -170.673572,202.066781 z m 202.019222,-211.5542625 -165.007813,195.3593725 h 28.984375 l 56.316408,-66.67383 27.97461,51.58399 52.80468,-0.28711 -50.39257,-87.27344 78.30468,-92.7089825 z m -76.07227,51.4277345 -19.39257,-37.94336 h -49.933598 l 40.658198,71.886719 z"/>
+		<!--Inkscape doesn't respect href, so have to include xlink:href as well-->
+		<clipPath id="xClip">
+			<use href="#xShape" xlink:href="#xShape"/>
+		</clipPath>
+		<clipPath id="cClip">
+			<use href="#cShape" xlink:href="#cShape"/>
+		</clipPath>
+		<clipPath id="bigXClip">
+			<use href="#bigXShape" xlink:href="#bigXShape"/>
+		</clipPath>
+		<!--Inkscape doesn't respect stop-color, so have to include style="" as well-->
+		<linearGradient id="xGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+			<stop offset="0%" stop-color="rgba(255,255,255,1)" style="stop-color:rgb(255,255,255);stop-opacity:1;"/>
+			<stop offset="25%" stop-color="rgba(255,255,255,1)" style="stop-color:rgb(255,255,255);stop-opacity:1;"/>
+			<stop offset="75%" stop-color="rgba(239,239,239,1)" style="stop-color:rgb(239,239,239);stop-opacity:1;"/>
+			<stop offset="100%" stop-color="rgba(191,191,191,1)" style="stop-color:rgb(191,191,191);stop-opacity:1;"/>
+		</linearGradient>
+		<linearGradient id="cGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+			<stop offset="0%" stop-color="rgba(223,223,223,1)" style="stop-color:rgb(223,223,223);stop-opacity:1;"/>
+			<stop offset="100%" stop-color="rgba(143,143,143,1)" style="stop-color:rgb(143,143,143);stop-opacity:1;"/>
+		</linearGradient>
+		<linearGradient id="bigXStripes" x1="0%" x2="0%" y1="0%" y2="1.5%" spreadMethod="repeat">
+			<stop offset="0%" stop-color="rgba(0,255,255,1)" style="stop-color:rgb(0,255,255);stop-opacity:1;"/>
+			<stop offset="25%" stop-color="rgba(0,159,159,1)" style="stop-color:rgb(0,159,159);stop-opacity:1;"/>
+			<stop offset="40%" stop-color="rgba(0,159,159,1)" style="stop-color:rgb(0,159,159);stop-opacity:1;"/>
+			<stop offset="65%" stop-color="rgba(0,255,255,1)" style="stop-color:rgb(0,255,255);stop-opacity:1;"/>
+		</linearGradient>
+		<linearGradient id="bigXFill" x1="0%" x2="0%" y1="0%" y2="100%">
+			<stop offset="0%" stop-color="rgba(0,0,0,0)" style="stop-color:rgb(0,0,0);stop-opacity:0;"/>
+			<stop offset="100%" stop-color="rgba(0,0,0,0.2)" style="stop-color:rgb(0,0,0);stop-opacity:0.2;"/>
+		</linearGradient>
+		<linearGradient id="bigXOutline" x1="0%" x2="0%" y1="0%" y2="100%">
+			<stop offset="0%" stop-color="rgba(88,255,255,1)" style="stop-color:rgb(88,255,255);stop-opacity:1;"/>
+			<stop offset="100%" stop-color="rgba(107,255,255,1)" style="stop-color:rgb(107,255,255);stop-opacity:1;"/>
+		</linearGradient>
+		<linearGradient id="gritLines_B" x1="0%" x2="0%" y1="0%" y2="100%">
+			<stop offset="25%" stop-color="rgba(0,0,0,0)" style="stop-color:rgb(0,0,0);stop-opacity:0;"/>
+			<stop offset="50%" stop-color="rgba(0,0,0,1)" style="stop-color:rgb(0,0,0);stop-opacity:1;"/>
+		</linearGradient>
+		<filter id="shadow" filterUnits="userSpaceOnUse" x="-10%" y="-10%" width="120%" height="120%">
+			<!--<feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="rgba(0,0,0,0.5)" />-->
+			<!--this doesn't work in ImageMagik (and thus Inkscape) so do it the hard way-->
+			<feFlood flood-color="rgb(0,0,0)" flood-opacity="0.5" result="flood"/>
+			<feComposite in="flood" in2="SourceGraphic" operator="in" result="composite1"/>
+			<feGaussianBlur in="composite1" stdDeviation="2" result="blur"/>
+			<feOffset dx="0" dy="0" result="offset"/>
+			<feComposite in="SourceGraphic" in2="offset" operator="over" result="composite2"/>
+		</filter>
+		<filter id="bigXOutlineBlur" filterUnits="userSpaceOnUse" x="-10%" y="-10%" width="120%" height="120%">
+			<feGaussianBlur in="SourceGraphic" stdDeviation="1" result="blur"/>
+		</filter>
+	</defs>
+	<metadata id="metadata7">
+		<rdf:RDF>
+			<cc:Work rdf:about="">
+				<dc:format>image/svg+xml</dc:format>
+				<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+				<dc:title/>
+			</cc:Work>
+		</rdf:RDF>
+	</metadata>
+	<g id="symbolGroup">
+		<use href="#bigXShape" xlink:href="#bigXShape" style="opacity:1;fill:url(#bigXStripes);stroke:none;"/>
+		<use href="#bigXShape" xlink:href="#bigXShape" style="opacity:1;fill:url(#bigXFill);stroke:none;"/>
+		<use href="#bigXShape" xlink:href="#bigXShape" clip-path="url(#bigXClip)" style="opacity:1;fill:none;stroke:url(#bigXOutline);stroke-width:5px;filter:url(#bigXOutlineBlur);"/>
+		<use href="#cShape" xlink:href="#cShape" style="opacity:1;fill:url(#cGradient);stroke:none;filter:url(#shadow);"/>
+		<!--order of operations is to transform *after* clip, so can't clone a line a bunch for this-->
+		<path id="gritLinesC_W" clip-path="url(#cClip)" style="opacity:0.75;fill:none;stroke:rgb(255,255,255);stroke-width:0.5px;" d="M 123,243 202,193 M 199,206 133,250 M 94,160 158,256 M 166,142 168,252 M 214,179 94,162 M 105,253 117,145 M 133,143 138,252 M 104,149 195,252 M 166,140 209,197 M 101,232 207,163 M 119,172 225,187 M 103,140 205,235 M 103,185 177,240 M 109,240 217,164 M 201,234 104,224 M 109,167 170,141 M 103,181 212,243 M 164,246 152,141 M 205,229 115,143 M 117,184 181,145 M 199,165 91,207 M 189,240 108,146 M 160,240 92,234 M 93,182 209,220 M 116,256 188,157 M 193,193 135,141 M 130,182 194,158 M 204,216 123,189 M 163,243 194,231 M 118,253 179,245"/>
+		<path id="gritLinesC_B" clip-path="url(#cClip)" style="opacity:0.75;fill:none;stroke:url(#gritLines_B);stroke-width:0.5px;" d="M 197,176 110,233 M 145,140 181,183 M 87,206 192,148 M 100,224 210,156 M 168,193 132,241 M 87,166 173,184 M 221,176 97,158 M 162,240 194,174 M 210,159 93,150 M 191,191 102,250"/>
+		<use href="#xShape" xlink:href="#xShape" style="opacity:1;fill:url(#xGradient);stroke:none;filter:url(#shadow);"/>
+		<path id="gritLinesX_W" clip-path="url(#xClip)" style="opacity:0.75;fill:none;stroke:rgb(255,255,255);stroke-width:0.5px;" d="M 129,134 4,196 M 118,129 31,125 M 46,134 104,72 M 21,200 92,71 M 65,197 111,130 M 150,157 27,102 M 59,70 61,192 M 115,199 66,71 M 22,87 27,77 M 15,165 81,74 M 6,167 150,177 M 143,108 37,199 M 115,125 30,94 M 108,131 14,96 M 0,189 146,114 M 25,145 35,71 M 132,190 0,178 M 109,199 139,157 M 141,156 137,142 M 20,196 134,105 M 39,76 108,200 M 28,71 146,191 M 74,195 113,71 M 31,100 150,122 M 76,198 26,109 M 39,117 133,77 M 60,71 116,121 M 105,197 138,117 M 123,68 87,197 M 157,89 8,112"/>
+		<path id="gritLinesX_B" clip-path="url(#xClip)" style="opacity:0.75;fill:none;stroke:url(#gritLines_B);stroke-width:0.5px;" d="M 46,126 89,193 M 37,147 87,73 M 127,70 3,179 M 132,147 101,73 M 22,95 144,94 M 120,136 73,177 M 45,70 38,198 M 2,175 130,163 M 145,85 2,195 M 68,73 15,193"/>
+	</g>
+</svg>

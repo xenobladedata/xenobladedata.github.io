@@ -1,44 +1,335 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-    <title>Xenoblade Data</title>
+	<meta charset="utf-8" />
+	<title>Xenoblade Data Hub</title>
+	<link href="/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+	<style>
+	.card-height {
+		height:100%;
+	}
+	.card-footer {
+	  background: transparent;
+	  border-top: 0px;
+	}
+	</style>
   </head>
-  <body>
-    <h1>Xenoblade data tables</h1>
-    <h2><a href="xb1\bdat\index.html">Xenoblade 1 Data</a></h2>
-	<hr>
-    <h2><a href="xb1de\bdat\index.html">Xenoblade 1 Definitive Edition Data</a></h2>
-	<hr>
-    <h2><a href="xbx\bdat\index.html">Xenoblade X Data</a></h2>
-	<hr>
-    <h2>Xenoblade 2 Data: <a href="xb2\index.html">English</a> | <a href="xb2_jp\index.html">日本語</a> | <a href="xb2_cn\index.html">中文</a></h2>
-	<hr>
-    <h2 style="margin-bottom:0px">Xenoblade 3 1.2.1 + DLC2 Data: <a href="xb3_121_dlc2\index.html">English</a> | <a href="xb3_121_dlc2_jp\index.html">日本語</a></h2>
-	<small>Last update: March 24, 2023</small>
-    <h2 style="margin-bottom:0px">Xenoblade 3 1.3.0 Data*: <a href="xb3_130\index.html">English</a> | <a href="xb3_130_jp\index.html">日本語</a> | <a href="diff\xb3\121_dlc2_to_130\index.html">1.2.1 + DLC2 → 1.3.0 diff</a></h2>
-	<small>Last update: March 24, 2023</small>
-	<h2 style="margin-bottom:0px">Xenoblade 3 DLC3 Data*: <a href="xb3_dlc3\index.html">English</a> | <a href="xb3_dlc3_jp\index.html">日本語</a> | <a href="diff\xb3\121_dlc2_to_dlc3\index.html">1.2.1 + DLC2 → DLC3 diff</a> | <a href="diff\xb3\130_to_dlc3\index.html">1.3.0 → DLC3 diff</a></h2>
-	<small>Last update: March 24, 2023</small>
-	<h2 style="margin-bottom:0px">Xenoblade 3 2.0.0 + DLC 1-3 + Future Redeemed Data: <a href="xb3_200_dlc4\index.html">English</a> | <a href="xb3_200_dlc4_jp\index.html">日本語</a></h2>
-	<small>Last update: April 29, 2023</small>
-	<h2 style="margin-bottom:0px">Xenoblade 3 Audio Mapping data ENG/日本語: <a href="xb3_audio_mapping.html">HTML</a> | <a href="xb3_audio_mapping.csv">CSV</a></h2>
-	<small>Last update: May 03, 2023</small>
-	<h2 style="margin-bottom:0px"><a href="xb3_hashes.csv">Xenoblade 3 BDAT hashes (CSV)**</a></h2>
-	<small>Last update: March 24, 2023</small>
-	<h2 style="margin-bottom:0px"><a href="https://projects.niarisa.com/xenoblade3voice">Xenoblade 3 Cutscene Database</a></h2>
-	<small>Last update: January 29, 2023</small>
-	<p>* - for 1.3.0 the base game data is separate from DLC3 data because of various debug data being left on accident in those.</p>
-	<p>** - contains most known hashes, might be missing small subset of hashes compared to xb3tool</p>
-	<hr>
-	<footer style="line-height: 1.6">
-		Xenoblade 1, 2, X data is provided by <a href="https://xenoblade.github.io">https://xenoblade.github.io</a>
+  <body class="text-bg-dark">
+	<div class="container-fluid py-4 px-5">
+		<header class="pb-3 mb-4">
+		  <a href="/" class="d-flex align-items-center text-white text-decoration-none">
+			<img src="/images/xc1_icon.svg" width="32"/>
+			<span class="fs-4 px-2">Xenoblade Data Hub</span>
+		  </a>
+		</header>
+		<div class="d-flex justify-content-center">
+			<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+			  <li class="nav-item" role="presentation">
+				<button class="nav-link active" id="pills-xc-tab" data-bs-toggle="pill" data-bs-target="#pills-xc" type="button" role="tab" aria-controls="pills-xc" aria-selected="true"><img src="/images/xc1_icon.svg" width="32"/><img src="/images/xcde_icon.svg" width="32"/></button>
+			  </li>
+			  <li class="nav-item" role="presentation">
+				<button class="nav-link" id="pills-xcx-tab" data-bs-toggle="pill" data-bs-target="#pills-xcx" type="button" role="tab" aria-controls="pills-xcx" aria-selected="false"><img src="/images/xcx_icon.svg" width="32"/></button>
+			  </li>
+			  <li class="nav-item" role="presentation">
+				<button class="nav-link" id="pills-xc2-tab" data-bs-toggle="pill" data-bs-target="#pills-xc2" type="button" role="tab" aria-controls="pills-xc2" aria-selected="false"><img src="/images/xc2_icon.svg" width="32"/></button>
+			  </li>
+			  <li class="nav-item" role="presentation">
+				<button class="nav-link" id="pills-xc3-tab" data-bs-toggle="pill" data-bs-target="#pills-xc3" type="button" role="tab" aria-controls="pills-xc3" aria-selected="false"><img src="/images/xc3_icon.svg" width="32"/></button>
+			  </li>
+			  <li class="nav-item" role="presentation">
+				<button class="nav-link" id="pills-tools-tab" data-bs-toggle="pill" data-bs-target="#pills-tools" type="button" role="tab" aria-controls="pills-tools" aria-selected="false"><h5 class="text-white">Tools</h3></button>
+			  </li>
+			  <li class="nav-item" role="presentation">
+				<button class="nav-link" id="pills-links-tab" data-bs-toggle="pill" data-bs-target="#pills-links" type="button" role="tab" aria-controls="pills-links" aria-selected="false"><h5 class="text-white">Useful links</h3></button>
+			  </li>
+			</ul>
+		</div>
+		<div class="tab-content" id="pills-tabContent">
+		  <div class="tab-pane fade show active" id="pills-xc" role="tabpanel" aria-labelledby="pills-xc-tab" tabindex="0">
+			  <div class="col-md-12 py-2">
+				<div class="h-100 p-5 rounded-3">
+					<img class="d-block mx-auto mb-4 img-fluid" src="/images/XC1_logo_small.png">
+					<div class="d-flex justify-content-center">
+						<a href="xb1\bdat\index.html" class="btn btn-outline-light m-1" type="button">Xenoblade 1 Data</a>
+						<a href="xb1de\bdat\index.html" class="btn btn-outline-light m-1" type="button">Definitive Edition Data</a>
+					</div>
+				</div>
+			  </div>
+		  </div>
+		  <div class="tab-pane fade" id="pills-xcx" role="tabpanel" aria-labelledby="pills-xcx-tab" tabindex="0">
+			  <div class="col-md-12 py-2">
+				<div class="h-100 p-5 rounded-3">
+					<img class="d-block mx-auto mb-4 img-fluid" src="/images/XCX_logo_small.png">
+					<div class="d-flex justify-content-center">
+						<a href="xbx\bdat\index.html" class="btn btn-outline-light m-1" type="button">Xenoblade X Data</a>
+					</div>
+				</div>
+			  </div>
+		  </div>
+		  <div class="tab-pane fade" id="pills-xc2" role="tabpanel" aria-labelledby="pills-xc2-tab" tabindex="0">
+			  <div class="col-md-12 py-2">
+				<div class="h-100 p-5 rounded-3">
+					<img class="d-block mx-auto mb-4 img-fluid" src="/images/XC2_logo_small.png">
+					<div class="d-flex justify-content-center">
+						<a href="xb2\index.html" class="btn btn-outline-light m-1" type="button">🇬🇧 Xenoblade 2 Data (English)</a>
+						<a href="xb2_jp\index.html" class="btn btn-outline-light m-1" type="button">🇯🇵 Xenoblade 2 Data (日本語)</a>
+						<a href="xb2_cn\index.html" class="btn btn-outline-light m-1" type="button">🇨🇳 Xenoblade 2 Data (中文)</a>
+					</div>
+				</div>
+			  </div>
+		  </div>
+		  <div class="tab-pane fade" id="pills-xc3" role="tabpanel" aria-labelledby="pills-xc3-tab" tabindex="0">
+			  <div class="col-md-12">
+				<div class="h-100 p-2 rounded-3 text-center">
+					<img class="d-block mx-auto mb-4 img-fluid" src="/images/XC3_logo_small.png">
+					<div class="d-flex justify-content-center row">
+						<div class="col-md-3 mt-1">
+							<div class="card bg-transparent border-0 card-height text-white">
+								<div class="card-body">
+									<h4 class="card-title">Xenoblade 3 1.2.1 + DLC2 Data</h4>
+								</div>
+								<div class="card-footer">
+									<div class="d-flex justify-content-center">
+										<a href="xb3_121_dlc2\index.html" class="btn btn-outline-light m-1" type="button">🇬🇧 English</a>
+										<a href="xb3_121_dlc2_jp\index.html" class="btn btn-outline-light m-1" type="button">🇯🇵 日本語</a>
+									</div>
+									<small>Last update: March 24, 2023</small>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 mt-1">
+							<div class="card bg-transparent border-0 card-height text-white">
+								<div class="card-body">
+									<h4 class="card-title">Xenoblade 3 1.3.0 Data*</h4>
+								</div>
+								<div class="card-footer">
+									<div class="d-flex justify-content-center">
+										<a href="xb3_130\index.html" class="btn btn-outline-light m-1" type="button">🇬🇧 English</a>
+										<a href="xb3_130_jp\index.html" class="btn btn-outline-light m-1" type="button">🇯🇵 日本語</a>
+									</div>
+									<small>Last update: March 24, 2023</small>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 mt-1">
+							<div class="card bg-transparent border-0 card-height text-white">
+								<div class="card-body">
+									<h4 class="card-title">Xenoblade 3 DLC3 Data*</h4>
+								</div>
+								<div class="card-footer">
+									<div class="d-flex justify-content-center">
+										<a href="xb3_dlc3\index.html" class="btn btn-outline-light m-1" type="button">🇬🇧 English</a>
+										<a href="xb3_dlc3_jp\index.html" class="btn btn-outline-light m-1" type="button">🇯🇵 日本語</a>
+									</div>
+									<small>Last update: March 24, 2023</small>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 mt-1">
+							<div class="card bg-transparent border-0 card-height text-white">
+								<div class="card-body">
+									<h4 class="card-title">Xenoblade 3 2.0.0 + DLC 1-3 + Future Redeemed Data</h4>
+								</div>
+								<div class="card-footer">
+									<div class="d-flex justify-content-center">
+										<a href="xb3_200_dlc4\index.html" class="btn btn-outline-light m-1" type="button">🇬🇧 English</a>
+										<a href="xb3_200_dlc4_jp\index.html" class="btn btn-outline-light m-1" type="button">🇯🇵 日本語</a>
+									</div>
+									<small>Last update: April 29, 2023</small>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="d-flex justify-content-center row">
+						<div class="col-md-3 mt-1">
+							<div class="card bg-transparent border-0 card-height text-white">
+								<div class="card-body">
+									<h4 class="card-title">Xenoblade 3 Audio Mapping data<br/>(🇬🇧 English / 🇯🇵 日本語)</h4>
+								</div>
+								<div class="card-footer">
+									<div class="d-flex justify-content-center">
+										<a href="xb3_audio_mapping.html" class="btn btn-outline-light m-1" type="button">🧍 HTML</a>
+										<a href="xb3_audio_mapping.csv" class="btn btn-outline-light m-1" type="button">🤖 CSV</a>
+									</div>
+									<small>Last update: March 24, 2023</small>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 mt-1">
+							<div class="card bg-transparent border-0 card-height text-white">
+								<div class="card-body">
+									<h4 class="card-title">Xenoblade 3 BDAT hashes</h4>
+								</div>
+								<div class="card-footer">
+									<div class="d-flex justify-content-center">
+										<a href="xb3_hashes.csv" class="btn btn-outline-light m-1" type="button">🤖 CSV</a>
+									</div>
+									<small>Last update: March 24, 2023</small>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="text-left mt-4">
+						<p>* for 1.3.0 the base game data is separate from DLC3 data because of various debug data being left on accident in those.<br />
+						** contains most known hashes, might be missing small subset of hashes compared to xb3tool</p>
+					</div>
+				</div>
+			  </div>
+		  </div>
+		  <div class="tab-pane fade" id="pills-tools" role="tabpanel" aria-labelledby="pills-tools-tab" tabindex="0">
+		  <div class="text-center">
+			<h3>General purpose file manipulation tools</h3>
+			<div class="d-flex justify-content-center row">
+				<div class="col-md-3 mt-1">
+					<div class="card bg-dark-subtle card-height">
+						<div class="card-body">
+							<h5 class="card-title">XbTool</h5>
+							<h6 class="card-subtitle mb-2 text-body-secondary"><img src="/images/xc2_icon.svg" width="32"/><img src="/images/xc3_icon.svg" width="32"/></h6>
+							<p class="card-text">Tools to read, process and export data from Xenoblade games.</p>
+						</div>
+						<div class="card-footer">
+							<a href="https://github.com/Thealexbarney/XbTool" class="btn btn-outline-dark mt-1">Xenoblade 2 version</a>
+							<a href="https://github.com/AlexCSDev/XbTool" class="btn btn-outline-dark mt-1" target="_blank">Xenoblade 3 version</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 mt-1">
+					<div class="card bg-dark-subtle card-height">
+						<div class="card-body">
+							<h5 class="card-title">XenoLib/XenobladeToolset</h5>
+							<h6 class="card-subtitle mb-2 text-body-secondary"><img src="/images/xcde_icon.svg" width="32"/><img src="/images/xc2_icon.svg" width="32"/><img src="/images/xc3_icon.svg" width="32"/></h6>
+							<p class="card-text">XenoLib is independent serialize library for various formats used by Xenoblade Engine. Xenoblade Toolset is a collection of conversion tools under XenoLib.</p>
+						</div>
+						<div class="card-footer">
+							<a href="https://github.com/PredatorCZ/XenoLib" class="btn btn-outline-dark" target="_blank">GitHub</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<h3>BDAT tools</h3>
+			<div class="d-flex justify-content-center row">
+				<div class="col-md-3 mt-1">
+					<div class="card bg-dark-subtle card-height">
+						<div class="card-body">
+							<h5 class="card-title">bdat-rs</h5>
+							<h6 class="card-subtitle mb-2 text-body-secondary"><img src="/images/xc1_icon.svg" width="32"/><img src="/images/xcx_icon.svg" width="32"/><img src="/images/xcde_icon.svg" width="32"/><img src="/images/xc2_icon.svg" width="32"/><img src="/images/xc3_icon.svg" width="32"/></h6>
+							<p class="card-text">A library to (de)serialize Monolithsoft's proprietary BDAT format, used for data tables in all Xenoblade games. Includes command-line toolset.</p>
+						</div>
+						<div class="card-footer">
+							<a href="https://github.com/RoccoDev/bdat-rs" class="btn btn-outline-dark" target="_blank">GitHub</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 mt-1">
+					<div class="card bg-dark-subtle card-height">
+						<div class="card-body">
+							<h5 class="card-title">xb3tool</h5>
+							<h6 class="card-subtitle mb-2 text-body-secondary"><img src="/images/xc1_icon.svg" width="32"/><img src="/images/xcx_icon.svg" width="32"/><img src="/images/xcde_icon.svg" width="32"/><img src="/images/xc2_icon.svg" width="32"/><img src="/images/xc3_icon.svg" width="32"/></h6>
+							<p class="card-text">This repository contains tool used to generate html tables from BDAT as well as several other tools.</p>
+						</div>
+						<div class="card-footer">
+							<a href="https://github.com/vaxherd/xb3tool" class="btn btn-outline-dark" target="_blank">GitHub</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<h3>Model tools</h3>
+			<div class="d-flex justify-content-center row">
+				<div class="col-md-3 mt-1">
+					<div class="card bg-dark-subtle card-height">
+						<div class="card-body">
+							<h5 class="card-title">Xenoblade Importer For Noesis</h5>
+							<h6 class="card-subtitle mb-2 text-body-secondary"><img src="/images/xcde_icon.svg" width="32"/><img src="/images/xc2_icon.svg" width="32"/><img src="/images/xc3_icon.svg" width="32"/></h6>
+							<p class="card-text">Xenoblade file format plugin for <a href="https://www.richwhitehouse.com/index.php?content=inc_projects.php&showproject=91" target="_blank">Noesis</a></p>
+						</div>
+						<div class="card-footer">
+							<a href="https://github.com/Turk645/Xenoblade-Switch-Model-Importer-Noesis" class="btn btn-outline-dark" target="_blank">GitHub</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 mt-1">
+					<div class="card bg-dark-subtle card-height">
+						<div class="card-body">
+							<h5 class="card-title">Xenoblade Shape Key Tool</h5>
+							<h6 class="card-subtitle mb-2 text-body-secondary"><img src="/images/xcde_icon.svg" width="32"/><img src="/images/xc2_icon.svg" width="32"/><img src="/images/xc3_icon.svg" width="32"/></h6>
+							<p class="card-text">Helper blender addon for Turk645's Noesis Xenoblade Model Importer.<br />This addon automatically loads morph names from wimdo file and sets proper shape key names.</p>
+						</div>
+						<div class="card-footer">
+							<a href="https://github.com/AlexCSDev/XenobladeShapeKeyTool" class="btn btn-outline-dark" target="_blank">GitHub</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 mt-1">
+					<div class="card bg-dark-subtle card-height">
+						<div class="card-body">
+							<h5 class="card-title">Monado Forge</h5>
+							<h6 class="card-subtitle mb-2 text-body-secondary"><img src="/images/xcde_icon.svg" width="32"/><img src="/images/xc2_icon.svg" width="32"/><img src="/images/xc3_icon.svg" width="32"/></h6>
+							<p class="card-text">An addon for Blender (written with 3.3.1) for working with Xenoblade files</p>
+						</div>
+						<div class="card-footer">
+							<a href="https://github.com/Sir-Teatei-Moonlight/monado-forge" class="btn btn-outline-dark" target="_blank">GitHub</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		  </div>
+		  </div>
+		  <div class="tab-pane fade" id="pills-links" role="tabpanel" aria-labelledby="pills-links-tab" tabindex="0">
+			  <div class="text-center">
+				<h4>Useful links</h4>
+				<div class="d-flex justify-content-center row">
+					<div class="col-md-3 mt-1">
+						<div class="card bg-dark-subtle card-height">
+							<div class="card-body">
+								<h5 class="card-title">Xenoblade 3 Model Database</h5>
+								<h6 class="card-subtitle mb-2 text-body-secondary"><img src="/images/xc3_icon.svg" width="32"/></h6>
+								<p class="card-text">This document contains database of all models and maps in Xenoblade 3</p>
+							</div>
+							<div class="card-footer">
+								<a href="https://docs.google.com/spreadsheets/d/12wgzG4gIgd8iY6GyYw_ObsUTDjE0ZvE2CMNtX5WrWzs" class="btn btn-outline-dark mt-1">Google Spreadsheets</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 mt-1">
+						<div class="card bg-dark-subtle card-height">
+							<div class="card-body">
+								<h5 class="card-title">Xenoblade 3 Cutscene Database</h5>
+								<h6 class="card-subtitle mb-2 text-body-secondary"><img src="/images/xc3_icon.svg" width="32"/></h6>
+								<p class="card-text">This website contains database of most Xenoblade 3 cutscenes with audio data where possible</p>
+							</div>
+							<div class="card-footer">
+								<a href="https://projects.niarisa.com/xenoblade3voice" class="btn btn-outline-dark" target="_blank">Visit site</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3 mt-1">
+						<div class="card bg-dark-subtle card-height">
+							<div class="card-body">
+								<h5 class="card-title">World Tree Research Discord</h5>
+								<h6 class="card-subtitle mb-2 text-body-secondary"><img src="/images/xc1_icon.svg" width="32"/><img src="/images/xcx_icon.svg" width="32"/><img src="/images/xcde_icon.svg" width="32"/><img src="/images/xc2_icon.svg" width="32"/><img src="/images/xc3_icon.svg" width="32"/></h6>
+								<p class="card-text">Discord server dedicated to reverse engineering and other research related to Xenoblade series.</p>
+							</div>
+							<div class="card-footer">
+								<a href="https://discord.gg/27Wz4QB" class="btn btn-outline-dark" target="_blank">Join</a>
+							</div>
+						</div>
+					</div>
+				</div>
+		  </div>
+		</div>
+	</div>
+	<footer class="pt-3 text-secondary text-center">
+		<small>
+		Xenoblade 1, 2, X data is provided by <a href="https://xenoblade.github.io">https://xenoblade.github.io</a>.
+		Xenoblade 3 data is extracted using <a href="https://github.com/vaxherd/xb3tool">xb3tool by vaxherd & contributors</a>.
 		<br />
-		Xenoblade 3 data is extracted using <a href="https://github.com/vaxherd/xb3tool">xb3tool by vaxherd & contributors</a>
-		<br />
-		Thanks to <a href="https://github.com/RoccoDev">RoccoDev</a> for their help with audio mapping data for Xenoblade 3
+		Thanks to <a href="https://github.com/RoccoDev">RoccoDev</a> for their help with audio mapping data for Xenoblade 3. Icons and images are provided by <a href="https://www.xenoserieswiki.org">Xeno Series Wiki</a>.
 		<br />
 		Maintained by Alexsey#9211
+		</small>
 	</footer>
+	<script src="/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
   </body>
 </html>
