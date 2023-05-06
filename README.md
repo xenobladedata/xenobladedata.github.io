@@ -1,11 +1,13 @@
-# Xenoblade Data
+# Xenoblade Data Hub
 
-Data tables from Xenoblade games.
+Central hub for Xenoblade game data and technical research information.
 
-Xenoblade 1, 2, X data is provided by https://xenoblade.github.io
+Xenoblade 1, 2, X data is provided by https://xenoblade.github.io.
 
-Xenoblade 3 data is extracted using https://github.com/vaxherd/xb3tool
+Xenoblade 3 data is extracted using https://github.com/vaxherd/xb3tool.
 
-Thanks to [RoccoDev](https://github.com/RoccoDev) for their help with audio mapping data for Xenoblade 3
+Thanks to [RoccoDev](https://github.com/RoccoDev) for their help with audio mapping data for Xenoblade 3.
 
-[HTML tables](https://xenobladedata.github.io)
+Icons and images are provided by [Xeno Series Wiki](https://www.xenoserieswiki.org/).
+
+[Home page](https://xenobladedata.github.io)
