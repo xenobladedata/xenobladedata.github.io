@@ -30,28 +30,66 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>ma09a_GMK_Affordance</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>Condition</th>
-      <th>Affordance</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">Condition</th>
+      <th onclick="sortColumn(this, 4, 0)">Affordance</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>
       <td>
         <details>
-          <summary>5 refs</summary>
+          <summary>4 refs</summary>
                <a href="SYS_GimmickLocation.html#10937">SYS_GimmickLocation#<9CAA6459></a>
           <br/><a href="SYS_GimmickLocation.html#10938">SYS_GimmickLocation#<C1FB649C></a>
           <br/><a href="SYS_GimmickLocation.html#10939">SYS_GimmickLocation#<958F8E52></a>
           <br/><a href="SYS_GimmickLocation.html#10940">SYS_GimmickLocation#<ACEBA7CE></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10984">SYS_GimmickLocation_dlc02#10984</a>
         </details>
       </td>
       <td>&lt;9CAA6459&gt;</td>
@@ -62,12 +100,11 @@
       <td class="side">2</td>
       <td>
         <details>
-          <summary>5 refs</summary>
+          <summary>4 refs</summary>
                <a href="SYS_GimmickLocation.html#10941">SYS_GimmickLocation#<A6D52271></a>
           <br/><a href="SYS_GimmickLocation.html#10942">SYS_GimmickLocation#<31E6A6EB></a>
           <br/><a href="SYS_GimmickLocation.html#10943">SYS_GimmickLocation#<7F814DD9></a>
           <br/><a href="SYS_GimmickLocation.html#10944">SYS_GimmickLocation#<C68141BA></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10988">SYS_GimmickLocation_dlc02#10988</a>
         </details>
       </td>
       <td>&lt;A6D52271&gt;</td>
@@ -78,9 +115,8 @@
       <td class="side">3</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#10945">SYS_GimmickLocation#<02497591></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10992">SYS_GimmickLocation_dlc02#10992</a>
         </details>
       </td>
       <td>&lt;02497591&gt;</td>
@@ -91,9 +127,8 @@
       <td class="side">4</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#10946">SYS_GimmickLocation#<AD0BBB74></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10993">SYS_GimmickLocation_dlc02#10993</a>
         </details>
       </td>
       <td>&lt;AD0BBB74&gt;</td>
@@ -104,9 +139,8 @@
       <td class="side">5</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#10947">SYS_GimmickLocation#<B5F8272D></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10994">SYS_GimmickLocation_dlc02#10994</a>
         </details>
       </td>
       <td>&lt;B5F8272D&gt;</td>
@@ -117,13 +151,12 @@
       <td class="side">6</td>
       <td>
         <details>
-          <summary>6 refs</summary>
+          <summary>5 refs</summary>
                <a href="SYS_GimmickLocation.html#10948">SYS_GimmickLocation#<D8C080EA></a>
           <br/><a href="SYS_GimmickLocation.html#10949">SYS_GimmickLocation#<0AD370A4></a>
           <br/><a href="SYS_GimmickLocation.html#10950">SYS_GimmickLocation#<D061BFFD></a>
           <br/><a href="SYS_GimmickLocation.html#10951">SYS_GimmickLocation#<92A295E2></a>
           <br/><a href="SYS_GimmickLocation.html#10952">SYS_GimmickLocation#<791186DA></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10995">SYS_GimmickLocation_dlc02#10995</a>
         </details>
       </td>
       <td>&lt;D8C080EA&gt;</td>
@@ -155,13 +188,12 @@
       <td class="side">10</td>
       <td>
         <details>
-          <summary>6 refs</summary>
+          <summary>5 refs</summary>
                <a href="SYS_GimmickLocation.html#10956">SYS_GimmickLocation#<12859962></a>
           <br/><a href="SYS_GimmickLocation.html#10957">SYS_GimmickLocation#<44E5698C></a>
           <br/><a href="SYS_GimmickLocation.html#10958">SYS_GimmickLocation#<8BAD157C></a>
           <br/><a href="SYS_GimmickLocation.html#10959">SYS_GimmickLocation#<4A8836A3></a>
           <br/><a href="SYS_GimmickLocation.html#10960">SYS_GimmickLocation#<14DF8E3D></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11003">SYS_GimmickLocation_dlc02#11003</a>
         </details>
       </td>
       <td>&lt;12859962&gt;</td>
@@ -179,9 +211,8 @@
       <td class="side">12</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#10961">SYS_GimmickLocation#<89A7E1FB></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11008">SYS_GimmickLocation_dlc02#11008</a>
         </details>
       </td>
       <td>&lt;89A7E1FB&gt;</td>
@@ -206,9 +237,8 @@
       <td class="side">15</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#10953">SYS_GimmickLocation#<6A345667></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11000">SYS_GimmickLocation_dlc02#11000</a>
         </details>
       </td>
       <td>&lt;6A345667&gt;</td>
@@ -219,10 +249,9 @@
       <td class="side">16</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="SYS_GimmickLocation.html#10968">SYS_GimmickLocation#<B1DCFF19></a>
           <br/><a href="SYS_GimmickLocation.html#10969">SYS_GimmickLocation#<50E058AF></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11015">SYS_GimmickLocation_dlc02#11015</a>
         </details>
       </td>
       <td>&lt;B1DCFF19&gt;</td>
@@ -240,9 +269,8 @@
       <td class="side">18</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#10954">SYS_GimmickLocation#<D79466DC></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11001">SYS_GimmickLocation_dlc02#11001</a>
         </details>
       </td>
       <td>&lt;D79466DC&gt;</td>
@@ -260,9 +288,8 @@
       <td class="side">20</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#10978">SYS_GimmickLocation#<EDBEC7DE></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11025">SYS_GimmickLocation_dlc02#11025</a>
         </details>
       </td>
       <td>&lt;EDBEC7DE&gt;</td>
@@ -287,9 +314,8 @@
       <td class="side">23</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#10979">SYS_GimmickLocation#<98184499></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11026">SYS_GimmickLocation_dlc02#11026</a>
         </details>
       </td>
       <td>&lt;98184499&gt;</td>
@@ -314,9 +340,8 @@
       <td class="side">26</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#10962">SYS_GimmickLocation#<EDBCE6DC></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11009">SYS_GimmickLocation_dlc02#11009</a>
         </details>
       </td>
       <td>&lt;EDBCE6DC&gt;</td>
@@ -341,9 +366,8 @@
       <td class="side">29</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#10975">SYS_GimmickLocation#<75FDB11F></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11022">SYS_GimmickLocation_dlc02#11022</a>
         </details>
       </td>
       <td>&lt;75FDB11F&gt;</td>
@@ -375,11 +399,10 @@
       <td class="side">33</td>
       <td>
         <details>
-          <summary>4 refs</summary>
+          <summary>3 refs</summary>
                <a href="SYS_GimmickLocation.html#10970">SYS_GimmickLocation#<F529D852></a>
           <br/><a href="SYS_GimmickLocation.html#10971">SYS_GimmickLocation#<200972C7></a>
           <br/><a href="SYS_GimmickLocation.html#10972">SYS_GimmickLocation#<B91B37A3></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11017">SYS_GimmickLocation_dlc02#11017</a>
         </details>
       </td>
       <td>&lt;F529D852&gt;</td>
@@ -426,9 +449,8 @@
       <td class="side">38</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#10974">SYS_GimmickLocation#<7F6D81BB></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11021">SYS_GimmickLocation_dlc02#11021</a>
         </details>
       </td>
       <td>&lt;7F6D81BB&gt;</td>
@@ -446,9 +468,8 @@
       <td class="side">40</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#10955">SYS_GimmickLocation#<779785B0></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11002">SYS_GimmickLocation_dlc02#11002</a>
         </details>
       </td>
       <td>&lt;779785B0&gt;</td>
@@ -459,9 +480,8 @@
       <td class="side">41</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#10967">SYS_GimmickLocation#<833AF3CE></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11014">SYS_GimmickLocation_dlc02#11014</a>
         </details>
       </td>
       <td>&lt;833AF3CE&gt;</td>
@@ -472,9 +492,8 @@
       <td class="side">42</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#10976">SYS_GimmickLocation#<02601A62></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11023">SYS_GimmickLocation_dlc02#11023</a>
         </details>
       </td>
       <td>&lt;02601A62&gt;</td>
@@ -485,9 +504,8 @@
       <td class="side">43</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#10977">SYS_GimmickLocation#<EAF45C38></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11024">SYS_GimmickLocation_dlc02#11024</a>
         </details>
       </td>
       <td>&lt;EAF45C38&gt;</td>
@@ -498,9 +516,8 @@
       <td class="side">44</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#10973">SYS_GimmickLocation#<D8F27BD6></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11020">SYS_GimmickLocation_dlc02#11020</a>
         </details>
       </td>
       <td>&lt;D8F27BD6&gt;</td>
@@ -511,10 +528,9 @@
       <td class="side">45</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#9">7A25F920#9</a>
           <br/><a href="SYS_GimmickLocation.html#10893">SYS_GimmickLocation#<F0ADBDF4></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10940">SYS_GimmickLocation_dlc02#10940</a>
         </details>
       </td>
       <td>&lt;F0ADBDF4&gt;</td>
@@ -525,10 +541,9 @@
       <td class="side">46</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#10">7A25F920#10</a>
           <br/><a href="SYS_GimmickLocation.html#10924">SYS_GimmickLocation#<7AF160A0></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10971">SYS_GimmickLocation_dlc02#10971</a>
         </details>
       </td>
       <td>&lt;7AF160A0&gt;</td>
@@ -539,10 +554,9 @@
       <td class="side">47</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#11">7A25F920#11</a>
           <br/><a href="SYS_GimmickLocation.html#10894">SYS_GimmickLocation#<D6604966></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10941">SYS_GimmickLocation_dlc02#10941</a>
         </details>
       </td>
       <td>&lt;D6604966&gt;</td>
@@ -553,10 +567,9 @@
       <td class="side">48</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#12">7A25F920#12</a>
           <br/><a href="SYS_GimmickLocation.html#10895">SYS_GimmickLocation#<29A704BE></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10942">SYS_GimmickLocation_dlc02#10942</a>
         </details>
       </td>
       <td>&lt;29A704BE&gt;</td>
@@ -567,10 +580,9 @@
       <td class="side">49</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#13">7A25F920#13</a>
           <br/><a href="SYS_GimmickLocation.html#10896">SYS_GimmickLocation#<B549DECE></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10943">SYS_GimmickLocation_dlc02#10943</a>
         </details>
       </td>
       <td>&lt;B549DECE&gt;</td>
@@ -581,10 +593,9 @@
       <td class="side">50</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#14">7A25F920#14</a>
           <br/><a href="SYS_GimmickLocation.html#10925">SYS_GimmickLocation#<1818A594></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10972">SYS_GimmickLocation_dlc02#10972</a>
         </details>
       </td>
       <td>&lt;1818A594&gt;</td>
@@ -595,10 +606,9 @@
       <td class="side">51</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#15">7A25F920#15</a>
           <br/><a href="SYS_GimmickLocation.html#10897">SYS_GimmickLocation#<52130BE4></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10944">SYS_GimmickLocation_dlc02#10944</a>
         </details>
       </td>
       <td>&lt;52130BE4&gt;</td>
@@ -609,10 +619,9 @@
       <td class="side">52</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#16">7A25F920#16</a>
           <br/><a href="SYS_GimmickLocation.html#10931">SYS_GimmickLocation#<5A967661></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10978">SYS_GimmickLocation_dlc02#10978</a>
         </details>
       </td>
       <td>&lt;5A967661&gt;</td>
@@ -623,10 +632,9 @@
       <td class="side">53</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#17">7A25F920#17</a>
           <br/><a href="SYS_GimmickLocation.html#10898">SYS_GimmickLocation#<46FED9E0></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10945">SYS_GimmickLocation_dlc02#10945</a>
         </details>
       </td>
       <td>&lt;46FED9E0&gt;</td>
@@ -637,10 +645,9 @@
       <td class="side">54</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#18">7A25F920#18</a>
           <br/><a href="SYS_GimmickLocation.html#10926">SYS_GimmickLocation#<4A92261F></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10973">SYS_GimmickLocation_dlc02#10973</a>
         </details>
       </td>
       <td>&lt;4A92261F&gt;</td>
@@ -651,10 +658,9 @@
       <td class="side">55</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#19">7A25F920#19</a>
           <br/><a href="SYS_GimmickLocation.html#10899">SYS_GimmickLocation#<CB6A3284></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10946">SYS_GimmickLocation_dlc02#10946</a>
         </details>
       </td>
       <td>&lt;CB6A3284&gt;</td>
@@ -665,10 +671,9 @@
       <td class="side">56</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#20">7A25F920#20</a>
           <br/><a href="SYS_GimmickLocation.html#10900">SYS_GimmickLocation#<A460739E></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10947">SYS_GimmickLocation_dlc02#10947</a>
         </details>
       </td>
       <td>&lt;A460739E&gt;</td>
@@ -679,10 +684,9 @@
       <td class="side">57</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#21">7A25F920#21</a>
           <br/><a href="SYS_GimmickLocation.html#10927">SYS_GimmickLocation#<5C4985C3></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10974">SYS_GimmickLocation_dlc02#10974</a>
         </details>
       </td>
       <td>&lt;5C4985C3&gt;</td>
@@ -693,10 +697,9 @@
       <td class="side">58</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#22">7A25F920#22</a>
           <br/><a href="SYS_GimmickLocation.html#10936">SYS_GimmickLocation#<295DC172></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10983">SYS_GimmickLocation_dlc02#10983</a>
         </details>
       </td>
       <td>&lt;295DC172&gt;</td>
@@ -707,10 +710,9 @@
       <td class="side">59</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#23">7A25F920#23</a>
           <br/><a href="SYS_GimmickLocation.html#10901">SYS_GimmickLocation#<B49FB5E0></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10948">SYS_GimmickLocation_dlc02#10948</a>
         </details>
       </td>
       <td>&lt;B49FB5E0&gt;</td>
@@ -721,10 +723,9 @@
       <td class="side">60</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#24">7A25F920#24</a>
           <br/><a href="SYS_GimmickLocation.html#10902">SYS_GimmickLocation#<AAA4F500></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10949">SYS_GimmickLocation_dlc02#10949</a>
         </details>
       </td>
       <td>&lt;AAA4F500&gt;</td>
@@ -735,10 +736,9 @@
       <td class="side">61</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#25">7A25F920#25</a>
           <br/><a href="SYS_GimmickLocation.html#10903">SYS_GimmickLocation#<4B2BF7D3></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10950">SYS_GimmickLocation_dlc02#10950</a>
         </details>
       </td>
       <td>&lt;4B2BF7D3&gt;</td>
@@ -749,10 +749,9 @@
       <td class="side">62</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#26">7A25F920#26</a>
           <br/><a href="SYS_GimmickLocation.html#10904">SYS_GimmickLocation#<C224C1D6></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10951">SYS_GimmickLocation_dlc02#10951</a>
         </details>
       </td>
       <td>&lt;C224C1D6&gt;</td>
@@ -763,10 +762,9 @@
       <td class="side">63</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#27">7A25F920#27</a>
           <br/><a href="SYS_GimmickLocation.html#10928">SYS_GimmickLocation#<265DE357></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10975">SYS_GimmickLocation_dlc02#10975</a>
         </details>
       </td>
       <td>&lt;265DE357&gt;</td>
@@ -777,10 +775,9 @@
       <td class="side">64</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#28">7A25F920#28</a>
           <br/><a href="SYS_GimmickLocation.html#10905">SYS_GimmickLocation#<EDE4552F></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10952">SYS_GimmickLocation_dlc02#10952</a>
         </details>
       </td>
       <td>&lt;EDE4552F&gt;</td>
@@ -791,10 +788,9 @@
       <td class="side">65</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#29">7A25F920#29</a>
           <br/><a href="SYS_GimmickLocation.html#10932">SYS_GimmickLocation#<29DFBE7A></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10979">SYS_GimmickLocation_dlc02#10979</a>
         </details>
       </td>
       <td>&lt;29DFBE7A&gt;</td>
@@ -805,10 +801,9 @@
       <td class="side">66</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#30">7A25F920#30</a>
           <br/><a href="SYS_GimmickLocation.html#10906">SYS_GimmickLocation#<684DC8EA></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10953">SYS_GimmickLocation_dlc02#10953</a>
         </details>
       </td>
       <td>&lt;684DC8EA&gt;</td>
@@ -826,10 +821,9 @@
       <td class="side">68</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#32">7A25F920#32</a>
           <br/><a href="SYS_GimmickLocation.html#10934">SYS_GimmickLocation#<4E8E24F5></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10981">SYS_GimmickLocation_dlc02#10981</a>
         </details>
       </td>
       <td>&lt;4E8E24F5&gt;</td>
@@ -840,10 +834,9 @@
       <td class="side">69</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#33">7A25F920#33</a>
           <br/><a href="SYS_GimmickLocation.html#10929">SYS_GimmickLocation#<76AADFAF></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10976">SYS_GimmickLocation_dlc02#10976</a>
         </details>
       </td>
       <td>&lt;76AADFAF&gt;</td>
@@ -854,10 +847,9 @@
       <td class="side">70</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#34">7A25F920#34</a>
           <br/><a href="SYS_GimmickLocation.html#10907">SYS_GimmickLocation#<CF0D4CE5></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10954">SYS_GimmickLocation_dlc02#10954</a>
         </details>
       </td>
       <td>&lt;CF0D4CE5&gt;</td>
@@ -868,10 +860,9 @@
       <td class="side">71</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#35">7A25F920#35</a>
           <br/><a href="SYS_GimmickLocation.html#10908">SYS_GimmickLocation#<C0E8842E></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10955">SYS_GimmickLocation_dlc02#10955</a>
         </details>
       </td>
       <td>&lt;C0E8842E&gt;</td>
@@ -882,10 +873,9 @@
       <td class="side">72</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#36">7A25F920#36</a>
           <br/><a href="SYS_GimmickLocation.html#10930">SYS_GimmickLocation#<02C3CBEB></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10977">SYS_GimmickLocation_dlc02#10977</a>
         </details>
       </td>
       <td>&lt;02C3CBEB&gt;</td>
@@ -896,10 +886,9 @@
       <td class="side">73</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#37">7A25F920#37</a>
           <br/><a href="SYS_GimmickLocation.html#10909">SYS_GimmickLocation#<A2FE999D></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10956">SYS_GimmickLocation_dlc02#10956</a>
         </details>
       </td>
       <td>&lt;A2FE999D&gt;</td>
@@ -910,10 +899,9 @@
       <td class="side">74</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#38">7A25F920#38</a>
           <br/><a href="SYS_GimmickLocation.html#10933">SYS_GimmickLocation#<86B64E02></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10980">SYS_GimmickLocation_dlc02#10980</a>
         </details>
       </td>
       <td>&lt;86B64E02&gt;</td>
@@ -931,10 +919,9 @@
       <td class="side">76</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#40">7A25F920#40</a>
           <br/><a href="SYS_GimmickLocation.html#10910">SYS_GimmickLocation#<E64E85A7></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10957">SYS_GimmickLocation_dlc02#10957</a>
         </details>
       </td>
       <td>&lt;E64E85A7&gt;</td>
@@ -945,10 +932,9 @@
       <td class="side">77</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#41">7A25F920#41</a>
           <br/><a href="SYS_GimmickLocation.html#10911">SYS_GimmickLocation#<D51BD236></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10958">SYS_GimmickLocation_dlc02#10958</a>
         </details>
       </td>
       <td>&lt;D51BD236&gt;</td>
@@ -959,10 +945,9 @@
       <td class="side">78</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#42">7A25F920#42</a>
           <br/><a href="SYS_GimmickLocation.html#10912">SYS_GimmickLocation#<1B21244C></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10959">SYS_GimmickLocation_dlc02#10959</a>
         </details>
       </td>
       <td>&lt;1B21244C&gt;</td>
@@ -980,10 +965,9 @@
       <td class="side">80</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#44">7A25F920#44</a>
           <br/><a href="SYS_GimmickLocation.html#10913">SYS_GimmickLocation#<9DAFD564></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10960">SYS_GimmickLocation_dlc02#10960</a>
         </details>
       </td>
       <td>&lt;9DAFD564&gt;</td>
@@ -994,10 +978,9 @@
       <td class="side">81</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#45">7A25F920#45</a>
           <br/><a href="SYS_GimmickLocation.html#10914">SYS_GimmickLocation#<CBC01955></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10961">SYS_GimmickLocation_dlc02#10961</a>
         </details>
       </td>
       <td>&lt;CBC01955&gt;</td>
@@ -1008,10 +991,9 @@
       <td class="side">82</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#46">7A25F920#46</a>
           <br/><a href="SYS_GimmickLocation.html#10915">SYS_GimmickLocation#<667440AB></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10962">SYS_GimmickLocation_dlc02#10962</a>
         </details>
       </td>
       <td>&lt;667440AB&gt;</td>
@@ -1022,10 +1004,9 @@
       <td class="side">83</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#47">7A25F920#47</a>
           <br/><a href="SYS_GimmickLocation.html#10916">SYS_GimmickLocation#<9D318CBC></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10963">SYS_GimmickLocation_dlc02#10963</a>
         </details>
       </td>
       <td>&lt;9D318CBC&gt;</td>
@@ -1036,10 +1017,9 @@
       <td class="side">84</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#48">7A25F920#48</a>
           <br/><a href="SYS_GimmickLocation.html#10917">SYS_GimmickLocation#<47D5D423></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10964">SYS_GimmickLocation_dlc02#10964</a>
         </details>
       </td>
       <td>&lt;47D5D423&gt;</td>
@@ -1050,10 +1030,9 @@
       <td class="side">85</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#49">7A25F920#49</a>
           <br/><a href="SYS_GimmickLocation.html#10918">SYS_GimmickLocation#<524033D3></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10965">SYS_GimmickLocation_dlc02#10965</a>
         </details>
       </td>
       <td>&lt;524033D3&gt;</td>
@@ -1071,10 +1050,9 @@
       <td class="side">87</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#51">7A25F920#51</a>
           <br/><a href="SYS_GimmickLocation.html#10935">SYS_GimmickLocation#<CA4FA673></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10982">SYS_GimmickLocation_dlc02#10982</a>
         </details>
       </td>
       <td>&lt;CA4FA673&gt;</td>
@@ -1099,10 +1077,9 @@
       <td class="side">90</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#54">7A25F920#54</a>
           <br/><a href="SYS_GimmickLocation.html#10919">SYS_GimmickLocation#<DF43C10D></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10966">SYS_GimmickLocation_dlc02#10966</a>
         </details>
       </td>
       <td>&lt;DF43C10D&gt;</td>
@@ -1134,10 +1111,9 @@
       <td class="side">94</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#58">7A25F920#58</a>
           <br/><a href="SYS_GimmickLocation.html#10921">SYS_GimmickLocation#<F11E745E></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10968">SYS_GimmickLocation_dlc02#10968</a>
         </details>
       </td>
       <td>&lt;F11E745E&gt;</td>
@@ -1148,10 +1124,9 @@
       <td class="side">95</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#59">7A25F920#59</a>
           <br/><a href="SYS_GimmickLocation.html#10920">SYS_GimmickLocation#<80B0FD8C></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10967">SYS_GimmickLocation_dlc02#10967</a>
         </details>
       </td>
       <td>&lt;80B0FD8C&gt;</td>
@@ -1169,10 +1144,9 @@
       <td class="side">97</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#61">7A25F920#61</a>
           <br/><a href="SYS_GimmickLocation.html#10922">SYS_GimmickLocation#<5BFAC036></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10969">SYS_GimmickLocation_dlc02#10969</a>
         </details>
       </td>
       <td>&lt;5BFAC036&gt;</td>
@@ -1183,10 +1157,9 @@
       <td class="side">98</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#62">7A25F920#62</a>
           <br/><a href="SYS_GimmickLocation.html#10923">SYS_GimmickLocation#<F6D8B52B></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10970">SYS_GimmickLocation_dlc02#10970</a>
         </details>
       </td>
       <td>&lt;F6D8B52B&gt;</td>
@@ -1197,10 +1170,9 @@
       <td class="side">99</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#1">7A25F920#1</a>
           <br/><a href="SYS_GimmickLocation.html#10980">SYS_GimmickLocation#<431B034C></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11027">SYS_GimmickLocation_dlc02#11027</a>
         </details>
       </td>
       <td>&lt;431B034C&gt;</td>
@@ -1211,10 +1183,9 @@
       <td class="side">100</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#2">7A25F920#2</a>
           <br/><a href="SYS_GimmickLocation.html#10981">SYS_GimmickLocation#<A8465E27></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11028">SYS_GimmickLocation_dlc02#11028</a>
         </details>
       </td>
       <td>&lt;A8465E27&gt;</td>
@@ -1225,10 +1196,9 @@
       <td class="side">101</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#3">7A25F920#3</a>
           <br/><a href="SYS_GimmickLocation.html#10982">SYS_GimmickLocation#<BB3A85E9></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11029">SYS_GimmickLocation_dlc02#11029</a>
         </details>
       </td>
       <td>&lt;BB3A85E9&gt;</td>
@@ -1239,10 +1209,9 @@
       <td class="side">102</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#4">7A25F920#4</a>
           <br/><a href="SYS_GimmickLocation.html#10983">SYS_GimmickLocation#<11A2B174></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11030">SYS_GimmickLocation_dlc02#11030</a>
         </details>
       </td>
       <td>&lt;11A2B174&gt;</td>
@@ -1253,10 +1222,9 @@
       <td class="side">103</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#5">7A25F920#5</a>
           <br/><a href="SYS_GimmickLocation.html#10984">SYS_GimmickLocation#<BEE67C57></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11031">SYS_GimmickLocation_dlc02#11031</a>
         </details>
       </td>
       <td>&lt;BEE67C57&gt;</td>
@@ -1267,10 +1235,9 @@
       <td class="side">104</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#6">7A25F920#6</a>
           <br/><a href="SYS_GimmickLocation.html#10985">SYS_GimmickLocation#<E66B6262></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11032">SYS_GimmickLocation_dlc02#11032</a>
         </details>
       </td>
       <td>&lt;E66B6262&gt;</td>
@@ -1281,10 +1248,9 @@
       <td class="side">105</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#7">7A25F920#7</a>
           <br/><a href="SYS_GimmickLocation.html#10986">SYS_GimmickLocation#<9A3B60CF></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11033">SYS_GimmickLocation_dlc02#11033</a>
         </details>
       </td>
       <td>&lt;9A3B60CF&gt;</td>
@@ -1295,10 +1261,9 @@
       <td class="side">106</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#8">7A25F920#8</a>
           <br/><a href="SYS_GimmickLocation.html#10987">SYS_GimmickLocation#<423B4DAD></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11034">SYS_GimmickLocation_dlc02#11034</a>
         </details>
       </td>
       <td>&lt;423B4DAD&gt;</td>
@@ -1309,9 +1274,8 @@
       <td class="side">107</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#11030">SYS_GimmickLocation#<6FE8292F></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11077">SYS_GimmickLocation_dlc02#11077</a>
         </details>
       </td>
       <td>&lt;6FE8292F&gt;</td>
@@ -1322,12 +1286,11 @@
       <td class="side">108</td>
       <td>
         <details>
-          <summary>5 refs</summary>
+          <summary>4 refs</summary>
                <a href="SYS_GimmickLocation.html#11031">SYS_GimmickLocation#<62A09F82></a>
           <br/><a href="SYS_GimmickLocation.html#11032">SYS_GimmickLocation#<9A992A62></a>
           <br/><a href="SYS_GimmickLocation.html#11033">SYS_GimmickLocation#<FFF09728></a>
           <br/><a href="SYS_GimmickLocation.html#11034">SYS_GimmickLocation#<5E443883></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11078">SYS_GimmickLocation_dlc02#11078</a>
         </details>
       </td>
       <td>&lt;62A09F82&gt;</td>
@@ -1338,10 +1301,9 @@
       <td class="side">109</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="SYS_GimmickLocation.html#11035">SYS_GimmickLocation#<718C6E7B></a>
           <br/><a href="SYS_GimmickLocation.html#11036">SYS_GimmickLocation#<11093852></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11082">SYS_GimmickLocation_dlc02#11082</a>
         </details>
       </td>
       <td>&lt;718C6E7B&gt;</td>
@@ -1352,9 +1314,8 @@
       <td class="side">110</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#11037">SYS_GimmickLocation#<0D42FCEA></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11084">SYS_GimmickLocation_dlc02#11084</a>
         </details>
       </td>
       <td>&lt;0D42FCEA&gt;</td>
@@ -1365,10 +1326,9 @@
       <td class="side">111</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="SYS_GimmickLocation.html#11040">SYS_GimmickLocation#<F2514740></a>
           <br/><a href="SYS_GimmickLocation.html#11041">SYS_GimmickLocation#<4F3292CC></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11087">SYS_GimmickLocation_dlc02#11087</a>
         </details>
       </td>
       <td>&lt;F2514740&gt;</td>
@@ -1386,10 +1346,9 @@
       <td class="side">113</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="SYS_GimmickLocation.html#11038">SYS_GimmickLocation#<45EBC57E></a>
           <br/><a href="SYS_GimmickLocation.html#11039">SYS_GimmickLocation#<9185BEA5></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11085">SYS_GimmickLocation_dlc02#11085</a>
         </details>
       </td>
       <td>&lt;45EBC57E&gt;</td>
@@ -1481,10 +1440,9 @@
       <td class="side">123</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="SYS_GimmickLocation.html#11059">SYS_GimmickLocation#<CE59460A></a>
           <br/><a href="SYS_GimmickLocation.html#11060">SYS_GimmickLocation#<18108147></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11106">SYS_GimmickLocation_dlc02#11106</a>
         </details>
       </td>
       <td>&lt;CE59460A&gt;</td>
@@ -1537,11 +1495,10 @@
       <td class="side">130</td>
       <td>
         <details>
-          <summary>4 refs</summary>
+          <summary>3 refs</summary>
                <a href="SYS_GimmickLocation.html#11045">SYS_GimmickLocation#<908B0A1B></a>
           <br/><a href="SYS_GimmickLocation.html#11046">SYS_GimmickLocation#<4B355DF2></a>
           <br/><a href="SYS_GimmickLocation.html#11047">SYS_GimmickLocation#<CD2C50AA></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11092">SYS_GimmickLocation_dlc02#11092</a>
         </details>
       </td>
       <td>&lt;908B0A1B&gt;</td>
@@ -1566,11 +1523,10 @@
       <td class="side">133</td>
       <td>
         <details>
-          <summary>4 refs</summary>
+          <summary>3 refs</summary>
                <a href="SYS_GimmickLocation.html#11042">SYS_GimmickLocation#<0BB05CDD></a>
           <br/><a href="SYS_GimmickLocation.html#11043">SYS_GimmickLocation#<B181D816></a>
           <br/><a href="SYS_GimmickLocation.html#11044">SYS_GimmickLocation#<C80D42C6></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11089">SYS_GimmickLocation_dlc02#11089</a>
         </details>
       </td>
       <td>&lt;0BB05CDD&gt;</td>
@@ -1595,9 +1551,8 @@
       <td class="side">136</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#11058">SYS_GimmickLocation#<915D5CD8></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11105">SYS_GimmickLocation_dlc02#11105</a>
         </details>
       </td>
       <td>&lt;915D5CD8&gt;</td>
@@ -1608,9 +1563,8 @@
       <td class="side">137</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#11064">SYS_GimmickLocation#<523D3B72></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11111">SYS_GimmickLocation_dlc02#11111</a>
         </details>
       </td>
       <td>&lt;523D3B72&gt;</td>
@@ -1642,10 +1596,9 @@
       <td class="side">141</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="SYS_GimmickLocation.html#11061">SYS_GimmickLocation#<6D7494C6></a>
           <br/><a href="SYS_GimmickLocation.html#11062">SYS_GimmickLocation#<211571FB></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11108">SYS_GimmickLocation_dlc02#11108</a>
         </details>
       </td>
       <td>&lt;6D7494C6&gt;</td>
@@ -1656,9 +1609,8 @@
       <td class="side">142</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#11063">SYS_GimmickLocation#<A345904A></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11110">SYS_GimmickLocation_dlc02#11110</a>
         </details>
       </td>
       <td>&lt;A345904A&gt;</td>
@@ -1683,10 +1635,9 @@
       <td class="side">145</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#75">7A25F920#75</a>
           <br/><a href="SYS_GimmickLocation.html#11005">SYS_GimmickLocation#<0BDB9AAE></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11052">SYS_GimmickLocation_dlc02#11052</a>
         </details>
       </td>
       <td>&lt;0BDB9AAE&gt;</td>
@@ -1697,10 +1648,9 @@
       <td class="side">146</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#76">7A25F920#76</a>
           <br/><a href="SYS_GimmickLocation.html#11006">SYS_GimmickLocation#<0D3D4A2E></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11053">SYS_GimmickLocation_dlc02#11053</a>
         </details>
       </td>
       <td>&lt;0D3D4A2E&gt;</td>
@@ -1711,10 +1661,9 @@
       <td class="side">147</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#77">7A25F920#77</a>
           <br/><a href="SYS_GimmickLocation.html#11029">SYS_GimmickLocation#<E435E53B></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11076">SYS_GimmickLocation_dlc02#11076</a>
         </details>
       </td>
       <td>&lt;E435E53B&gt;</td>
@@ -1725,10 +1674,9 @@
       <td class="side">148</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#78">7A25F920#78</a>
           <br/><a href="SYS_GimmickLocation.html#11000">SYS_GimmickLocation#<E65BDA4D></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11047">SYS_GimmickLocation_dlc02#11047</a>
         </details>
       </td>
       <td>&lt;E65BDA4D&gt;</td>
@@ -1739,10 +1687,9 @@
       <td class="side">149</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#79">7A25F920#79</a>
           <br/><a href="SYS_GimmickLocation.html#11001">SYS_GimmickLocation#<5410A538></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11048">SYS_GimmickLocation_dlc02#11048</a>
         </details>
       </td>
       <td>&lt;5410A538&gt;</td>
@@ -1753,10 +1700,9 @@
       <td class="side">150</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#80">7A25F920#80</a>
           <br/><a href="SYS_GimmickLocation.html#11007">SYS_GimmickLocation#<AEE9D03B></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11054">SYS_GimmickLocation_dlc02#11054</a>
         </details>
       </td>
       <td>&lt;AEE9D03B&gt;</td>
@@ -1767,10 +1713,9 @@
       <td class="side">151</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#81">7A25F920#81</a>
           <br/><a href="SYS_GimmickLocation.html#11008">SYS_GimmickLocation#<C057E956></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11055">SYS_GimmickLocation_dlc02#11055</a>
         </details>
       </td>
       <td>&lt;C057E956&gt;</td>
@@ -1781,10 +1726,9 @@
       <td class="side">152</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#82">7A25F920#82</a>
           <br/><a href="SYS_GimmickLocation.html#11002">SYS_GimmickLocation#<94B2A3D8></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11049">SYS_GimmickLocation_dlc02#11049</a>
         </details>
       </td>
       <td>&lt;94B2A3D8&gt;</td>
@@ -1795,10 +1739,9 @@
       <td class="side">153</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#83">7A25F920#83</a>
           <br/><a href="SYS_GimmickLocation.html#11009">SYS_GimmickLocation#<42CB7062></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11056">SYS_GimmickLocation_dlc02#11056</a>
         </details>
       </td>
       <td>&lt;42CB7062&gt;</td>
@@ -1809,10 +1752,9 @@
       <td class="side">154</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#85">7A25F920#85</a>
           <br/><a href="SYS_GimmickLocation.html#11010">SYS_GimmickLocation#<4581B782></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11057">SYS_GimmickLocation_dlc02#11057</a>
         </details>
       </td>
       <td>&lt;4581B782&gt;</td>
@@ -1823,10 +1765,9 @@
       <td class="side">155</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#86">7A25F920#86</a>
           <br/><a href="SYS_GimmickLocation.html#11021">SYS_GimmickLocation#<8A47949F></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11068">SYS_GimmickLocation_dlc02#11068</a>
         </details>
       </td>
       <td>&lt;8A47949F&gt;</td>
@@ -1837,10 +1778,9 @@
       <td class="side">156</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#87">7A25F920#87</a>
           <br/><a href="SYS_GimmickLocation.html#11023">SYS_GimmickLocation#<327B5329></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11070">SYS_GimmickLocation_dlc02#11070</a>
         </details>
       </td>
       <td>&lt;327B5329&gt;</td>
@@ -1851,10 +1791,9 @@
       <td class="side">157</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#88">7A25F920#88</a>
           <br/><a href="SYS_GimmickLocation.html#11025">SYS_GimmickLocation#<00665347></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11072">SYS_GimmickLocation_dlc02#11072</a>
         </details>
       </td>
       <td>&lt;00665347&gt;</td>
@@ -1865,10 +1804,9 @@
       <td class="side">158</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#89">7A25F920#89</a>
           <br/><a href="SYS_GimmickLocation.html#11011">SYS_GimmickLocation#<9299DEFE></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11058">SYS_GimmickLocation_dlc02#11058</a>
         </details>
       </td>
       <td>&lt;9299DEFE&gt;</td>
@@ -1879,10 +1817,9 @@
       <td class="side">159</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#90">7A25F920#90</a>
           <br/><a href="SYS_GimmickLocation.html#11012">SYS_GimmickLocation#<6AC21E7F></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11059">SYS_GimmickLocation_dlc02#11059</a>
         </details>
       </td>
       <td>&lt;6AC21E7F&gt;</td>
@@ -1893,10 +1830,9 @@
       <td class="side">160</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#91">7A25F920#91</a>
           <br/><a href="SYS_GimmickLocation.html#11027">SYS_GimmickLocation#<F6633C2B></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11074">SYS_GimmickLocation_dlc02#11074</a>
         </details>
       </td>
       <td>&lt;F6633C2B&gt;</td>
@@ -1907,10 +1843,9 @@
       <td class="side">161</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#92">7A25F920#92</a>
           <br/><a href="SYS_GimmickLocation.html#11013">SYS_GimmickLocation#<1F798A84></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11060">SYS_GimmickLocation_dlc02#11060</a>
         </details>
       </td>
       <td>&lt;1F798A84&gt;</td>
@@ -1921,10 +1856,9 @@
       <td class="side">162</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#93">7A25F920#93</a>
           <br/><a href="SYS_GimmickLocation.html#11024">SYS_GimmickLocation#<D5E121F0></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11071">SYS_GimmickLocation_dlc02#11071</a>
         </details>
       </td>
       <td>&lt;D5E121F0&gt;</td>
@@ -1935,10 +1869,9 @@
       <td class="side">163</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#94">7A25F920#94</a>
           <br/><a href="SYS_GimmickLocation.html#11026">SYS_GimmickLocation#<9DC1CF2A></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11073">SYS_GimmickLocation_dlc02#11073</a>
         </details>
       </td>
       <td>&lt;9DC1CF2A&gt;</td>
@@ -1949,10 +1882,9 @@
       <td class="side">164</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#95">7A25F920#95</a>
           <br/><a href="SYS_GimmickLocation.html#11003">SYS_GimmickLocation#<172370CA></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11050">SYS_GimmickLocation_dlc02#11050</a>
         </details>
       </td>
       <td>&lt;172370CA&gt;</td>
@@ -1963,10 +1895,9 @@
       <td class="side">165</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#96">7A25F920#96</a>
           <br/><a href="SYS_GimmickLocation.html#11022">SYS_GimmickLocation#<E5C81365></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11069">SYS_GimmickLocation_dlc02#11069</a>
         </details>
       </td>
       <td>&lt;E5C81365&gt;</td>
@@ -1977,10 +1908,9 @@
       <td class="side">166</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#97">7A25F920#97</a>
           <br/><a href="SYS_GimmickLocation.html#11014">SYS_GimmickLocation#<2525691D></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11061">SYS_GimmickLocation_dlc02#11061</a>
         </details>
       </td>
       <td>&lt;2525691D&gt;</td>
@@ -1991,10 +1921,9 @@
       <td class="side">167</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#98">7A25F920#98</a>
           <br/><a href="SYS_GimmickLocation.html#11015">SYS_GimmickLocation#<D5EC1EE6></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11062">SYS_GimmickLocation_dlc02#11062</a>
         </details>
       </td>
       <td>&lt;D5EC1EE6&gt;</td>
@@ -2005,10 +1934,9 @@
       <td class="side">168</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#99">7A25F920#99</a>
           <br/><a href="SYS_GimmickLocation.html#11016">SYS_GimmickLocation#<6A81792F></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11063">SYS_GimmickLocation_dlc02#11063</a>
         </details>
       </td>
       <td>&lt;6A81792F&gt;</td>
@@ -2019,10 +1947,9 @@
       <td class="side">169</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#100">7A25F920#100</a>
           <br/><a href="SYS_GimmickLocation.html#11017">SYS_GimmickLocation#<804A7C19></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11064">SYS_GimmickLocation_dlc02#11064</a>
         </details>
       </td>
       <td>&lt;804A7C19&gt;</td>
@@ -2033,10 +1960,9 @@
       <td class="side">170</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#101">7A25F920#101</a>
           <br/><a href="SYS_GimmickLocation.html#11028">SYS_GimmickLocation#<49CEFE2F></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11075">SYS_GimmickLocation_dlc02#11075</a>
         </details>
       </td>
       <td>&lt;49CEFE2F&gt;</td>
@@ -2047,10 +1973,9 @@
       <td class="side">171</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#102">7A25F920#102</a>
           <br/><a href="SYS_GimmickLocation.html#11018">SYS_GimmickLocation#<BDD613BC></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11065">SYS_GimmickLocation_dlc02#11065</a>
         </details>
       </td>
       <td>&lt;BDD613BC&gt;</td>
@@ -2061,10 +1986,9 @@
       <td class="side">172</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#104">7A25F920#104</a>
           <br/><a href="SYS_GimmickLocation.html#11004">SYS_GimmickLocation#<6490FA93></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11051">SYS_GimmickLocation_dlc02#11051</a>
         </details>
       </td>
       <td>&lt;6490FA93&gt;</td>
@@ -2075,10 +1999,9 @@
       <td class="side">173</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#105">7A25F920#105</a>
           <br/><a href="SYS_GimmickLocation.html#11019">SYS_GimmickLocation#<9C33AAF5></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11066">SYS_GimmickLocation_dlc02#11066</a>
         </details>
       </td>
       <td>&lt;9C33AAF5&gt;</td>
@@ -2089,10 +2012,9 @@
       <td class="side">174</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#106">7A25F920#106</a>
           <br/><a href="SYS_GimmickLocation.html#11020">SYS_GimmickLocation#<C662A4B6></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11067">SYS_GimmickLocation_dlc02#11067</a>
         </details>
       </td>
       <td>&lt;C662A4B6&gt;</td>
@@ -2103,10 +2025,9 @@
       <td class="side">175</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#63">7A25F920#63</a>
           <br/><a href="SYS_GimmickLocation.html#10988">SYS_GimmickLocation#<E42CE071></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11035">SYS_GimmickLocation_dlc02#11035</a>
         </details>
       </td>
       <td>&lt;E42CE071&gt;</td>
@@ -2117,10 +2038,9 @@
       <td class="side">176</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#64">7A25F920#64</a>
           <br/><a href="SYS_GimmickLocation.html#10989">SYS_GimmickLocation#<57D96E12></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11036">SYS_GimmickLocation_dlc02#11036</a>
         </details>
       </td>
       <td>&lt;57D96E12&gt;</td>
@@ -2131,10 +2051,9 @@
       <td class="side">177</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#65">7A25F920#65</a>
           <br/><a href="SYS_GimmickLocation.html#10990">SYS_GimmickLocation#<148B43FC></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11037">SYS_GimmickLocation_dlc02#11037</a>
         </details>
       </td>
       <td>&lt;148B43FC&gt;</td>
@@ -2145,10 +2064,9 @@
       <td class="side">178</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#66">7A25F920#66</a>
           <br/><a href="SYS_GimmickLocation.html#10991">SYS_GimmickLocation#<85417BDB></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11038">SYS_GimmickLocation_dlc02#11038</a>
         </details>
       </td>
       <td>&lt;85417BDB&gt;</td>
@@ -2159,10 +2077,9 @@
       <td class="side">179</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#67">7A25F920#67</a>
           <br/><a href="SYS_GimmickLocation.html#10992">SYS_GimmickLocation#<F2A10C6C></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11039">SYS_GimmickLocation_dlc02#11039</a>
         </details>
       </td>
       <td>&lt;F2A10C6C&gt;</td>
@@ -2173,10 +2090,9 @@
       <td class="side">180</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#68">7A25F920#68</a>
           <br/><a href="SYS_GimmickLocation.html#10993">SYS_GimmickLocation#<B2E29268></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11040">SYS_GimmickLocation_dlc02#11040</a>
         </details>
       </td>
       <td>&lt;B2E29268&gt;</td>
@@ -2187,10 +2103,9 @@
       <td class="side">181</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#69">7A25F920#69</a>
           <br/><a href="SYS_GimmickLocation.html#10994">SYS_GimmickLocation#<A9CDC940></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11041">SYS_GimmickLocation_dlc02#11041</a>
         </details>
       </td>
       <td>&lt;A9CDC940&gt;</td>
@@ -2201,10 +2116,9 @@
       <td class="side">182</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#70">7A25F920#70</a>
           <br/><a href="SYS_GimmickLocation.html#10995">SYS_GimmickLocation#<F302FAB3></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11042">SYS_GimmickLocation_dlc02#11042</a>
         </details>
       </td>
       <td>&lt;F302FAB3&gt;</td>
@@ -2215,10 +2129,9 @@
       <td class="side">183</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#71">7A25F920#71</a>
           <br/><a href="SYS_GimmickLocation.html#10996">SYS_GimmickLocation#<27586ECB></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11043">SYS_GimmickLocation_dlc02#11043</a>
         </details>
       </td>
       <td>&lt;27586ECB&gt;</td>
@@ -2229,10 +2142,9 @@
       <td class="side">184</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#72">7A25F920#72</a>
           <br/><a href="SYS_GimmickLocation.html#10997">SYS_GimmickLocation#<65345372></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11044">SYS_GimmickLocation_dlc02#11044</a>
         </details>
       </td>
       <td>&lt;65345372&gt;</td>
@@ -2243,10 +2155,9 @@
       <td class="side">185</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#73">7A25F920#73</a>
           <br/><a href="SYS_GimmickLocation.html#10998">SYS_GimmickLocation#<C92EF4B1></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11045">SYS_GimmickLocation_dlc02#11045</a>
         </details>
       </td>
       <td>&lt;C92EF4B1&gt;</td>
@@ -2257,10 +2168,9 @@
       <td class="side">186</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#74">7A25F920#74</a>
           <br/><a href="SYS_GimmickLocation.html#10999">SYS_GimmickLocation#<7A05BA3C></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#11046">SYS_GimmickLocation_dlc02#11046</a>
         </details>
       </td>
       <td>&lt;7A05BA3C&gt;</td>
@@ -2271,10 +2181,9 @@
       <td class="side">187</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#107">7A25F920#107</a>
           <br/><a href="SYS_GimmickLocation.html#10890">SYS_GimmickLocation#<CF47A3DC></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10937">SYS_GimmickLocation_dlc02#10937</a>
         </details>
       </td>
       <td>&lt;CF47A3DC&gt;</td>
@@ -2285,10 +2194,9 @@
       <td class="side">188</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#108">7A25F920#108</a>
           <br/><a href="SYS_GimmickLocation.html#10891">SYS_GimmickLocation#<D2948AD0></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10938">SYS_GimmickLocation_dlc02#10938</a>
         </details>
       </td>
       <td>&lt;D2948AD0&gt;</td>
@@ -2299,10 +2207,9 @@
       <td class="side">189</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="7A25F920.html#109">7A25F920#109</a>
           <br/><a href="SYS_GimmickLocation.html#10892">SYS_GimmickLocation#<A642057F></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#10939">SYS_GimmickLocation_dlc02#10939</a>
         </details>
       </td>
       <td>&lt;A642057F&gt;</td>

@@ -30,47 +30,86 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>ITM_Collepedia</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>Name</th>
-      <th>NameCondition</th>
-      <th>Name2</th>
-      <th>Rarity</th>
-      <th>Price1</th>
-      <th>PriceCondition</th>
-      <th>Price2</th>
-      <th>Sell</th>
-      <th>Colony</th>
-      <th>Difficulty</th>
-      <th>Reward1</th>
-      <th>Reward2</th>
-      <th>SetItem1</th>
-      <th>SetItem2</th>
-      <th>SetItem3</th>
-      <th>SetItem4</th>
-      <th>SetItem5</th>
-      <th>SetItem6</th>
-      <th>SetItem7</th>
-      <th>SetItem8</th>
-      <th>SetItem9</th>
-      <th>SetItem10</th>
-      <th>Category</th>
-      <th>Sortkey</th>
-      <th>Text</th>
-      <th>Text2</th>
-      <th>NcType</th>
-      <th>NcNum</th>
-      <th>RelationID</th>
-      <th>flagvalue</th>
-      <th>ColonyRelationID</th>
-      <th>Colonyflagvalue</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">Name</th>
+      <th onclick="sortColumn(this, 4, 0)">NameCondition</th>
+      <th onclick="sortColumn(this, 5, 0)">Name2</th>
+      <th onclick="sortColumn(this, 6, 0)">Rarity</th>
+      <th onclick="sortColumn(this, 7, 0)">Price1</th>
+      <th onclick="sortColumn(this, 8, 0)">PriceCondition</th>
+      <th onclick="sortColumn(this, 9, 0)">Price2</th>
+      <th onclick="sortColumn(this, 10, 0)">Sell</th>
+      <th onclick="sortColumn(this, 11, 0)">Colony</th>
+      <th onclick="sortColumn(this, 12, 0)">Difficulty</th>
+      <th onclick="sortColumn(this, 13, 0)">Reward1</th>
+      <th onclick="sortColumn(this, 14, 0)">Reward2</th>
+      <th onclick="sortColumn(this, 15, 0)">SetItem1</th>
+      <th onclick="sortColumn(this, 16, 0)">SetItem2</th>
+      <th onclick="sortColumn(this, 17, 0)">SetItem3</th>
+      <th onclick="sortColumn(this, 18, 0)">SetItem4</th>
+      <th onclick="sortColumn(this, 19, 0)">SetItem5</th>
+      <th onclick="sortColumn(this, 20, 0)">SetItem6</th>
+      <th onclick="sortColumn(this, 21, 0)">SetItem7</th>
+      <th onclick="sortColumn(this, 22, 0)">SetItem8</th>
+      <th onclick="sortColumn(this, 23, 0)">SetItem9</th>
+      <th onclick="sortColumn(this, 24, 0)">SetItem10</th>
+      <th onclick="sortColumn(this, 25, 0)">Category</th>
+      <th onclick="sortColumn(this, 26, 0)">Sortkey</th>
+      <th onclick="sortColumn(this, 27, 0)">Text</th>
+      <th onclick="sortColumn(this, 28, 0)">Text2</th>
+      <th onclick="sortColumn(this, 29, 0)">NcType</th>
+      <th onclick="sortColumn(this, 30, 0)">NcNum</th>
+      <th onclick="sortColumn(this, 31, 0)">RelationID</th>
+      <th onclick="sortColumn(this, 32, 0)">flagvalue</th>
+      <th onclick="sortColumn(this, 33, 0)">ColonyRelationID</th>
+      <th onclick="sortColumn(this, 34, 0)">Colonyflagvalue</th>
     </tr>
     <tr id="4001">
       <td class="side">4001</td>
@@ -81,7 +120,7 @@
         </details>
       </td>
       <td>&lt;8E4D1FC7&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -123,7 +162,7 @@
         </details>
       </td>
       <td>&lt;FD044F9A&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -165,7 +204,7 @@
         </details>
       </td>
       <td>&lt;5CA2688F&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -207,7 +246,7 @@
         </details>
       </td>
       <td>&lt;97CD05E7&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -249,7 +288,7 @@
         </details>
       </td>
       <td>&lt;7EB2ADF2&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -291,7 +330,7 @@
         </details>
       </td>
       <td>&lt;908486BE&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -333,7 +372,7 @@
         </details>
       </td>
       <td>&lt;4F3A9771&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -375,7 +414,7 @@
         </details>
       </td>
       <td>&lt;D8BBEBE0&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -417,7 +456,7 @@
         </details>
       </td>
       <td>&lt;F3BBFD8B&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -461,7 +500,7 @@
         </details>
       </td>
       <td>&lt;183E2657&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -503,7 +542,7 @@
         </details>
       </td>
       <td>&lt;9D49C2B5&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -545,7 +584,7 @@
         </details>
       </td>
       <td>&lt;AB16DB01&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -587,7 +626,7 @@
         </details>
       </td>
       <td>&lt;37A01525&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -629,7 +668,7 @@
         </details>
       </td>
       <td>&lt;F29D7BEE&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -671,7 +710,7 @@
         </details>
       </td>
       <td>&lt;BDB61057&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -713,7 +752,7 @@
         </details>
       </td>
       <td>&lt;6AADE9DA&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -755,7 +794,7 @@
         </details>
       </td>
       <td>&lt;3998F4AE&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -797,7 +836,7 @@
         </details>
       </td>
       <td>&lt;9753D2B4&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -839,7 +878,7 @@
         </details>
       </td>
       <td>&lt;71B64EE2&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -881,7 +920,7 @@
         </details>
       </td>
       <td>&lt;716CAA6A&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -923,7 +962,7 @@
         </details>
       </td>
       <td>&lt;42A50AA9&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -965,7 +1004,7 @@
         </details>
       </td>
       <td>&lt;BF4E981E&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1007,7 +1046,7 @@
         </details>
       </td>
       <td>&lt;885DE274&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1049,7 +1088,7 @@
         </details>
       </td>
       <td>&lt;705C9DCD&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1091,7 +1130,7 @@
         </details>
       </td>
       <td>&lt;DF21ECA1&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1133,7 +1172,7 @@
         </details>
       </td>
       <td>&lt;890D6936&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1175,7 +1214,7 @@
         </details>
       </td>
       <td>&lt;804D4403&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1217,7 +1256,7 @@
         </details>
       </td>
       <td>&lt;22621C6B&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1259,7 +1298,7 @@
         </details>
       </td>
       <td>&lt;80C45FDC&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1301,7 +1340,7 @@
         </details>
       </td>
       <td>&lt;EC71BAE1&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1343,7 +1382,7 @@
         </details>
       </td>
       <td>&lt;717528CD&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1385,7 +1424,7 @@
         </details>
       </td>
       <td>&lt;84F0746A&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1427,7 +1466,7 @@
         </details>
       </td>
       <td>&lt;20AD018F&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1469,7 +1508,7 @@
         </details>
       </td>
       <td>&lt;48B36090&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1511,7 +1550,7 @@
         </details>
       </td>
       <td>&lt;C106478A&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1553,7 +1592,7 @@
         </details>
       </td>
       <td>&lt;9EA826F1&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1595,7 +1634,7 @@
         </details>
       </td>
       <td>&lt;C2914E4D&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1637,7 +1676,7 @@
         </details>
       </td>
       <td>&lt;CAF63009&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1679,7 +1718,7 @@
         </details>
       </td>
       <td>&lt;136F65F4&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1721,7 +1760,7 @@
         </details>
       </td>
       <td>&lt;D0EE7F0F&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1763,7 +1802,7 @@
         </details>
       </td>
       <td>&lt;878E986C&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1805,7 +1844,7 @@
         </details>
       </td>
       <td>&lt;ECCBDF02&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1847,7 +1886,7 @@
         </details>
       </td>
       <td>&lt;30A4DBD5&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1889,7 +1928,7 @@
         </details>
       </td>
       <td>&lt;C9FD9F74&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1931,7 +1970,7 @@
         </details>
       </td>
       <td>&lt;3C5A9DEE&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -1973,7 +2012,7 @@
         </details>
       </td>
       <td>&lt;D1514E03&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2015,7 +2054,7 @@
         </details>
       </td>
       <td>&lt;54CAE17C&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2057,7 +2096,7 @@
         </details>
       </td>
       <td>&lt;4C845649&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2099,7 +2138,7 @@
         </details>
       </td>
       <td>&lt;BCD58E3A&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2141,7 +2180,7 @@
         </details>
       </td>
       <td>&lt;D68093AD&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2183,7 +2222,7 @@
         </details>
       </td>
       <td>&lt;B24B6709&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2225,7 +2264,7 @@
         </details>
       </td>
       <td>&lt;BD6766FD&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2267,7 +2306,7 @@
         </details>
       </td>
       <td>&lt;4B37680D&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2309,7 +2348,7 @@
         </details>
       </td>
       <td>&lt;B31C82E1&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2351,7 +2390,7 @@
         </details>
       </td>
       <td>&lt;6914053D&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2393,7 +2432,7 @@
         </details>
       </td>
       <td>&lt;404C6914&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2435,7 +2474,7 @@
         </details>
       </td>
       <td>&lt;E84D0FE6&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2477,7 +2516,7 @@
         </details>
       </td>
       <td>&lt;DD8D48BC&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2519,7 +2558,7 @@
         </details>
       </td>
       <td>&lt;C1D2EA8D&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2561,7 +2600,7 @@
         </details>
       </td>
       <td>&lt;4842D80D&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2603,7 +2642,7 @@
         </details>
       </td>
       <td>&lt;57891DD6&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2645,7 +2684,7 @@
         </details>
       </td>
       <td>&lt;C0B38EC3&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2687,7 +2726,7 @@
         </details>
       </td>
       <td>&lt;84F4198E&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2729,7 +2768,7 @@
         </details>
       </td>
       <td>&lt;5DA1DC45&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2771,7 +2810,7 @@
         </details>
       </td>
       <td>&lt;E5FE5EDD&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2813,7 +2852,7 @@
         </details>
       </td>
       <td>&lt;DC4E846C&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2855,7 +2894,7 @@
         </details>
       </td>
       <td>&lt;8F94DF6F&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2897,7 +2936,7 @@
         </details>
       </td>
       <td>&lt;1CE6FDBA&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2939,7 +2978,7 @@
         </details>
       </td>
       <td>&lt;410C06D7&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -2981,7 +3020,7 @@
         </details>
       </td>
       <td>&lt;1FEBE239&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3023,7 +3062,7 @@
         </details>
       </td>
       <td>&lt;C365FD0F&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3065,7 +3104,7 @@
         </details>
       </td>
       <td>&lt;79A62092&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3107,7 +3146,7 @@
         </details>
       </td>
       <td>&lt;B3636AD1&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3149,7 +3188,7 @@
         </details>
       </td>
       <td>&lt;C42D55F7&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3191,7 +3230,7 @@
         </details>
       </td>
       <td>&lt;6F555EA4&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3233,7 +3272,7 @@
         </details>
       </td>
       <td>&lt;C01FCE92&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3275,7 +3314,7 @@
         </details>
       </td>
       <td>&lt;9BB4AD35&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3317,7 +3356,7 @@
         </details>
       </td>
       <td>&lt;DEAC085A&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3359,7 +3398,7 @@
         </details>
       </td>
       <td>&lt;04B7D9A5&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3401,7 +3440,7 @@
         </details>
       </td>
       <td>&lt;59AC4293&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3443,7 +3482,7 @@
         </details>
       </td>
       <td>&lt;7CF6FCFF&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3485,7 +3524,7 @@
         </details>
       </td>
       <td>&lt;D74F8B66&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3527,7 +3566,7 @@
         </details>
       </td>
       <td>&lt;246272FD&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3569,7 +3608,7 @@
         </details>
       </td>
       <td>&lt;54BCEA6E&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3611,7 +3650,7 @@
         </details>
       </td>
       <td>&lt;C07DE918&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3653,7 +3692,7 @@
         </details>
       </td>
       <td>&lt;00D5F3C2&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3695,7 +3734,7 @@
         </details>
       </td>
       <td>&lt;E0EA95A7&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3737,7 +3776,7 @@
         </details>
       </td>
       <td>&lt;71D2B357&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3779,7 +3818,7 @@
         </details>
       </td>
       <td>&lt;7A99564D&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3821,7 +3860,7 @@
         </details>
       </td>
       <td>&lt;A581EA6F&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3863,7 +3902,7 @@
         </details>
       </td>
       <td>&lt;2ECE3836&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3905,7 +3944,7 @@
         </details>
       </td>
       <td>&lt;DB337DFC&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3947,7 +3986,7 @@
         </details>
       </td>
       <td>&lt;89362F2E&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -3989,7 +4028,7 @@
         </details>
       </td>
       <td>&lt;B3578026&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4031,7 +4070,7 @@
         </details>
       </td>
       <td>&lt;496F0960&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4073,7 +4112,7 @@
         </details>
       </td>
       <td>&lt;57F3C3D4&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4115,7 +4154,7 @@
         </details>
       </td>
       <td>&lt;D27204CB&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4157,7 +4196,7 @@
         </details>
       </td>
       <td>&lt;8B562279&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4199,7 +4238,7 @@
         </details>
       </td>
       <td>&lt;8D555BF6&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4241,7 +4280,7 @@
         </details>
       </td>
       <td>&lt;86E73588&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4283,7 +4322,7 @@
         </details>
       </td>
       <td>&lt;29A8EA52&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4325,7 +4364,7 @@
         </details>
       </td>
       <td>&lt;6FBCC632&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4367,7 +4406,7 @@
         </details>
       </td>
       <td>&lt;486D72D9&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4409,7 +4448,7 @@
         </details>
       </td>
       <td>&lt;BDFDA978&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4451,7 +4490,7 @@
         </details>
       </td>
       <td>&lt;CAA55ACF&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4493,7 +4532,7 @@
         </details>
       </td>
       <td>&lt;521D7148&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4535,7 +4574,7 @@
         </details>
       </td>
       <td>&lt;33B82E8E&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4577,7 +4616,7 @@
         </details>
       </td>
       <td>&lt;96B11277&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4619,7 +4658,7 @@
         </details>
       </td>
       <td>&lt;48A5A86C&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4661,7 +4700,7 @@
         </details>
       </td>
       <td>&lt;19C7649B&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4703,7 +4742,7 @@
         </details>
       </td>
       <td>&lt;5B6B89A9&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4745,7 +4784,7 @@
         </details>
       </td>
       <td>&lt;A63AB78C&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4787,7 +4826,7 @@
         </details>
       </td>
       <td>&lt;55D068CF&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4829,7 +4868,7 @@
         </details>
       </td>
       <td>&lt;06E929FB&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4871,7 +4910,7 @@
         </details>
       </td>
       <td>&lt;ADF29EF2&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4913,7 +4952,7 @@
         </details>
       </td>
       <td>&lt;B962148A&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4955,7 +4994,7 @@
         </details>
       </td>
       <td>&lt;B0681390&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -4997,7 +5036,7 @@
         </details>
       </td>
       <td>&lt;78A75E7E&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5039,7 +5078,7 @@
         </details>
       </td>
       <td>&lt;44F1D638&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5081,7 +5120,7 @@
         </details>
       </td>
       <td>&lt;AABAFA8D&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5123,7 +5162,7 @@
         </details>
       </td>
       <td>&lt;5323A750&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5165,7 +5204,7 @@
         </details>
       </td>
       <td>&lt;592B537A&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5207,7 +5246,7 @@
         </details>
       </td>
       <td>&lt;05E2208E&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5249,7 +5288,7 @@
         </details>
       </td>
       <td>&lt;D4AB704E&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5291,7 +5330,7 @@
         </details>
       </td>
       <td>&lt;6D46B6F0&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5333,7 +5372,7 @@
         </details>
       </td>
       <td>&lt;9ECC3472&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5375,7 +5414,7 @@
         </details>
       </td>
       <td>&lt;6375A118&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5417,7 +5456,7 @@
         </details>
       </td>
       <td>&lt;48D24308&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5459,7 +5498,7 @@
         </details>
       </td>
       <td>&lt;D1155BD2&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5501,7 +5540,7 @@
         </details>
       </td>
       <td>&lt;37C39FEB&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5543,7 +5582,7 @@
         </details>
       </td>
       <td>&lt;4754D495&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5585,7 +5624,7 @@
         </details>
       </td>
       <td>&lt;05B13813&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5628,7 +5667,7 @@
         </details>
       </td>
       <td>&lt;43987465&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5665,7 +5704,7 @@
       <td class="side">4134</td>
       <td></td>
       <td>&lt;9A638034&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5702,7 +5741,7 @@
       <td class="side">4135</td>
       <td></td>
       <td>&lt;9CA15E5A&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5744,7 +5783,7 @@
         </details>
       </td>
       <td>&lt;40D28A9E&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5781,7 +5820,7 @@
       <td class="side">4137</td>
       <td></td>
       <td>&lt;E599A575&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5818,7 +5857,7 @@
       <td class="side">4138</td>
       <td></td>
       <td>&lt;D6D6740F&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5855,7 +5894,7 @@
       <td class="side">4139</td>
       <td></td>
       <td>&lt;8F25A451&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5897,7 +5936,7 @@
         </details>
       </td>
       <td>&lt;0EF29336&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5934,7 +5973,7 @@
       <td class="side">4141</td>
       <td></td>
       <td>&lt;350EEF4A&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -5971,7 +6010,7 @@
       <td class="side">4142</td>
       <td></td>
       <td>&lt;CD5F26DC&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6008,7 +6047,7 @@
       <td class="side">4143</td>
       <td></td>
       <td>&lt;93136366&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6045,7 +6084,7 @@
       <td class="side">4144</td>
       <td></td>
       <td>&lt;C6EE16BE&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6087,7 +6126,7 @@
         </details>
       </td>
       <td>&lt;D6336FFF&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6124,7 +6163,7 @@
       <td class="side">4146</td>
       <td></td>
       <td>&lt;DD6A5DBC&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6161,7 +6200,7 @@
       <td class="side">4147</td>
       <td></td>
       <td>&lt;C811845E&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6198,7 +6237,7 @@
       <td class="side">4148</td>
       <td></td>
       <td>&lt;1888C569&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6235,7 +6274,7 @@
       <td class="side">4149</td>
       <td></td>
       <td>&lt;EB7518CA&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6277,7 +6316,7 @@
         </details>
       </td>
       <td>&lt;55A475FA&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6319,7 +6358,7 @@
         </details>
       </td>
       <td>&lt;C5768A3B&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6356,7 +6395,7 @@
       <td class="side">4152</td>
       <td></td>
       <td>&lt;102A65E7&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6398,7 +6437,7 @@
         </details>
       </td>
       <td>&lt;541AB49B&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6440,7 +6479,7 @@
         </details>
       </td>
       <td>&lt;7AC1DCB4&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6483,7 +6522,7 @@
         </details>
       </td>
       <td>&lt;8327F7B9&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6526,7 +6565,7 @@
         </details>
       </td>
       <td>&lt;FBE37E1F&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6568,7 +6607,7 @@
         </details>
       </td>
       <td>&lt;E00E516D&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6610,7 +6649,7 @@
         </details>
       </td>
       <td>&lt;625DA121&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6653,7 +6692,7 @@
         </details>
       </td>
       <td>&lt;46A0DB43&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6695,7 +6734,7 @@
         </details>
       </td>
       <td>&lt;BB698799&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6737,7 +6776,7 @@
         </details>
       </td>
       <td>&lt;B522BE1F&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6779,7 +6818,7 @@
         </details>
       </td>
       <td>&lt;19F4574A&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6821,7 +6860,7 @@
         </details>
       </td>
       <td>&lt;2E24BC0C&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6863,7 +6902,7 @@
         </details>
       </td>
       <td>&lt;2163AD63&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6905,7 +6944,7 @@
         </details>
       </td>
       <td>&lt;8B260172&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6947,7 +6986,7 @@
         </details>
       </td>
       <td>&lt;2CE9FAA1&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -6989,7 +7028,7 @@
         </details>
       </td>
       <td>&lt;70E36442&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -7031,7 +7070,7 @@
         </details>
       </td>
       <td>&lt;FC37EC8E&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -7073,7 +7112,7 @@
         </details>
       </td>
       <td>&lt;808BFF16&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -7115,7 +7154,7 @@
         </details>
       </td>
       <td>&lt;DDF44A35&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -7157,7 +7196,7 @@
         </details>
       </td>
       <td>&lt;811FE773&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -7199,7 +7238,7 @@
         </details>
       </td>
       <td>&lt;908260A8&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -7241,7 +7280,7 @@
         </details>
       </td>
       <td>&lt;34154BCC&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>
@@ -7283,7 +7322,7 @@
         </details>
       </td>
       <td>&lt;AF670597&gt;</td>
-      <td>0</td>
+      <td></td>
       <td></td>
       <td>0</td>
       <td>0</td>

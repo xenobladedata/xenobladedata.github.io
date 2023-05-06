@@ -30,29 +30,68 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>ma07a_GMK_Location</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>LocationName</th>
-      <th>MapJumpID</th>
-      <th>CategoryPriority</th>
-      <th>Condition</th>
-      <th>BonusExp</th>
-      <th>SP</th>
-      <th>Colony</th>
-      <th>MenuGroup</th>
-      <th>MenuMapImage</th>
-      <th>MenuPriority</th>
-      <th>NoTelop</th>
-      <th>field_D8EB49D8</th>
-      <th>MapInfoId</th>
-      <th>Comment</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">LocationName</th>
+      <th onclick="sortColumn(this, 4, 0)">MapJumpID</th>
+      <th onclick="sortColumn(this, 5, 0)">CategoryPriority</th>
+      <th onclick="sortColumn(this, 6, 0)">Condition</th>
+      <th onclick="sortColumn(this, 7, 0)">BonusExp</th>
+      <th onclick="sortColumn(this, 8, 0)">SP</th>
+      <th onclick="sortColumn(this, 9, 0)">Colony</th>
+      <th onclick="sortColumn(this, 10, 0)">MenuGroup</th>
+      <th onclick="sortColumn(this, 11, 0)">MenuMapImage</th>
+      <th onclick="sortColumn(this, 12, 0)">MenuPriority</th>
+      <th onclick="sortColumn(this, 13, 0)">NoTelop</th>
+      <th onclick="sortColumn(this, 14, 0)">field_D8EB49D8</th>
+      <th onclick="sortColumn(this, 15, 0)">MapInfoId</th>
+      <th onclick="sortColumn(this, 16, 2)">Comment</th>
     </tr>
     <tr id="401">
       <td class="side">401</td>
@@ -2956,8 +2995,9 @@
       <td class="side">472</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>3 refs</summary>
                <a href="8F29BCAF.html#31">8F29BCAF#31</a>
+          <br/><a href="DF563EF6.html#58">DF563EF6#58</a>
           <br/><a href="SYS_GimmickLocation_dlc04.html#17329">SYS_GimmickLocation_dlc04#<B9886327></a>
         </details>
       </td>
@@ -2981,8 +3021,9 @@
       <td class="side">473</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>3 refs</summary>
                <a href="8F29BCAF.html#32">8F29BCAF#32</a>
+          <br/><a href="DF563EF6.html#59">DF563EF6#59</a>
           <br/><a href="SYS_GimmickLocation_dlc04.html#17330">SYS_GimmickLocation_dlc04#<84DB800C></a>
         </details>
       </td>
@@ -3006,8 +3047,9 @@
       <td class="side">474</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>3 refs</summary>
                <a href="8F29BCAF.html#33">8F29BCAF#33</a>
+          <br/><a href="DF563EF6.html#60">DF563EF6#60</a>
           <br/><a href="SYS_GimmickLocation_dlc04.html#17331">SYS_GimmickLocation_dlc04#<E510ABB6></a>
         </details>
       </td>
@@ -3031,8 +3073,9 @@
       <td class="side">475</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>3 refs</summary>
                <a href="8F29BCAF.html#34">8F29BCAF#34</a>
+          <br/><a href="DF563EF6.html#61">DF563EF6#61</a>
           <br/><a href="SYS_GimmickLocation_dlc04.html#17332">SYS_GimmickLocation_dlc04#<DEE22099></a>
         </details>
       </td>
@@ -3056,8 +3099,9 @@
       <td class="side">476</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>3 refs</summary>
                <a href="8F29BCAF.html#35">8F29BCAF#35</a>
+          <br/><a href="DF563EF6.html#62">DF563EF6#62</a>
           <br/><a href="SYS_GimmickLocation_dlc04.html#17333">SYS_GimmickLocation_dlc04#<FE24447B></a>
         </details>
       </td>
@@ -3081,8 +3125,9 @@
       <td class="side">477</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>3 refs</summary>
                <a href="8F29BCAF.html#36">8F29BCAF#36</a>
+          <br/><a href="DF563EF6.html#63">DF563EF6#63</a>
           <br/><a href="SYS_GimmickLocation_dlc04.html#17334">SYS_GimmickLocation_dlc04#<849F7AAF></a>
         </details>
       </td>
@@ -3106,8 +3151,9 @@
       <td class="side">478</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>3 refs</summary>
                <a href="8F29BCAF.html#37">8F29BCAF#37</a>
+          <br/><a href="DF563EF6.html#64">DF563EF6#64</a>
           <br/><a href="SYS_GimmickLocation_dlc04.html#17335">SYS_GimmickLocation_dlc04#<C4C34E52></a>
         </details>
       </td>
@@ -3131,8 +3177,9 @@
       <td class="side">479</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>4 refs</summary>
                <a href="8F29BCAF.html#39">8F29BCAF#39</a>
+          <br/><a href="DF563EF6.html#66">DF563EF6#66</a>
           <br/><a href="FLD_InfoList.html#3">FLD_InfoList#3</a>
           <br/><a href="SYS_GimmickLocation_dlc04.html#17337">SYS_GimmickLocation_dlc04#<29F2F0E4></a>
         </details>
@@ -3157,8 +3204,9 @@
       <td class="side">480</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>3 refs</summary>
                <a href="8F29BCAF.html#38">8F29BCAF#38</a>
+          <br/><a href="DF563EF6.html#65">DF563EF6#65</a>
           <br/><a href="SYS_GimmickLocation_dlc04.html#17336">SYS_GimmickLocation_dlc04#<7157E25C></a>
         </details>
       </td>
@@ -3182,8 +3230,9 @@
       <td class="side">481</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>4 refs</summary>
                <a href="8F29BCAF.html#40">8F29BCAF#40</a>
+          <br/><a href="DF563EF6.html#67">DF563EF6#67</a>
           <br/><a href="FLD_InfoList.html#74">FLD_InfoList#74</a>
           <br/><a href="SYS_GimmickLocation_dlc04.html#17338">SYS_GimmickLocation_dlc04#<7C401A73></a>
         </details>
@@ -3208,8 +3257,9 @@
       <td class="side">482</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>3 refs</summary>
                <a href="8F29BCAF.html#41">8F29BCAF#41</a>
+          <br/><a href="DF563EF6.html#68">DF563EF6#68</a>
           <br/><a href="SYS_GimmickLocation_dlc04.html#17339">SYS_GimmickLocation_dlc04#<4DD7534F></a>
         </details>
       </td>
@@ -3233,8 +3283,9 @@
       <td class="side">483</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>3 refs</summary>
                <a href="8F29BCAF.html#42">8F29BCAF#42</a>
+          <br/><a href="DF563EF6.html#69">DF563EF6#69</a>
           <br/><a href="SYS_GimmickLocation_dlc04.html#17340">SYS_GimmickLocation_dlc04#<FDB67ECA></a>
         </details>
       </td>

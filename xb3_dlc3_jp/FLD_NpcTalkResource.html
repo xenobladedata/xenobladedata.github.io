@@ -30,46 +30,85 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>FLD_NpcTalkResource</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>BaseEventName</th>
-      <th>field_F034DA4D</th>
-      <th>MustRead1</th>
-      <th>EventName1</th>
-      <th>field_C039C854</th>
-      <th>MustRead2</th>
-      <th>EventName2</th>
-      <th>field_0516EEEB</th>
-      <th>MustRead3</th>
-      <th>EventName3</th>
-      <th>field_EC729F88</th>
-      <th>MustRead4</th>
-      <th>EventName4</th>
-      <th>field_A4E84202</th>
-      <th>MustRead5</th>
-      <th>EventName5</th>
-      <th>field_3097B827</th>
-      <th>MustRead6</th>
-      <th>EventName6</th>
-      <th>field_E19F3C99</th>
-      <th>MustRead7</th>
-      <th>EventName7</th>
-      <th>field_886BE768</th>
-      <th>MustRead8</th>
-      <th>EventName8</th>
-      <th>field_1046BEC0</th>
-      <th>MustRead9</th>
-      <th>EventName9</th>
-      <th>field_1AACD6BB</th>
-      <th>MustRead10</th>
-      <th>EventName10</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 2)">BaseEventName</th>
+      <th onclick="sortColumn(this, 4, 2)">field_F034DA4D</th>
+      <th onclick="sortColumn(this, 5, 0)">MustRead1</th>
+      <th onclick="sortColumn(this, 6, 2)">EventName1</th>
+      <th onclick="sortColumn(this, 7, 2)">field_C039C854</th>
+      <th onclick="sortColumn(this, 8, 0)">MustRead2</th>
+      <th onclick="sortColumn(this, 9, 2)">EventName2</th>
+      <th onclick="sortColumn(this, 10, 2)">field_0516EEEB</th>
+      <th onclick="sortColumn(this, 11, 0)">MustRead3</th>
+      <th onclick="sortColumn(this, 12, 2)">EventName3</th>
+      <th onclick="sortColumn(this, 13, 2)">field_EC729F88</th>
+      <th onclick="sortColumn(this, 14, 0)">MustRead4</th>
+      <th onclick="sortColumn(this, 15, 2)">EventName4</th>
+      <th onclick="sortColumn(this, 16, 2)">field_A4E84202</th>
+      <th onclick="sortColumn(this, 17, 0)">MustRead5</th>
+      <th onclick="sortColumn(this, 18, 2)">EventName5</th>
+      <th onclick="sortColumn(this, 19, 2)">field_3097B827</th>
+      <th onclick="sortColumn(this, 20, 0)">MustRead6</th>
+      <th onclick="sortColumn(this, 21, 2)">EventName6</th>
+      <th onclick="sortColumn(this, 22, 2)">field_E19F3C99</th>
+      <th onclick="sortColumn(this, 23, 0)">MustRead7</th>
+      <th onclick="sortColumn(this, 24, 2)">EventName7</th>
+      <th onclick="sortColumn(this, 25, 2)">field_886BE768</th>
+      <th onclick="sortColumn(this, 26, 0)">MustRead8</th>
+      <th onclick="sortColumn(this, 27, 2)">EventName8</th>
+      <th onclick="sortColumn(this, 28, 2)">field_1046BEC0</th>
+      <th onclick="sortColumn(this, 29, 0)">MustRead9</th>
+      <th onclick="sortColumn(this, 30, 2)">EventName9</th>
+      <th onclick="sortColumn(this, 31, 2)">field_1AACD6BB</th>
+      <th onclick="sortColumn(this, 32, 0)">MustRead10</th>
+      <th onclick="sortColumn(this, 33, 2)">EventName10</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>

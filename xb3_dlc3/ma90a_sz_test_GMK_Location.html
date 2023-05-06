@@ -30,35 +30,74 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>ma90a_sz_test_GMK_Location</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>LocationName</th>
-      <th>MapJumpID</th>
-      <th>CategoryPriority</th>
-      <th>Condition</th>
-      <th>BonusExp</th>
-      <th>SP</th>
-      <th>Colony</th>
-      <th>MenuGroup</th>
-      <th>MenuMapImage</th>
-      <th>MenuPriority</th>
-      <th>NoTelop</th>
-      <th>field_D8EB49D8</th>
-      <th>MapInfoId</th>
-      <th>Comment</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">LocationName</th>
+      <th onclick="sortColumn(this, 4, 0)">MapJumpID</th>
+      <th onclick="sortColumn(this, 5, 0)">CategoryPriority</th>
+      <th onclick="sortColumn(this, 6, 0)">Condition</th>
+      <th onclick="sortColumn(this, 7, 0)">BonusExp</th>
+      <th onclick="sortColumn(this, 8, 0)">SP</th>
+      <th onclick="sortColumn(this, 9, 0)">Colony</th>
+      <th onclick="sortColumn(this, 10, 0)">MenuGroup</th>
+      <th onclick="sortColumn(this, 11, 0)">MenuMapImage</th>
+      <th onclick="sortColumn(this, 12, 0)">MenuPriority</th>
+      <th onclick="sortColumn(this, 13, 0)">NoTelop</th>
+      <th onclick="sortColumn(this, 14, 0)">field_D8EB49D8</th>
+      <th onclick="sortColumn(this, 15, 0)">MapInfoId</th>
+      <th onclick="sortColumn(this, 16, 2)">Comment</th>
     </tr>
     <tr id="2001">
       <td class="side">2001</td>
       <td></td>
       <td>&lt;A49160CF&gt;</td>
-      <td>103</td>
+      <td>Great Sword's Base</td>
       <td></td>
       <td>5</td>
       <td></td>
@@ -77,7 +116,7 @@
       <td class="side">2002</td>
       <td></td>
       <td>&lt;726DDDDA&gt;</td>
-      <td>104</td>
+      <td>Agnus Castle Barbican</td>
       <td></td>
       <td>5</td>
       <td></td>
@@ -96,7 +135,7 @@
       <td class="side">2003</td>
       <td></td>
       <td>&lt;9890E722&gt;</td>
-      <td>105</td>
+      <td>Erythia Sea</td>
       <td></td>
       <td>5</td>
       <td></td>
@@ -115,7 +154,7 @@
       <td class="side">2004</td>
       <td></td>
       <td>&lt;BE671495&gt;</td>
-      <td>139</td>
+      <td>Li Garte Prison Camp</td>
       <td></td>
       <td>5</td>
       <td></td>
@@ -134,7 +173,7 @@
       <td class="side">2005</td>
       <td></td>
       <td>&lt;E841494F&gt;</td>
-      <td>107</td>
+      <td>N'ohm Wetlands</td>
       <td></td>
       <td>4</td>
       <td></td>
@@ -153,7 +192,7 @@
       <td class="side">2006</td>
       <td></td>
       <td>&lt;3C245A81&gt;</td>
-      <td>108</td>
+      <td>Great Sword Passage</td>
       <td></td>
       <td>4</td>
       <td></td>
@@ -172,7 +211,7 @@
       <td class="side">2007</td>
       <td></td>
       <td>&lt;F513487D&gt;</td>
-      <td>109</td>
+      <td>Sentridge Harbor</td>
       <td></td>
       <td>4</td>
       <td></td>
@@ -191,7 +230,7 @@
       <td class="side">2008</td>
       <td></td>
       <td>&lt;2038AC56&gt;</td>
-      <td>110</td>
+      <td>Dock No. 3</td>
       <td></td>
       <td>4</td>
       <td></td>
@@ -210,7 +249,7 @@
       <td class="side">2009</td>
       <td></td>
       <td>&lt;BDC61409&gt;</td>
-      <td>111</td>
+      <td>Samon's Secret Storage</td>
       <td></td>
       <td>4</td>
       <td></td>
@@ -229,7 +268,7 @@
       <td class="side">2010</td>
       <td></td>
       <td>&lt;70239D59&gt;</td>
-      <td>160</td>
+      <td>The Swordface</td>
       <td></td>
       <td>2</td>
       <td></td>
@@ -248,7 +287,7 @@
       <td class="side">2011</td>
       <td></td>
       <td>&lt;3F2D056F&gt;</td>
-      <td>161</td>
+      <td>Fuller Elevator Landing</td>
       <td></td>
       <td>2</td>
       <td></td>
@@ -267,7 +306,7 @@
       <td class="side">2012</td>
       <td></td>
       <td>&lt;4E3F799E&gt;</td>
-      <td>162</td>
+      <td>Doublecrag Gate</td>
       <td></td>
       <td>2</td>
       <td></td>
@@ -286,7 +325,7 @@
       <td class="side">2013</td>
       <td></td>
       <td>&lt;C47CF8E4&gt;</td>
-      <td>163</td>
+      <td>Thurbin Harbor</td>
       <td></td>
       <td>2</td>
       <td></td>
@@ -305,7 +344,7 @@
       <td class="side">2014</td>
       <td></td>
       <td>&lt;D2A71C63&gt;</td>
-      <td>165</td>
+      <td>Seaspray Lookout</td>
       <td></td>
       <td>2</td>
       <td></td>
@@ -324,7 +363,7 @@
       <td class="side">2015</td>
       <td></td>
       <td>&lt;D6E94280&gt;</td>
-      <td>205</td>
+      <td>Radial Outlook</td>
       <td></td>
       <td>1</td>
       <td></td>
@@ -343,7 +382,7 @@
       <td class="side">2016</td>
       <td></td>
       <td>&lt;B6FB5859&gt;</td>
-      <td>206</td>
+      <td>Eternal Elegance</td>
       <td></td>
       <td>1</td>
       <td></td>

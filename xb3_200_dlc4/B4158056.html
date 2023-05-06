@@ -30,30 +30,69 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>B4158056</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>field_7A94A94B</th>
-      <th>EnemyID1</th>
-      <th>EnemyID2</th>
-      <th>EnemyID3</th>
-      <th>ReqNum</th>
-      <th>SortID</th>
-      <th>field_5CCE0715</th>
-      <th>RewardNum</th>
-      <th>field_32F9A6F1</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 2)">field_7A94A94B</th>
+      <th onclick="sortColumn(this, 4, 0)">EnemyID1</th>
+      <th onclick="sortColumn(this, 5, 0)">EnemyID2</th>
+      <th onclick="sortColumn(this, 6, 0)">EnemyID3</th>
+      <th onclick="sortColumn(this, 7, 0)">ReqNum</th>
+      <th onclick="sortColumn(this, 8, 0)">SortID</th>
+      <th onclick="sortColumn(this, 9, 0)">field_5CCE0715</th>
+      <th onclick="sortColumn(this, 10, 0)">RewardNum</th>
+      <th onclick="sortColumn(this, 11, 0)">field_32F9A6F1</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>
       <td></td>
       <td>&lt;DA0268B4&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4661">Knuckle Bunnit</a></td>
       <td></td>
       <td></td>
@@ -67,7 +106,7 @@
       <td class="side">2</td>
       <td></td>
       <td>&lt;56AE3935&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4662">Morg Krabble</a></td>
       <td></td>
       <td></td>
@@ -81,7 +120,7 @@
       <td class="side">3</td>
       <td></td>
       <td>&lt;172543A7&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4663">Land Volff</a></td>
       <td><a href="FLD_EnemyData.html#4687">Land Volff</a></td>
       <td></td>
@@ -95,7 +134,7 @@
       <td class="side">4</td>
       <td></td>
       <td>&lt;D94819A5&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4664">Prom Flier</a></td>
       <td></td>
       <td></td>
@@ -109,7 +148,7 @@
       <td class="side">5</td>
       <td></td>
       <td>&lt;F0A40D55&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4665">Illumi Wisp</a></td>
       <td></td>
       <td></td>
@@ -123,7 +162,7 @@
       <td class="side">6</td>
       <td></td>
       <td>&lt;48370E13&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4666">Ruga Quadwing</a></td>
       <td></td>
       <td></td>
@@ -137,7 +176,7 @@
       <td class="side">7</td>
       <td></td>
       <td>&lt;EC5FC032&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4667">Olkort Ellook</a></td>
       <td></td>
       <td></td>
@@ -151,7 +190,7 @@
       <td class="side">8</td>
       <td></td>
       <td>&lt;5320BDEF&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4668">Alderra Bunnit</a></td>
       <td></td>
       <td></td>
@@ -165,7 +204,7 @@
       <td class="side">9</td>
       <td></td>
       <td>&lt;D03AFA69&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4669">Nairoo Bunnit</a></td>
       <td></td>
       <td></td>
@@ -179,7 +218,7 @@
       <td class="side">10</td>
       <td></td>
       <td>&lt;7D2DB2C5&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4670">Stony Krammit</a></td>
       <td></td>
       <td></td>
@@ -193,7 +232,7 @@
       <td class="side">11</td>
       <td></td>
       <td>&lt;5275A9B7&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4671">Shadow Vang</a></td>
       <td></td>
       <td></td>
@@ -207,7 +246,7 @@
       <td class="side">12</td>
       <td></td>
       <td>&lt;08A30AAF&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4672">Rattle Aspar</a></td>
       <td></td>
       <td></td>
@@ -221,7 +260,7 @@
       <td class="side">13</td>
       <td></td>
       <td>&lt;70D0CDB8&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4673">Grawn Ropl</a></td>
       <td></td>
       <td></td>
@@ -235,7 +274,7 @@
       <td class="side">14</td>
       <td></td>
       <td>&lt;544ECE40&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4674">General Arachno</a></td>
       <td></td>
       <td></td>
@@ -249,7 +288,7 @@
       <td class="side">15</td>
       <td></td>
       <td>&lt;F08D1E64&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4675">Bobbile Brog</a></td>
       <td></td>
       <td></td>
@@ -263,7 +302,7 @@
       <td class="side">16</td>
       <td></td>
       <td>&lt;89E38ED7&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4676">Smart Rhogul</a></td>
       <td></td>
       <td></td>
@@ -277,7 +316,7 @@
       <td class="side">17</td>
       <td></td>
       <td>&lt;0093A8E5&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4677">Rhogul Egg</a></td>
       <td></td>
       <td></td>
@@ -291,7 +330,7 @@
       <td class="side">18</td>
       <td></td>
       <td>&lt;47A72C50&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4678">Baby Rhogul</a></td>
       <td></td>
       <td></td>
@@ -305,7 +344,7 @@
       <td class="side">19</td>
       <td></td>
       <td>&lt;998FF4B7&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4679">Keves Blaster</a></td>
       <td></td>
       <td></td>
@@ -319,7 +358,7 @@
       <td class="side">20</td>
       <td></td>
       <td>&lt;29BD8D18&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4680">Keves Sniper Elite</a></td>
       <td></td>
       <td></td>
@@ -333,7 +372,7 @@
       <td class="side">21</td>
       <td></td>
       <td>&lt;97635F8B&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4681">Keves Blocker Elite</a></td>
       <td></td>
       <td></td>
@@ -347,7 +386,7 @@
       <td class="side">22</td>
       <td></td>
       <td>&lt;18AF5163&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4682">Keves Rescuer</a></td>
       <td></td>
       <td></td>
@@ -361,7 +400,7 @@
       <td class="side">23</td>
       <td></td>
       <td>&lt;7EA42922&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4683">Equites</a></td>
       <td></td>
       <td></td>
@@ -375,7 +414,7 @@
       <td class="side">24</td>
       <td></td>
       <td>&lt;E08FE973&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4684">Sagittarius</a></td>
       <td></td>
       <td></td>
@@ -389,7 +428,7 @@
       <td class="side">25</td>
       <td></td>
       <td>&lt;08A3DD16&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4685">Centuris</a></td>
       <td></td>
       <td></td>
@@ -403,7 +442,7 @@
       <td class="side">26</td>
       <td></td>
       <td>&lt;9F238D25&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4686">Keves Emblem</a></td>
       <td></td>
       <td></td>
@@ -417,7 +456,7 @@
       <td class="side">27</td>
       <td></td>
       <td>&lt;73CD5BD1&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4615">Bombastic Rotbart Jr.</a></td>
       <td></td>
       <td></td>
@@ -431,7 +470,7 @@
       <td class="side">28</td>
       <td></td>
       <td>&lt;32827BAA&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4616">Advent Wolf Marduk</a></td>
       <td></td>
       <td></td>
@@ -445,7 +484,7 @@
       <td class="side">29</td>
       <td></td>
       <td>&lt;6A18A864&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4617">Fogstalker Naiara</a></td>
       <td></td>
       <td></td>
@@ -459,7 +498,7 @@
       <td class="side">30</td>
       <td></td>
       <td>&lt;D04D5416&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4618">Prohibitor Giuseppe</a></td>
       <td></td>
       <td></td>
@@ -473,7 +512,7 @@
       <td class="side">31</td>
       <td></td>
       <td>&lt;C83E2191&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4619">Stronghammer Dorga</a></td>
       <td></td>
       <td></td>
@@ -487,7 +526,7 @@
       <td class="side">32</td>
       <td></td>
       <td>&lt;CA02E045&gt;</td>
-      <td>&lt;8FBD579F&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
       <td><a href="FLD_EnemyData.html#4620">Peacebringer Divalo</a></td>
       <td></td>
       <td></td>
@@ -501,7 +540,7 @@
       <td class="side">33</td>
       <td></td>
       <td>&lt;338F1196&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4690">Baruka Flier</a></td>
       <td></td>
       <td></td>
@@ -515,7 +554,7 @@
       <td class="side">34</td>
       <td></td>
       <td>&lt;1D3CF886&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4691">Baythe Vang</a></td>
       <td></td>
       <td></td>
@@ -529,7 +568,7 @@
       <td class="side">35</td>
       <td></td>
       <td>&lt;517209FD&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4692">Rabdar Rhogul</a></td>
       <td></td>
       <td></td>
@@ -543,7 +582,7 @@
       <td class="side">36</td>
       <td></td>
       <td>&lt;6B1E3F5F&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4693">Begest Brog</a></td>
       <td></td>
       <td></td>
@@ -557,7 +596,7 @@
       <td class="side">37</td>
       <td></td>
       <td>&lt;4E64D272&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4694">Little Bunnit</a></td>
       <td></td>
       <td></td>
@@ -571,7 +610,7 @@
       <td class="side">38</td>
       <td></td>
       <td>&lt;D0239149&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4695">Jarack Volff</a></td>
       <td></td>
       <td></td>
@@ -585,7 +624,7 @@
       <td class="side">39</td>
       <td></td>
       <td>&lt;D99EF5E9&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4696">Naola Crustip</a></td>
       <td></td>
       <td></td>
@@ -599,7 +638,7 @@
       <td class="side">40</td>
       <td></td>
       <td>&lt;7628E4A9&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4697">Pidor Crustip</a></td>
       <td></td>
       <td></td>
@@ -613,7 +652,7 @@
       <td class="side">41</td>
       <td></td>
       <td>&lt;C504BD08&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4698">Calm Camill</a></td>
       <td></td>
       <td></td>
@@ -627,7 +666,7 @@
       <td class="side">42</td>
       <td></td>
       <td>&lt;34AE92EA&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4699">Rudoni Anlood</a></td>
       <td></td>
       <td></td>
@@ -641,7 +680,7 @@
       <td class="side">43</td>
       <td></td>
       <td>&lt;06894283&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4700">Onogoro Piranhax</a></td>
       <td></td>
       <td></td>
@@ -655,7 +694,7 @@
       <td class="side">44</td>
       <td></td>
       <td>&lt;F1A58BE6&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4701">Plain Armu</a></td>
       <td></td>
       <td></td>
@@ -669,7 +708,7 @@
       <td class="side">45</td>
       <td></td>
       <td>&lt;93018B1B&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4702">Massido Ardun</a></td>
       <td></td>
       <td></td>
@@ -683,7 +722,7 @@
       <td class="side">46</td>
       <td></td>
       <td>&lt;CEF36F31&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4703">Little Armu</a></td>
       <td></td>
       <td></td>
@@ -697,7 +736,7 @@
       <td class="side">47</td>
       <td></td>
       <td>&lt;3BF9EAE6&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4704">Kroda Skeeter</a></td>
       <td><a href="FLD_EnemyData.html#4706">Kroda Skeeter</a></td>
       <td><a href="FLD_EnemyData.html#4774">Kroda Skeeter</a></td>
@@ -711,7 +750,7 @@
       <td class="side">48</td>
       <td></td>
       <td>&lt;2EAD1E69&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4705">Skeeter Nest</a></td>
       <td><a href="FLD_EnemyData.html#4773">Skeeter Nest</a></td>
       <td></td>
@@ -725,7 +764,7 @@
       <td class="side">49</td>
       <td></td>
       <td>&lt;22541729&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4707">Shielder Tirkin</a></td>
       <td></td>
       <td></td>
@@ -739,7 +778,7 @@
       <td class="side">50</td>
       <td></td>
       <td>&lt;5D4AFE36&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4710">Spear Tirkin</a></td>
       <td><a href="FLD_EnemyData.html#4712">Spear Tirkin</a></td>
       <td></td>
@@ -753,7 +792,7 @@
       <td class="side">51</td>
       <td></td>
       <td>&lt;013F1804&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4708">Arrow Tirkin</a></td>
       <td></td>
       <td></td>
@@ -767,7 +806,7 @@
       <td class="side">52</td>
       <td></td>
       <td>&lt;331BEEBB&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4709">Bard Tirkin</a></td>
       <td></td>
       <td></td>
@@ -781,7 +820,7 @@
       <td class="side">53</td>
       <td></td>
       <td>&lt;4E414589&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4711">Tirkin Totem</a></td>
       <td></td>
       <td></td>
@@ -795,7 +834,7 @@
       <td class="side">54</td>
       <td></td>
       <td>&lt;DAE8829B&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4713">Mona Ellook</a></td>
       <td></td>
       <td></td>
@@ -809,7 +848,7 @@
       <td class="side">55</td>
       <td></td>
       <td>&lt;D134DA98&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4714">Galde Volff</a></td>
       <td></td>
       <td></td>
@@ -823,7 +862,7 @@
       <td class="side">56</td>
       <td></td>
       <td>&lt;5BFFD14B&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4715">Deinos Rhinon</a></td>
       <td></td>
       <td></td>
@@ -837,7 +876,7 @@
       <td class="side">57</td>
       <td></td>
       <td>&lt;CAA3FFCC&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4716">Kallas Skwaror</a></td>
       <td></td>
       <td></td>
@@ -851,7 +890,7 @@
       <td class="side">58</td>
       <td></td>
       <td>&lt;87E2B3E0&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4717">Menaas Aspar</a></td>
       <td></td>
       <td></td>
@@ -865,7 +904,7 @@
       <td class="side">59</td>
       <td></td>
       <td>&lt;E4D2832F&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4718">Aspar Egg</a></td>
       <td></td>
       <td></td>
@@ -879,7 +918,7 @@
       <td class="side">60</td>
       <td></td>
       <td>&lt;C140C936&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4719">Baby Aspar</a></td>
       <td></td>
       <td></td>
@@ -893,7 +932,7 @@
       <td class="side">61</td>
       <td></td>
       <td>&lt;B80FDDAB&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4720">Sword Igna</a></td>
       <td><a href="FLD_EnemyData.html#4726">Sword Igna</a></td>
       <td></td>
@@ -907,7 +946,7 @@
       <td class="side">62</td>
       <td></td>
       <td>&lt;F5C44C9D&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4721">Arrow Igna</a></td>
       <td></td>
       <td></td>
@@ -921,7 +960,7 @@
       <td class="side">63</td>
       <td></td>
       <td>&lt;FC4418ED&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4722">Bard Igna</a></td>
       <td></td>
       <td></td>
@@ -935,7 +974,7 @@
       <td class="side">64</td>
       <td></td>
       <td>&lt;A57D9BF8&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4723">Crazed Igna</a></td>
       <td></td>
       <td></td>
@@ -949,7 +988,7 @@
       <td class="side">65</td>
       <td></td>
       <td>&lt;E5D61E75&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4724">Randster Igna</a></td>
       <td></td>
       <td></td>
@@ -963,7 +1002,7 @@
       <td class="side">66</td>
       <td></td>
       <td>&lt;063D861E&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4725">Igna Symbol</a></td>
       <td></td>
       <td></td>
@@ -977,7 +1016,7 @@
       <td class="side">67</td>
       <td></td>
       <td>&lt;1F018A3B&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4734">Shadow Egel</a></td>
       <td></td>
       <td></td>
@@ -991,7 +1030,7 @@
       <td class="side">68</td>
       <td></td>
       <td>&lt;7C2763C8&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4735">Shadow Garaffa</a></td>
       <td></td>
       <td></td>
@@ -1005,7 +1044,7 @@
       <td class="side">69</td>
       <td></td>
       <td>&lt;A3A15C77&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4736">Segaro Garaffa</a></td>
       <td></td>
       <td></td>
@@ -1019,7 +1058,7 @@
       <td class="side">70</td>
       <td></td>
       <td>&lt;691F7137&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4737">Drigus Egel</a></td>
       <td></td>
       <td></td>
@@ -1033,7 +1072,7 @@
       <td class="side">71</td>
       <td></td>
       <td>&lt;A0796407&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4738">Soldier Arachno</a></td>
       <td></td>
       <td></td>
@@ -1047,7 +1086,7 @@
       <td class="side">72</td>
       <td></td>
       <td>&lt;F34D7E5F&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4739">Liar Vang</a></td>
       <td></td>
       <td></td>
@@ -1061,7 +1100,7 @@
       <td class="side">73</td>
       <td></td>
       <td>&lt;04DE3575&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4740">Dragguia Ropl</a></td>
       <td></td>
       <td></td>
@@ -1075,7 +1114,7 @@
       <td class="side">74</td>
       <td></td>
       <td>&lt;1CCB8C2E&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4741">Shielder Igna</a></td>
       <td></td>
       <td></td>
@@ -1089,7 +1128,7 @@
       <td class="side">75</td>
       <td></td>
       <td>&lt;C83697E1&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4742">Blade Igna</a></td>
       <td><a href="FLD_EnemyData.html#4747">Blade Igna</a></td>
       <td></td>
@@ -1103,7 +1142,7 @@
       <td class="side">76</td>
       <td></td>
       <td>&lt;A44D5307&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4743">Heartkiller Igna</a></td>
       <td></td>
       <td></td>
@@ -1117,7 +1156,7 @@
       <td class="side">77</td>
       <td></td>
       <td>&lt;988F4D1E&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4744">Longhorn Igna</a></td>
       <td></td>
       <td></td>
@@ -1131,7 +1170,7 @@
       <td class="side">78</td>
       <td></td>
       <td>&lt;3A5F2E71&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4745">Pellurid Igna</a></td>
       <td></td>
       <td></td>
@@ -1145,7 +1184,7 @@
       <td class="side">79</td>
       <td></td>
       <td>&lt;C3EF6F51&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4746">Igloon Symbol</a></td>
       <td><a href="FLD_EnemyData.html#5015">Igloon Symbol</a></td>
       <td></td>
@@ -1159,7 +1198,7 @@
       <td class="side">80</td>
       <td></td>
       <td>&lt;83BAAB48&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4748">Pashfe Gyaark</a></td>
       <td></td>
       <td></td>
@@ -1173,7 +1212,7 @@
       <td class="side">81</td>
       <td></td>
       <td>&lt;6C809499&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4749">Agnus Defender</a></td>
       <td></td>
       <td></td>
@@ -1187,7 +1226,7 @@
       <td class="side">82</td>
       <td></td>
       <td>&lt;DF72AD6E&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4750">Agnus Attacker</a></td>
       <td></td>
       <td></td>
@@ -1201,7 +1240,7 @@
       <td class="side">83</td>
       <td></td>
       <td>&lt;23B62ABB&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4751">Testudo Scout</a></td>
       <td></td>
       <td></td>
@@ -1215,7 +1254,7 @@
       <td class="side">84</td>
       <td></td>
       <td>&lt;0497F716&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4752">Demnd Anlood</a></td>
       <td></td>
       <td></td>
@@ -1229,7 +1268,7 @@
       <td class="side">85</td>
       <td></td>
       <td>&lt;36C29246&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4753">Polima Amoney</a></td>
       <td></td>
       <td></td>
@@ -1243,7 +1282,7 @@
       <td class="side">86</td>
       <td></td>
       <td>&lt;11F166FA&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4754">Spike Urchon</a></td>
       <td></td>
       <td></td>
@@ -1257,7 +1296,7 @@
       <td class="side">87</td>
       <td></td>
       <td>&lt;9DFAB9DF&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4755">Agnus Duoblade</a></td>
       <td></td>
       <td></td>
@@ -1271,7 +1310,7 @@
       <td class="side">88</td>
       <td></td>
       <td>&lt;29297FE3&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4756">Agnus Blaster</a></td>
       <td></td>
       <td></td>
@@ -1285,7 +1324,7 @@
       <td class="side">89</td>
       <td></td>
       <td>&lt;4C3C356F&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4757">Agnus High Scout</a></td>
       <td></td>
       <td></td>
@@ -1299,7 +1338,7 @@
       <td class="side">90</td>
       <td></td>
       <td>&lt;C2A0E958&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4758">Agnus Vanguard</a></td>
       <td></td>
       <td></td>
@@ -1313,7 +1352,7 @@
       <td class="side">91</td>
       <td></td>
       <td>&lt;6377F1D5&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4759">Agnus Medic Elite</a></td>
       <td></td>
       <td></td>
@@ -1327,7 +1366,7 @@
       <td class="side">92</td>
       <td></td>
       <td>&lt;2912C441&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4760">Avis</a></td>
       <td></td>
       <td></td>
@@ -1341,7 +1380,7 @@
       <td class="side">93</td>
       <td></td>
       <td>&lt;0E9951E9&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4761">Testudo</a></td>
       <td></td>
       <td></td>
@@ -1355,7 +1394,7 @@
       <td class="side">94</td>
       <td></td>
       <td>&lt;6942C8EF&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4762">Agnus Emblem</a></td>
       <td></td>
       <td></td>
@@ -1369,7 +1408,7 @@
       <td class="side">95</td>
       <td></td>
       <td>&lt;0E195972&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4763">Rabejan Darbus</a></td>
       <td></td>
       <td></td>
@@ -1383,7 +1422,7 @@
       <td class="side">96</td>
       <td></td>
       <td>&lt;15B2133B&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4764">Dark Skwaror</a></td>
       <td></td>
       <td></td>
@@ -1397,7 +1436,7 @@
       <td class="side">97</td>
       <td></td>
       <td>&lt;3675327A&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4765">Dark Feris</a></td>
       <td></td>
       <td></td>
@@ -1411,7 +1450,7 @@
       <td class="side">98</td>
       <td></td>
       <td>&lt;D75E02B5&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4766">Dark Garaffa</a></td>
       <td></td>
       <td></td>
@@ -1425,7 +1464,7 @@
       <td class="side">99</td>
       <td></td>
       <td>&lt;C2154A33&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4767">Dark Vollgull</a></td>
       <td></td>
       <td></td>
@@ -1439,7 +1478,7 @@
       <td class="side">100</td>
       <td></td>
       <td>&lt;18B29B5D&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4768">Dark Laia</a></td>
       <td></td>
       <td></td>
@@ -1453,7 +1492,7 @@
       <td class="side">101</td>
       <td></td>
       <td>&lt;DBA7FA5C&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4621">Hilltop Chegwin</a></td>
       <td></td>
       <td></td>
@@ -1467,7 +1506,7 @@
       <td class="side">102</td>
       <td></td>
       <td>&lt;F5703C45&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4622">Smothering Andante</a></td>
       <td></td>
       <td></td>
@@ -1481,7 +1520,7 @@
       <td class="side">103</td>
       <td></td>
       <td>&lt;9F5FC1AD&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4623">Treehugger Gerald</a></td>
       <td></td>
       <td></td>
@@ -1495,7 +1534,7 @@
       <td class="side">104</td>
       <td></td>
       <td>&lt;8FCBD530&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4624">Radicalized Godwin</a></td>
       <td></td>
       <td></td>
@@ -1509,7 +1548,7 @@
       <td class="side">105</td>
       <td></td>
       <td>&lt;E9C6F016&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4625">Cavalier MacBright</a></td>
       <td></td>
       <td></td>
@@ -1523,7 +1562,7 @@
       <td class="side">106</td>
       <td></td>
       <td>&lt;5C65F558&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4626">Fograptor D'nari</a></td>
       <td></td>
       <td></td>
@@ -1537,7 +1576,7 @@
       <td class="side">107</td>
       <td></td>
       <td>&lt;89904AEC&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4627">Fogtrawler Tallstuff</a></td>
       <td></td>
       <td></td>
@@ -1551,7 +1590,7 @@
       <td class="side">108</td>
       <td></td>
       <td>&lt;2DDA65F3&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4628">Gotthard, the Ethereal</a></td>
       <td></td>
       <td></td>
@@ -1565,7 +1604,7 @@
       <td class="side">109</td>
       <td></td>
       <td>&lt;26EADCBF&gt;</td>
-      <td>&lt;29BDE773&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
       <td><a href="FLD_EnemyData.html#4633">Watchful Valencia</a></td>
       <td></td>
       <td></td>
@@ -1579,7 +1618,7 @@
       <td class="side">110</td>
       <td></td>
       <td>&lt;58EB611C&gt;</td>
-      <td>&lt;5645DA4E&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
       <td><a href="FLD_EnemyData.html#4826">Inuma Piranhax</a></td>
       <td></td>
       <td></td>
@@ -1593,7 +1632,7 @@
       <td class="side">111</td>
       <td></td>
       <td>&lt;E3931919&gt;</td>
-      <td>&lt;5645DA4E&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
       <td><a href="FLD_EnemyData.html#4827">Tiiko Shoox</a></td>
       <td></td>
       <td></td>
@@ -1607,7 +1646,7 @@
       <td class="side">112</td>
       <td></td>
       <td>&lt;DF7822DC&gt;</td>
-      <td>&lt;5645DA4E&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
       <td><a href="FLD_EnemyData.html#4828">Grilan Moglum</a></td>
       <td></td>
       <td></td>
@@ -1621,7 +1660,7 @@
       <td class="side">113</td>
       <td></td>
       <td>&lt;E0BB4047&gt;</td>
-      <td>&lt;5645DA4E&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
       <td><a href="FLD_EnemyData.html#4829">Kugel Taos</a></td>
       <td></td>
       <td></td>
@@ -1635,7 +1674,7 @@
       <td class="side">114</td>
       <td></td>
       <td>&lt;FE3998E6&gt;</td>
-      <td>&lt;5645DA4E&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
       <td><a href="FLD_EnemyData.html#4830">Caterpile Pod</a></td>
       <td></td>
       <td></td>
@@ -1649,7 +1688,7 @@
       <td class="side">115</td>
       <td></td>
       <td>&lt;AF892068&gt;</td>
-      <td>&lt;5645DA4E&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
       <td><a href="FLD_EnemyData.html#4831">Larval Caterpile</a></td>
       <td></td>
       <td></td>
@@ -1663,7 +1702,7 @@
       <td class="side">116</td>
       <td></td>
       <td>&lt;3DDBB015&gt;</td>
-      <td>&lt;5645DA4E&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
       <td><a href="FLD_EnemyData.html#4832">Supreme Blant</a></td>
       <td></td>
       <td></td>
@@ -1677,7 +1716,7 @@
       <td class="side">117</td>
       <td></td>
       <td>&lt;3C986C86&gt;</td>
-      <td>&lt;5645DA4E&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
       <td><a href="FLD_EnemyData.html#4833">Moist Upa</a></td>
       <td></td>
       <td></td>
@@ -1691,7 +1730,7 @@
       <td class="side">118</td>
       <td></td>
       <td>&lt;94E15B71&gt;</td>
-      <td>&lt;5645DA4E&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
       <td><a href="FLD_EnemyData.html#4834">Baccura Caterpile</a></td>
       <td></td>
       <td></td>
@@ -1705,7 +1744,7 @@
       <td class="side">119</td>
       <td></td>
       <td>&lt;0ECC4DBA&gt;</td>
-      <td>&lt;5645DA4E&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
       <td><a href="FLD_EnemyData.html#4835">Wood Bunnit</a></td>
       <td></td>
       <td></td>
@@ -1719,7 +1758,7 @@
       <td class="side">120</td>
       <td></td>
       <td>&lt;F2EB75F0&gt;</td>
-      <td>&lt;5645DA4E&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
       <td><a href="FLD_EnemyData.html#4836">Baythe Vang</a></td>
       <td></td>
       <td></td>
@@ -1733,7 +1772,7 @@
       <td class="side">121</td>
       <td></td>
       <td>&lt;4C6F71DB&gt;</td>
-      <td>&lt;5645DA4E&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
       <td><a href="FLD_EnemyData.html#4837">Cave Flier</a></td>
       <td></td>
       <td></td>
@@ -1747,7 +1786,7 @@
       <td class="side">122</td>
       <td></td>
       <td>&lt;2433A13F&gt;</td>
-      <td>&lt;5645DA4E&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
       <td><a href="FLD_EnemyData.html#4838">Light Flier</a></td>
       <td></td>
       <td></td>
@@ -1761,7 +1800,7 @@
       <td class="side">123</td>
       <td></td>
       <td>&lt;30B3D701&gt;</td>
-      <td>&lt;5645DA4E&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
       <td><a href="FLD_EnemyData.html#4839">Spocked Aligo</a></td>
       <td></td>
       <td></td>
@@ -1775,7 +1814,7 @@
       <td class="side">124</td>
       <td></td>
       <td>&lt;1EB88DDE&gt;</td>
-      <td>&lt;5645DA4E&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
       <td><a href="FLD_EnemyData.html#4840">Masrah Piranhax</a></td>
       <td></td>
       <td></td>
@@ -1789,7 +1828,7 @@
       <td class="side">125</td>
       <td></td>
       <td>&lt;A8A6592E&gt;</td>
-      <td>&lt;5645DA4E&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
       <td><a href="FLD_EnemyData.html#4841">Broon Moglum</a></td>
       <td></td>
       <td></td>
@@ -1803,7 +1842,7 @@
       <td class="side">126</td>
       <td></td>
       <td>&lt;163CB26E&gt;</td>
-      <td>&lt;5645DA4E&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
       <td><a href="FLD_EnemyData.html#4842">Hemish Krodlax</a></td>
       <td></td>
       <td></td>
@@ -1817,7 +1856,7 @@
       <td class="side">127</td>
       <td></td>
       <td>&lt;4F9D6589&gt;</td>
-      <td>&lt;5645DA4E&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
       <td><a href="FLD_EnemyData.html#4634">Troglodyte Umir</a></td>
       <td></td>
       <td></td>
@@ -1831,7 +1870,7 @@
       <td class="side">128</td>
       <td></td>
       <td>&lt;5153100B&gt;</td>
-      <td>&lt;5645DA4E&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
       <td><a href="FLD_EnemyData.html#4635">Smackdown Brannigan</a></td>
       <td></td>
       <td></td>
@@ -1845,7 +1884,7 @@
       <td class="side">129</td>
       <td></td>
       <td>&lt;C692091B&gt;</td>
-      <td>&lt;5645DA4E&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
       <td><a href="FLD_EnemyData.html#4636">Tenebrous Muramasa</a></td>
       <td></td>
       <td></td>
@@ -1859,7 +1898,7 @@
       <td class="side">130</td>
       <td></td>
       <td>&lt;2169E4E6&gt;</td>
-      <td>&lt;5645DA4E&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
       <td><a href="FLD_EnemyData.html#4637">Cryoconite Laurel</a></td>
       <td></td>
       <td></td>
@@ -1873,7 +1912,7 @@
       <td class="side">131</td>
       <td></td>
       <td>&lt;5009560E&gt;</td>
-      <td>&lt;5645DA4E&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
       <td><a href="FLD_EnemyData.html#4638">Bioluminescent Bob</a></td>
       <td></td>
       <td></td>
@@ -1887,7 +1926,7 @@
       <td class="side">132</td>
       <td></td>
       <td>&lt;15963673&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4844">Snow Pippito</a></td>
       <td></td>
       <td></td>
@@ -1901,7 +1940,7 @@
       <td class="side">133</td>
       <td></td>
       <td>&lt;0129DE1B&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4845">Papillico Kapiba</a></td>
       <td></td>
       <td></td>
@@ -1915,7 +1954,7 @@
       <td class="side">134</td>
       <td></td>
       <td>&lt;A664A2C8&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4846">Cuyask Garaffa</a></td>
       <td></td>
       <td></td>
@@ -1929,7 +1968,7 @@
       <td class="side">135</td>
       <td></td>
       <td>&lt;34CBF6B5&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4847">Rasheen Garaffa</a></td>
       <td></td>
       <td></td>
@@ -1943,7 +1982,7 @@
       <td class="side">136</td>
       <td></td>
       <td>&lt;10652908&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4848">Sloth Gogol</a></td>
       <td></td>
       <td></td>
@@ -1957,7 +1996,7 @@
       <td class="side">137</td>
       <td></td>
       <td>&lt;9C70D0B6&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4849">Avee Skwaror</a></td>
       <td></td>
       <td></td>
@@ -1971,7 +2010,7 @@
       <td class="side">138</td>
       <td></td>
       <td>&lt;9163EBDD&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4850">Marsh Flamii</a></td>
       <td></td>
       <td></td>
@@ -1985,7 +2024,7 @@
       <td class="side">139</td>
       <td></td>
       <td>&lt;15E44C17&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4851">Resplendent Flamii</a></td>
       <td></td>
       <td></td>
@@ -1999,7 +2038,7 @@
       <td class="side">140</td>
       <td></td>
       <td>&lt;7DEA0EF0&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4852">Candela Taos</a></td>
       <td></td>
       <td></td>
@@ -2013,7 +2052,7 @@
       <td class="side">141</td>
       <td></td>
       <td>&lt;7C06D253&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4853">Cave Skeeter</a></td>
       <td><a href="FLD_EnemyData.html#4855">Cave Skeeter</a></td>
       <td></td>
@@ -2027,7 +2066,7 @@
       <td class="side">142</td>
       <td></td>
       <td>&lt;0BFA403F&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4854">Skeeter Nest</a></td>
       <td></td>
       <td></td>
@@ -2041,7 +2080,7 @@
       <td class="side">143</td>
       <td></td>
       <td>&lt;DBA13841&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4856">Cherys Medooz</a></td>
       <td></td>
       <td></td>
@@ -2055,7 +2094,7 @@
       <td class="side">144</td>
       <td></td>
       <td>&lt;8CA68EC0&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4857">Shield Igna</a></td>
       <td></td>
       <td></td>
@@ -2069,7 +2108,7 @@
       <td class="side">145</td>
       <td></td>
       <td>&lt;168E0544&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4858">Bloodthirsty Igna</a></td>
       <td></td>
       <td></td>
@@ -2083,7 +2122,7 @@
       <td class="side">146</td>
       <td></td>
       <td>&lt;EA3BD011&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4859">Sniper Igna</a></td>
       <td></td>
       <td></td>
@@ -2097,7 +2136,7 @@
       <td class="side">147</td>
       <td></td>
       <td>&lt;48633769&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4862">Agnus Skirmisher</a></td>
       <td></td>
       <td></td>
@@ -2111,7 +2150,7 @@
       <td class="side">148</td>
       <td></td>
       <td>&lt;8EF2E511&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4863">Agnus High Scout</a></td>
       <td></td>
       <td></td>
@@ -2125,7 +2164,7 @@
       <td class="side">149</td>
       <td></td>
       <td>&lt;D241A067&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4864">Agnus Vanguard</a></td>
       <td></td>
       <td></td>
@@ -2139,7 +2178,7 @@
       <td class="side">150</td>
       <td></td>
       <td>&lt;1A66822E&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4865">Agnus Medic Elite</a></td>
       <td></td>
       <td></td>
@@ -2153,7 +2192,7 @@
       <td class="side">151</td>
       <td></td>
       <td>&lt;FB1FCEEB&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4866">Testudo</a></td>
       <td></td>
       <td></td>
@@ -2167,7 +2206,7 @@
       <td class="side">152</td>
       <td></td>
       <td>&lt;E19B3FA2&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4867">High Agnus Emblem</a></td>
       <td></td>
       <td></td>
@@ -2181,7 +2220,7 @@
       <td class="side">153</td>
       <td></td>
       <td>&lt;7ADC2B90&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4870">Aknis Aligo</a></td>
       <td></td>
       <td></td>
@@ -2195,7 +2234,7 @@
       <td class="side">154</td>
       <td></td>
       <td>&lt;1CF3787C&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4871">Codon Quarmu</a></td>
       <td></td>
       <td></td>
@@ -2209,7 +2248,7 @@
       <td class="side">155</td>
       <td></td>
       <td>&lt;A470A312&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4872">Codon Quardun</a></td>
       <td></td>
       <td></td>
@@ -2223,7 +2262,7 @@
       <td class="side">156</td>
       <td></td>
       <td>&lt;8D480397&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4873">Army Arachno</a></td>
       <td><a href="FLD_EnemyData.html#4876">Army Arachno</a></td>
       <td></td>
@@ -2237,7 +2276,7 @@
       <td class="side">157</td>
       <td></td>
       <td>&lt;08A1C933&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4874">Queen Arachno</a></td>
       <td></td>
       <td></td>
@@ -2251,7 +2290,7 @@
       <td class="side">158</td>
       <td></td>
       <td>&lt;6C07C68C&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4875">Arachno Pod</a></td>
       <td></td>
       <td></td>
@@ -2265,7 +2304,7 @@
       <td class="side">159</td>
       <td></td>
       <td>&lt;5DC81F96&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4877">Lodmoro Plambus</a></td>
       <td></td>
       <td></td>
@@ -2279,7 +2318,7 @@
       <td class="side">160</td>
       <td></td>
       <td>&lt;EFD4B79E&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4878">Crawler Caterpile</a></td>
       <td></td>
       <td></td>
@@ -2293,7 +2332,7 @@
       <td class="side">161</td>
       <td></td>
       <td>&lt;BF3CBD22&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4879">Lun Scorpox</a></td>
       <td></td>
       <td></td>
@@ -2307,7 +2346,7 @@
       <td class="side">162</td>
       <td></td>
       <td>&lt;E215AC2A&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4880">Buoyant Grebel</a></td>
       <td></td>
       <td></td>
@@ -2321,7 +2360,7 @@
       <td class="side">163</td>
       <td></td>
       <td>&lt;4167EE80&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4881">Taos Egg</a></td>
       <td></td>
       <td></td>
@@ -2335,7 +2374,7 @@
       <td class="side">164</td>
       <td></td>
       <td>&lt;7C2A8FF1&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4882">Boahad Aspar</a></td>
       <td></td>
       <td></td>
@@ -2349,7 +2388,7 @@
       <td class="side">165</td>
       <td></td>
       <td>&lt;7A3BD05E&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4883">Crane Serprond</a></td>
       <td></td>
       <td></td>
@@ -2363,7 +2402,7 @@
       <td class="side">166</td>
       <td></td>
       <td>&lt;930D82F2&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4884">Vollgull Egg</a></td>
       <td></td>
       <td></td>
@@ -2377,7 +2416,7 @@
       <td class="side">167</td>
       <td></td>
       <td>&lt;EC9E5767&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4885">Young Vollgull</a></td>
       <td></td>
       <td></td>
@@ -2391,7 +2430,7 @@
       <td class="side">168</td>
       <td></td>
       <td>&lt;22975BEC&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4890">Dark Skwaror</a></td>
       <td></td>
       <td></td>
@@ -2405,7 +2444,7 @@
       <td class="side">169</td>
       <td></td>
       <td>&lt;12C4C73A&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4891">Dark Garaffa</a></td>
       <td></td>
       <td></td>
@@ -2419,7 +2458,7 @@
       <td class="side">170</td>
       <td></td>
       <td>&lt;B174223B&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4892">Keves Trooper</a></td>
       <td></td>
       <td></td>
@@ -2433,7 +2472,7 @@
       <td class="side">171</td>
       <td></td>
       <td>&lt;C3DD380A&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4893">Keves Warrior</a></td>
       <td></td>
       <td></td>
@@ -2447,7 +2486,7 @@
       <td class="side">172</td>
       <td></td>
       <td>&lt;110E5D1D&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4894">Keves Sniper Elite</a></td>
       <td></td>
       <td></td>
@@ -2461,7 +2500,7 @@
       <td class="side">173</td>
       <td></td>
       <td>&lt;967F4104&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4895">Keves Blocker Elite</a></td>
       <td></td>
       <td></td>
@@ -2475,7 +2514,7 @@
       <td class="side">174</td>
       <td></td>
       <td>&lt;FA6A6283&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4896">Auxilia</a></td>
       <td></td>
       <td></td>
@@ -2489,7 +2528,7 @@
       <td class="side">175</td>
       <td></td>
       <td>&lt;981B3010&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4897">High Keves Emblem</a></td>
       <td></td>
       <td></td>
@@ -2503,7 +2542,7 @@
       <td class="side">176</td>
       <td></td>
       <td>&lt;FF8CEC49&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4639">Perambulator Moritz</a></td>
       <td></td>
       <td></td>
@@ -2517,7 +2556,7 @@
       <td class="side">177</td>
       <td></td>
       <td>&lt;CA00E36C&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4640">Many-Lived Derrick</a></td>
       <td></td>
       <td></td>
@@ -2531,7 +2570,7 @@
       <td class="side">178</td>
       <td></td>
       <td>&lt;4A636BDD&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4641">Sworn Protector Hector</a></td>
       <td></td>
       <td></td>
@@ -2545,7 +2584,7 @@
       <td class="side">179</td>
       <td></td>
       <td>&lt;C3FB3618&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4642">Naberius Invictus</a></td>
       <td></td>
       <td></td>
@@ -2559,7 +2598,7 @@
       <td class="side">180</td>
       <td></td>
       <td>&lt;A062EDFB&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4643">Surrogate Fitzpatrick</a></td>
       <td></td>
       <td></td>
@@ -2573,7 +2612,7 @@
       <td class="side">181</td>
       <td></td>
       <td>&lt;3FDE7C7E&gt;</td>
-      <td>&lt;935E2765&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
       <td><a href="FLD_EnemyData.html#4644">Thunderfish Duna-Roa</a></td>
       <td></td>
       <td></td>
@@ -2587,7 +2626,7 @@
       <td class="side">182</td>
       <td></td>
       <td>&lt;7AFCF0D6&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4899">Mant Aries</a></td>
       <td></td>
       <td></td>
@@ -2601,7 +2640,7 @@
       <td class="side">183</td>
       <td></td>
       <td>&lt;1E6CE4E0&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4900">Mant Ories</a></td>
       <td></td>
       <td></td>
@@ -2615,7 +2654,7 @@
       <td class="side">184</td>
       <td></td>
       <td>&lt;5AD8257D&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4901">Scape Anlood</a></td>
       <td></td>
       <td></td>
@@ -2629,7 +2668,7 @@
       <td class="side">185</td>
       <td></td>
       <td>&lt;8AC62744&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4902">Radna Arachno</a></td>
       <td></td>
       <td></td>
@@ -2643,7 +2682,7 @@
       <td class="side">186</td>
       <td></td>
       <td>&lt;D1B20468&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4903">Gradya Arachno</a></td>
       <td><a href="FLD_EnemyData.html#4905">Gradya Arachno</a></td>
       <td></td>
@@ -2657,7 +2696,7 @@
       <td class="side">187</td>
       <td></td>
       <td>&lt;A966D68C&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4904">Nagul Pod</a></td>
       <td></td>
       <td></td>
@@ -2671,7 +2710,7 @@
       <td class="side">188</td>
       <td></td>
       <td>&lt;7D841FC3&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4906">Growsa Aspar</a></td>
       <td></td>
       <td></td>
@@ -2685,7 +2724,7 @@
       <td class="side">189</td>
       <td></td>
       <td>&lt;50A6C455&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4907">Guard Tirkin</a></td>
       <td></td>
       <td></td>
@@ -2699,7 +2738,7 @@
       <td class="side">190</td>
       <td></td>
       <td>&lt;BFBD4989&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4908">Ranged Tirkin</a></td>
       <td></td>
       <td></td>
@@ -2713,7 +2752,7 @@
       <td class="side">191</td>
       <td></td>
       <td>&lt;90870403&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4909">Minstrel Tirkin</a></td>
       <td></td>
       <td></td>
@@ -2727,7 +2766,7 @@
       <td class="side">192</td>
       <td></td>
       <td>&lt;96A0CBEA&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4910">Highpike Tirkin</a></td>
       <td></td>
       <td></td>
@@ -2741,7 +2780,7 @@
       <td class="side">193</td>
       <td></td>
       <td>&lt;A0ADD877&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4911">Tatalkin Totem</a></td>
       <td></td>
       <td></td>
@@ -2755,7 +2794,7 @@
       <td class="side">194</td>
       <td></td>
       <td>&lt;EDEFC94D&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4912">Dragoon Tirkin</a></td>
       <td></td>
       <td></td>
@@ -2769,7 +2808,7 @@
       <td class="side">195</td>
       <td></td>
       <td>&lt;B9B7C301&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4913">Zenze Taos</a></td>
       <td></td>
       <td></td>
@@ -2783,7 +2822,7 @@
       <td class="side">196</td>
       <td></td>
       <td>&lt;5ABFF3C5&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4914">Grippen Vollgull</a></td>
       <td></td>
       <td></td>
@@ -2797,7 +2836,7 @@
       <td class="side">197</td>
       <td></td>
       <td>&lt;818DE52E&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4915">White Pippito</a></td>
       <td></td>
       <td></td>
@@ -2811,7 +2850,7 @@
       <td class="side">198</td>
       <td></td>
       <td>&lt;FE1F7007&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4916">Musketeer Igna</a></td>
       <td></td>
       <td></td>
@@ -2825,7 +2864,7 @@
       <td class="side">199</td>
       <td></td>
       <td>&lt;009D2297&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4917">Duel Igna</a></td>
       <td><a href="FLD_EnemyData.html#4922">Duel Igna</a></td>
       <td></td>
@@ -2839,7 +2878,7 @@
       <td class="side">200</td>
       <td></td>
       <td>&lt;24F1CF0C&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4918">Ranger Igna</a></td>
       <td></td>
       <td></td>
@@ -2853,7 +2892,7 @@
       <td class="side">201</td>
       <td></td>
       <td>&lt;5C89D81C&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4919">Discordant Igna</a></td>
       <td></td>
       <td></td>
@@ -2867,7 +2906,7 @@
       <td class="side">202</td>
       <td></td>
       <td>&lt;941622EF&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4920">Warmount Igna</a></td>
       <td></td>
       <td></td>
@@ -2881,7 +2920,7 @@
       <td class="side">203</td>
       <td></td>
       <td>&lt;E606F16E&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4921">Iguaz Symbol</a></td>
       <td></td>
       <td></td>
@@ -2895,7 +2934,7 @@
       <td class="side">204</td>
       <td></td>
       <td>&lt;7251DAA1&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4923">Igruna Standard</a></td>
       <td></td>
       <td></td>
@@ -2909,7 +2948,7 @@
       <td class="side">205</td>
       <td></td>
       <td>&lt;2391AAFD&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4924">Heartbreak Igna</a></td>
       <td></td>
       <td></td>
@@ -2923,7 +2962,7 @@
       <td class="side">206</td>
       <td></td>
       <td>&lt;FA712583&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4925">Dark Skwaror</a></td>
       <td></td>
       <td></td>
@@ -2937,7 +2976,7 @@
       <td class="side">207</td>
       <td></td>
       <td>&lt;131595EB&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4926">Dark Feris</a></td>
       <td></td>
       <td></td>
@@ -2951,7 +2990,7 @@
       <td class="side">208</td>
       <td></td>
       <td>&lt;45F7E158&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4927">Dark Vollgull</a></td>
       <td></td>
       <td></td>
@@ -2965,7 +3004,7 @@
       <td class="side">209</td>
       <td></td>
       <td>&lt;51FD1EE4&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4928">Dark Garaffa</a></td>
       <td></td>
       <td></td>
@@ -2979,7 +3018,7 @@
       <td class="side">210</td>
       <td></td>
       <td>&lt;49405253&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4936">Gimran Egel</a></td>
       <td></td>
       <td></td>
@@ -2993,7 +3032,7 @@
       <td class="side">211</td>
       <td></td>
       <td>&lt;7CEBA886&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4937">Dark Egel</a></td>
       <td></td>
       <td></td>
@@ -3007,7 +3046,7 @@
       <td class="side">212</td>
       <td></td>
       <td>&lt;90B23A72&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4938">Newgate Laia</a></td>
       <td></td>
       <td></td>
@@ -3021,7 +3060,7 @@
       <td class="side">213</td>
       <td></td>
       <td>&lt;ED6F99C6&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4939">Dark Laia</a></td>
       <td></td>
       <td></td>
@@ -3035,7 +3074,7 @@
       <td class="side">214</td>
       <td></td>
       <td>&lt;2FA5F0E4&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4940">Voruk Draigul</a></td>
       <td></td>
       <td></td>
@@ -3049,7 +3088,7 @@
       <td class="side">215</td>
       <td></td>
       <td>&lt;A03FCF14&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4941">Dark Draigul</a></td>
       <td></td>
       <td></td>
@@ -3063,7 +3102,7 @@
       <td class="side">216</td>
       <td></td>
       <td>&lt;9C3F00D9&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4942">Felusi Pippito</a></td>
       <td></td>
       <td></td>
@@ -3077,7 +3116,7 @@
       <td class="side">217</td>
       <td></td>
       <td>&lt;E3906344&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4645">Hallowcanter Hazerune</a></td>
       <td></td>
       <td></td>
@@ -3091,7 +3130,7 @@
       <td class="side">218</td>
       <td></td>
       <td>&lt;45CE39B2&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4646">Dragon God Alcar</a></td>
       <td></td>
       <td></td>
@@ -3105,7 +3144,7 @@
       <td class="side">219</td>
       <td></td>
       <td>&lt;0988A64C&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4647">Sensational Gigapur</a></td>
       <td></td>
       <td></td>
@@ -3119,7 +3158,7 @@
       <td class="side">220</td>
       <td></td>
       <td>&lt;457B28D4&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4648">Foghewn Augustus</a></td>
       <td></td>
       <td></td>
@@ -3133,7 +3172,7 @@
       <td class="side">221</td>
       <td></td>
       <td>&lt;1F2EF1BA&gt;</td>
-      <td>&lt;5C777C54&gt;</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
       <td><a href="FLD_EnemyData.html#4649">Fogdweller Abaasy</a></td>
       <td></td>
       <td></td>

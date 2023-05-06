@@ -30,63 +30,102 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>MNU_form_cam</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>field_D86F454F</th>
-      <th>field_5643FDA5</th>
-      <th>field_9B7DF4E9</th>
-      <th>field_5CC76DC4</th>
-      <th>field_2CC92129</th>
-      <th>field_526CE633</th>
-      <th>field_0CABE927</th>
-      <th>field_3985C1E3</th>
-      <th>field_258A6F6C</th>
-      <th>field_22168266</th>
-      <th>field_04FFA4C3</th>
-      <th>field_6A8AE50A</th>
-      <th>field_38428E5F</th>
-      <th>field_91809A9E</th>
-      <th>field_DF7A7CD3</th>
-      <th>field_48B105CD</th>
-      <th>field_09FCA1B2</th>
-      <th>field_B2D0AC37</th>
-      <th>field_5DB6CCDE</th>
-      <th>field_361CC6D1</th>
-      <th>field_99F479D1</th>
-      <th>field_D73327CD</th>
-      <th>field_C2FCE5C4</th>
-      <th>field_535AF8EC</th>
-      <th>field_4DBDB3B6</th>
-      <th>field_F5399B67</th>
-      <th>field_14E7FF70</th>
-      <th>field_615B83F0</th>
-      <th>field_1F257E0C</th>
-      <th>field_127F13B5</th>
-      <th>field_65481C72</th>
-      <th>field_E90AF7ED</th>
-      <th>field_1BA4C3E6</th>
-      <th>field_B9B88243</th>
-      <th>field_05192D1C</th>
-      <th>field_58244BBE</th>
-      <th>field_42663069</th>
-      <th>field_724C9033</th>
-      <th>field_EEFF7127</th>
-      <th>field_C27BADAC</th>
-      <th>cam_lx</th>
-      <th>cam_ly</th>
-      <th>cam_lz</th>
-      <th>cam_px</th>
-      <th>cam_py</th>
-      <th>cam_pz</th>
-      <th>cam_angle</th>
-      <th>cam_rot_z</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 1)">field_D86F454F</th>
+      <th onclick="sortColumn(this, 4, 1)">field_5643FDA5</th>
+      <th onclick="sortColumn(this, 5, 1)">field_9B7DF4E9</th>
+      <th onclick="sortColumn(this, 6, 1)">field_5CC76DC4</th>
+      <th onclick="sortColumn(this, 7, 1)">field_2CC92129</th>
+      <th onclick="sortColumn(this, 8, 1)">field_526CE633</th>
+      <th onclick="sortColumn(this, 9, 1)">field_0CABE927</th>
+      <th onclick="sortColumn(this, 10, 1)">field_3985C1E3</th>
+      <th onclick="sortColumn(this, 11, 1)">field_258A6F6C</th>
+      <th onclick="sortColumn(this, 12, 1)">field_22168266</th>
+      <th onclick="sortColumn(this, 13, 1)">field_04FFA4C3</th>
+      <th onclick="sortColumn(this, 14, 1)">field_6A8AE50A</th>
+      <th onclick="sortColumn(this, 15, 1)">field_38428E5F</th>
+      <th onclick="sortColumn(this, 16, 1)">field_91809A9E</th>
+      <th onclick="sortColumn(this, 17, 1)">field_DF7A7CD3</th>
+      <th onclick="sortColumn(this, 18, 1)">field_48B105CD</th>
+      <th onclick="sortColumn(this, 19, 1)">field_09FCA1B2</th>
+      <th onclick="sortColumn(this, 20, 1)">field_B2D0AC37</th>
+      <th onclick="sortColumn(this, 21, 1)">field_5DB6CCDE</th>
+      <th onclick="sortColumn(this, 22, 1)">field_361CC6D1</th>
+      <th onclick="sortColumn(this, 23, 1)">field_99F479D1</th>
+      <th onclick="sortColumn(this, 24, 1)">field_D73327CD</th>
+      <th onclick="sortColumn(this, 25, 1)">field_C2FCE5C4</th>
+      <th onclick="sortColumn(this, 26, 1)">field_535AF8EC</th>
+      <th onclick="sortColumn(this, 27, 1)">field_4DBDB3B6</th>
+      <th onclick="sortColumn(this, 28, 1)">field_F5399B67</th>
+      <th onclick="sortColumn(this, 29, 1)">field_14E7FF70</th>
+      <th onclick="sortColumn(this, 30, 1)">field_615B83F0</th>
+      <th onclick="sortColumn(this, 31, 1)">field_1F257E0C</th>
+      <th onclick="sortColumn(this, 32, 1)">field_127F13B5</th>
+      <th onclick="sortColumn(this, 33, 1)">field_65481C72</th>
+      <th onclick="sortColumn(this, 34, 1)">field_E90AF7ED</th>
+      <th onclick="sortColumn(this, 35, 1)">field_1BA4C3E6</th>
+      <th onclick="sortColumn(this, 36, 1)">field_B9B88243</th>
+      <th onclick="sortColumn(this, 37, 1)">field_05192D1C</th>
+      <th onclick="sortColumn(this, 38, 1)">field_58244BBE</th>
+      <th onclick="sortColumn(this, 39, 1)">field_42663069</th>
+      <th onclick="sortColumn(this, 40, 1)">field_724C9033</th>
+      <th onclick="sortColumn(this, 41, 1)">field_EEFF7127</th>
+      <th onclick="sortColumn(this, 42, 1)">field_C27BADAC</th>
+      <th onclick="sortColumn(this, 43, 1)">cam_lx</th>
+      <th onclick="sortColumn(this, 44, 1)">cam_ly</th>
+      <th onclick="sortColumn(this, 45, 1)">cam_lz</th>
+      <th onclick="sortColumn(this, 46, 1)">cam_px</th>
+      <th onclick="sortColumn(this, 47, 1)">cam_py</th>
+      <th onclick="sortColumn(this, 48, 1)">cam_pz</th>
+      <th onclick="sortColumn(this, 49, 1)">cam_angle</th>
+      <th onclick="sortColumn(this, 50, 1)">cam_rot_z</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>

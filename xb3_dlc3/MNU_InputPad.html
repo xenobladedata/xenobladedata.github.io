@@ -30,53 +30,92 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>MNU_InputPad</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>pad_select</th>
-      <th>select_text</th>
-      <th>loop</th>
-      <th>repeat</th>
-      <th>shift</th>
-      <th>align_h</th>
-      <th>pad_A</th>
-      <th>pad_B</th>
-      <th>pad_X</th>
-      <th>pad_Y</th>
-      <th>pad_L1</th>
-      <th>pad_L2</th>
-      <th>pad_L3</th>
-      <th>pad_R1</th>
-      <th>pad_R2</th>
-      <th>pad_R3</th>
-      <th>pad_START</th>
-      <th>pad_SELECT</th>
-      <th>pad_UP</th>
-      <th>pad_DOWN</th>
-      <th>pad_RIGHT</th>
-      <th>pad_LEFT</th>
-      <th>pad_LS_UP</th>
-      <th>pad_LS_DOWN</th>
-      <th>pad_LS_RIGHT</th>
-      <th>pad_LS_LEFT</th>
-      <th>pad_RS_UP</th>
-      <th>pad_RS_DOWN</th>
-      <th>pad_RS_RIGHT</th>
-      <th>pad_RS_LEFT</th>
-      <th>field_E55D8FD4</th>
-      <th>field_AF3A56F9</th>
-      <th>field_96041EB5</th>
-      <th>field_F93CFF36</th>
-      <th>field_2F4CD3CD</th>
-      <th>field_FDA84D74</th>
-      <th>field_1B43B5E9</th>
-      <th>field_2D1A5EC3</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">pad_select</th>
+      <th onclick="sortColumn(this, 4, 2)">select_text</th>
+      <th onclick="sortColumn(this, 5, 0)">loop</th>
+      <th onclick="sortColumn(this, 6, 0)">repeat</th>
+      <th onclick="sortColumn(this, 7, 0)">shift</th>
+      <th onclick="sortColumn(this, 8, 0)">align_h</th>
+      <th onclick="sortColumn(this, 9, 0)">pad_A</th>
+      <th onclick="sortColumn(this, 10, 0)">pad_B</th>
+      <th onclick="sortColumn(this, 11, 0)">pad_X</th>
+      <th onclick="sortColumn(this, 12, 0)">pad_Y</th>
+      <th onclick="sortColumn(this, 13, 0)">pad_L1</th>
+      <th onclick="sortColumn(this, 14, 0)">pad_L2</th>
+      <th onclick="sortColumn(this, 15, 0)">pad_L3</th>
+      <th onclick="sortColumn(this, 16, 0)">pad_R1</th>
+      <th onclick="sortColumn(this, 17, 0)">pad_R2</th>
+      <th onclick="sortColumn(this, 18, 0)">pad_R3</th>
+      <th onclick="sortColumn(this, 19, 0)">pad_START</th>
+      <th onclick="sortColumn(this, 20, 0)">pad_SELECT</th>
+      <th onclick="sortColumn(this, 21, 0)">pad_UP</th>
+      <th onclick="sortColumn(this, 22, 0)">pad_DOWN</th>
+      <th onclick="sortColumn(this, 23, 0)">pad_RIGHT</th>
+      <th onclick="sortColumn(this, 24, 0)">pad_LEFT</th>
+      <th onclick="sortColumn(this, 25, 0)">pad_LS_UP</th>
+      <th onclick="sortColumn(this, 26, 0)">pad_LS_DOWN</th>
+      <th onclick="sortColumn(this, 27, 0)">pad_LS_RIGHT</th>
+      <th onclick="sortColumn(this, 28, 0)">pad_LS_LEFT</th>
+      <th onclick="sortColumn(this, 29, 0)">pad_RS_UP</th>
+      <th onclick="sortColumn(this, 30, 0)">pad_RS_DOWN</th>
+      <th onclick="sortColumn(this, 31, 0)">pad_RS_RIGHT</th>
+      <th onclick="sortColumn(this, 32, 0)">pad_RS_LEFT</th>
+      <th onclick="sortColumn(this, 33, 0)">field_E55D8FD4</th>
+      <th onclick="sortColumn(this, 34, 0)">field_AF3A56F9</th>
+      <th onclick="sortColumn(this, 35, 0)">field_96041EB5</th>
+      <th onclick="sortColumn(this, 36, 0)">field_F93CFF36</th>
+      <th onclick="sortColumn(this, 37, 0)">field_2F4CD3CD</th>
+      <th onclick="sortColumn(this, 38, 0)">field_FDA84D74</th>
+      <th onclick="sortColumn(this, 39, 0)">field_1B43B5E9</th>
+      <th onclick="sortColumn(this, 40, 0)">field_2D1A5EC3</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>

@@ -30,22 +30,61 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>ma11a_GMK_Corpse</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>Condition</th>
-      <th>AccessCondition</th>
-      <th>AccessRange</th>
-      <th>IconOffset</th>
-      <th>Colony</th>
-      <th>Reward</th>
-      <th>EventID</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">Condition</th>
+      <th onclick="sortColumn(this, 4, 0)">AccessCondition</th>
+      <th onclick="sortColumn(this, 5, 0)">AccessRange</th>
+      <th onclick="sortColumn(this, 6, 0)">IconOffset</th>
+      <th onclick="sortColumn(this, 7, 0)">Colony</th>
+      <th onclick="sortColumn(this, 8, 0)">Reward</th>
+      <th onclick="sortColumn(this, 9, 2)">EventID</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>
@@ -62,7 +101,7 @@
       <td>178</td>
       <td></td>
       <td><a href="ITM_RewardGrieve.html#23">CORPSE_REWARD_ma11a_15_002</a></td>
-      <td>gev_big_corpse</td>
+      <td><a href="EVT_listQst.html#17619">gev_big_corpse</a></td>
     </tr>
     <tr id="2">
       <td class="side">2</td>
@@ -79,7 +118,7 @@
       <td>178</td>
       <td></td>
       <td><a href="ITM_RewardGrieve.html#23">CORPSE_REWARD_ma11a_15_002</a></td>
-      <td>gev_big_corpse</td>
+      <td><a href="EVT_listQst.html#17619">gev_big_corpse</a></td>
     </tr>
     <tr id="3">
       <td class="side">3</td>
@@ -96,7 +135,7 @@
       <td>178</td>
       <td></td>
       <td><a href="ITM_RewardGrieve.html#23">CORPSE_REWARD_ma11a_15_002</a></td>
-      <td>gev_big_corpse</td>
+      <td><a href="EVT_listQst.html#17619">gev_big_corpse</a></td>
     </tr>
     <tr id="4">
       <td class="side">4</td>
@@ -113,7 +152,7 @@
       <td>178</td>
       <td></td>
       <td><a href="ITM_RewardGrieve.html#20">CORPSE_REWARD_ma11a_myu_002</a></td>
-      <td>gev_big_corpse</td>
+      <td><a href="EVT_listQst.html#17619">gev_big_corpse</a></td>
     </tr>
     <tr id="5">
       <td class="side">5</td>
@@ -575,7 +614,7 @@
       <td>178</td>
       <td></td>
       <td></td>
-      <td>gev_big_corpse</td>
+      <td><a href="EVT_listQst.html#17619">gev_big_corpse</a></td>
     </tr>
     <tr id="32">
       <td class="side">32</td>
@@ -595,7 +634,7 @@
       <td>178</td>
       <td></td>
       <td></td>
-      <td>gev_big_corpse</td>
+      <td><a href="EVT_listQst.html#17619">gev_big_corpse</a></td>
     </tr>
     <tr id="33">
       <td class="side">33</td>
@@ -615,7 +654,7 @@
       <td>178</td>
       <td></td>
       <td></td>
-      <td>gev_big_corpse</td>
+      <td><a href="EVT_listQst.html#17619">gev_big_corpse</a></td>
     </tr>
     <tr id="34">
       <td class="side">34</td>
@@ -627,7 +666,7 @@
       <td>178</td>
       <td></td>
       <td></td>
-      <td>gev_big_corpse</td>
+      <td><a href="EVT_listQst.html#17619">gev_big_corpse</a></td>
     </tr>
     <tr id="35">
       <td class="side">35</td>
@@ -639,7 +678,7 @@
       <td>178</td>
       <td></td>
       <td></td>
-      <td>gev_big_corpse</td>
+      <td><a href="EVT_listQst.html#17619">gev_big_corpse</a></td>
     </tr>
     <tr id="36">
       <td class="side">36</td>
@@ -651,7 +690,7 @@
       <td>178</td>
       <td></td>
       <td></td>
-      <td>gev_big_corpse</td>
+      <td><a href="EVT_listQst.html#17619">gev_big_corpse</a></td>
     </tr>
   </table>
 </body>

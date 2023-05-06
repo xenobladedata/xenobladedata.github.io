@@ -30,84 +30,123 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>BTL_Enemy</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>DebugName</th>
-      <th>ParamMemo</th>
-      <th>BaseEnemy</th>
-      <th>Resource</th>
-      <th>EnemyAiHead</th>
-      <th>EnemyAiTail</th>
-      <th>AiCycle</th>
-      <th>EnemyFamily</th>
-      <th>field_ACC9E8FD</th>
-      <th>field_0893DF90</th>
-      <th>Role</th>
-      <th>StRevHp</th>
-      <th>StRevStr</th>
-      <th>StRevHeal</th>
-      <th>StRevDex</th>
-      <th>StRevAgi</th>
-      <th>StPhyDef</th>
-      <th>StEthDef</th>
-      <th>StCrtc</th>
-      <th>StGrdFront</th>
-      <th>StGrdBack</th>
-      <th>StGrdLeft</th>
-      <th>StGrdRight</th>
-      <th>RstBreak</th>
-      <th>RstKback</th>
-      <th>RstBlow</th>
-      <th>RstDebuffPhy</th>
-      <th>RstDebuffEth</th>
-      <th>UroLimitedReaction</th>
-      <th>Stance</th>
-      <th>AuraAwakeLev</th>
-      <th>CoreNum</th>
-      <th>AutoSlot0</th>
-      <th>AutoSlot1</th>
-      <th>AutoSlot2</th>
-      <th>ArtsSlot0</th>
-      <th>ArtsSlot1</th>
-      <th>ArtsSlot2</th>
-      <th>ArtsSlot3</th>
-      <th>ArtsSlot4</th>
-      <th>ArtsSlot5</th>
-      <th>ArtsSlot6</th>
-      <th>ArtsSlot7</th>
-      <th>ArtsSlot8</th>
-      <th>ArtsSlot9</th>
-      <th>ArtsSlot10</th>
-      <th>ArtsSlot11</th>
-      <th>ArtsSlot12</th>
-      <th>ArtsSlot13</th>
-      <th>ArtsSlot14</th>
-      <th>ArtsSlot15</th>
-      <th>EnhanceSlot0</th>
-      <th>EnhanceSlot1</th>
-      <th>EnhanceSlot2</th>
-      <th>RageCond</th>
-      <th>RageParam</th>
-      <th>RageInterval</th>
-      <th>RageStance</th>
-      <th>RageFrm</th>
-      <th>field_7FB0028E</th>
-      <th>LowerLimitHP</th>
-      <th>field_60FB333A</th>
-      <th>field_38073443</th>
-      <th>field_F411E1A1</th>
-      <th>AroundFrm</th>
-      <th>RstSmash</th>
-      <th>field_C808D690</th>
-      <th>field_48D2872C</th>
-      <th>field_60A0D1EF</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 2)">DebugName</th>
+      <th onclick="sortColumn(this, 4, 2)">ParamMemo</th>
+      <th onclick="sortColumn(this, 5, 2)">BaseEnemy</th>
+      <th onclick="sortColumn(this, 6, 0)">Resource</th>
+      <th onclick="sortColumn(this, 7, 0)">EnemyAiHead</th>
+      <th onclick="sortColumn(this, 8, 0)">EnemyAiTail</th>
+      <th onclick="sortColumn(this, 9, 0)">AiCycle</th>
+      <th onclick="sortColumn(this, 10, 0)">EnemyFamily</th>
+      <th onclick="sortColumn(this, 11, 0)">field_ACC9E8FD</th>
+      <th onclick="sortColumn(this, 12, 0)">field_0893DF90</th>
+      <th onclick="sortColumn(this, 13, 0)">Role</th>
+      <th onclick="sortColumn(this, 14, 0)">StRevHp</th>
+      <th onclick="sortColumn(this, 15, 0)">StRevStr</th>
+      <th onclick="sortColumn(this, 16, 0)">StRevHeal</th>
+      <th onclick="sortColumn(this, 17, 0)">StRevDex</th>
+      <th onclick="sortColumn(this, 18, 0)">StRevAgi</th>
+      <th onclick="sortColumn(this, 19, 0)">StPhyDef</th>
+      <th onclick="sortColumn(this, 20, 0)">StEthDef</th>
+      <th onclick="sortColumn(this, 21, 0)">StCrtc</th>
+      <th onclick="sortColumn(this, 22, 0)">StGrdFront</th>
+      <th onclick="sortColumn(this, 23, 0)">StGrdBack</th>
+      <th onclick="sortColumn(this, 24, 0)">StGrdLeft</th>
+      <th onclick="sortColumn(this, 25, 0)">StGrdRight</th>
+      <th onclick="sortColumn(this, 26, 0)">RstBreak</th>
+      <th onclick="sortColumn(this, 27, 0)">RstKback</th>
+      <th onclick="sortColumn(this, 28, 0)">RstBlow</th>
+      <th onclick="sortColumn(this, 29, 0)">RstDebuffPhy</th>
+      <th onclick="sortColumn(this, 30, 0)">RstDebuffEth</th>
+      <th onclick="sortColumn(this, 31, 0)">UroLimitedReaction</th>
+      <th onclick="sortColumn(this, 32, 0)">Stance</th>
+      <th onclick="sortColumn(this, 33, 0)">AuraAwakeLev</th>
+      <th onclick="sortColumn(this, 34, 0)">CoreNum</th>
+      <th onclick="sortColumn(this, 35, 0)">AutoSlot0</th>
+      <th onclick="sortColumn(this, 36, 0)">AutoSlot1</th>
+      <th onclick="sortColumn(this, 37, 0)">AutoSlot2</th>
+      <th onclick="sortColumn(this, 38, 0)">ArtsSlot0</th>
+      <th onclick="sortColumn(this, 39, 0)">ArtsSlot1</th>
+      <th onclick="sortColumn(this, 40, 0)">ArtsSlot2</th>
+      <th onclick="sortColumn(this, 41, 0)">ArtsSlot3</th>
+      <th onclick="sortColumn(this, 42, 0)">ArtsSlot4</th>
+      <th onclick="sortColumn(this, 43, 0)">ArtsSlot5</th>
+      <th onclick="sortColumn(this, 44, 0)">ArtsSlot6</th>
+      <th onclick="sortColumn(this, 45, 0)">ArtsSlot7</th>
+      <th onclick="sortColumn(this, 46, 0)">ArtsSlot8</th>
+      <th onclick="sortColumn(this, 47, 0)">ArtsSlot9</th>
+      <th onclick="sortColumn(this, 48, 0)">ArtsSlot10</th>
+      <th onclick="sortColumn(this, 49, 0)">ArtsSlot11</th>
+      <th onclick="sortColumn(this, 50, 0)">ArtsSlot12</th>
+      <th onclick="sortColumn(this, 51, 0)">ArtsSlot13</th>
+      <th onclick="sortColumn(this, 52, 0)">ArtsSlot14</th>
+      <th onclick="sortColumn(this, 53, 0)">ArtsSlot15</th>
+      <th onclick="sortColumn(this, 54, 0)">EnhanceSlot0</th>
+      <th onclick="sortColumn(this, 55, 0)">EnhanceSlot1</th>
+      <th onclick="sortColumn(this, 56, 0)">EnhanceSlot2</th>
+      <th onclick="sortColumn(this, 57, 0)">RageCond</th>
+      <th onclick="sortColumn(this, 58, 0)">RageParam</th>
+      <th onclick="sortColumn(this, 59, 0)">RageInterval</th>
+      <th onclick="sortColumn(this, 60, 0)">RageStance</th>
+      <th onclick="sortColumn(this, 61, 0)">RageFrm</th>
+      <th onclick="sortColumn(this, 62, 0)">field_7FB0028E</th>
+      <th onclick="sortColumn(this, 63, 0)">LowerLimitHP</th>
+      <th onclick="sortColumn(this, 64, 0)">field_60FB333A</th>
+      <th onclick="sortColumn(this, 65, 0)">field_38073443</th>
+      <th onclick="sortColumn(this, 66, 0)">field_F411E1A1</th>
+      <th onclick="sortColumn(this, 67, 0)">AroundFrm</th>
+      <th onclick="sortColumn(this, 68, 0)">RstSmash</th>
+      <th onclick="sortColumn(this, 69, 0)">field_C808D690</th>
+      <th onclick="sortColumn(this, 70, 0)">field_48D2872C</th>
+      <th onclick="sortColumn(this, 71, 0)">OpeningBuff</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>

@@ -30,23 +30,62 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>ma07a_GMK_EtherPoint</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>Condition</th>
-      <th>FirstTry</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">Condition</th>
+      <th onclick="sortColumn(this, 4, 0)">FirstTry</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>
       <td>
         <details>
-          <summary>60 refs</summary>
+          <summary>20 refs</summary>
                <a href="SYS_GimmickLocation.html#14500">SYS_GimmickLocation#<09718AD0></a>
           <br/><a href="SYS_GimmickLocation.html#14502">SYS_GimmickLocation#<111A1B25></a>
           <br/><a href="SYS_GimmickLocation.html#14503">SYS_GimmickLocation#<318E64EB></a>
@@ -67,46 +106,6 @@
           <br/><a href="SYS_GimmickLocation.html#14531">SYS_GimmickLocation#<F01550B2></a>
           <br/><a href="SYS_GimmickLocation.html#14533">SYS_GimmickLocation#<D44741CC></a>
           <br/><a href="SYS_GimmickLocation.html#14534">SYS_GimmickLocation#<C189E9D0></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14556">SYS_GimmickLocation_dlc02#14556</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14558">SYS_GimmickLocation_dlc02#14558</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14559">SYS_GimmickLocation_dlc02#14559</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14560">SYS_GimmickLocation_dlc02#14560</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14561">SYS_GimmickLocation_dlc02#14561</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14563">SYS_GimmickLocation_dlc02#14563</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14564">SYS_GimmickLocation_dlc02#14564</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14565">SYS_GimmickLocation_dlc02#14565</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14566">SYS_GimmickLocation_dlc02#14566</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14567">SYS_GimmickLocation_dlc02#14567</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14568">SYS_GimmickLocation_dlc02#14568</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14574">SYS_GimmickLocation_dlc02#14574</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14575">SYS_GimmickLocation_dlc02#14575</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14576">SYS_GimmickLocation_dlc02#14576</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14577">SYS_GimmickLocation_dlc02#14577</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14578">SYS_GimmickLocation_dlc02#14578</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14586">SYS_GimmickLocation_dlc02#14586</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14587">SYS_GimmickLocation_dlc02#14587</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14589">SYS_GimmickLocation_dlc02#14589</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14590">SYS_GimmickLocation_dlc02#14590</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14628">SYS_GimmickLocation_dlc03#14628</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14630">SYS_GimmickLocation_dlc03#14630</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14631">SYS_GimmickLocation_dlc03#14631</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14632">SYS_GimmickLocation_dlc03#14632</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14633">SYS_GimmickLocation_dlc03#14633</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14635">SYS_GimmickLocation_dlc03#14635</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14636">SYS_GimmickLocation_dlc03#14636</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14637">SYS_GimmickLocation_dlc03#14637</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14638">SYS_GimmickLocation_dlc03#14638</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14639">SYS_GimmickLocation_dlc03#14639</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14640">SYS_GimmickLocation_dlc03#14640</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14646">SYS_GimmickLocation_dlc03#14646</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14647">SYS_GimmickLocation_dlc03#14647</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14648">SYS_GimmickLocation_dlc03#14648</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14649">SYS_GimmickLocation_dlc03#14649</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14650">SYS_GimmickLocation_dlc03#14650</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14658">SYS_GimmickLocation_dlc03#14658</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14659">SYS_GimmickLocation_dlc03#14659</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14661">SYS_GimmickLocation_dlc03#14661</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14662">SYS_GimmickLocation_dlc03#14662</a>
         </details>
       </td>
       <td>&lt;09718AD0&gt;</td>
@@ -117,16 +116,10 @@
       <td class="side">2</td>
       <td>
         <details>
-          <summary>9 refs</summary>
+          <summary>3 refs</summary>
                <a href="SYS_GimmickLocation.html#14506">SYS_GimmickLocation#<3D2ED704></a>
           <br/><a href="SYS_GimmickLocation.html#14513">SYS_GimmickLocation#<D42581CA></a>
           <br/><a href="SYS_GimmickLocation.html#14532">SYS_GimmickLocation#<4A778F66></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14562">SYS_GimmickLocation_dlc02#14562</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14569">SYS_GimmickLocation_dlc02#14569</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14588">SYS_GimmickLocation_dlc02#14588</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14634">SYS_GimmickLocation_dlc03#14634</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14641">SYS_GimmickLocation_dlc03#14641</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14660">SYS_GimmickLocation_dlc03#14660</a>
         </details>
       </td>
       <td>&lt;D42581CA&gt;</td>
@@ -151,19 +144,11 @@
       <td class="side">5</td>
       <td>
         <details>
-          <summary>12 refs</summary>
+          <summary>4 refs</summary>
                <a href="SYS_GimmickLocation.html#14523">SYS_GimmickLocation#<CA4BC3F4></a>
           <br/><a href="SYS_GimmickLocation.html#14524">SYS_GimmickLocation#<8ED7059B></a>
           <br/><a href="SYS_GimmickLocation.html#14525">SYS_GimmickLocation#<E52B3813></a>
           <br/><a href="SYS_GimmickLocation.html#14526">SYS_GimmickLocation#<0939F8A1></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14579">SYS_GimmickLocation_dlc02#14579</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14580">SYS_GimmickLocation_dlc02#14580</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14581">SYS_GimmickLocation_dlc02#14581</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14582">SYS_GimmickLocation_dlc02#14582</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14651">SYS_GimmickLocation_dlc03#14651</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14652">SYS_GimmickLocation_dlc03#14652</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14653">SYS_GimmickLocation_dlc03#14653</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14654">SYS_GimmickLocation_dlc03#14654</a>
         </details>
       </td>
       <td>&lt;CA4BC3F4&gt;</td>
@@ -174,16 +159,10 @@
       <td class="side">6</td>
       <td>
         <details>
-          <summary>9 refs</summary>
+          <summary>3 refs</summary>
                <a href="SYS_GimmickLocation.html#14527">SYS_GimmickLocation#<005418ED></a>
           <br/><a href="SYS_GimmickLocation.html#14528">SYS_GimmickLocation#<05A4B5B9></a>
           <br/><a href="SYS_GimmickLocation.html#14529">SYS_GimmickLocation#<E349DA4E></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14583">SYS_GimmickLocation_dlc02#14583</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14584">SYS_GimmickLocation_dlc02#14584</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14585">SYS_GimmickLocation_dlc02#14585</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14655">SYS_GimmickLocation_dlc03#14655</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14656">SYS_GimmickLocation_dlc03#14656</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14657">SYS_GimmickLocation_dlc03#14657</a>
         </details>
       </td>
       <td>&lt;005418ED&gt;</td>
@@ -194,10 +173,8 @@
       <td class="side">7</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#14501">SYS_GimmickLocation#<CA8D4331></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14557">SYS_GimmickLocation_dlc02#14557</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14629">SYS_GimmickLocation_dlc03#14629</a>
         </details>
       </td>
       <td>&lt;CA8D4331&gt;</td>
@@ -208,19 +185,11 @@
       <td class="side">8</td>
       <td>
         <details>
-          <summary>12 refs</summary>
+          <summary>4 refs</summary>
                <a href="SYS_GimmickLocation.html#14514">SYS_GimmickLocation#<0F1FB742></a>
           <br/><a href="SYS_GimmickLocation.html#14515">SYS_GimmickLocation#<9E4BDA14></a>
           <br/><a href="SYS_GimmickLocation.html#14516">SYS_GimmickLocation#<4796D92A></a>
           <br/><a href="SYS_GimmickLocation.html#14517">SYS_GimmickLocation#<1D7D26AD></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14570">SYS_GimmickLocation_dlc02#14570</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14571">SYS_GimmickLocation_dlc02#14571</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14572">SYS_GimmickLocation_dlc02#14572</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14573">SYS_GimmickLocation_dlc02#14573</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14642">SYS_GimmickLocation_dlc03#14642</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14643">SYS_GimmickLocation_dlc03#14643</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14644">SYS_GimmickLocation_dlc03#14644</a>
-          <br/><a href="SYS_GimmickLocation_dlc03.html#14645">SYS_GimmickLocation_dlc03#14645</a>
         </details>
       </td>
       <td>&lt;0F1FB742&gt;</td>

@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <title>msg_fev14140110</title>
+  <style type="text/css">
+    table, th, td {border: 1px solid #000000; border-collapse: collapse;}
+    table {border-width: 3px;}
+    th, td {padding: 0.1em 0.2em;}
+    tr.head th, tr.head td {border-bottom-width: 3px;}
+    th.colbreak, td.colbreak {border-right-width: 3px;}
+    th {text-align: center; position: sticky; top: -1px; background-color: #F0F0F0;}
+    .side {position: sticky; left: -1px; background-color: #F0F0F0;}
+    th.side {z-index: 3;}
+    td {text-align: left;}
+    td.right {text-align: right;}
+    .sortable tbody tr:nth-child(odd) {background: #F5F5F5;}
+    .sortable th {background: #E4E4E4; cursor: pointer; white-space: nowrap; vertical-align: middle;}
+    .sortable th.dir-d::after {content:" ▾"; vertical-align: inherit;}
+    .sortable th.dir-u::after {content:" ▴"; vertical-align: inherit;}
+    :target td {background-color: #CCCCCC !important;}
+  </style>
+  <script type="text/javascript">
+    function offsetAnchor() {
+      if (location.hash.length !== 0) {
+        window.scrollTo(window.scrollX, window.scrollY - document.getElementById("header").clientHeight);
+      }
+    }
+    window.addEventListener("hashchange", offsetAnchor);
+    window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
+  </script>
+</head>
+<body>
+  <table class="sortable">
+    <h2>msg_fev14140110</h2>
+    <tr id="header">
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
+      <th>Referenced By</th>
+      <th onclick="sortColumn(this, 2, 2)">label</th>
+      <th onclick="sortColumn(this, 3, 2)">talker</th>
+      <th onclick="sortColumn(this, 4, 0)">talkattr</th>
+      <th onclick="sortColumn(this, 5, 0)">talkattr2</th>
+      <th onclick="sortColumn(this, 6, 0)">talkattr3</th>
+      <th onclick="sortColumn(this, 7, 0)">style</th>
+      <th onclick="sortColumn(this, 8, 2)">name</th>
+    </tr>
+    <tr id="1">
+      <td class="side">1</td>
+      <td></td>
+      <td>&lt;40B4F40D&gt;</td>
+      <td>b1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Apologies. Were you waiting long?</td>
+    </tr>
+    <tr id="2">
+      <td class="side">2</td>
+      <td></td>
+      <td>&lt;C86C8506&gt;</td>
+      <td>vp1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>No. We were just about to start.</td>
+    </tr>
+    <tr id="3">
+      <td class="side">3</td>
+      <td></td>
+      <td>&lt;0A662CDE&gt;</td>
+      <td>vp1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Right, about our next course of action...</td>
+    </tr>
+    <tr id="4">
+      <td class="side">4</td>
+      <td></td>
+      <td>&lt;B7748BBD&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>What's there to discuss?</td>
+    </tr>
+    <tr id="5">
+      <td class="side">5</td>
+      <td></td>
+      <td>&lt;23795BE7&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>We break into that Origin place, beat Alpha<br />to a pulp and get Na'el the hell out of there!<br />End of!</td>
+    </tr>
+    <tr id="6">
+      <td class="side">6</td>
+      <td></td>
+      <td>&lt;59D04968&gt;</td>
+      <td>f1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>...Thought you might say that.<br />It's pretty much what we had in mind too.</td>
+    </tr>
+    <tr id="7">
+      <td class="side">7</td>
+      <td></td>
+      <td>&lt;AD07DBA6&gt;</td>
+      <td>b1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>If we want to make our way to Origin,<br />then our first port of call will have to be<br />Prison Island.</td>
+    </tr>
+    <tr id="8">
+      <td class="side">8</td>
+      <td></td>
+      <td>&lt;375D319E&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Prison Island? Where's that?</td>
+    </tr>
+    <tr id="9">
+      <td class="side">9</td>
+      <td></td>
+      <td>&lt;FE15722A&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Prison Island lies at the northernmost tip of<br />the Cent-Omnia Region, where we are now.<br />Smack in the middle of the rugged terrain.</td>
+    </tr>
+    <tr id="10">
+      <td class="side">10</td>
+      <td></td>
+      <td>&lt;BEDCD509&gt;</td>
+      <td>b1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>From there, there is a way into Origin.</td>
+    </tr>
+    <tr id="11">
+      <td class="side">11</td>
+      <td></td>
+      <td>&lt;493AF95C&gt;</td>
+      <td>gq1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>However, there's a problem.</td>
+    </tr>
+    <tr id="12">
+      <td class="side">12</td>
+      <td></td>
+      <td>&lt;F36FC98B&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>'Course there is.</td>
+    </tr>
+    <tr id="13">
+      <td class="side">13</td>
+      <td></td>
+      <td>&lt;28876A93&gt;</td>
+      <td>gq1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>The entrance to Prison Island is located on<br />the side of a tower, and at considerable<br />elevation.</td>
+    </tr>
+    <tr id="14">
+      <td class="side">14</td>
+      <td></td>
+      <td>&lt;EC904365&gt;</td>
+      <td>gq1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>The survey team has looked into it,<br />and concluded that it would be impossible<br />to access from ground level.</td>
+    </tr>
+    <tr id="15">
+      <td class="side">15</td>
+      <td></td>
+      <td>&lt;7C1741B5&gt;</td>
+      <td>gq1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>The City's Armories are all under repair,<br />which takes the air route off the table.</td>
+    </tr>
+    <tr id="16">
+      <td class="side">16</td>
+      <td></td>
+      <td>&lt;160227B8&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>So we're shit out of luck...<br />Isn't there some other way?</td>
+    </tr>
+    <tr id="17">
+      <td class="side">17</td>
+      <td></td>
+      <td>&lt;8BF392C0&gt;</td>
+      <td>vp1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Relax. There's a way all right.</td>
+    </tr>
+    <tr id="18">
+      <td class="side">18</td>
+      <td></td>
+      <td>&lt;ED69EE4E&gt;</td>
+      <td>vp1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>We can tweak the Ether Slide apparatus for<br />direct vertical ascent. Should give us access<br />to the island's face.</td>
+    </tr>
+    <tr id="19">
+      <td class="side">19</td>
+      <td></td>
+      <td>&lt;14941BF4&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>At that point we should probably call it<br />an Ether Lift, really.</td>
+    </tr>
+    <tr id="20">
+      <td class="side">20</td>
+      <td></td>
+      <td>&lt;FED67244&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>I'll take you through the steps necessary for<br />the refurbishment later, at the workshop.</td>
+    </tr>
+    <tr id="21">
+      <td class="side">21</td>
+      <td></td>
+      <td>&lt;358D67F8&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>OK, gotcha. So to start with, we'll need to<br />get this "Ether Lift" thing ready for action.</td>
+    </tr>
+    <tr id="22">
+      <td class="side">22</td>
+      <td></td>
+      <td>&lt;B9EC9ADB&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Well, no time like the present!</td>
+    </tr>
+    <tr id="23">
+      <td class="side">23</td>
+      <td></td>
+      <td>&lt;FFE597E6&gt;</td>
+      <td>c1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Matthew!</td>
+    </tr>
+    <tr id="24">
+      <td class="side">24</td>
+      <td></td>
+      <td>&lt;61A39557&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Huh? What's up, Nikol?</td>
+    </tr>
+    <tr id="25">
+      <td class="side">25</td>
+      <td></td>
+      <td>&lt;6F97EBBD&gt;</td>
+      <td>c1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Oh, erm... It's, uh...</td>
+    </tr>
+    <tr id="26">
+      <td class="side">26</td>
+      <td></td>
+      <td>&lt;B18F0210&gt;</td>
+      <td>d1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>There's something we wanted to<br />talk to you all about.</td>
+    </tr>
+    <tr id="27">
+      <td class="side">27</td>
+      <td></td>
+      <td>&lt;F55E209E&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Uh, that's sudden. You sure it can't wait?</td>
+    </tr>
+    <tr id="28">
+      <td class="side">28</td>
+      <td></td>
+      <td>&lt;EF0C8124&gt;</td>
+      <td>c1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>...It's of the utmost importance.</td>
+    </tr>
+    <tr id="29">
+      <td class="side">29</td>
+      <td></td>
+      <td>&lt;9B7B7117&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>...</td>
+    </tr>
+    <tr id="30">
+      <td class="side">30</td>
+      <td></td>
+      <td>&lt;8BA4F446&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>...Right you are, then.</td>
+    </tr>
+    <tr id="31">
+      <td class="side">31</td>
+      <td></td>
+      <td>&lt;D5657201&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>But this place makes me anxious.<br />Shall we take this somewhere else?</td>
+    </tr>
+    <tr id="32">
+      <td class="side">32</td>
+      <td></td>
+      <td>&lt;B26F3AB2&gt;</td>
+      <td>c1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>OK... Then how about our tents...?</td>
+    </tr>
+    <tr id="33">
+      <td class="side">33</td>
+      <td></td>
+      <td>&lt;D5358F1C&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Great!</td>
+    </tr>
+  </table>
+</body>
+</html>

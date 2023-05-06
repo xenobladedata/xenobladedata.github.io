@@ -30,770 +30,809 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>DF563EF6</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>GimmickID</th>
-      <th>LocationBdat</th>
-      <th>field_5177BA21</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 2)">GimmickID</th>
+      <th onclick="sortColumn(this, 4, 2)">LocationBdat</th>
+      <th onclick="sortColumn(this, 5, 2)">field_5177BA21</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>
       <td></td>
       <td>&lt;405BBA33&gt;</td>
       <td><a href="GMK_ComSpot.html#76">76</a></td>
-      <td>603191145</td>
-      <td>53312438</td>
+      <td>&lt;23F3F769&gt;</td>
+      <td><a href="C5C5F70E.html#11">11</a></td>
     </tr>
     <tr id="2">
       <td class="side">2</td>
       <td></td>
       <td>&lt;8B597BD4&gt;</td>
       <td><a href="GMK_ComSpot.html#78">78</a></td>
-      <td>2196005441</td>
-      <td>53312438</td>
+      <td>&lt;82E46241&gt;</td>
+      <td><a href="C5C5F70E.html#11">11</a></td>
     </tr>
     <tr id="3">
       <td class="side">3</td>
       <td></td>
       <td>&lt;BF79FB00&gt;</td>
       <td><a href="GMK_ComSpot.html#79">79</a></td>
-      <td>2322722490</td>
-      <td>53312438</td>
+      <td>&lt;8A71EEBA&gt;</td>
+      <td><a href="C5C5F70E.html#11">11</a></td>
     </tr>
     <tr id="4">
       <td class="side">4</td>
       <td></td>
       <td>&lt;E7FCB821&gt;</td>
       <td><a href="GMK_ComSpot.html#80">80</a></td>
-      <td>1250129886</td>
-      <td>53312438</td>
+      <td>&lt;4A8377DE&gt;</td>
+      <td><a href="C5C5F70E.html#11">11</a></td>
     </tr>
     <tr id="5">
       <td class="side">5</td>
       <td></td>
       <td>&lt;5720A0B7&gt;</td>
       <td><a href="GMK_ComSpot.html#81">81</a></td>
-      <td>2742181148</td>
-      <td>53312438</td>
+      <td>&lt;A3725D1C&gt;</td>
+      <td><a href="C5C5F70E.html#11">11</a></td>
     </tr>
     <tr id="6">
       <td class="side">6</td>
       <td></td>
       <td>&lt;03D9C081&gt;</td>
       <td><a href="GMK_ComSpot.html#82">82</a></td>
-      <td>164621698</td>
-      <td>53312438</td>
+      <td>&lt;09CFED82&gt;</td>
+      <td><a href="C5C5F70E.html#11">11</a></td>
     </tr>
     <tr id="7">
       <td class="side">7</td>
       <td></td>
       <td>&lt;50E0C420&gt;</td>
       <td><a href="GMK_ComSpot.html#83">83</a></td>
-      <td>3596515425</td>
-      <td>53312438</td>
+      <td>&lt;D65E7861&gt;</td>
+      <td><a href="C5C5F70E.html#11">11</a></td>
     </tr>
     <tr id="8">
       <td class="side">8</td>
       <td></td>
       <td>&lt;4D09EFE3&gt;</td>
       <td><a href="GMK_ComSpot.html#85">85</a></td>
-      <td>4088682961</td>
-      <td>53312438</td>
+      <td>&lt;F3B459D1&gt;</td>
+      <td><a href="C5C5F70E.html#11">11</a></td>
     </tr>
     <tr id="9">
       <td class="side">9</td>
       <td></td>
       <td>&lt;B77F6A4E&gt;</td>
       <td><a href="GMK_ComSpot.html#86">86</a></td>
-      <td>1521872309</td>
-      <td>53312438</td>
+      <td>&lt;5AB5EDB5&gt;</td>
+      <td><a href="C5C5F70E.html#11">11</a></td>
     </tr>
     <tr id="10">
       <td class="side">10</td>
       <td></td>
       <td>&lt;58E45EA8&gt;</td>
       <td><a href="GMK_ComSpot.html#87">87</a></td>
-      <td>2831113116</td>
-      <td>53312438</td>
+      <td>&lt;A8BF5B9C&gt;</td>
+      <td><a href="C5C5F70E.html#11">11</a></td>
     </tr>
     <tr id="11">
       <td class="side">11</td>
       <td></td>
       <td>&lt;D7FCF47B&gt;</td>
       <td><a href="GMK_ComSpot.html#88">88</a></td>
-      <td>2714576578</td>
-      <td>53312438</td>
+      <td>&lt;A1CD26C2&gt;</td>
+      <td><a href="C5C5F70E.html#11">11</a></td>
     </tr>
     <tr id="12">
       <td class="side">12</td>
       <td></td>
       <td>&lt;A7C67AC1&gt;</td>
       <td><a href="GMK_ComSpot.html#93">93</a></td>
-      <td>603191145</td>
-      <td>3233018984</td>
+      <td>&lt;23F3F769&gt;</td>
+      <td><a href="C5C5F70E.html#12">12</a></td>
     </tr>
     <tr id="13">
       <td class="side">13</td>
       <td></td>
       <td>&lt;2971E3A9&gt;</td>
       <td><a href="GMK_ComSpot.html#95">95</a></td>
-      <td>2196005441</td>
-      <td>3233018984</td>
+      <td>&lt;82E46241&gt;</td>
+      <td><a href="C5C5F70E.html#12">12</a></td>
     </tr>
     <tr id="14">
       <td class="side">14</td>
       <td></td>
       <td>&lt;C64329F8&gt;</td>
       <td><a href="GMK_ComSpot.html#96">96</a></td>
-      <td>2322722490</td>
-      <td>3233018984</td>
+      <td>&lt;8A71EEBA&gt;</td>
+      <td><a href="C5C5F70E.html#12">12</a></td>
     </tr>
     <tr id="15">
       <td class="side">15</td>
       <td></td>
       <td>&lt;D953FDFB&gt;</td>
       <td><a href="GMK_ComSpot.html#97">97</a></td>
-      <td>1250129886</td>
-      <td>3233018984</td>
+      <td>&lt;4A8377DE&gt;</td>
+      <td><a href="C5C5F70E.html#12">12</a></td>
     </tr>
     <tr id="16">
       <td class="side">16</td>
       <td></td>
       <td>&lt;599F3405&gt;</td>
       <td><a href="GMK_ComSpot.html#98">98</a></td>
-      <td>603191145</td>
-      <td>3062193809</td>
+      <td>&lt;23F3F769&gt;</td>
+      <td><a href="C5C5F70E.html#13">13</a></td>
     </tr>
     <tr id="17">
       <td class="side">17</td>
       <td></td>
       <td>&lt;7472964B&gt;</td>
       <td><a href="GMK_ComSpot.html#100">100</a></td>
-      <td>2196005441</td>
-      <td>3062193809</td>
+      <td>&lt;82E46241&gt;</td>
+      <td><a href="C5C5F70E.html#13">13</a></td>
     </tr>
     <tr id="18">
       <td class="side">18</td>
       <td></td>
       <td>&lt;DE32E2BC&gt;</td>
       <td><a href="GMK_ComSpot.html#101">101</a></td>
-      <td>2322722490</td>
-      <td>3062193809</td>
+      <td>&lt;8A71EEBA&gt;</td>
+      <td><a href="C5C5F70E.html#13">13</a></td>
     </tr>
     <tr id="19">
       <td class="side">19</td>
       <td></td>
       <td>&lt;7D967938&gt;</td>
       <td><a href="GMK_ComSpot.html#102">102</a></td>
-      <td>1250129886</td>
-      <td>3062193809</td>
+      <td>&lt;4A8377DE&gt;</td>
+      <td><a href="C5C5F70E.html#13">13</a></td>
     </tr>
     <tr id="20">
       <td class="side">20</td>
       <td></td>
       <td>&lt;941FB1DA&gt;</td>
       <td><a href="GMK_ComSpot.html#89">89</a></td>
-      <td>603191145</td>
-      <td>981647541</td>
+      <td>&lt;23F3F769&gt;</td>
+      <td><a href="C5C5F70E.html#14">14</a></td>
     </tr>
     <tr id="21">
       <td class="side">21</td>
       <td></td>
       <td>&lt;7B52C097&gt;</td>
       <td><a href="GMK_ComSpot.html#90">90</a></td>
-      <td>3415000965</td>
-      <td>981647541</td>
+      <td>&lt;CB8CC785&gt;</td>
+      <td><a href="C5C5F70E.html#14">14</a></td>
     </tr>
     <tr id="22">
       <td class="side">22</td>
       <td></td>
       <td>&lt;163A24AF&gt;</td>
       <td><a href="GMK_ComSpot.html#91">91</a></td>
-      <td>603191145</td>
-      <td>1385196397</td>
+      <td>&lt;23F3F769&gt;</td>
+      <td><a href="C5C5F70E.html#15">15</a></td>
     </tr>
     <tr id="23">
       <td class="side">23</td>
       <td></td>
       <td>&lt;1327F400&gt;</td>
       <td><a href="GMK_ComSpot.html#92">92</a></td>
-      <td>3415000965</td>
-      <td>1385196397</td>
+      <td>&lt;CB8CC785&gt;</td>
+      <td><a href="C5C5F70E.html#15">15</a></td>
     </tr>
     <tr id="24">
       <td class="side">24</td>
       <td></td>
       <td>&lt;6CAE7B91&gt;</td>
       <td><a href="GMK_ComSpot.html#84">84</a></td>
-      <td>4167307323</td>
-      <td>1874039331</td>
+      <td>&lt;F864103B&gt;</td>
+      <td><a href="C5C5F70E.html#16">16</a></td>
     </tr>
     <tr id="25">
       <td class="side">25</td>
       <td></td>
       <td>&lt;B45B3E3A&gt;</td>
       <td><a href="GMK_ComSpot.html#77">77</a></td>
-      <td>3415000965</td>
-      <td>60689855</td>
+      <td>&lt;CB8CC785&gt;</td>
+      <td><a href="C5C5F70E.html#17">17</a></td>
     </tr>
     <tr id="26">
       <td class="side">26</td>
       <td></td>
       <td>&lt;DF8F2604&gt;</td>
       <td><a href="GMK_ComSpot.html#94">94</a></td>
-      <td>3415000965</td>
-      <td>1793052978</td>
+      <td>&lt;CB8CC785&gt;</td>
+      <td><a href="C5C5F70E.html#18">18</a></td>
     </tr>
     <tr id="27">
       <td class="side">27</td>
       <td></td>
       <td>&lt;70DF0E22&gt;</td>
       <td><a href="GMK_ComSpot.html#99">99</a></td>
-      <td>3415000965</td>
-      <td>3037826038</td>
+      <td>&lt;CB8CC785&gt;</td>
+      <td><a href="C5C5F70E.html#19">19</a></td>
     </tr>
     <tr id="28">
       <td class="side">28</td>
       <td></td>
       <td>&lt;D7D8DDFE&gt;</td>
       <td><a href="GMK_ComSpot.html#68">68</a></td>
-      <td>2011510539</td>
-      <td>1319270241</td>
+      <td><a href="ma15a_GMK_Location.html#1244">シティーの休息地</a></td>
+      <td><a href="C5C5F70E.html#10">10</a></td>
     </tr>
     <tr id="29">
       <td class="side">29</td>
       <td></td>
       <td>&lt;9AC45091&gt;</td>
       <td><a href="GMK_ComSpot.html#69">69</a></td>
-      <td>1662318181</td>
-      <td>2024952449</td>
+      <td><a href="ma15a_GMK_Location.html#1245">ミチバ食堂</a></td>
+      <td><a href="C5C5F70E.html#6">6</a></td>
     </tr>
     <tr id="30">
       <td class="side">30</td>
       <td></td>
       <td>&lt;BEC369DB&gt;</td>
       <td><a href="GMK_ComSpot.html#70">70</a></td>
-      <td>2318079912</td>
-      <td>1429876681</td>
+      <td><a href="ma17a_GMK_Location.html#1404">ブレイブリー 船室</a></td>
+      <td><a href="C5C5F70E.html#9">9</a></td>
     </tr>
     <tr id="31">
       <td class="side">31</td>
       <td></td>
       <td>&lt;E51C53CB&gt;</td>
       <td><a href="GMK_ComSpot.html#71">71</a></td>
-      <td>1756587734</td>
-      <td>1319270241</td>
+      <td><a href="ma17a_GMK_Location.html#1413">増幅器制御室</a></td>
+      <td><a href="C5C5F70E.html#10">10</a></td>
     </tr>
     <tr id="32">
       <td class="side">32</td>
       <td></td>
       <td>&lt;5ECC72BC&gt;</td>
       <td><a href="GMK_ComSpot.html#72">72</a></td>
-      <td>4068193442</td>
-      <td>1319270241</td>
+      <td><a href="ma17a_GMK_Location.html#1422">工廠制御室</a></td>
+      <td><a href="C5C5F70E.html#10">10</a></td>
     </tr>
     <tr id="33">
       <td class="side">33</td>
       <td></td>
       <td>&lt;EBA059BF&gt;</td>
       <td><a href="GMK_ComSpot.html#73">73</a></td>
-      <td>2984836091</td>
-      <td>1319270241</td>
+      <td><a href="ma17a_GMK_Location.html#1433">第一物資保管室</a></td>
+      <td><a href="C5C5F70E.html#10">10</a></td>
     </tr>
     <tr id="34">
       <td class="side">34</td>
       <td></td>
       <td>&lt;A152E4E6&gt;</td>
       <td><a href="GMK_ComSpot.html#74">74</a></td>
-      <td>28708656</td>
-      <td>1319270241</td>
+      <td><a href="ma17a_GMK_Location.html#1441">上層兵装保管塔</a></td>
+      <td><a href="C5C5F70E.html#10">10</a></td>
     </tr>
     <tr id="35">
       <td class="side">35</td>
       <td></td>
       <td>&lt;EB7B4DB5&gt;</td>
       <td><a href="GMK_ComSpot.html#66">66</a></td>
-      <td>2942437369</td>
-      <td>1319270241</td>
+      <td><a href="ma14a_GMK_Location.html#1005">処刑場前の集い場</a></td>
+      <td><a href="C5C5F70E.html#10">10</a></td>
     </tr>
     <tr id="36">
       <td class="side">36</td>
       <td></td>
       <td>&lt;48B7025D&gt;</td>
       <td><a href="GMK_ComSpot.html#67">67</a></td>
-      <td>553871256</td>
-      <td>2024952449</td>
+      <td><a href="ma14a_GMK_Location.html#1006">詰所の憩い場</a></td>
+      <td><a href="C5C5F70E.html#6">6</a></td>
     </tr>
     <tr id="37">
       <td class="side">37</td>
       <td></td>
       <td>&lt;19815200&gt;</td>
       <td><a href="GMK_ComSpot.html#50">50</a></td>
-      <td>4291432633</td>
-      <td>3029328616</td>
+      <td><a href="ma11a_GMK_Location.html#903">水源の休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="38">
       <td class="side">38</td>
       <td></td>
       <td>&lt;BF9ECAD4&gt;</td>
       <td><a href="GMK_ComSpot.html#51">51</a></td>
-      <td>2103470166</td>
-      <td>3029328616</td>
+      <td><a href="ma11a_GMK_Location.html#905">ビニング島の休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="39">
       <td class="side">39</td>
       <td></td>
       <td>&lt;C26D912F&gt;</td>
       <td><a href="GMK_ComSpot.html#52">52</a></td>
-      <td>268229462</td>
-      <td>3029328616</td>
+      <td><a href="ma11a_GMK_Location.html#906">コルヌ島の休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="40">
       <td class="side">40</td>
       <td></td>
       <td>&lt;2BEFE114&gt;</td>
       <td><a href="GMK_ComSpot.html#53">53</a></td>
-      <td>3900104878</td>
-      <td>3029328616</td>
+      <td><a href="ma11a_GMK_Location.html#908">砂丘島の朽ちた鉄巨神</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="41">
       <td class="side">41</td>
       <td></td>
       <td>&lt;76245325&gt;</td>
       <td><a href="GMK_ComSpot.html#54">54</a></td>
-      <td>3765647807</td>
-      <td>3029328616</td>
+      <td><a href="ma11a_GMK_Location.html#904">アヌ群島の休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="42">
       <td class="side">42</td>
       <td></td>
       <td>&lt;7B006A3E&gt;</td>
       <td><a href="GMK_ComSpot.html#55">55</a></td>
-      <td>2699332066</td>
-      <td>3029328616</td>
+      <td><a href="ma11a_GMK_Location.html#907">環礁の朽ちた鉄巨神</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="43">
       <td class="side">43</td>
       <td></td>
       <td>&lt;38305E1E&gt;</td>
       <td><a href="GMK_ComSpot.html#56">56</a></td>
-      <td>4078397183</td>
-      <td>3029328616</td>
+      <td><a href="ma11a_GMK_Location.html#910">ハーガン岬の休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="44">
       <td class="side">44</td>
       <td></td>
       <td>&lt;D3917BD6&gt;</td>
       <td><a href="GMK_ComSpot.html#57">57</a></td>
-      <td>2133399401</td>
-      <td>3029328616</td>
+      <td><a href="ma11a_GMK_Location.html#912">浸食洞窟の休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="45">
       <td class="side">45</td>
       <td></td>
       <td>&lt;281C0586&gt;</td>
       <td><a href="GMK_ComSpot.html#58">58</a></td>
-      <td>73800293</td>
-      <td>3029328616</td>
+      <td><a href="ma11a_GMK_Location.html#915">入り江の休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="46">
       <td class="side">46</td>
       <td></td>
       <td>&lt;32F496DC&gt;</td>
       <td><a href="GMK_ComSpot.html#62">62</a></td>
-      <td>1772387773</td>
-      <td>535261738</td>
+      <td><a href="ma11a_GMK_Location.html#911">第一檻房</a></td>
+      <td><a href="C5C5F70E.html#7">7</a></td>
     </tr>
     <tr id="47">
       <td class="side">47</td>
       <td></td>
       <td>&lt;D7EC7953&gt;</td>
       <td><a href="GMK_ComSpot.html#63">63</a></td>
-      <td>1475290022</td>
-      <td>535261738</td>
+      <td><a href="ma11a_GMK_Location.html#909">忘却のコロニー 兵舎</a></td>
+      <td><a href="C5C5F70E.html#7">7</a></td>
     </tr>
     <tr id="48">
       <td class="side">48</td>
       <td></td>
       <td>&lt;9F83A357&gt;</td>
       <td><a href="GMK_ComSpot.html#64">64</a></td>
-      <td>4174832698</td>
-      <td>535261738</td>
+      <td><a href="ma11a_GMK_Location.html#914">コロニーミュー兵舎</a></td>
+      <td><a href="C5C5F70E.html#7">7</a></td>
     </tr>
     <tr id="49">
       <td class="side">49</td>
       <td></td>
       <td>&lt;179C60DC&gt;</td>
       <td><a href="GMK_ComSpot.html#59">59</a></td>
-      <td>1098725566</td>
-      <td>2024952449</td>
+      <td><a href="ma11a_GMK_Location.html#913">コロニーミュー 野外食堂</a></td>
+      <td><a href="C5C5F70E.html#6">6</a></td>
     </tr>
     <tr id="50">
       <td class="side">50</td>
       <td></td>
       <td>&lt;F1831C99&gt;</td>
       <td><a href="GMK_ComSpot.html#60">60</a></td>
-      <td>679958151</td>
-      <td>2024952449</td>
+      <td><a href="ma11a_GMK_Location.html#916">中央檻房 食堂</a></td>
+      <td><a href="C5C5F70E.html#6">6</a></td>
     </tr>
     <tr id="51">
       <td class="side">51</td>
       <td></td>
       <td>&lt;C6EA2D16&gt;</td>
       <td><a href="GMK_ComSpot.html#65">65</a></td>
-      <td>1178404973</td>
-      <td>1429876681</td>
+      <td><a href="ma11a_GMK_Location.html#922">大剣の麓</a></td>
+      <td><a href="C5C5F70E.html#9">9</a></td>
     </tr>
     <tr id="52">
       <td class="side">52</td>
       <td></td>
       <td>&lt;421A3EBE&gt;</td>
       <td><a href="GMK_ComSpot.html#44">44</a></td>
-      <td>4041501984</td>
-      <td>3029328616</td>
+      <td><a href="ma09a_GMK_Location.html#664">第二浮遊岩礁の休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="53">
       <td class="side">53</td>
       <td></td>
       <td>&lt;AE68BDF3&gt;</td>
       <td><a href="GMK_ComSpot.html#48">48</a></td>
-      <td>3533844756</td>
-      <td>2024952449</td>
+      <td><a href="ma09a_GMK_Location.html#665">コロニー11 野外食堂</a></td>
+      <td><a href="C5C5F70E.html#6">6</a></td>
     </tr>
     <tr id="54">
       <td class="side">54</td>
       <td></td>
       <td>&lt;9A7B1DF5&gt;</td>
       <td><a href="GMK_ComSpot.html#49">49</a></td>
-      <td>305694878</td>
-      <td>2024952449</td>
+      <td><a href="ma09a_GMK_Location.html#666">踊るノポン亭</a></td>
+      <td><a href="C5C5F70E.html#6">6</a></td>
     </tr>
     <tr id="55">
       <td class="side">55</td>
       <td></td>
       <td>&lt;2BA04648&gt;</td>
       <td><a href="GMK_ComSpot.html#45">45</a></td>
-      <td>1764597461</td>
-      <td>1319270241</td>
+      <td><a href="ma09a_GMK_Location.html#631">第三物資保管区</a></td>
+      <td><a href="C5C5F70E.html#10">10</a></td>
     </tr>
     <tr id="56">
       <td class="side">56</td>
       <td></td>
       <td>&lt;DB2CE101&gt;</td>
       <td><a href="GMK_ComSpot.html#46">46</a></td>
-      <td>3061810587</td>
-      <td>1319270241</td>
+      <td><a href="ma09a_GMK_Location.html#632">備品保管室</a></td>
+      <td><a href="C5C5F70E.html#10">10</a></td>
     </tr>
     <tr id="57">
       <td class="side">57</td>
       <td></td>
       <td>&lt;836FA563&gt;</td>
       <td><a href="GMK_ComSpot.html#47">47</a></td>
-      <td>4113161273</td>
-      <td>1319270241</td>
+      <td><a href="ma09a_GMK_Location.html#633">高層給水路</a></td>
+      <td><a href="C5C5F70E.html#10">10</a></td>
     </tr>
     <tr id="58">
       <td class="side">58</td>
       <td></td>
       <td>&lt;80573B76&gt;</td>
       <td><a href="GMK_ComSpot.html#31">31</a></td>
-      <td>3992570401</td>
-      <td>1319270241</td>
+      <td><a href="ma07a_GMK_Location.html#472">発電所指揮室</a></td>
+      <td><a href="C5C5F70E.html#10">10</a></td>
     </tr>
     <tr id="59">
       <td class="side">59</td>
       <td></td>
       <td>&lt;893E1613&gt;</td>
       <td><a href="GMK_ComSpot.html#32">32</a></td>
-      <td>1182804370</td>
-      <td>3029328616</td>
+      <td><a href="ma07a_GMK_Location.html#473">セーヴの遺跡の休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="60">
       <td class="side">60</td>
       <td></td>
       <td>&lt;B22B6758&gt;</td>
       <td><a href="GMK_ComSpot.html#33">33</a></td>
-      <td>4040033991</td>
-      <td>3029328616</td>
+      <td><a href="ma07a_GMK_Location.html#474">巨神獣岩の休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="61">
       <td class="side">61</td>
       <td></td>
       <td>&lt;4D97B220&gt;</td>
       <td><a href="GMK_ComSpot.html#34">34</a></td>
-      <td>935924486</td>
-      <td>3029328616</td>
+      <td><a href="ma07a_GMK_Location.html#475">古道の休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="62">
       <td class="side">62</td>
       <td></td>
       <td>&lt;0435BE0F&gt;</td>
       <td><a href="GMK_ComSpot.html#35">35</a></td>
-      <td>2200340297</td>
-      <td>3029328616</td>
+      <td><a href="ma07a_GMK_Location.html#476">キラキラ池の休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="63">
       <td class="side">63</td>
       <td></td>
       <td>&lt;9E6D83AD&gt;</td>
       <td><a href="GMK_ComSpot.html#36">36</a></td>
-      <td>1001373581</td>
-      <td>3029328616</td>
+      <td><a href="ma07a_GMK_Location.html#477">四角塔の休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="64">
       <td class="side">64</td>
       <td></td>
       <td>&lt;6C896282&gt;</td>
       <td><a href="GMK_ComSpot.html#37">37</a></td>
-      <td>3735621841</td>
-      <td>3029328616</td>
+      <td><a href="ma07a_GMK_Location.html#478">エンダド峠の休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="65">
       <td class="side">65</td>
       <td></td>
       <td>&lt;8E1FAE9C&gt;</td>
       <td><a href="GMK_ComSpot.html#41">41</a></td>
-      <td>1903086098</td>
-      <td>2024952449</td>
+      <td><a href="ma07a_GMK_Location.html#480">コロニーラムダ 洞内食堂</a></td>
+      <td><a href="C5C5F70E.html#6">6</a></td>
     </tr>
     <tr id="66">
       <td class="side">66</td>
       <td></td>
       <td>&lt;1A9420C7&gt;</td>
       <td><a href="GMK_ComSpot.html#38">38</a></td>
-      <td>972955757</td>
-      <td>3029328616</td>
+      <td><a href="ma07a_GMK_Location.html#479">コロニーラムダ前 野営地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="67">
       <td class="side">67</td>
       <td></td>
       <td>&lt;26F4E10F&gt;</td>
       <td><a href="GMK_ComSpot.html#42">42</a></td>
-      <td>2716328358</td>
-      <td>2024952449</td>
+      <td><a href="ma07a_GMK_Location.html#481">コロニータウ 野外食堂</a></td>
+      <td><a href="C5C5F70E.html#6">6</a></td>
     </tr>
     <tr id="68">
       <td class="side">68</td>
       <td></td>
       <td>&lt;FEC003EF&gt;</td>
       <td><a href="GMK_ComSpot.html#39">39</a></td>
-      <td>4020594953</td>
-      <td>3029328616</td>
+      <td><a href="ma07a_GMK_Location.html#482">滝間の朽ちた鉄巨神</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="69">
       <td class="side">69</td>
       <td></td>
       <td>&lt;9C2D63D7&gt;</td>
       <td><a href="GMK_ComSpot.html#40">40</a></td>
-      <td>782116154</td>
-      <td>3029328616</td>
+      <td><a href="ma07a_GMK_Location.html#483">崖上の朽ちた鉄巨神</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="70">
       <td class="side">70</td>
       <td></td>
       <td>&lt;9569DFBA&gt;</td>
       <td><a href="GMK_ComSpot.html#19">19</a></td>
-      <td>3242607178</td>
-      <td>3029328616</td>
+      <td><a href="ma04a_GMK_Location.html#230">レセント湖の休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="71">
       <td class="side">71</td>
       <td></td>
       <td>&lt;AD0B6221&gt;</td>
       <td><a href="GMK_ComSpot.html#20">20</a></td>
-      <td>197312015</td>
-      <td>3029328616</td>
+      <td><a href="ma04a_GMK_Location.html#231">ベネル洞窟の休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="72">
       <td class="side">72</td>
       <td></td>
       <td>&lt;875250DA&gt;</td>
       <td><a href="GMK_ComSpot.html#21">21</a></td>
-      <td>426222665</td>
-      <td>3029328616</td>
+      <td><a href="ma04a_GMK_Location.html#260">シテン林野の休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="73">
       <td class="side">73</td>
       <td></td>
       <td>&lt;93CEC3D3&gt;</td>
       <td><a href="GMK_ComSpot.html#22">22</a></td>
-      <td>3736312143</td>
-      <td>3029328616</td>
+      <td><a href="ma04a_GMK_Location.html#286">ナバム丘陵の休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="74">
       <td class="side">74</td>
       <td></td>
       <td>&lt;93E52013&gt;</td>
       <td><a href="GMK_ComSpot.html#23">23</a></td>
-      <td>2936693837</td>
-      <td>3029328616</td>
+      <td><a href="ma04a_GMK_Location.html#310">ネウス湖の休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="75">
       <td class="side">75</td>
       <td></td>
       <td>&lt;A0344800&gt;</td>
       <td><a href="GMK_ComSpot.html#24">24</a></td>
-      <td>2806100463</td>
-      <td>3029328616</td>
+      <td><a href="ma04a_GMK_Location.html#334">セイラス段丘の休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="76">
       <td class="side">76</td>
       <td></td>
       <td>&lt;F8BB0368&gt;</td>
       <td><a href="GMK_ComSpot.html#25">25</a></td>
-      <td>3538873798</td>
-      <td>3029328616</td>
+      <td><a href="ma04a_GMK_Location.html#287">砂漠の朽ちた鉄巨神</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="77">
       <td class="side">77</td>
       <td></td>
       <td>&lt;2868F8E7&gt;</td>
       <td><a href="GMK_ComSpot.html#26">26</a></td>
-      <td>2371162564</td>
-      <td>3029328616</td>
+      <td><a href="ma04a_GMK_Location.html#335">高原の朽ちた鉄巨神</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="78">
       <td class="side">78</td>
       <td></td>
       <td>&lt;132868CE&gt;</td>
       <td><a href="GMK_ComSpot.html#27">27</a></td>
-      <td>85820419</td>
-      <td>2024952449</td>
+      <td><a href="ma04a_GMK_Location.html#232">コロニー4 野外食堂</a></td>
+      <td><a href="C5C5F70E.html#6">6</a></td>
     </tr>
     <tr id="79">
       <td class="side">79</td>
       <td></td>
       <td>&lt;02872F25&gt;</td>
       <td><a href="GMK_ComSpot.html#30">30</a></td>
-      <td>1779698682</td>
-      <td>535261738</td>
+      <td><a href="ma04a_GMK_Location.html#233">コロニー4 兵舎天幕</a></td>
+      <td><a href="C5C5F70E.html#7">7</a></td>
     </tr>
     <tr id="80">
       <td class="side">80</td>
       <td></td>
       <td>&lt;124E6E6B&gt;</td>
       <td><a href="GMK_ComSpot.html#28">28</a></td>
-      <td>4138758783</td>
-      <td>2024952449</td>
+      <td><a href="ma04a_GMK_Location.html#261">コロニーイオタ 野外食堂</a></td>
+      <td><a href="C5C5F70E.html#6">6</a></td>
     </tr>
     <tr id="81">
       <td class="side">81</td>
       <td></td>
       <td>&lt;00DCE236&gt;</td>
       <td><a href="GMK_ComSpot.html#29">29</a></td>
-      <td>2225920164</td>
-      <td>2024952449</td>
+      <td><a href="ma04a_GMK_Location.html#311">コロニー30 洞内食堂</a></td>
+      <td><a href="C5C5F70E.html#6">6</a></td>
     </tr>
     <tr id="82">
       <td class="side">82</td>
       <td></td>
       <td>&lt;8939FFBD&gt;</td>
       <td><a href="GMK_ComSpot.html#6">6</a></td>
-      <td>1789428264</td>
-      <td>1520729250</td>
+      <td><a href="ma01a_GMK_Location.html#61">先陣の野営地</a></td>
+      <td><a href="C5C5F70E.html#8">8</a></td>
     </tr>
     <tr id="83">
       <td class="side">83</td>
       <td></td>
       <td>&lt;C0056FDA&gt;</td>
       <td><a href="GMK_ComSpot.html#7">7</a></td>
-      <td>1789428264</td>
-      <td>3029328616</td>
+      <td><a href="ma01a_GMK_Location.html#61">先陣の野営地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="84">
       <td class="side">84</td>
       <td></td>
       <td>&lt;96DB5931&gt;</td>
       <td><a href="GMK_ComSpot.html#8">8</a></td>
-      <td>212509250</td>
-      <td>3029328616</td>
+      <td><a href="ma01a_GMK_Location.html#62">グラ・フラバの休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="85">
       <td class="side">85</td>
       <td></td>
       <td>&lt;A3963AAF&gt;</td>
       <td><a href="GMK_ComSpot.html#9">9</a></td>
-      <td>3889743088</td>
-      <td>3029328616</td>
+      <td><a href="ma01a_GMK_Location.html#63">丘陵の朽ちた鉄巨神</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="86">
       <td class="side">86</td>
       <td></td>
       <td>&lt;6AAD67E6&gt;</td>
       <td><a href="GMK_ComSpot.html#10">10</a></td>
-      <td>2537288584</td>
-      <td>3029328616</td>
+      <td><a href="ma01a_GMK_Location.html#65">クーレル水脈の休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="87">
       <td class="side">87</td>
       <td></td>
       <td>&lt;DC2F9408&gt;</td>
       <td><a href="GMK_ComSpot.html#11">11</a></td>
-      <td>2387018400</td>
-      <td>3029328616</td>
+      <td><a href="ma01a_GMK_Location.html#66">古戦場跡の朽ちた鉄巨神</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="88">
       <td class="side">88</td>
       <td></td>
       <td>&lt;0D176E27&gt;</td>
       <td><a href="GMK_ComSpot.html#12">12</a></td>
-      <td>1855003065</td>
-      <td>3029328616</td>
+      <td><a href="ma01a_GMK_Location.html#67">ザンクの休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="89">
       <td class="side">89</td>
       <td></td>
       <td>&lt;05D33C25&gt;</td>
       <td><a href="GMK_ComSpot.html#13">13</a></td>
-      <td>2269793900</td>
-      <td>3029328616</td>
+      <td><a href="ma01a_GMK_Location.html#68">コロニーオメガの休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="90">
       <td class="side">90</td>
       <td></td>
       <td>&lt;96533613&gt;</td>
       <td><a href="GMK_ComSpot.html#14">14</a></td>
-      <td>3479315921</td>
-      <td>3029328616</td>
+      <td><a href="ma01a_GMK_Location.html#69">ラドラスの休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="91">
       <td class="side">91</td>
       <td></td>
       <td>&lt;590D0E1D&gt;</td>
       <td><a href="GMK_ComSpot.html#15">15</a></td>
-      <td>1480729197</td>
-      <td>3029328616</td>
+      <td><a href="ma01a_GMK_Location.html#70">地下洞窟の休息地</a></td>
+      <td><a href="C5C5F70E.html#5">5</a></td>
     </tr>
     <tr id="92">
       <td class="side">92</td>
       <td></td>
       <td>&lt;B6B9B823&gt;</td>
       <td><a href="GMK_ComSpot.html#16">16</a></td>
-      <td>828214346</td>
-      <td>2024952449</td>
+      <td><a href="ma01a_GMK_Location.html#60">コロニー9 野外食堂</a></td>
+      <td><a href="C5C5F70E.html#6">6</a></td>
     </tr>
     <tr id="93">
       <td class="side">93</td>
       <td></td>
       <td>&lt;50BA5F6A&gt;</td>
       <td><a href="GMK_ComSpot.html#17">17</a></td>
-      <td>1722752122</td>
-      <td>2024952449</td>
+      <td><a href="ma01a_GMK_Location.html#64">コロニーガンマ 野外食堂</a></td>
+      <td><a href="C5C5F70E.html#6">6</a></td>
     </tr>
     <tr id="94">
       <td class="side">94</td>
       <td></td>
       <td>&lt;568F9284&gt;</td>
       <td><a href="GMK_ComSpot.html#18">18</a></td>
-      <td>519441856</td>
-      <td>535261738</td>
+      <td><a href="ma01a_GMK_Location.html#59">コロニー9 兵舎天幕</a></td>
+      <td><a href="C5C5F70E.html#7">7</a></td>
     </tr>
   </table>
 </body>

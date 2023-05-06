@@ -30,44 +30,83 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>ma17a_GMK_Collection</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>Condition</th>
-      <th>ItemId1</th>
-      <th>ItemRate1</th>
-      <th>ItemId2</th>
-      <th>ItemRate2</th>
-      <th>ItemId3</th>
-      <th>ItemRate3</th>
-      <th>ItemId4</th>
-      <th>ItemRate4</th>
-      <th>ItemId5</th>
-      <th>ItemRate5</th>
-      <th>ItemId6</th>
-      <th>ItemRate6</th>
-      <th>ItemId7</th>
-      <th>ItemRate7</th>
-      <th>ItemId8</th>
-      <th>ItemRate8</th>
-      <th>ItemId9</th>
-      <th>ItemRate9</th>
-      <th>ItemId10</th>
-      <th>ItemRate10</th>
-      <th>ItemCountMin</th>
-      <th>ItemCountMax</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">Condition</th>
+      <th onclick="sortColumn(this, 4, 0)">ItemId1</th>
+      <th onclick="sortColumn(this, 5, 0)">ItemRate1</th>
+      <th onclick="sortColumn(this, 6, 0)">ItemId2</th>
+      <th onclick="sortColumn(this, 7, 0)">ItemRate2</th>
+      <th onclick="sortColumn(this, 8, 0)">ItemId3</th>
+      <th onclick="sortColumn(this, 9, 0)">ItemRate3</th>
+      <th onclick="sortColumn(this, 10, 0)">ItemId4</th>
+      <th onclick="sortColumn(this, 11, 0)">ItemRate4</th>
+      <th onclick="sortColumn(this, 12, 0)">ItemId5</th>
+      <th onclick="sortColumn(this, 13, 0)">ItemRate5</th>
+      <th onclick="sortColumn(this, 14, 0)">ItemId6</th>
+      <th onclick="sortColumn(this, 15, 0)">ItemRate6</th>
+      <th onclick="sortColumn(this, 16, 0)">ItemId7</th>
+      <th onclick="sortColumn(this, 17, 0)">ItemRate7</th>
+      <th onclick="sortColumn(this, 18, 0)">ItemId8</th>
+      <th onclick="sortColumn(this, 19, 0)">ItemRate8</th>
+      <th onclick="sortColumn(this, 20, 0)">ItemId9</th>
+      <th onclick="sortColumn(this, 21, 0)">ItemRate9</th>
+      <th onclick="sortColumn(this, 22, 0)">ItemId10</th>
+      <th onclick="sortColumn(this, 23, 0)">ItemRate10</th>
+      <th onclick="sortColumn(this, 24, 0)">ItemCountMin</th>
+      <th onclick="sortColumn(this, 25, 0)">ItemCountMax</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>
       <td>
         <details>
-          <summary>148 refs</summary>
+          <summary>147 refs</summary>
                <a href="SYS_GimmickLocation.html#1851">SYS_GimmickLocation#<D690B5E2></a>
           <br/><a href="SYS_GimmickLocation.html#1852">SYS_GimmickLocation#<8D467A28></a>
           <br/><a href="SYS_GimmickLocation.html#1853">SYS_GimmickLocation#<4D6D7AD7></a>
@@ -215,7 +254,6 @@
           <br/><a href="SYS_GimmickLocation.html#1995">SYS_GimmickLocation#<DC6793EC></a>
           <br/><a href="SYS_GimmickLocation.html#1996">SYS_GimmickLocation#<2D2C8A79></a>
           <br/><a href="SYS_GimmickLocation.html#1997">SYS_GimmickLocation#<6437101C></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#1860">SYS_GimmickLocation_dlc02#1860</a>
         </details>
       </td>
       <td>&lt;D690B5E2&gt;</td>
@@ -245,12 +283,7 @@
     </tr>
     <tr id="2">
       <td class="side">2</td>
-      <td>
-        <details>
-          <summary>1 refs</summary>
-               <a href="SYS_GimmickLocation_dlc02.html#1910">SYS_GimmickLocation_dlc02#1910</a>
-        </details>
-      </td>
+      <td></td>
       <td>&lt;F491BC08&gt;</td>
       <td></td>
       <td><a href="ITM_Collection.html#2372">ノヴァドライブ</a></td>
@@ -278,12 +311,7 @@
     </tr>
     <tr id="3">
       <td class="side">3</td>
-      <td>
-        <details>
-          <summary>1 refs</summary>
-               <a href="SYS_GimmickLocation_dlc02.html#1987">SYS_GimmickLocation_dlc02#1987</a>
-        </details>
-      </td>
+      <td></td>
       <td>&lt;EDDCC1F9&gt;</td>
       <td></td>
       <td><a href="ITM_Collection.html#2372">ノヴァドライブ</a></td>
@@ -313,7 +341,7 @@
       <td class="side">4</td>
       <td>
         <details>
-          <summary>143 refs</summary>
+          <summary>142 refs</summary>
                <a href="SYS_GimmickLocation.html#1998">SYS_GimmickLocation#<F69BC7EE></a>
           <br/><a href="SYS_GimmickLocation.html#1999">SYS_GimmickLocation#<9A1AF231></a>
           <br/><a href="SYS_GimmickLocation.html#2000">SYS_GimmickLocation#<D24708CF></a>
@@ -456,7 +484,6 @@
           <br/><a href="SYS_GimmickLocation.html#2137">SYS_GimmickLocation#<D6E14B99></a>
           <br/><a href="SYS_GimmickLocation.html#2138">SYS_GimmickLocation#<8496D860></a>
           <br/><a href="SYS_GimmickLocation.html#2139">SYS_GimmickLocation#<8D7EF9DE></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#2007">SYS_GimmickLocation_dlc02#2007</a>
         </details>
       </td>
       <td>&lt;F69BC7EE&gt;</td>
@@ -486,12 +513,7 @@
     </tr>
     <tr id="5">
       <td class="side">5</td>
-      <td>
-        <details>
-          <summary>1 refs</summary>
-               <a href="SYS_GimmickLocation_dlc02.html#2050">SYS_GimmickLocation_dlc02#2050</a>
-        </details>
-      </td>
+      <td></td>
       <td>&lt;A1050A9E&gt;</td>
       <td></td>
       <td><a href="ITM_Collection.html#2372">ノヴァドライブ</a></td>
@@ -519,12 +541,7 @@
     </tr>
     <tr id="6">
       <td class="side">6</td>
-      <td>
-        <details>
-          <summary>1 refs</summary>
-               <a href="SYS_GimmickLocation_dlc02.html#2104">SYS_GimmickLocation_dlc02#2104</a>
-        </details>
-      </td>
+      <td></td>
       <td>&lt;EC39FA9B&gt;</td>
       <td></td>
       <td><a href="ITM_Collection.html#2372">ノヴァドライブ</a></td>

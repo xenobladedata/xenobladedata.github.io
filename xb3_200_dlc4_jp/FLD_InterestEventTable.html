@@ -30,45 +30,84 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>FLD_InterestEventTable</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>StartEvent1</th>
-      <th>ReactionEvent1</th>
-      <th>Condition1</th>
-      <th>Repeatable1</th>
-      <th>EndFlag1</th>
-      <th>StartEvent2</th>
-      <th>ReactionEvent2</th>
-      <th>Condition2</th>
-      <th>Repeatable2</th>
-      <th>EndFlag2</th>
-      <th>StartEvent3</th>
-      <th>ReactionEvent3</th>
-      <th>Condition3</th>
-      <th>Repeatable3</th>
-      <th>EndFlag3</th>
-      <th>StartEvent4</th>
-      <th>ReactionEvent4</th>
-      <th>Condition4</th>
-      <th>Repeatable4</th>
-      <th>EndFlag4</th>
-      <th>StartEvent5</th>
-      <th>ReactionEvent5</th>
-      <th>Condition5</th>
-      <th>Repeatable5</th>
-      <th>EndFlag5</th>
-      <th>StartEvent6</th>
-      <th>ReactionEvent6</th>
-      <th>Condition6</th>
-      <th>Repeatable6</th>
-      <th>EndFlag6</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">StartEvent1</th>
+      <th onclick="sortColumn(this, 4, 0)">ReactionEvent1</th>
+      <th onclick="sortColumn(this, 5, 0)">Condition1</th>
+      <th onclick="sortColumn(this, 6, 0)">Repeatable1</th>
+      <th onclick="sortColumn(this, 7, 0)">EndFlag1</th>
+      <th onclick="sortColumn(this, 8, 0)">StartEvent2</th>
+      <th onclick="sortColumn(this, 9, 0)">ReactionEvent2</th>
+      <th onclick="sortColumn(this, 10, 0)">Condition2</th>
+      <th onclick="sortColumn(this, 11, 0)">Repeatable2</th>
+      <th onclick="sortColumn(this, 12, 0)">EndFlag2</th>
+      <th onclick="sortColumn(this, 13, 0)">StartEvent3</th>
+      <th onclick="sortColumn(this, 14, 0)">ReactionEvent3</th>
+      <th onclick="sortColumn(this, 15, 0)">Condition3</th>
+      <th onclick="sortColumn(this, 16, 0)">Repeatable3</th>
+      <th onclick="sortColumn(this, 17, 0)">EndFlag3</th>
+      <th onclick="sortColumn(this, 18, 0)">StartEvent4</th>
+      <th onclick="sortColumn(this, 19, 0)">ReactionEvent4</th>
+      <th onclick="sortColumn(this, 20, 0)">Condition4</th>
+      <th onclick="sortColumn(this, 21, 0)">Repeatable4</th>
+      <th onclick="sortColumn(this, 22, 0)">EndFlag4</th>
+      <th onclick="sortColumn(this, 23, 0)">StartEvent5</th>
+      <th onclick="sortColumn(this, 24, 0)">ReactionEvent5</th>
+      <th onclick="sortColumn(this, 25, 0)">Condition5</th>
+      <th onclick="sortColumn(this, 26, 0)">Repeatable5</th>
+      <th onclick="sortColumn(this, 27, 0)">EndFlag5</th>
+      <th onclick="sortColumn(this, 28, 0)">StartEvent6</th>
+      <th onclick="sortColumn(this, 29, 0)">ReactionEvent6</th>
+      <th onclick="sortColumn(this, 30, 0)">Condition6</th>
+      <th onclick="sortColumn(this, 31, 0)">Repeatable6</th>
+      <th onclick="sortColumn(this, 32, 0)">EndFlag6</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>

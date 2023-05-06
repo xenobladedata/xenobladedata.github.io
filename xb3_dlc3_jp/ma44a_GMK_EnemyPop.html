@@ -30,69 +30,108 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>ma44a_GMK_EnemyPop</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>Condition</th>
-      <th>EnemyID1</th>
-      <th>LvCorrection1</th>
-      <th>PopRate1</th>
-      <th>PopCount1</th>
-      <th>AiSetting1</th>
-      <th>AppMot1</th>
-      <th>Elite1</th>
-      <th>EnemyID2</th>
-      <th>LvCorrection2</th>
-      <th>PopRate2</th>
-      <th>PopCount2</th>
-      <th>AiSetting2</th>
-      <th>AppMot2</th>
-      <th>Elite2</th>
-      <th>EnemyID3</th>
-      <th>LvCorrection3</th>
-      <th>PopRate3</th>
-      <th>PopCount3</th>
-      <th>AiSetting3</th>
-      <th>AppMot3</th>
-      <th>Elite3</th>
-      <th>EnemyID4</th>
-      <th>LvCorrection4</th>
-      <th>PopRate4</th>
-      <th>PopCount4</th>
-      <th>AiSetting4</th>
-      <th>AppMot4</th>
-      <th>Elite4</th>
-      <th>EnemyID5</th>
-      <th>LvCorrection5</th>
-      <th>PopRate5</th>
-      <th>PopCount5</th>
-      <th>AiSetting5</th>
-      <th>AppMot5</th>
-      <th>Elite5</th>
-      <th>EnemyID6</th>
-      <th>LvCorrection6</th>
-      <th>PopRate6</th>
-      <th>PopCount6</th>
-      <th>AiSetting6</th>
-      <th>AppMot6</th>
-      <th>Elite6</th>
-      <th>GroupFlg</th>
-      <th>GroupName</th>
-      <th>field_431EA9CD</th>
-      <th>PopRange</th>
-      <th>PopHeight</th>
-      <th>BattleRockID</th>
-      <th>ConditionNoTarget</th>
-      <th>field_0E1C2546</th>
-      <th>LegionFlg</th>
-      <th>DirtLevel</th>
-      <th>field_04F82A20</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">Condition</th>
+      <th onclick="sortColumn(this, 4, 0)">EnemyID1</th>
+      <th onclick="sortColumn(this, 5, 0)">LvCorrection1</th>
+      <th onclick="sortColumn(this, 6, 0)">PopRate1</th>
+      <th onclick="sortColumn(this, 7, 0)">PopCount1</th>
+      <th onclick="sortColumn(this, 8, 0)">AiSetting1</th>
+      <th onclick="sortColumn(this, 9, 0)">AppMot1</th>
+      <th onclick="sortColumn(this, 10, 0)">Elite1</th>
+      <th onclick="sortColumn(this, 11, 0)">EnemyID2</th>
+      <th onclick="sortColumn(this, 12, 0)">LvCorrection2</th>
+      <th onclick="sortColumn(this, 13, 0)">PopRate2</th>
+      <th onclick="sortColumn(this, 14, 0)">PopCount2</th>
+      <th onclick="sortColumn(this, 15, 0)">AiSetting2</th>
+      <th onclick="sortColumn(this, 16, 0)">AppMot2</th>
+      <th onclick="sortColumn(this, 17, 0)">Elite2</th>
+      <th onclick="sortColumn(this, 18, 0)">EnemyID3</th>
+      <th onclick="sortColumn(this, 19, 0)">LvCorrection3</th>
+      <th onclick="sortColumn(this, 20, 0)">PopRate3</th>
+      <th onclick="sortColumn(this, 21, 0)">PopCount3</th>
+      <th onclick="sortColumn(this, 22, 0)">AiSetting3</th>
+      <th onclick="sortColumn(this, 23, 0)">AppMot3</th>
+      <th onclick="sortColumn(this, 24, 0)">Elite3</th>
+      <th onclick="sortColumn(this, 25, 0)">EnemyID4</th>
+      <th onclick="sortColumn(this, 26, 0)">LvCorrection4</th>
+      <th onclick="sortColumn(this, 27, 0)">PopRate4</th>
+      <th onclick="sortColumn(this, 28, 0)">PopCount4</th>
+      <th onclick="sortColumn(this, 29, 0)">AiSetting4</th>
+      <th onclick="sortColumn(this, 30, 0)">AppMot4</th>
+      <th onclick="sortColumn(this, 31, 0)">Elite4</th>
+      <th onclick="sortColumn(this, 32, 0)">EnemyID5</th>
+      <th onclick="sortColumn(this, 33, 0)">LvCorrection5</th>
+      <th onclick="sortColumn(this, 34, 0)">PopRate5</th>
+      <th onclick="sortColumn(this, 35, 0)">PopCount5</th>
+      <th onclick="sortColumn(this, 36, 0)">AiSetting5</th>
+      <th onclick="sortColumn(this, 37, 0)">AppMot5</th>
+      <th onclick="sortColumn(this, 38, 0)">Elite5</th>
+      <th onclick="sortColumn(this, 39, 0)">EnemyID6</th>
+      <th onclick="sortColumn(this, 40, 0)">LvCorrection6</th>
+      <th onclick="sortColumn(this, 41, 0)">PopRate6</th>
+      <th onclick="sortColumn(this, 42, 0)">PopCount6</th>
+      <th onclick="sortColumn(this, 43, 0)">AiSetting6</th>
+      <th onclick="sortColumn(this, 44, 0)">AppMot6</th>
+      <th onclick="sortColumn(this, 45, 0)">Elite6</th>
+      <th onclick="sortColumn(this, 46, 0)">GroupFlg</th>
+      <th onclick="sortColumn(this, 47, 2)">GroupName</th>
+      <th onclick="sortColumn(this, 48, 0)">field_431EA9CD</th>
+      <th onclick="sortColumn(this, 49, 0)">PopRange</th>
+      <th onclick="sortColumn(this, 50, 0)">PopHeight</th>
+      <th onclick="sortColumn(this, 51, 2)">BattleRockID</th>
+      <th onclick="sortColumn(this, 52, 2)">ConditionNoTarget</th>
+      <th onclick="sortColumn(this, 53, 0)">field_0E1C2546</th>
+      <th onclick="sortColumn(this, 54, 0)">LegionFlg</th>
+      <th onclick="sortColumn(this, 55, 1)">DirtLevel</th>
+      <th onclick="sortColumn(this, 56, 2)">field_04F82A20</th>
     </tr>
   </table>
 </body>

@@ -30,17 +30,56 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>ma40a_GMK_EnemyAff</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>Condition</th>
-      <th>Affordance</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">Condition</th>
+      <th onclick="sortColumn(this, 4, 0)">Affordance</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>
@@ -61,8 +100,8 @@
       <td>
         <details>
           <summary>3 refs</summary>
-               <a href="A24FAA23.html#13">A24FAA23#13</a>
-          <br/><a href="FLD_ConditionMapGimmick.html#40">FLD_ConditionMapGimmick#40</a>
+               <a href="FLD_ConditionMapGimmick.html#40">FLD_ConditionMapGimmick#40</a>
+          <br/><a href="FLD_MapAchievementSearch.html#13">FLD_MapAchievementSearch#13</a>
           <br/><a href="SYS_GimmickLocation_dlc04.html#972">SYS_GimmickLocation_dlc04#<1ACA0FE1></a>
         </details>
       </td>
@@ -83,8 +122,8 @@
         <details>
           <summary>4 refs</summary>
                <a href="46B9A047.html#3">46B9A047#3</a>
-          <br/><a href="A24FAA23.html#27">A24FAA23#27</a>
           <br/><a href="FLD_ConditionMapGimmick.html#41">FLD_ConditionMapGimmick#41</a>
+          <br/><a href="FLD_MapAchievementSearch.html#27">FLD_MapAchievementSearch#27</a>
           <br/><a href="SYS_GimmickLocation_dlc04.html#973">SYS_GimmickLocation_dlc04#<D5D0BE06></a>
         </details>
       </td>
@@ -98,8 +137,8 @@
         <details>
           <summary>4 refs</summary>
                <a href="46B9A047.html#13">46B9A047#13</a>
-          <br/><a href="A24FAA23.html#27">A24FAA23#27</a>
           <br/><a href="FLD_ConditionMapGimmick.html#42">FLD_ConditionMapGimmick#42</a>
+          <br/><a href="FLD_MapAchievementSearch.html#27">FLD_MapAchievementSearch#27</a>
           <br/><a href="SYS_GimmickLocation_dlc04.html#974">SYS_GimmickLocation_dlc04#<FDD001C4></a>
         </details>
       </td>
@@ -112,8 +151,8 @@
       <td>
         <details>
           <summary>3 refs</summary>
-               <a href="A24FAA23.html#27">A24FAA23#27</a>
-          <br/><a href="FLD_ConditionMapGimmick.html#43">FLD_ConditionMapGimmick#43</a>
+               <a href="FLD_ConditionMapGimmick.html#43">FLD_ConditionMapGimmick#43</a>
+          <br/><a href="FLD_MapAchievementSearch.html#27">FLD_MapAchievementSearch#27</a>
           <br/><a href="SYS_GimmickLocation_dlc04.html#975">SYS_GimmickLocation_dlc04#<4EA3F6B3></a>
         </details>
       </td>
@@ -126,8 +165,8 @@
       <td>
         <details>
           <summary>3 refs</summary>
-               <a href="A24FAA23.html#27">A24FAA23#27</a>
-          <br/><a href="FLD_ConditionMapGimmick.html#44">FLD_ConditionMapGimmick#44</a>
+               <a href="FLD_ConditionMapGimmick.html#44">FLD_ConditionMapGimmick#44</a>
+          <br/><a href="FLD_MapAchievementSearch.html#27">FLD_MapAchievementSearch#27</a>
           <br/><a href="SYS_GimmickLocation_dlc04.html#976">SYS_GimmickLocation_dlc04#<6930434A></a>
         </details>
       </td>
@@ -147,8 +186,8 @@
       <td>
         <details>
           <summary>3 refs</summary>
-               <a href="A24FAA23.html#41">A24FAA23#41</a>
-          <br/><a href="FLD_ConditionMapGimmick.html#45">FLD_ConditionMapGimmick#45</a>
+               <a href="FLD_ConditionMapGimmick.html#45">FLD_ConditionMapGimmick#45</a>
+          <br/><a href="FLD_MapAchievementSearch.html#41">FLD_MapAchievementSearch#41</a>
           <br/><a href="SYS_GimmickLocation_dlc04.html#977">SYS_GimmickLocation_dlc04#<8FEFF483></a>
         </details>
       </td>
@@ -168,8 +207,8 @@
       <td>
         <details>
           <summary>3 refs</summary>
-               <a href="A24FAA23.html#55">A24FAA23#55</a>
-          <br/><a href="FLD_ConditionMapGimmick.html#46">FLD_ConditionMapGimmick#46</a>
+               <a href="FLD_ConditionMapGimmick.html#46">FLD_ConditionMapGimmick#46</a>
+          <br/><a href="FLD_MapAchievementSearch.html#55">FLD_MapAchievementSearch#55</a>
           <br/><a href="SYS_GimmickLocation_dlc04.html#978">SYS_GimmickLocation_dlc04#<6F1385AE></a>
         </details>
       </td>
@@ -183,8 +222,8 @@
         <details>
           <summary>4 refs</summary>
                <a href="46B9A047.html#8">46B9A047#8</a>
-          <br/><a href="A24FAA23.html#55">A24FAA23#55</a>
           <br/><a href="FLD_ConditionMapGimmick.html#47">FLD_ConditionMapGimmick#47</a>
+          <br/><a href="FLD_MapAchievementSearch.html#55">FLD_MapAchievementSearch#55</a>
           <br/><a href="SYS_GimmickLocation_dlc04.html#979">SYS_GimmickLocation_dlc04#<EF8DBBCB></a>
         </details>
       </td>
@@ -219,8 +258,8 @@
         <details>
           <summary>4 refs</summary>
                <a href="46B9A047.html#14">46B9A047#14</a>
-          <br/><a href="A24FAA23.html#69">A24FAA23#69</a>
           <br/><a href="FLD_ConditionMapGimmick.html#48">FLD_ConditionMapGimmick#48</a>
+          <br/><a href="FLD_MapAchievementSearch.html#69">FLD_MapAchievementSearch#69</a>
           <br/><a href="SYS_GimmickLocation_dlc04.html#980">SYS_GimmickLocation_dlc04#<F793B25D></a>
         </details>
       </td>
@@ -234,8 +273,8 @@
         <details>
           <summary>4 refs</summary>
                <a href="46B9A047.html#10">46B9A047#10</a>
-          <br/><a href="A24FAA23.html#69">A24FAA23#69</a>
           <br/><a href="FLD_ConditionMapGimmick.html#49">FLD_ConditionMapGimmick#49</a>
+          <br/><a href="FLD_MapAchievementSearch.html#69">FLD_MapAchievementSearch#69</a>
           <br/><a href="SYS_GimmickLocation_dlc04.html#981">SYS_GimmickLocation_dlc04#<2999036E></a>
         </details>
       </td>

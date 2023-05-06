@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <title>msg_fev13085120</title>
+  <style type="text/css">
+    table, th, td {border: 1px solid #000000; border-collapse: collapse;}
+    table {border-width: 3px;}
+    th, td {padding: 0.1em 0.2em;}
+    tr.head th, tr.head td {border-bottom-width: 3px;}
+    th.colbreak, td.colbreak {border-right-width: 3px;}
+    th {text-align: center; position: sticky; top: -1px; background-color: #F0F0F0;}
+    .side {position: sticky; left: -1px; background-color: #F0F0F0;}
+    th.side {z-index: 3;}
+    td {text-align: left;}
+    td.right {text-align: right;}
+    .sortable tbody tr:nth-child(odd) {background: #F5F5F5;}
+    .sortable th {background: #E4E4E4; cursor: pointer; white-space: nowrap; vertical-align: middle;}
+    .sortable th.dir-d::after {content:" ▾"; vertical-align: inherit;}
+    .sortable th.dir-u::after {content:" ▴"; vertical-align: inherit;}
+    :target td {background-color: #CCCCCC !important;}
+  </style>
+  <script type="text/javascript">
+    function offsetAnchor() {
+      if (location.hash.length !== 0) {
+        window.scrollTo(window.scrollX, window.scrollY - document.getElementById("header").clientHeight);
+      }
+    }
+    window.addEventListener("hashchange", offsetAnchor);
+    window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
+  </script>
+</head>
+<body>
+  <table class="sortable">
+    <h2>msg_fev13085120</h2>
+    <tr id="header">
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
+      <th>Referenced By</th>
+      <th onclick="sortColumn(this, 2, 2)">label</th>
+      <th onclick="sortColumn(this, 3, 2)">talker</th>
+      <th onclick="sortColumn(this, 4, 0)">talkattr</th>
+      <th onclick="sortColumn(this, 5, 0)">talkattr2</th>
+      <th onclick="sortColumn(this, 6, 0)">talkattr3</th>
+      <th onclick="sortColumn(this, 7, 0)">style</th>
+      <th onclick="sortColumn(this, 8, 2)">name</th>
+    </tr>
+    <tr id="1">
+      <td class="side">1</td>
+      <td></td>
+      <td>&lt;D5185A64&gt;</td>
+      <td>gq1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>And these will be your tents.</td>
+    </tr>
+    <tr id="2">
+      <td class="side">2</td>
+      <td></td>
+      <td>&lt;A46F24C0&gt;</td>
+      <td>gq1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Feel free to use all the facilities<br />here at your leisure.</td>
+    </tr>
+    <tr id="3">
+      <td class="side">3</td>
+      <td></td>
+      <td>&lt;AB96EE05&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>We'll make the most of it.<br />Thanks, for everything.</td>
+    </tr>
+    <tr id="4">
+      <td class="side">4</td>
+      <td></td>
+      <td>&lt;E023F984&gt;</td>
+      <td>gq1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>...It's all right. All in a day's work.</td>
+    </tr>
+    <tr id="5">
+      <td class="side">5</td>
+      <td></td>
+      <td>&lt;19C29B0D&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>All right then... It's a bit early to turn in still,<br />so what say we have a little nose around?</td>
+    </tr>
+    <tr id="6">
+      <td class="side">6</td>
+      <td></td>
+      <td>&lt;871F81FF&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>...Ah, that reminds me.</td>
+    </tr>
+    <tr id="7">
+      <td class="side">7</td>
+      <td></td>
+      <td>&lt;00BF1E7C&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Riku said he had some business with you.<br />Would you mind stopping by his place later?</td>
+    </tr>
+    <tr id="8">
+      <td class="side">8</td>
+      <td></td>
+      <td>&lt;63BE468A&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Huh? Who's Riku, again?</td>
+    </tr>
+    <tr id="9">
+      <td class="side">9</td>
+      <td></td>
+      <td>&lt;C87C7F89&gt;</td>
+      <td>c1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>...Oh, right, you've not met him yet, Matthew.</td>
+    </tr>
+    <tr id="10">
+      <td class="side">10</td>
+      <td></td>
+      <td>&lt;B53F91A1&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>He's a Nopon mechanic working with us<br />Liberators. Quite a skilled one, at that.</td>
+    </tr>
+    <tr id="11">
+      <td class="side">11</td>
+      <td></td>
+      <td>&lt;2304704D&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Huh, if you say so.<br />So, where's he at?</td>
+    </tr>
+    <tr id="12">
+      <td class="side">12</td>
+      <td></td>
+      <td>&lt;CC8505B8&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>There's an abandoned house near<br />the entrance to the colony. A friend<br />of mine used to live there.</td>
+    </tr>
+    <tr id="13">
+      <td class="side">13</td>
+      <td></td>
+      <td>&lt;DCD5A31E&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>I told you before about the man who was<br />like a mentor to me, who had a home here.</td>
+    </tr>
+    <tr id="14">
+      <td class="side">14</td>
+      <td></td>
+      <td>&lt;07E40531&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Riku's commandeered it lately.<br />I hear he wants to establish his<br />own workshop there.</td>
+    </tr>
+    <tr id="15">
+      <td class="side">15</td>
+      <td></td>
+      <td>&lt;C120B119&gt;</td>
+      <td>c1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>A workshop...!</td>
+    </tr>
+    <tr id="16">
+      <td class="side">16</td>
+      <td></td>
+      <td>&lt;FC320D10&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Oh, that tickled your fancy, did it, Nikol?</td>
+    </tr>
+    <tr id="17">
+      <td class="side">17</td>
+      <td></td>
+      <td>&lt;8826859E&gt;</td>
+      <td>c1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Yeah! I really wanna check out his setup!<br />Can we go now?</td>
+    </tr>
+    <tr id="18">
+      <td class="side">18</td>
+      <td></td>
+      <td>&lt;D061C4EA&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Hahah, sure thing, kid. Let's go and<br />say hi before we bunk down.</td>
+    </tr>
+  </table>
+</body>
+</html>

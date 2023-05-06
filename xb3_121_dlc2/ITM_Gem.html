@@ -30,28 +30,67 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>ITM_Gem</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>Name</th>
-      <th>DebugName</th>
-      <th>Category</th>
-      <th>GemLv</th>
-      <th>Icon</th>
-      <th>Enhance</th>
-      <th>Price</th>
-      <th>Rarity</th>
-      <th>Sell</th>
-      <th>ForgePoint</th>
-      <th>Craft</th>
-      <th>field_227CA3FA</th>
-      <th>field_C8459A0F</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 2)">Name</th>
+      <th onclick="sortColumn(this, 4, 2)">DebugName</th>
+      <th onclick="sortColumn(this, 5, 0)">Category</th>
+      <th onclick="sortColumn(this, 6, 0)">GemLv</th>
+      <th onclick="sortColumn(this, 7, 0)">Icon</th>
+      <th onclick="sortColumn(this, 8, 0)">Enhance</th>
+      <th onclick="sortColumn(this, 9, 0)">Price</th>
+      <th onclick="sortColumn(this, 10, 0)">Rarity</th>
+      <th onclick="sortColumn(this, 11, 0)">Sell</th>
+      <th onclick="sortColumn(this, 12, 0)">ForgePoint</th>
+      <th onclick="sortColumn(this, 13, 0)">Craft</th>
+      <th onclick="sortColumn(this, 14, 0)">field_227CA3FA</th>
+      <th onclick="sortColumn(this, 15, 0)">Craft2</th>
     </tr>
     <tr id="12001">
       <td class="side">12001</td>
@@ -79,9 +118,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>1</td>
+      <td><a href="BTL_GemCraft.html#1">1</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12002">
       <td class="side">12002</td>
@@ -108,9 +147,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>2</td>
+      <td><a href="BTL_GemCraft.html#2">2</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12003">
       <td class="side">12003</td>
@@ -137,9 +176,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>3</td>
+      <td><a href="BTL_GemCraft.html#3">3</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12004">
       <td class="side">12004</td>
@@ -166,9 +205,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>4</td>
+      <td><a href="BTL_GemCraft.html#4">4</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12005">
       <td class="side">12005</td>
@@ -195,9 +234,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>5</td>
+      <td><a href="BTL_GemCraft.html#5">5</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12006">
       <td class="side">12006</td>
@@ -224,9 +263,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>6</td>
+      <td><a href="BTL_GemCraft.html#6">6</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12007">
       <td class="side">12007</td>
@@ -253,9 +292,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>7</td>
+      <td><a href="BTL_GemCraft.html#7">7</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12008">
       <td class="side">12008</td>
@@ -282,9 +321,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>8</td>
+      <td><a href="BTL_GemCraft.html#8">8</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12009">
       <td class="side">12009</td>
@@ -311,9 +350,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>9</td>
+      <td><a href="BTL_GemCraft.html#9">9</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12010">
       <td class="side">12010</td>
@@ -340,9 +379,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>10</td>
+      <td><a href="BTL_GemCraft.html#10">10</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12011">
       <td class="side">12011</td>
@@ -367,9 +406,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>11</td>
+      <td><a href="BTL_GemCraft.html#11">11</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12012">
       <td class="side">12012</td>
@@ -394,9 +433,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>12</td>
+      <td><a href="BTL_GemCraft.html#12">12</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12013">
       <td class="side">12013</td>
@@ -421,9 +460,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>13</td>
+      <td><a href="BTL_GemCraft.html#13">13</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12014">
       <td class="side">12014</td>
@@ -448,9 +487,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>14</td>
+      <td><a href="BTL_GemCraft.html#14">14</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12015">
       <td class="side">12015</td>
@@ -475,9 +514,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>15</td>
+      <td><a href="BTL_GemCraft.html#15">15</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12016">
       <td class="side">12016</td>
@@ -502,9 +541,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>16</td>
+      <td><a href="BTL_GemCraft.html#16">16</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12017">
       <td class="side">12017</td>
@@ -529,9 +568,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>17</td>
+      <td><a href="BTL_GemCraft.html#17">17</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12018">
       <td class="side">12018</td>
@@ -556,9 +595,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>18</td>
+      <td><a href="BTL_GemCraft.html#18">18</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12019">
       <td class="side">12019</td>
@@ -583,9 +622,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>19</td>
+      <td><a href="BTL_GemCraft.html#19">19</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12020">
       <td class="side">12020</td>
@@ -610,9 +649,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>20</td>
+      <td><a href="BTL_GemCraft.html#20">20</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12021">
       <td class="side">12021</td>
@@ -638,9 +677,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>21</td>
+      <td><a href="BTL_GemCraft.html#21">21</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12022">
       <td class="side">12022</td>
@@ -666,9 +705,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>22</td>
+      <td><a href="BTL_GemCraft.html#22">22</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12023">
       <td class="side">12023</td>
@@ -694,9 +733,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>23</td>
+      <td><a href="BTL_GemCraft.html#23">23</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12024">
       <td class="side">12024</td>
@@ -722,9 +761,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>24</td>
+      <td><a href="BTL_GemCraft.html#24">24</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12025">
       <td class="side">12025</td>
@@ -750,9 +789,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>25</td>
+      <td><a href="BTL_GemCraft.html#25">25</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12026">
       <td class="side">12026</td>
@@ -778,9 +817,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>26</td>
+      <td><a href="BTL_GemCraft.html#26">26</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12027">
       <td class="side">12027</td>
@@ -806,9 +845,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>27</td>
+      <td><a href="BTL_GemCraft.html#27">27</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12028">
       <td class="side">12028</td>
@@ -834,9 +873,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>28</td>
+      <td><a href="BTL_GemCraft.html#28">28</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12029">
       <td class="side">12029</td>
@@ -862,9 +901,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>29</td>
+      <td><a href="BTL_GemCraft.html#29">29</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12030">
       <td class="side">12030</td>
@@ -890,9 +929,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>30</td>
+      <td><a href="BTL_GemCraft.html#30">30</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12031">
       <td class="side">12031</td>
@@ -916,9 +955,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>31</td>
+      <td><a href="BTL_GemCraft.html#31">31</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12032">
       <td class="side">12032</td>
@@ -942,9 +981,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>32</td>
+      <td><a href="BTL_GemCraft.html#32">32</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12033">
       <td class="side">12033</td>
@@ -968,9 +1007,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>33</td>
+      <td><a href="BTL_GemCraft.html#33">33</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12034">
       <td class="side">12034</td>
@@ -994,9 +1033,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>34</td>
+      <td><a href="BTL_GemCraft.html#34">34</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12035">
       <td class="side">12035</td>
@@ -1020,9 +1059,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>35</td>
+      <td><a href="BTL_GemCraft.html#35">35</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12036">
       <td class="side">12036</td>
@@ -1046,9 +1085,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>36</td>
+      <td><a href="BTL_GemCraft.html#36">36</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12037">
       <td class="side">12037</td>
@@ -1072,9 +1111,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>37</td>
+      <td><a href="BTL_GemCraft.html#37">37</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12038">
       <td class="side">12038</td>
@@ -1098,9 +1137,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>38</td>
+      <td><a href="BTL_GemCraft.html#38">38</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12039">
       <td class="side">12039</td>
@@ -1124,9 +1163,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>39</td>
+      <td><a href="BTL_GemCraft.html#39">39</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12040">
       <td class="side">12040</td>
@@ -1150,9 +1189,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>40</td>
+      <td><a href="BTL_GemCraft.html#40">40</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12041">
       <td class="side">12041</td>
@@ -1176,9 +1215,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>41</td>
+      <td><a href="BTL_GemCraft.html#41">41</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12042">
       <td class="side">12042</td>
@@ -1202,9 +1241,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>42</td>
+      <td><a href="BTL_GemCraft.html#42">42</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12043">
       <td class="side">12043</td>
@@ -1228,9 +1267,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>43</td>
+      <td><a href="BTL_GemCraft.html#43">43</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12044">
       <td class="side">12044</td>
@@ -1254,9 +1293,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>44</td>
+      <td><a href="BTL_GemCraft.html#44">44</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12045">
       <td class="side">12045</td>
@@ -1280,9 +1319,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>45</td>
+      <td><a href="BTL_GemCraft.html#45">45</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12046">
       <td class="side">12046</td>
@@ -1306,9 +1345,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>46</td>
+      <td><a href="BTL_GemCraft.html#46">46</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12047">
       <td class="side">12047</td>
@@ -1332,9 +1371,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>47</td>
+      <td><a href="BTL_GemCraft.html#47">47</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12048">
       <td class="side">12048</td>
@@ -1358,9 +1397,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>48</td>
+      <td><a href="BTL_GemCraft.html#48">48</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12049">
       <td class="side">12049</td>
@@ -1384,9 +1423,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>49</td>
+      <td><a href="BTL_GemCraft.html#49">49</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12050">
       <td class="side">12050</td>
@@ -1410,9 +1449,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>50</td>
+      <td><a href="BTL_GemCraft.html#50">50</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12051">
       <td class="side">12051</td>
@@ -1437,9 +1476,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>51</td>
+      <td><a href="BTL_GemCraft.html#51">51</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12052">
       <td class="side">12052</td>
@@ -1464,9 +1503,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>52</td>
+      <td><a href="BTL_GemCraft.html#52">52</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12053">
       <td class="side">12053</td>
@@ -1491,9 +1530,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>53</td>
+      <td><a href="BTL_GemCraft.html#53">53</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12054">
       <td class="side">12054</td>
@@ -1518,9 +1557,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>54</td>
+      <td><a href="BTL_GemCraft.html#54">54</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12055">
       <td class="side">12055</td>
@@ -1545,9 +1584,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>55</td>
+      <td><a href="BTL_GemCraft.html#55">55</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12056">
       <td class="side">12056</td>
@@ -1572,9 +1611,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>56</td>
+      <td><a href="BTL_GemCraft.html#56">56</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12057">
       <td class="side">12057</td>
@@ -1599,9 +1638,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>57</td>
+      <td><a href="BTL_GemCraft.html#57">57</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12058">
       <td class="side">12058</td>
@@ -1626,9 +1665,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>58</td>
+      <td><a href="BTL_GemCraft.html#58">58</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12059">
       <td class="side">12059</td>
@@ -1653,9 +1692,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>59</td>
+      <td><a href="BTL_GemCraft.html#59">59</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12060">
       <td class="side">12060</td>
@@ -1680,9 +1719,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>60</td>
+      <td><a href="BTL_GemCraft.html#60">60</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12061">
       <td class="side">12061</td>
@@ -1706,9 +1745,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>61</td>
+      <td><a href="BTL_GemCraft.html#61">61</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12062">
       <td class="side">12062</td>
@@ -1732,9 +1771,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>62</td>
+      <td><a href="BTL_GemCraft.html#62">62</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12063">
       <td class="side">12063</td>
@@ -1758,9 +1797,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>63</td>
+      <td><a href="BTL_GemCraft.html#63">63</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12064">
       <td class="side">12064</td>
@@ -1784,9 +1823,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>64</td>
+      <td><a href="BTL_GemCraft.html#64">64</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12065">
       <td class="side">12065</td>
@@ -1810,9 +1849,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>65</td>
+      <td><a href="BTL_GemCraft.html#65">65</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12066">
       <td class="side">12066</td>
@@ -1836,9 +1875,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>66</td>
+      <td><a href="BTL_GemCraft.html#66">66</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12067">
       <td class="side">12067</td>
@@ -1862,9 +1901,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>67</td>
+      <td><a href="BTL_GemCraft.html#67">67</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12068">
       <td class="side">12068</td>
@@ -1888,9 +1927,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>68</td>
+      <td><a href="BTL_GemCraft.html#68">68</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12069">
       <td class="side">12069</td>
@@ -1914,9 +1953,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>69</td>
+      <td><a href="BTL_GemCraft.html#69">69</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12070">
       <td class="side">12070</td>
@@ -1940,9 +1979,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>70</td>
+      <td><a href="BTL_GemCraft.html#70">70</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12071">
       <td class="side">12071</td>
@@ -1967,9 +2006,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>71</td>
+      <td><a href="BTL_GemCraft.html#71">71</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12072">
       <td class="side">12072</td>
@@ -1994,9 +2033,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>72</td>
+      <td><a href="BTL_GemCraft.html#72">72</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12073">
       <td class="side">12073</td>
@@ -2021,9 +2060,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>73</td>
+      <td><a href="BTL_GemCraft.html#73">73</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12074">
       <td class="side">12074</td>
@@ -2048,9 +2087,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>74</td>
+      <td><a href="BTL_GemCraft.html#74">74</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12075">
       <td class="side">12075</td>
@@ -2075,9 +2114,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>75</td>
+      <td><a href="BTL_GemCraft.html#75">75</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12076">
       <td class="side">12076</td>
@@ -2102,9 +2141,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>76</td>
+      <td><a href="BTL_GemCraft.html#76">76</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12077">
       <td class="side">12077</td>
@@ -2129,9 +2168,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>77</td>
+      <td><a href="BTL_GemCraft.html#77">77</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12078">
       <td class="side">12078</td>
@@ -2156,9 +2195,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>78</td>
+      <td><a href="BTL_GemCraft.html#78">78</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12079">
       <td class="side">12079</td>
@@ -2183,9 +2222,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>79</td>
+      <td><a href="BTL_GemCraft.html#79">79</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12080">
       <td class="side">12080</td>
@@ -2210,9 +2249,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>80</td>
+      <td><a href="BTL_GemCraft.html#80">80</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12081">
       <td class="side">12081</td>
@@ -2237,9 +2276,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>81</td>
+      <td><a href="BTL_GemCraft.html#81">81</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12082">
       <td class="side">12082</td>
@@ -2264,9 +2303,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>82</td>
+      <td><a href="BTL_GemCraft.html#82">82</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12083">
       <td class="side">12083</td>
@@ -2291,9 +2330,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>83</td>
+      <td><a href="BTL_GemCraft.html#83">83</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12084">
       <td class="side">12084</td>
@@ -2318,9 +2357,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>84</td>
+      <td><a href="BTL_GemCraft.html#84">84</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12085">
       <td class="side">12085</td>
@@ -2345,9 +2384,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>85</td>
+      <td><a href="BTL_GemCraft.html#85">85</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12086">
       <td class="side">12086</td>
@@ -2372,9 +2411,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>86</td>
+      <td><a href="BTL_GemCraft.html#86">86</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12087">
       <td class="side">12087</td>
@@ -2399,9 +2438,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>87</td>
+      <td><a href="BTL_GemCraft.html#87">87</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12088">
       <td class="side">12088</td>
@@ -2426,9 +2465,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>88</td>
+      <td><a href="BTL_GemCraft.html#88">88</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12089">
       <td class="side">12089</td>
@@ -2453,9 +2492,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>89</td>
+      <td><a href="BTL_GemCraft.html#89">89</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12090">
       <td class="side">12090</td>
@@ -2480,9 +2519,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>90</td>
+      <td><a href="BTL_GemCraft.html#90">90</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12091">
       <td class="side">12091</td>
@@ -2507,9 +2546,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>91</td>
+      <td><a href="BTL_GemCraft.html#91">91</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12092">
       <td class="side">12092</td>
@@ -2534,9 +2573,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>92</td>
+      <td><a href="BTL_GemCraft.html#92">92</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12093">
       <td class="side">12093</td>
@@ -2561,9 +2600,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>93</td>
+      <td><a href="BTL_GemCraft.html#93">93</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12094">
       <td class="side">12094</td>
@@ -2588,9 +2627,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>94</td>
+      <td><a href="BTL_GemCraft.html#94">94</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12095">
       <td class="side">12095</td>
@@ -2615,9 +2654,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>95</td>
+      <td><a href="BTL_GemCraft.html#95">95</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12096">
       <td class="side">12096</td>
@@ -2642,9 +2681,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>96</td>
+      <td><a href="BTL_GemCraft.html#96">96</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12097">
       <td class="side">12097</td>
@@ -2669,9 +2708,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>97</td>
+      <td><a href="BTL_GemCraft.html#97">97</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12098">
       <td class="side">12098</td>
@@ -2696,9 +2735,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>98</td>
+      <td><a href="BTL_GemCraft.html#98">98</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12099">
       <td class="side">12099</td>
@@ -2723,9 +2762,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>99</td>
+      <td><a href="BTL_GemCraft.html#99">99</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12100">
       <td class="side">12100</td>
@@ -2750,9 +2789,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>100</td>
+      <td><a href="BTL_GemCraft.html#100">100</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12101">
       <td class="side">12101</td>
@@ -2779,9 +2818,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>101</td>
+      <td><a href="BTL_GemCraft.html#101">101</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12102">
       <td class="side">12102</td>
@@ -2808,9 +2847,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>102</td>
+      <td><a href="BTL_GemCraft.html#102">102</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12103">
       <td class="side">12103</td>
@@ -2837,9 +2876,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>103</td>
+      <td><a href="BTL_GemCraft.html#103">103</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12104">
       <td class="side">12104</td>
@@ -2866,9 +2905,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>104</td>
+      <td><a href="BTL_GemCraft.html#104">104</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12105">
       <td class="side">12105</td>
@@ -2895,9 +2934,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>105</td>
+      <td><a href="BTL_GemCraft.html#105">105</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12106">
       <td class="side">12106</td>
@@ -2924,9 +2963,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>106</td>
+      <td><a href="BTL_GemCraft.html#106">106</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12107">
       <td class="side">12107</td>
@@ -2953,9 +2992,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>107</td>
+      <td><a href="BTL_GemCraft.html#107">107</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12108">
       <td class="side">12108</td>
@@ -2982,9 +3021,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>108</td>
+      <td><a href="BTL_GemCraft.html#108">108</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12109">
       <td class="side">12109</td>
@@ -3011,9 +3050,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>109</td>
+      <td><a href="BTL_GemCraft.html#109">109</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12110">
       <td class="side">12110</td>
@@ -3040,9 +3079,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>110</td>
+      <td><a href="BTL_GemCraft.html#110">110</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12111">
       <td class="side">12111</td>
@@ -3068,9 +3107,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>111</td>
+      <td><a href="BTL_GemCraft.html#111">111</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12112">
       <td class="side">12112</td>
@@ -3096,9 +3135,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>112</td>
+      <td><a href="BTL_GemCraft.html#112">112</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12113">
       <td class="side">12113</td>
@@ -3124,9 +3163,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>113</td>
+      <td><a href="BTL_GemCraft.html#113">113</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12114">
       <td class="side">12114</td>
@@ -3152,9 +3191,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>114</td>
+      <td><a href="BTL_GemCraft.html#114">114</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12115">
       <td class="side">12115</td>
@@ -3180,9 +3219,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>115</td>
+      <td><a href="BTL_GemCraft.html#115">115</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12116">
       <td class="side">12116</td>
@@ -3208,9 +3247,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>116</td>
+      <td><a href="BTL_GemCraft.html#116">116</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12117">
       <td class="side">12117</td>
@@ -3236,9 +3275,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>117</td>
+      <td><a href="BTL_GemCraft.html#117">117</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12118">
       <td class="side">12118</td>
@@ -3264,9 +3303,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>118</td>
+      <td><a href="BTL_GemCraft.html#118">118</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12119">
       <td class="side">12119</td>
@@ -3292,9 +3331,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>119</td>
+      <td><a href="BTL_GemCraft.html#119">119</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12120">
       <td class="side">12120</td>
@@ -3320,9 +3359,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>120</td>
+      <td><a href="BTL_GemCraft.html#120">120</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12121">
       <td class="side">12121</td>
@@ -3348,9 +3387,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>121</td>
+      <td><a href="BTL_GemCraft.html#121">121</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12122">
       <td class="side">12122</td>
@@ -3376,9 +3415,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>122</td>
+      <td><a href="BTL_GemCraft.html#122">122</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12123">
       <td class="side">12123</td>
@@ -3404,9 +3443,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>123</td>
+      <td><a href="BTL_GemCraft.html#123">123</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12124">
       <td class="side">12124</td>
@@ -3432,9 +3471,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>124</td>
+      <td><a href="BTL_GemCraft.html#124">124</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12125">
       <td class="side">12125</td>
@@ -3460,9 +3499,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>125</td>
+      <td><a href="BTL_GemCraft.html#125">125</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12126">
       <td class="side">12126</td>
@@ -3488,9 +3527,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>126</td>
+      <td><a href="BTL_GemCraft.html#126">126</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12127">
       <td class="side">12127</td>
@@ -3516,9 +3555,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>127</td>
+      <td><a href="BTL_GemCraft.html#127">127</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12128">
       <td class="side">12128</td>
@@ -3544,9 +3583,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>128</td>
+      <td><a href="BTL_GemCraft.html#128">128</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12129">
       <td class="side">12129</td>
@@ -3572,9 +3611,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>129</td>
+      <td><a href="BTL_GemCraft.html#129">129</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12130">
       <td class="side">12130</td>
@@ -3600,9 +3639,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>130</td>
+      <td><a href="BTL_GemCraft.html#130">130</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12131">
       <td class="side">12131</td>
@@ -3627,9 +3666,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>131</td>
+      <td><a href="BTL_GemCraft.html#131">131</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12132">
       <td class="side">12132</td>
@@ -3654,9 +3693,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>132</td>
+      <td><a href="BTL_GemCraft.html#132">132</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12133">
       <td class="side">12133</td>
@@ -3681,9 +3720,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>133</td>
+      <td><a href="BTL_GemCraft.html#133">133</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12134">
       <td class="side">12134</td>
@@ -3708,9 +3747,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>134</td>
+      <td><a href="BTL_GemCraft.html#134">134</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12135">
       <td class="side">12135</td>
@@ -3735,9 +3774,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>135</td>
+      <td><a href="BTL_GemCraft.html#135">135</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12136">
       <td class="side">12136</td>
@@ -3762,9 +3801,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>136</td>
+      <td><a href="BTL_GemCraft.html#136">136</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12137">
       <td class="side">12137</td>
@@ -3789,9 +3828,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>137</td>
+      <td><a href="BTL_GemCraft.html#137">137</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12138">
       <td class="side">12138</td>
@@ -3816,9 +3855,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>138</td>
+      <td><a href="BTL_GemCraft.html#138">138</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12139">
       <td class="side">12139</td>
@@ -3843,9 +3882,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>139</td>
+      <td><a href="BTL_GemCraft.html#139">139</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12140">
       <td class="side">12140</td>
@@ -3870,9 +3909,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>140</td>
+      <td><a href="BTL_GemCraft.html#140">140</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12141">
       <td class="side">12141</td>
@@ -3898,9 +3937,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>141</td>
+      <td><a href="BTL_GemCraft.html#141">141</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12142">
       <td class="side">12142</td>
@@ -3926,9 +3965,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>142</td>
+      <td><a href="BTL_GemCraft.html#142">142</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12143">
       <td class="side">12143</td>
@@ -3954,9 +3993,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>143</td>
+      <td><a href="BTL_GemCraft.html#143">143</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12144">
       <td class="side">12144</td>
@@ -3982,9 +4021,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>144</td>
+      <td><a href="BTL_GemCraft.html#144">144</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12145">
       <td class="side">12145</td>
@@ -4010,9 +4049,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>145</td>
+      <td><a href="BTL_GemCraft.html#145">145</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12146">
       <td class="side">12146</td>
@@ -4038,9 +4077,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>146</td>
+      <td><a href="BTL_GemCraft.html#146">146</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12147">
       <td class="side">12147</td>
@@ -4066,9 +4105,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>147</td>
+      <td><a href="BTL_GemCraft.html#147">147</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12148">
       <td class="side">12148</td>
@@ -4094,9 +4133,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>148</td>
+      <td><a href="BTL_GemCraft.html#148">148</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12149">
       <td class="side">12149</td>
@@ -4122,9 +4161,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>149</td>
+      <td><a href="BTL_GemCraft.html#149">149</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12150">
       <td class="side">12150</td>
@@ -4150,9 +4189,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>150</td>
+      <td><a href="BTL_GemCraft.html#150">150</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12151">
       <td class="side">12151</td>
@@ -4177,9 +4216,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>151</td>
+      <td><a href="BTL_GemCraft.html#151">151</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12152">
       <td class="side">12152</td>
@@ -4204,9 +4243,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>152</td>
+      <td><a href="BTL_GemCraft.html#152">152</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12153">
       <td class="side">12153</td>
@@ -4231,9 +4270,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>153</td>
+      <td><a href="BTL_GemCraft.html#153">153</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12154">
       <td class="side">12154</td>
@@ -4258,9 +4297,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>154</td>
+      <td><a href="BTL_GemCraft.html#154">154</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12155">
       <td class="side">12155</td>
@@ -4285,9 +4324,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>155</td>
+      <td><a href="BTL_GemCraft.html#155">155</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12156">
       <td class="side">12156</td>
@@ -4312,9 +4351,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>156</td>
+      <td><a href="BTL_GemCraft.html#156">156</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12157">
       <td class="side">12157</td>
@@ -4339,9 +4378,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>157</td>
+      <td><a href="BTL_GemCraft.html#157">157</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12158">
       <td class="side">12158</td>
@@ -4366,9 +4405,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>158</td>
+      <td><a href="BTL_GemCraft.html#158">158</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12159">
       <td class="side">12159</td>
@@ -4393,9 +4432,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>159</td>
+      <td><a href="BTL_GemCraft.html#159">159</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12160">
       <td class="side">12160</td>
@@ -4420,9 +4459,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>160</td>
+      <td><a href="BTL_GemCraft.html#160">160</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12161">
       <td class="side">12161</td>
@@ -4447,9 +4486,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>161</td>
+      <td><a href="BTL_GemCraft.html#161">161</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12162">
       <td class="side">12162</td>
@@ -4474,9 +4513,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>162</td>
+      <td><a href="BTL_GemCraft.html#162">162</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12163">
       <td class="side">12163</td>
@@ -4501,9 +4540,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>163</td>
+      <td><a href="BTL_GemCraft.html#163">163</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12164">
       <td class="side">12164</td>
@@ -4528,9 +4567,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>164</td>
+      <td><a href="BTL_GemCraft.html#164">164</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12165">
       <td class="side">12165</td>
@@ -4555,9 +4594,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>165</td>
+      <td><a href="BTL_GemCraft.html#165">165</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12166">
       <td class="side">12166</td>
@@ -4582,9 +4621,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>166</td>
+      <td><a href="BTL_GemCraft.html#166">166</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12167">
       <td class="side">12167</td>
@@ -4609,9 +4648,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>167</td>
+      <td><a href="BTL_GemCraft.html#167">167</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12168">
       <td class="side">12168</td>
@@ -4636,9 +4675,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>168</td>
+      <td><a href="BTL_GemCraft.html#168">168</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12169">
       <td class="side">12169</td>
@@ -4663,9 +4702,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>169</td>
+      <td><a href="BTL_GemCraft.html#169">169</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12170">
       <td class="side">12170</td>
@@ -4690,9 +4729,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>170</td>
+      <td><a href="BTL_GemCraft.html#170">170</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12171">
       <td class="side">12171</td>
@@ -4717,9 +4756,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>171</td>
+      <td><a href="BTL_GemCraft.html#171">171</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12172">
       <td class="side">12172</td>
@@ -4744,9 +4783,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>172</td>
+      <td><a href="BTL_GemCraft.html#172">172</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12173">
       <td class="side">12173</td>
@@ -4771,9 +4810,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>173</td>
+      <td><a href="BTL_GemCraft.html#173">173</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12174">
       <td class="side">12174</td>
@@ -4798,9 +4837,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>174</td>
+      <td><a href="BTL_GemCraft.html#174">174</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12175">
       <td class="side">12175</td>
@@ -4825,9 +4864,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>175</td>
+      <td><a href="BTL_GemCraft.html#175">175</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12176">
       <td class="side">12176</td>
@@ -4852,9 +4891,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>176</td>
+      <td><a href="BTL_GemCraft.html#176">176</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12177">
       <td class="side">12177</td>
@@ -4879,9 +4918,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>177</td>
+      <td><a href="BTL_GemCraft.html#177">177</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12178">
       <td class="side">12178</td>
@@ -4906,9 +4945,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>178</td>
+      <td><a href="BTL_GemCraft.html#178">178</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12179">
       <td class="side">12179</td>
@@ -4933,9 +4972,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>179</td>
+      <td><a href="BTL_GemCraft.html#179">179</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12180">
       <td class="side">12180</td>
@@ -4960,9 +4999,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>180</td>
+      <td><a href="BTL_GemCraft.html#180">180</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12181">
       <td class="side">12181</td>
@@ -4988,9 +5027,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>181</td>
+      <td><a href="BTL_GemCraft.html#181">181</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12182">
       <td class="side">12182</td>
@@ -5016,9 +5055,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>182</td>
+      <td><a href="BTL_GemCraft.html#182">182</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12183">
       <td class="side">12183</td>
@@ -5044,9 +5083,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>183</td>
+      <td><a href="BTL_GemCraft.html#183">183</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12184">
       <td class="side">12184</td>
@@ -5072,9 +5111,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>184</td>
+      <td><a href="BTL_GemCraft.html#184">184</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12185">
       <td class="side">12185</td>
@@ -5100,9 +5139,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>185</td>
+      <td><a href="BTL_GemCraft.html#185">185</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12186">
       <td class="side">12186</td>
@@ -5128,9 +5167,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>186</td>
+      <td><a href="BTL_GemCraft.html#186">186</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12187">
       <td class="side">12187</td>
@@ -5156,9 +5195,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>187</td>
+      <td><a href="BTL_GemCraft.html#187">187</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12188">
       <td class="side">12188</td>
@@ -5184,9 +5223,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>188</td>
+      <td><a href="BTL_GemCraft.html#188">188</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12189">
       <td class="side">12189</td>
@@ -5212,9 +5251,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>189</td>
+      <td><a href="BTL_GemCraft.html#189">189</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12190">
       <td class="side">12190</td>
@@ -5240,9 +5279,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>190</td>
+      <td><a href="BTL_GemCraft.html#190">190</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12191">
       <td class="side">12191</td>
@@ -5268,9 +5307,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>191</td>
+      <td><a href="BTL_GemCraft.html#191">191</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12192">
       <td class="side">12192</td>
@@ -5296,9 +5335,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>192</td>
+      <td><a href="BTL_GemCraft.html#192">192</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12193">
       <td class="side">12193</td>
@@ -5324,9 +5363,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>193</td>
+      <td><a href="BTL_GemCraft.html#193">193</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12194">
       <td class="side">12194</td>
@@ -5352,9 +5391,9 @@
       <td>0</td>
       <td>0</td>
       <td>0</td>
-      <td>194</td>
+      <td><a href="BTL_GemCraft.html#194">194</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12195">
       <td class="side">12195</td>
@@ -5380,9 +5419,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>195</td>
+      <td><a href="BTL_GemCraft.html#195">195</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12196">
       <td class="side">12196</td>
@@ -5408,9 +5447,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>196</td>
+      <td><a href="BTL_GemCraft.html#196">196</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12197">
       <td class="side">12197</td>
@@ -5436,9 +5475,9 @@
       <td>1</td>
       <td>0</td>
       <td>0</td>
-      <td>197</td>
+      <td><a href="BTL_GemCraft.html#197">197</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12198">
       <td class="side">12198</td>
@@ -5464,9 +5503,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>198</td>
+      <td><a href="BTL_GemCraft.html#198">198</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12199">
       <td class="side">12199</td>
@@ -5492,9 +5531,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>199</td>
+      <td><a href="BTL_GemCraft.html#199">199</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
     <tr id="12200">
       <td class="side">12200</td>
@@ -5520,9 +5559,9 @@
       <td>2</td>
       <td>0</td>
       <td>0</td>
-      <td>200</td>
+      <td><a href="BTL_GemCraft.html#200">200</a></td>
       <td>0</td>
-      <td>0</td>
+      <td></td>
     </tr>
   </table>
 </body>

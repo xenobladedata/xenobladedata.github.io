@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <title>msg_nq710400f</title>
+  <style type="text/css">
+    table, th, td {border: 1px solid #000000; border-collapse: collapse;}
+    table {border-width: 3px;}
+    th, td {padding: 0.1em 0.2em;}
+    tr.head th, tr.head td {border-bottom-width: 3px;}
+    th.colbreak, td.colbreak {border-right-width: 3px;}
+    th {text-align: center; position: sticky; top: -1px; background-color: #F0F0F0;}
+    .side {position: sticky; left: -1px; background-color: #F0F0F0;}
+    th.side {z-index: 3;}
+    td {text-align: left;}
+    td.right {text-align: right;}
+    .sortable tbody tr:nth-child(odd) {background: #F5F5F5;}
+    .sortable th {background: #E4E4E4; cursor: pointer; white-space: nowrap; vertical-align: middle;}
+    .sortable th.dir-d::after {content:" ▾"; vertical-align: inherit;}
+    .sortable th.dir-u::after {content:" ▴"; vertical-align: inherit;}
+    :target td {background-color: #CCCCCC !important;}
+  </style>
+  <script type="text/javascript">
+    function offsetAnchor() {
+      if (location.hash.length !== 0) {
+        window.scrollTo(window.scrollX, window.scrollY - document.getElementById("header").clientHeight);
+      }
+    }
+    window.addEventListener("hashchange", offsetAnchor);
+    window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
+  </script>
+</head>
+<body>
+  <table class="sortable">
+    <h2>msg_nq710400f</h2>
+    <tr id="header">
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
+      <th>Referenced By</th>
+      <th onclick="sortColumn(this, 2, 2)">label</th>
+      <th onclick="sortColumn(this, 3, 2)">talker</th>
+      <th onclick="sortColumn(this, 4, 0)">talkattr</th>
+      <th onclick="sortColumn(this, 5, 0)">talkattr2</th>
+      <th onclick="sortColumn(this, 6, 0)">talkattr3</th>
+      <th onclick="sortColumn(this, 7, 0)">style</th>
+      <th onclick="sortColumn(this, 8, 2)">name</th>
+    </tr>
+    <tr id="1">
+      <td class="side">1</td>
+      <td></td>
+      <td>&lt;C9942FFD&gt;</td>
+      <td>8</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>……そいつが気になるも？</td>
+    </tr>
+    <tr id="2">
+      <td class="side">2</td>
+      <td></td>
+      <td>&lt;7A2BCF6B&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>ん？　ああ……<br />まあ　何となくな</td>
+    </tr>
+    <tr id="3">
+      <td class="side">3</td>
+      <td></td>
+      <td>&lt;0589B502&gt;</td>
+      <td>8</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>……しょうがないも<br />特別サービスで見せてあげるも</td>
+    </tr>
+    <tr id="4">
+      <td class="side">4</td>
+      <td></td>
+      <td>&lt;19E25D2F&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>へえ……　立派な剣だな<br />素人の俺でも業物だってわかるぜ</td>
+    </tr>
+    <tr id="5">
+      <td class="side">5</td>
+      <td></td>
+      <td>&lt;18679D37&gt;</td>
+      <td>8</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>まさしく　その通りも</td>
+    </tr>
+    <tr id="6">
+      <td class="side">6</td>
+      <td></td>
+      <td>&lt;287691E6&gt;</td>
+      <td>8</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>何を隠そう<br />こいつはオリジンの金属から<br />打ち出された特別な剣も</td>
+    </tr>
+    <tr id="7">
+      <td class="side">7</td>
+      <td></td>
+      <td>&lt;F9460040&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>……！　オリジンだって？</td>
+    </tr>
+    <tr id="8">
+      <td class="side">8</td>
+      <td></td>
+      <td>&lt;50F12B9D&gt;</td>
+      <td>8</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>オリジンは<br />人の記憶や魂の集まる場と<br />言われているも</td>
+    </tr>
+    <tr id="9">
+      <td class="side">9</td>
+      <td></td>
+      <td>&lt;BB4E1490&gt;</td>
+      <td>8</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>それは　オリジンの金属でできた<br />この剣も同じも</td>
+    </tr>
+    <tr id="10">
+      <td class="side">10</td>
+      <td></td>
+      <td>&lt;EC1EE0C4&gt;</td>
+      <td>8</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>シショーによれば<br />この剣には<br />大切な人が宿っているそうも</td>
+    </tr>
+    <tr id="11">
+      <td class="side">11</td>
+      <td></td>
+      <td>&lt;98B5FAC5&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>大切な人……</td>
+    </tr>
+    <tr id="12">
+      <td class="side">12</td>
+      <td></td>
+      <td>&lt;2B7D0B0B&gt;</td>
+      <td>8</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>ずっとずーっと昔に<br />シショーから言われたも</td>
+    </tr>
+    <tr id="13">
+      <td class="side">13</td>
+      <td></td>
+      <td>&lt;1CB4E444&gt;</td>
+      <td>8</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>いつの日か　ふさわしき者に<br />この剣を渡してくれって</td>
+    </tr>
+    <tr id="14">
+      <td class="side">14</td>
+      <td></td>
+      <td>&lt;2EBC0FC9&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>リクのシショーとやらが<br />オリジンから武器を作ったのか……</td>
+    </tr>
+    <tr id="15">
+      <td class="side">15</td>
+      <td></td>
+      <td>&lt;F841798A&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>一体何者なんだ？<br />やっぱりノポンなのか？</td>
+    </tr>
+    <tr id="16">
+      <td class="side">16</td>
+      <td></td>
+      <td>&lt;14603B5E&gt;</td>
+      <td>8</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>……ももっ？<br />何言ってるも？</td>
+    </tr>
+    <tr id="17">
+      <td class="side">17</td>
+      <td></td>
+      <td>&lt;F744445D&gt;</td>
+      <td>8</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>リクのシショーは<br />“メリアちゃん” も<br />言ってなかったも？</td>
+    </tr>
+    <tr id="18">
+      <td class="side">18</td>
+      <td></td>
+      <td>&lt;E92AD312&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>メリア……　ちゃん？</td>
+    </tr>
+    <tr id="19">
+      <td class="side">19</td>
+      <td></td>
+      <td>&lt;F66BA7D8&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>まさか……<br />ケヴェスの女王の[ML:line len=1 ]<br />あの “メリア” か！？</td>
+    </tr>
+    <tr id="20">
+      <td class="side">20</td>
+      <td></td>
+      <td>&lt;3DCE600F&gt;</td>
+      <td>8</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>だからそう言ってるも<br />そのメリアちゃんも</td>
+    </tr>
+    <tr id="21">
+      <td class="side">21</td>
+      <td></td>
+      <td>&lt;E5EE96C4&gt;</td>
+      <td>8</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>リクの父ちゃんと<br />メリアちゃんは　旅の仲間だったも<br />……まあ　話せば長くなるも</td>
+    </tr>
+    <tr id="22">
+      <td class="side">22</td>
+      <td></td>
+      <td>&lt;239A42B3&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>……お前って<br />実はすごい奴だったんだな</td>
+    </tr>
+    <tr id="23">
+      <td class="side">23</td>
+      <td></td>
+      <td>&lt;126AC0E4&gt;</td>
+      <td>8</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>今の話はナイショで頼むも<br />シショーの名でチヤホヤされるのは<br />リクの趣味じゃないも</td>
+    </tr>
+    <tr id="24">
+      <td class="side">24</td>
+      <td></td>
+      <td>&lt;26CE06A8&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>なるほどな……　わかったよ</td>
+    </tr>
+    <tr id="25">
+      <td class="side">25</td>
+      <td></td>
+      <td>&lt;D981B380&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>ところで　リク<br />この剣に名前はあるのか？</td>
+    </tr>
+    <tr id="26">
+      <td class="side">26</td>
+      <td></td>
+      <td>&lt;BC13EEF0&gt;</td>
+      <td>8</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>もちろんも　その名も[ML:line len=1 ]</td>
+    </tr>
+    <tr id="27">
+      <td class="side">27</td>
+      <td></td>
+      <td>&lt;05D5A235&gt;</td>
+      <td>8</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>“ラッキーセブン”　も！</td>
+    </tr>
+    <tr id="28">
+      <td class="side">28</td>
+      <td></td>
+      <td>&lt;CAA47522&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>らっきー……　せぶん？</td>
+    </tr>
+    <tr id="29">
+      <td class="side">29</td>
+      <td></td>
+      <td>&lt;4A0BB6AD&gt;</td>
+      <td>8</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>どうも？<br />カッコイイも？　イケてるも？</td>
+    </tr>
+    <tr id="30">
+      <td class="side">30</td>
+      <td></td>
+      <td>&lt;1919F431&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>…………</td>
+    </tr>
+    <tr id="31">
+      <td class="side">31</td>
+      <td></td>
+      <td>&lt;EA8F046D&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>……いいんじゃね？</td>
+    </tr>
+    <tr id="32">
+      <td class="side">32</td>
+      <td></td>
+      <td>&lt;4138FE43&gt;</td>
+      <td>8</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>ホントも！？</td>
+    </tr>
+    <tr id="33">
+      <td class="side">33</td>
+      <td></td>
+      <td>&lt;F7F54496&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>ああ　いいセンスしてるよ<br />俺は気に入ったぜ</td>
+    </tr>
+    <tr id="34">
+      <td class="side">34</td>
+      <td></td>
+      <td>&lt;ECD68F08&gt;</td>
+      <td>8</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>もも！　そう言ってくれたのは<br />マシューが初めても！</td>
+    </tr>
+    <tr id="35">
+      <td class="side">35</td>
+      <td></td>
+      <td>&lt;437DF30B&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>ラッキーセブンか……</td>
+    </tr>
+    <tr id="36">
+      <td class="side">36</td>
+      <td></td>
+      <td>&lt;9C6AAEA1&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>いつか　お前に相応しい持ち主が<br />現れるといいな</td>
+    </tr>
+  </table>
+</body>
+</html>

@@ -30,164 +30,203 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>AMB_CollectionLot</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>SetName</th>
-      <th>RewordID</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 2)">SetName</th>
+      <th onclick="sortColumn(this, 4, 0)">RewordID</th>
     </tr>
     <tr id="0">
       <td class="side">0</td>
       <td></td>
       <td>&lt;7404D464&gt;</td>
-      <td>4</td>
-      <td>408</td>
+      <td>Collectibles Set 01</td>
+      <td><a href="ITM_RewardAssort.html#408">408</a></td>
     </tr>
     <tr id="1">
       <td class="side">1</td>
       <td></td>
       <td>&lt;9B26284E&gt;</td>
-      <td>5</td>
-      <td>409</td>
+      <td>Collectibles Set 02</td>
+      <td><a href="ITM_RewardAssort.html#409">409</a></td>
     </tr>
     <tr id="2">
       <td class="side">2</td>
       <td></td>
       <td>&lt;BD85E9BD&gt;</td>
-      <td>6</td>
-      <td>410</td>
+      <td>Collectibles Set 03</td>
+      <td><a href="ITM_RewardAssort.html#410">410</a></td>
     </tr>
     <tr id="3">
       <td class="side">3</td>
       <td></td>
       <td>&lt;11C8B550&gt;</td>
-      <td>7</td>
-      <td>411</td>
+      <td>Collectibles Set 04</td>
+      <td><a href="ITM_RewardAssort.html#411">411</a></td>
     </tr>
     <tr id="4">
       <td class="side">4</td>
       <td></td>
       <td>&lt;C4B4E9D5&gt;</td>
-      <td>8</td>
-      <td>412</td>
+      <td>Collectibles Set 05</td>
+      <td><a href="ITM_RewardAssort.html#412">412</a></td>
     </tr>
     <tr id="5">
       <td class="side">5</td>
       <td></td>
       <td>&lt;938928EF&gt;</td>
-      <td>9</td>
-      <td>413</td>
+      <td>Collectibles Set 06</td>
+      <td><a href="ITM_RewardAssort.html#413">413</a></td>
     </tr>
     <tr id="6">
       <td class="side">6</td>
       <td></td>
       <td>&lt;B4444C45&gt;</td>
-      <td>10</td>
-      <td>414</td>
+      <td>Collectibles Set 07</td>
+      <td><a href="ITM_RewardAssort.html#414">414</a></td>
     </tr>
     <tr id="7">
       <td class="side">7</td>
       <td></td>
       <td>&lt;2A022543&gt;</td>
-      <td>11</td>
-      <td>415</td>
+      <td>Collectibles Set 08</td>
+      <td><a href="ITM_RewardAssort.html#415">415</a></td>
     </tr>
     <tr id="8">
       <td class="side">8</td>
       <td></td>
       <td>&lt;D3F0D923&gt;</td>
-      <td>12</td>
-      <td>416</td>
+      <td>Collectibles Set 09</td>
+      <td><a href="ITM_RewardAssort.html#416">416</a></td>
     </tr>
     <tr id="9">
       <td class="side">9</td>
       <td></td>
       <td>&lt;9591F19A&gt;</td>
-      <td>13</td>
-      <td>417</td>
+      <td>Collectibles Set 10</td>
+      <td><a href="ITM_RewardAssort.html#417">417</a></td>
     </tr>
     <tr id="10">
       <td class="side">10</td>
       <td></td>
       <td>&lt;A2EE364F&gt;</td>
-      <td>14</td>
-      <td>418</td>
+      <td>Collectibles Set 11</td>
+      <td><a href="ITM_RewardAssort.html#418">418</a></td>
     </tr>
     <tr id="11">
       <td class="side">11</td>
       <td></td>
       <td>&lt;F1C0E490&gt;</td>
-      <td>15</td>
-      <td>419</td>
+      <td>Collectibles Set 12</td>
+      <td><a href="ITM_RewardAssort.html#419">419</a></td>
     </tr>
     <tr id="12">
       <td class="side">12</td>
       <td></td>
       <td>&lt;1F9A8B50&gt;</td>
-      <td>16</td>
-      <td>420</td>
+      <td>Collectibles Set 13</td>
+      <td><a href="ITM_RewardAssort.html#420">420</a></td>
     </tr>
     <tr id="13">
       <td class="side">13</td>
       <td></td>
       <td>&lt;69E5462C&gt;</td>
-      <td>17</td>
-      <td>421</td>
+      <td>Collectibles Set 14</td>
+      <td><a href="ITM_RewardAssort.html#421">421</a></td>
     </tr>
     <tr id="14">
       <td class="side">14</td>
       <td></td>
       <td>&lt;93DD8EF8&gt;</td>
-      <td>18</td>
-      <td>422</td>
+      <td>Collectibles Set 15</td>
+      <td><a href="ITM_RewardAssort.html#422">422</a></td>
     </tr>
     <tr id="15">
       <td class="side">15</td>
       <td></td>
       <td>&lt;D9FF0AD8&gt;</td>
-      <td>19</td>
-      <td>423</td>
+      <td>Collectibles Set 16</td>
+      <td><a href="ITM_RewardAssort.html#423">423</a></td>
     </tr>
     <tr id="16">
       <td class="side">16</td>
       <td></td>
       <td>&lt;AE63B659&gt;</td>
-      <td>20</td>
-      <td>424</td>
+      <td>Collectibles Set 17</td>
+      <td><a href="ITM_RewardAssort.html#424">424</a></td>
     </tr>
     <tr id="17">
       <td class="side">17</td>
       <td></td>
       <td>&lt;835CF3ED&gt;</td>
-      <td>21</td>
-      <td>425</td>
+      <td>Collectibles Set 18</td>
+      <td><a href="ITM_RewardAssort.html#425">425</a></td>
     </tr>
     <tr id="18">
       <td class="side">18</td>
       <td></td>
       <td>&lt;CED5E1AF&gt;</td>
-      <td>22</td>
-      <td>426</td>
+      <td>Collectibles Set 19</td>
+      <td><a href="ITM_RewardAssort.html#426">426</a></td>
     </tr>
     <tr id="19">
       <td class="side">19</td>
       <td></td>
       <td>&lt;BF21B3EF&gt;</td>
-      <td>23</td>
-      <td>427</td>
+      <td>Collectibles Set 20</td>
+      <td><a href="ITM_RewardAssort.html#427">427</a></td>
     </tr>
     <tr id="20">
       <td class="side">20</td>
       <td></td>
       <td>&lt;96C955BF&gt;</td>
-      <td>24</td>
-      <td>428</td>
+      <td>Collectibles Set 21</td>
+      <td><a href="ITM_RewardAssort.html#428">428</a></td>
     </tr>
   </table>
 </body>

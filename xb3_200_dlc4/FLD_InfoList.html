@@ -30,39 +30,78 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>FLD_InfoList</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Category</th>
-      <th>Caption</th>
-      <th>Place</th>
-      <th>EventName</th>
-      <th>SevEvent</th>
-      <th>PointID</th>
-      <th>BonusExp</th>
-      <th>PieceValue</th>
-      <th>PieceID1</th>
-      <th>PieceID2</th>
-      <th>PieceID3</th>
-      <th>PieceID4</th>
-      <th>PieceID5</th>
-      <th>FreePieceID1</th>
-      <th>FreePieceID2</th>
-      <th>FreePieceID3</th>
-      <th>FreePieceID4</th>
-      <th>FreePieceID5</th>
-      <th>ComSpotGmk</th>
-      <th>NeedCharacter</th>
-      <th>BriefingFlag</th>
-      <th>InfoImage</th>
-      <th>ComSpotLocation</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 2)">Name</th>
+      <th onclick="sortColumn(this, 4, 0)">Category</th>
+      <th onclick="sortColumn(this, 5, 2)">Caption</th>
+      <th onclick="sortColumn(this, 6, 0)">Place</th>
+      <th onclick="sortColumn(this, 7, 2)">EventName</th>
+      <th onclick="sortColumn(this, 8, 0)">SevEvent</th>
+      <th onclick="sortColumn(this, 9, 0)">PointID</th>
+      <th onclick="sortColumn(this, 10, 0)">BonusExp</th>
+      <th onclick="sortColumn(this, 11, 0)">PieceValue</th>
+      <th onclick="sortColumn(this, 12, 0)">PieceID1</th>
+      <th onclick="sortColumn(this, 13, 0)">PieceID2</th>
+      <th onclick="sortColumn(this, 14, 0)">PieceID3</th>
+      <th onclick="sortColumn(this, 15, 0)">PieceID4</th>
+      <th onclick="sortColumn(this, 16, 0)">PieceID5</th>
+      <th onclick="sortColumn(this, 17, 0)">FreePieceID1</th>
+      <th onclick="sortColumn(this, 18, 0)">FreePieceID2</th>
+      <th onclick="sortColumn(this, 19, 0)">FreePieceID3</th>
+      <th onclick="sortColumn(this, 20, 0)">FreePieceID4</th>
+      <th onclick="sortColumn(this, 21, 0)">FreePieceID5</th>
+      <th onclick="sortColumn(this, 22, 2)">ComSpotGmk</th>
+      <th onclick="sortColumn(this, 23, 0)">NeedCharacter</th>
+      <th onclick="sortColumn(this, 24, 0)">BriefingFlag</th>
+      <th onclick="sortColumn(this, 25, 0)">InfoImage</th>
+      <th onclick="sortColumn(this, 26, 2)">ComSpotLocation</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>

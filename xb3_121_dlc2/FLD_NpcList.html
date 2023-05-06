@@ -30,34 +30,73 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>FLD_NpcList</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>Age</th>
-      <th>TalkListID</th>
-      <th>ShopCondition</th>
-      <th>ShopID</th>
-      <th>OrderCondition</th>
-      <th>InfoCondition</th>
-      <th>field_94EA2DB7</th>
-      <th>field_7F0A3296</th>
-      <th>Condition1</th>
-      <th>Resource1</th>
-      <th>Condition2</th>
-      <th>Resource2</th>
-      <th>Condition3</th>
-      <th>Resource3</th>
-      <th>Condition4</th>
-      <th>Resource4</th>
-      <th>IconFlag</th>
-      <th>AccessRange</th>
-      <th>Comment</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">Age</th>
+      <th onclick="sortColumn(this, 4, 2)">TalkListID</th>
+      <th onclick="sortColumn(this, 5, 2)">ShopCondition</th>
+      <th onclick="sortColumn(this, 6, 2)">ShopID</th>
+      <th onclick="sortColumn(this, 7, 2)">OrderCondition</th>
+      <th onclick="sortColumn(this, 8, 2)">InfoCondition</th>
+      <th onclick="sortColumn(this, 9, 0)">NotAffordance</th>
+      <th onclick="sortColumn(this, 10, 0)">field_7F0A3296</th>
+      <th onclick="sortColumn(this, 11, 2)">Condition1</th>
+      <th onclick="sortColumn(this, 12, 0)">Resource1</th>
+      <th onclick="sortColumn(this, 13, 2)">Condition2</th>
+      <th onclick="sortColumn(this, 14, 0)">Resource2</th>
+      <th onclick="sortColumn(this, 15, 2)">Condition3</th>
+      <th onclick="sortColumn(this, 16, 0)">Resource3</th>
+      <th onclick="sortColumn(this, 17, 2)">Condition4</th>
+      <th onclick="sortColumn(this, 18, 0)">Resource4</th>
+      <th onclick="sortColumn(this, 19, 0)">IconFlag</th>
+      <th onclick="sortColumn(this, 20, 0)">AccessRange</th>
+      <th onclick="sortColumn(this, 21, 2)">Comment</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>
@@ -1899,11 +1938,9 @@
       <td class="side">67</td>
       <td>
         <details>
-          <summary>4 refs</summary>
+          <summary>2 refs</summary>
                <a href="SYS_GimmickLocation.html#6207">SYS_GimmickLocation#<9439DDE0></a>
           <br/><a href="SYS_GimmickLocation.html#6208">SYS_GimmickLocation#<9439DDE0></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#6216">SYS_GimmickLocation_dlc02#6216</a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#6217">SYS_GimmickLocation_dlc02#6217</a>
         </details>
       </td>
       <td>&lt;9439DDE0&gt;</td>
@@ -21785,7 +21822,7 @@
       <td class="side">673</td>
       <td>
         <details>
-          <summary>8 refs</summary>
+          <summary>7 refs</summary>
                <a href="2BBE255B.html#61">2BBE255B#61</a>
           <br/><a href="FLD_KizunaNpc.html#236">FLD_KizunaNpc#236</a>
           <br/><a href="FLD_RelationNpc.html#169">FLD_RelationNpc#169</a>
@@ -21793,7 +21830,6 @@
           <br/><a href="SYS_GimmickLocation.html#987">SYS_GimmickLocation#<AF965029></a>
           <br/><a href="SYS_GimmickLocation.html#3096">SYS_GimmickLocation#<AF965029></a>
           <br/><a href="SYS_GimmickLocation.html#22967">SYS_GimmickLocation#<98C470E5></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#23137">SYS_GimmickLocation_dlc02#23137</a>
         </details>
       </td>
       <td>&lt;98C470E5&gt;</td>
@@ -22018,7 +22054,7 @@
       <td class="side">679</td>
       <td>
         <details>
-          <summary>8 refs</summary>
+          <summary>7 refs</summary>
                <a href="2BBE255B.html#1">2BBE255B#1</a>
           <br/><a href="2BBE255B.html#25">2BBE255B#25</a>
           <br/><a href="FLD_EnemyData.html#794">FLD_EnemyData#794</a>
@@ -22026,7 +22062,6 @@
           <br/><a href="FLD_RelationNpc.html#72">FLD_RelationNpc#72</a>
           <br/><a href="SYS_GimmickLocation.html#6179">SYS_GimmickLocation#<11FF909D></a>
           <br/><a href="SYS_GimmickLocation.html#22968">SYS_GimmickLocation#<5BB5935C></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#23138">SYS_GimmickLocation_dlc02#23138</a>
         </details>
       </td>
       <td>&lt;5BB5935C&gt;</td>

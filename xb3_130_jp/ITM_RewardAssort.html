@@ -30,63 +30,102 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>ITM_RewardAssort</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>Reward1</th>
-      <th>RewardNum1</th>
-      <th>Reward2</th>
-      <th>RewardNum2</th>
-      <th>Reward3</th>
-      <th>RewardNum3</th>
-      <th>Reward4</th>
-      <th>RewardNum4</th>
-      <th>Reward5</th>
-      <th>RewardNum5</th>
-      <th>Reward6</th>
-      <th>RewardNum6</th>
-      <th>Reward7</th>
-      <th>RewardNum7</th>
-      <th>Reward8</th>
-      <th>RewardNum8</th>
-      <th>Reward9</th>
-      <th>RewardNum9</th>
-      <th>Reward10</th>
-      <th>RewardNum10</th>
-      <th>Reward11</th>
-      <th>RewardNum11</th>
-      <th>Reward12</th>
-      <th>RewardNum12</th>
-      <th>Reward13</th>
-      <th>RewardNum13</th>
-      <th>Reward14</th>
-      <th>RewardNum14</th>
-      <th>Reward15</th>
-      <th>RewardNum15</th>
-      <th>Reward16</th>
-      <th>RewardNum16</th>
-      <th>Reward17</th>
-      <th>RewardNum17</th>
-      <th>Reward18</th>
-      <th>RewardNum18</th>
-      <th>Reward19</th>
-      <th>RewardNum19</th>
-      <th>Reward20</th>
-      <th>RewardNum20</th>
-      <th>Life</th>
-      <th>Gold</th>
-      <th>GoldDivide</th>
-      <th>GoldDropRsc1</th>
-      <th>GoldDropRsc2</th>
-      <th>GoldDropRsc3</th>
-      <th>SP</th>
-      <th>BehaviorID</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">Reward1</th>
+      <th onclick="sortColumn(this, 4, 0)">RewardNum1</th>
+      <th onclick="sortColumn(this, 5, 0)">Reward2</th>
+      <th onclick="sortColumn(this, 6, 0)">RewardNum2</th>
+      <th onclick="sortColumn(this, 7, 0)">Reward3</th>
+      <th onclick="sortColumn(this, 8, 0)">RewardNum3</th>
+      <th onclick="sortColumn(this, 9, 0)">Reward4</th>
+      <th onclick="sortColumn(this, 10, 0)">RewardNum4</th>
+      <th onclick="sortColumn(this, 11, 0)">Reward5</th>
+      <th onclick="sortColumn(this, 12, 0)">RewardNum5</th>
+      <th onclick="sortColumn(this, 13, 0)">Reward6</th>
+      <th onclick="sortColumn(this, 14, 0)">RewardNum6</th>
+      <th onclick="sortColumn(this, 15, 0)">Reward7</th>
+      <th onclick="sortColumn(this, 16, 0)">RewardNum7</th>
+      <th onclick="sortColumn(this, 17, 0)">Reward8</th>
+      <th onclick="sortColumn(this, 18, 0)">RewardNum8</th>
+      <th onclick="sortColumn(this, 19, 0)">Reward9</th>
+      <th onclick="sortColumn(this, 20, 0)">RewardNum9</th>
+      <th onclick="sortColumn(this, 21, 0)">Reward10</th>
+      <th onclick="sortColumn(this, 22, 0)">RewardNum10</th>
+      <th onclick="sortColumn(this, 23, 0)">Reward11</th>
+      <th onclick="sortColumn(this, 24, 0)">RewardNum11</th>
+      <th onclick="sortColumn(this, 25, 0)">Reward12</th>
+      <th onclick="sortColumn(this, 26, 0)">RewardNum12</th>
+      <th onclick="sortColumn(this, 27, 0)">Reward13</th>
+      <th onclick="sortColumn(this, 28, 0)">RewardNum13</th>
+      <th onclick="sortColumn(this, 29, 0)">Reward14</th>
+      <th onclick="sortColumn(this, 30, 0)">RewardNum14</th>
+      <th onclick="sortColumn(this, 31, 0)">Reward15</th>
+      <th onclick="sortColumn(this, 32, 0)">RewardNum15</th>
+      <th onclick="sortColumn(this, 33, 0)">Reward16</th>
+      <th onclick="sortColumn(this, 34, 0)">RewardNum16</th>
+      <th onclick="sortColumn(this, 35, 0)">Reward17</th>
+      <th onclick="sortColumn(this, 36, 0)">RewardNum17</th>
+      <th onclick="sortColumn(this, 37, 0)">Reward18</th>
+      <th onclick="sortColumn(this, 38, 0)">RewardNum18</th>
+      <th onclick="sortColumn(this, 39, 0)">Reward19</th>
+      <th onclick="sortColumn(this, 40, 0)">RewardNum19</th>
+      <th onclick="sortColumn(this, 41, 0)">Reward20</th>
+      <th onclick="sortColumn(this, 42, 0)">RewardNum20</th>
+      <th onclick="sortColumn(this, 43, 0)">Life</th>
+      <th onclick="sortColumn(this, 44, 0)">Gold</th>
+      <th onclick="sortColumn(this, 45, 0)">GoldDivide</th>
+      <th onclick="sortColumn(this, 46, 0)">GoldDropRsc1</th>
+      <th onclick="sortColumn(this, 47, 0)">GoldDropRsc2</th>
+      <th onclick="sortColumn(this, 48, 0)">GoldDropRsc3</th>
+      <th onclick="sortColumn(this, 49, 0)">SP</th>
+      <th onclick="sortColumn(this, 50, 0)">BehaviorID</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>
@@ -23402,7 +23441,12 @@
     </tr>
     <tr id="408">
       <td class="side">408</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="AMB_CollectionLot.html#0">AMB_CollectionLot#ITEM_SET_FIX_0１</a>
+        </details>
+      </td>
       <td>AMIIBO_RECIPE_01</td>
       <td><a href="ITM_Collection.html#2110">キラボシダイコン</a></td>
       <td>2</td>
@@ -23455,7 +23499,12 @@
     </tr>
     <tr id="409">
       <td class="side">409</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="AMB_CollectionLot.html#1">AMB_CollectionLot#ITEM_SET_FIX_02</a>
+        </details>
+      </td>
       <td>AMIIBO_RECIPE_02</td>
       <td><a href="ITM_Collection.html#2110">キラボシダイコン</a></td>
       <td>2</td>
@@ -23508,7 +23557,12 @@
     </tr>
     <tr id="410">
       <td class="side">410</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="AMB_CollectionLot.html#2">AMB_CollectionLot#ITEM_SET_FIX_03</a>
+        </details>
+      </td>
       <td>AMIIBO_RECIPE_03</td>
       <td><a href="ITM_Collection.html#3293">あまあまういんな</a></td>
       <td>2</td>
@@ -23561,7 +23615,12 @@
     </tr>
     <tr id="411">
       <td class="side">411</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="AMB_CollectionLot.html#3">AMB_CollectionLot#ITEM_SET_FIX_04</a>
+        </details>
+      </td>
       <td>AMIIBO_RECIPE_04</td>
       <td><a href="ITM_Collection.html#2475">ギラフェの顔ヒレ</a></td>
       <td>2</td>
@@ -23614,7 +23673,12 @@
     </tr>
     <tr id="412">
       <td class="side">412</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="AMB_CollectionLot.html#4">AMB_CollectionLot#ITEM_SET_FIX_05</a>
+        </details>
+      </td>
       <td>AMIIBO_RECIPE_05</td>
       <td><a href="ITM_Collection.html#2424">アルマの熟成サーロイン</a></td>
       <td>1</td>
@@ -23667,7 +23731,12 @@
     </tr>
     <tr id="413">
       <td class="side">413</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="AMB_CollectionLot.html#5">AMB_CollectionLot#ITEM_SET_FIX_06</a>
+        </details>
+      </td>
       <td>AMIIBO_RECIPE_06</td>
       <td><a href="ITM_Collection.html#2007">ミルキーソイ</a></td>
       <td>1</td>
@@ -23720,7 +23789,12 @@
     </tr>
     <tr id="414">
       <td class="side">414</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="AMB_CollectionLot.html#6">AMB_CollectionLot#ITEM_SET_FIX_07</a>
+        </details>
+      </td>
       <td>AMIIBO_RECIPE_07</td>
       <td><a href="ITM_Collection.html#2439">アルドンの芳醇肉</a></td>
       <td>2</td>
@@ -23773,7 +23847,12 @@
     </tr>
     <tr id="415">
       <td class="side">415</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="AMB_CollectionLot.html#7">AMB_CollectionLot#ITEM_SET_FIX_08</a>
+        </details>
+      </td>
       <td>AMIIBO_RECIPE_08</td>
       <td><a href="ITM_Collection.html#2646">サモンのさっぱり白身</a></td>
       <td>2</td>
@@ -23826,7 +23905,12 @@
     </tr>
     <tr id="416">
       <td class="side">416</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="AMB_CollectionLot.html#8">AMB_CollectionLot#ITEM_SET_FIX_09</a>
+        </details>
+      </td>
       <td>AMIIBO_RECIPE_09</td>
       <td><a href="ITM_Collection.html#2588">アンセルの圧縮肉</a></td>
       <td>4</td>
@@ -23879,7 +23963,12 @@
     </tr>
     <tr id="417">
       <td class="side">417</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="AMB_CollectionLot.html#9">AMB_CollectionLot#ITEM_SET_FIX_10</a>
+        </details>
+      </td>
       <td>AMIIBO_RECIPE_10</td>
       <td><a href="ITM_Collection.html#2424">アルマの熟成サーロイン</a></td>
       <td>2</td>
@@ -23932,7 +24021,12 @@
     </tr>
     <tr id="418">
       <td class="side">418</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="AMB_CollectionLot.html#10">AMB_CollectionLot#ITEM_SET_FIX_11</a>
+        </details>
+      </td>
       <td>AMIIBO_RECIPE_11</td>
       <td><a href="ITM_Collection.html#2647">サモンのさっぱり白身</a></td>
       <td>2</td>
@@ -23985,7 +24079,12 @@
     </tr>
     <tr id="419">
       <td class="side">419</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="AMB_CollectionLot.html#11">AMB_CollectionLot#ITEM_SET_FIX_12</a>
+        </details>
+      </td>
       <td>AMIIBO_RECIPE_12</td>
       <td><a href="ITM_Collection.html#3290">ターフェロブスター</a></td>
       <td>1</td>
@@ -24038,7 +24137,12 @@
     </tr>
     <tr id="420">
       <td class="side">420</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="AMB_CollectionLot.html#12">AMB_CollectionLot#ITEM_SET_FIX_13</a>
+        </details>
+      </td>
       <td>AMIIBO_RECIPE_13</td>
       <td><a href="ITM_Collection.html#2671">ロドンの大トロ</a></td>
       <td>3</td>
@@ -24091,7 +24195,12 @@
     </tr>
     <tr id="421">
       <td class="side">421</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="AMB_CollectionLot.html#13">AMB_CollectionLot#ITEM_SET_FIX_14</a>
+        </details>
+      </td>
       <td>AMIIBO_RECIPE_14</td>
       <td><a href="ITM_Collection.html#2612">モラモラの肉厚ヒレ</a></td>
       <td>1</td>
@@ -24144,7 +24253,12 @@
     </tr>
     <tr id="422">
       <td class="side">422</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="AMB_CollectionLot.html#14">AMB_CollectionLot#ITEM_SET_FIX_15</a>
+        </details>
+      </td>
       <td>AMIIBO_RECIPE_15</td>
       <td><a href="ITM_Collection.html#2309">ノイズバイト</a></td>
       <td>3</td>
@@ -24197,7 +24311,12 @@
     </tr>
     <tr id="423">
       <td class="side">423</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="AMB_CollectionLot.html#15">AMB_CollectionLot#ITEM_SET_FIX_16</a>
+        </details>
+      </td>
       <td>AMIIBO_RECIPE_16</td>
       <td><a href="ITM_Collection.html#2755">ギアークの発光ヒレ</a></td>
       <td>2</td>
@@ -24250,7 +24369,12 @@
     </tr>
     <tr id="424">
       <td class="side">424</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="AMB_CollectionLot.html#16">AMB_CollectionLot#ITEM_SET_FIX_17</a>
+        </details>
+      </td>
       <td>AMIIBO_RECIPE_17</td>
       <td><a href="ITM_Collection.html#2018">シャリウマイネ</a></td>
       <td>3</td>
@@ -24303,7 +24427,12 @@
     </tr>
     <tr id="425">
       <td class="side">425</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="AMB_CollectionLot.html#17">AMB_CollectionLot#ITEM_SET_FIX_18</a>
+        </details>
+      </td>
       <td>AMIIBO_RECIPE_18</td>
       <td><a href="ITM_Collection.html#3270">アリエスの点点霜降肉</a></td>
       <td>1</td>
@@ -24356,7 +24485,12 @@
     </tr>
     <tr id="426">
       <td class="side">426</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="AMB_CollectionLot.html#18">AMB_CollectionLot#ITEM_SET_FIX_19</a>
+        </details>
+      </td>
       <td>AMIIBO_RECIPE_19</td>
       <td><a href="ITM_Collection.html#3291">ロウカンロブスター</a></td>
       <td>1</td>
@@ -24409,7 +24543,12 @@
     </tr>
     <tr id="427">
       <td class="side">427</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="AMB_CollectionLot.html#19">AMB_CollectionLot#ITEM_SET_FIX_20</a>
+        </details>
+      </td>
       <td>AMIIBO_RECIPE_20</td>
       <td><a href="ITM_Collection.html#3293">あまあまういんな</a></td>
       <td>3</td>
@@ -24462,7 +24601,12 @@
     </tr>
     <tr id="428">
       <td class="side">428</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="AMB_CollectionLot.html#20">AMB_CollectionLot#ITEM_SET_FIX_21</a>
+        </details>
+      </td>
       <td>AMIIBO_RECIPE_21</td>
       <td><a href="ITM_Collection.html#2110">キラボシダイコン</a></td>
       <td>1</td>

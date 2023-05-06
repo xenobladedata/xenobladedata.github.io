@@ -30,64 +30,103 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>BTL_WpnType</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Name2</th>
-      <th>DebugName</th>
-      <th>AttackType</th>
-      <th>RangeType</th>
-      <th>Stability</th>
-      <th>EffType</th>
-      <th>GuardEff</th>
-      <th>GuardSE</th>
-      <th>EffAtr</th>
-      <th>VoiceType</th>
-      <th>MotionType</th>
-      <th>field_0EF9A534</th>
-      <th>field_FF538854</th>
-      <th>field_1B2BC7FE</th>
-      <th>field_2914FFB8</th>
-      <th>field_3AC4D940</th>
-      <th>field_17BFE0BA</th>
-      <th>field_44FC459C</th>
-      <th>field_6C9708A9</th>
-      <th>field_E687C280</th>
-      <th>NPCRscR</th>
-      <th>NPCRscL</th>
-      <th>NPCRscEx</th>
-      <th>field_C110E6CE</th>
-      <th>field_65D652F4</th>
-      <th>field_6AEF1BB5</th>
-      <th>PCMountOut</th>
-      <th>field_07567565</th>
-      <th>NPCMountOut</th>
-      <th>field_ED8840FF</th>
-      <th>WpnParam</th>
-      <th>UniqueDirectionR</th>
-      <th>UniqueDirectionL</th>
-      <th>field_2813720A</th>
-      <th>field_AFDAA0E9</th>
-      <th>field_A3F80817</th>
-      <th>field_79D32D48</th>
-      <th>field_05F738B1</th>
-      <th>field_862B0A9C</th>
-      <th>Scale1</th>
-      <th>Scale2</th>
-      <th>Scale3</th>
-      <th>Scale4</th>
-      <th>Scale5</th>
-      <th>Scale6</th>
-      <th>Scale7</th>
-      <th>field_3E732C9F</th>
-      <th>field_4A0458AA</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 2)">Name</th>
+      <th onclick="sortColumn(this, 4, 2)">Name2</th>
+      <th onclick="sortColumn(this, 5, 2)">DebugName</th>
+      <th onclick="sortColumn(this, 6, 0)">AttackType</th>
+      <th onclick="sortColumn(this, 7, 0)">RangeType</th>
+      <th onclick="sortColumn(this, 8, 0)">Stability</th>
+      <th onclick="sortColumn(this, 9, 0)">EffType</th>
+      <th onclick="sortColumn(this, 10, 0)">GuardEff</th>
+      <th onclick="sortColumn(this, 11, 2)">GuardSE</th>
+      <th onclick="sortColumn(this, 12, 0)">EffAtr</th>
+      <th onclick="sortColumn(this, 13, 0)">VoiceType</th>
+      <th onclick="sortColumn(this, 14, 0)">MotionType</th>
+      <th onclick="sortColumn(this, 15, 0)">field_0EF9A534</th>
+      <th onclick="sortColumn(this, 16, 0)">field_FF538854</th>
+      <th onclick="sortColumn(this, 17, 0)">field_1B2BC7FE</th>
+      <th onclick="sortColumn(this, 18, 0)">field_2914FFB8</th>
+      <th onclick="sortColumn(this, 19, 0)">field_3AC4D940</th>
+      <th onclick="sortColumn(this, 20, 0)">field_17BFE0BA</th>
+      <th onclick="sortColumn(this, 21, 0)">field_44FC459C</th>
+      <th onclick="sortColumn(this, 22, 0)">field_6C9708A9</th>
+      <th onclick="sortColumn(this, 23, 0)">field_E687C280</th>
+      <th onclick="sortColumn(this, 24, 0)">NPCRscR</th>
+      <th onclick="sortColumn(this, 25, 0)">NPCRscL</th>
+      <th onclick="sortColumn(this, 26, 0)">NPCRscEx</th>
+      <th onclick="sortColumn(this, 27, 0)">field_C110E6CE</th>
+      <th onclick="sortColumn(this, 28, 0)">field_65D652F4</th>
+      <th onclick="sortColumn(this, 29, 0)">field_6AEF1BB5</th>
+      <th onclick="sortColumn(this, 30, 0)">PCMountOut</th>
+      <th onclick="sortColumn(this, 31, 0)">field_07567565</th>
+      <th onclick="sortColumn(this, 32, 0)">NPCMountOut</th>
+      <th onclick="sortColumn(this, 33, 0)">field_ED8840FF</th>
+      <th onclick="sortColumn(this, 34, 2)">WpnParam</th>
+      <th onclick="sortColumn(this, 35, 0)">UniqueDirectionR</th>
+      <th onclick="sortColumn(this, 36, 0)">UniqueDirectionL</th>
+      <th onclick="sortColumn(this, 37, 0)">field_2813720A</th>
+      <th onclick="sortColumn(this, 38, 0)">field_AFDAA0E9</th>
+      <th onclick="sortColumn(this, 39, 0)">field_A3F80817</th>
+      <th onclick="sortColumn(this, 40, 0)">field_79D32D48</th>
+      <th onclick="sortColumn(this, 41, 2)">field_05F738B1</th>
+      <th onclick="sortColumn(this, 42, 2)">field_862B0A9C</th>
+      <th onclick="sortColumn(this, 43, 0)">Scale1</th>
+      <th onclick="sortColumn(this, 44, 0)">Scale2</th>
+      <th onclick="sortColumn(this, 45, 0)">Scale3</th>
+      <th onclick="sortColumn(this, 46, 0)">Scale4</th>
+      <th onclick="sortColumn(this, 47, 0)">Scale5</th>
+      <th onclick="sortColumn(this, 48, 0)">Scale6</th>
+      <th onclick="sortColumn(this, 49, 0)">Scale7</th>
+      <th onclick="sortColumn(this, 50, 0)">field_3E732C9F</th>
+      <th onclick="sortColumn(this, 51, 0)">field_4A0458AA</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>

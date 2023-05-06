@@ -30,36 +30,75 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>MNU_EventTheater_scn</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>title</th>
-      <th>scn_category</th>
-      <th>scn_group</th>
-      <th>sort_index</th>
-      <th>fixed_time</th>
-      <th>fixed_weather</th>
-      <th>field_FCEC2838</th>
-      <th>fixed_equip</th>
-      <th>ev01_id</th>
-      <th>ev02_id</th>
-      <th>ev03_id</th>
-      <th>ev04_id</th>
-      <th>ev05_id</th>
-      <th>ev06_id</th>
-      <th>ev07_id</th>
-      <th>ev08_id</th>
-      <th>ev09_id</th>
-      <th>ev10_id</th>
-      <th>picid</th>
-      <th>hair_change</th>
-      <th>eth_name</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 2)">title</th>
+      <th onclick="sortColumn(this, 4, 0)">scn_category</th>
+      <th onclick="sortColumn(this, 5, 0)">scn_group</th>
+      <th onclick="sortColumn(this, 6, 0)">sort_index</th>
+      <th onclick="sortColumn(this, 7, 0)">fixed_time</th>
+      <th onclick="sortColumn(this, 8, 0)">fixed_weather</th>
+      <th onclick="sortColumn(this, 9, 0)">field_FCEC2838</th>
+      <th onclick="sortColumn(this, 10, 0)">fixed_equip</th>
+      <th onclick="sortColumn(this, 11, 0)">ev01_id</th>
+      <th onclick="sortColumn(this, 12, 0)">ev02_id</th>
+      <th onclick="sortColumn(this, 13, 0)">ev03_id</th>
+      <th onclick="sortColumn(this, 14, 0)">ev04_id</th>
+      <th onclick="sortColumn(this, 15, 0)">ev05_id</th>
+      <th onclick="sortColumn(this, 16, 0)">ev06_id</th>
+      <th onclick="sortColumn(this, 17, 0)">ev07_id</th>
+      <th onclick="sortColumn(this, 18, 0)">ev08_id</th>
+      <th onclick="sortColumn(this, 19, 0)">ev09_id</th>
+      <th onclick="sortColumn(this, 20, 0)">ev10_id</th>
+      <th onclick="sortColumn(this, 21, 0)">picid</th>
+      <th onclick="sortColumn(this, 22, 0)">hair_change</th>
+      <th onclick="sortColumn(this, 23, 2)">eth_name</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>

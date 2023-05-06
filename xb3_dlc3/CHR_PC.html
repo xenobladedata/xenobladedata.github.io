@@ -30,106 +30,145 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>CHR_PC</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>Name</th>
-      <th>DebugName</th>
-      <th>Atr</th>
-      <th>Gender</th>
-      <th>Race</th>
-      <th>Force</th>
-      <th>MealMountObj</th>
-      <th>CookMainMountObj</th>
-      <th>CookAssistMountObj</th>
-      <th>DefTalentModel</th>
-      <th>SpModel1</th>
-      <th>SpModelCond1</th>
-      <th>SpModel2</th>
-      <th>SpModelCond2</th>
-      <th>Type</th>
-      <th>Motion</th>
-      <th>ObjSlot1</th>
-      <th>ObjSlot2</th>
-      <th>ObjSlot3</th>
-      <th>IK</th>
-      <th>Effect</th>
-      <th>Still</th>
-      <th>Voice</th>
-      <th>AiID</th>
-      <th>ChestHeight</th>
-      <th>LandingHeight</th>
-      <th>Swim</th>
-      <th>FootStep</th>
-      <th>FootStepEff</th>
-      <th>FootPrintDetection</th>
-      <th>DefLvType</th>
-      <th>DefLv</th>
-      <th>DefTalent</th>
-      <th>DefTalentLv</th>
-      <th>DefAcce1</th>
-      <th>DefAcce2</th>
-      <th>DefAcce3</th>
-      <th>DefGem1</th>
-      <th>DefGem2</th>
-      <th>DefGem3</th>
-      <th>HpMaxLv1</th>
-      <th>StrengthLv1</th>
-      <th>PowHealLv1</th>
-      <th>DexLv1</th>
-      <th>AgilityLv1</th>
-      <th>HpMaxLv99</th>
-      <th>StrengthLv99</th>
-      <th>PowHealLv99</th>
-      <th>DexLv99</th>
-      <th>AgilityLv99</th>
-      <th>UroBody</th>
-      <th>UroPartner</th>
-      <th>UroCondition</th>
-      <th>TalentNPCArts1</th>
-      <th>TalentNPCArts2</th>
-      <th>TalentNPCArts3</th>
-      <th>TalentNPCArts4</th>
-      <th>TalentNPCArts5</th>
-      <th>TalentNPCArtsCond1</th>
-      <th>TalentNPCArtsCond2</th>
-      <th>TalentNPCArtsCond3</th>
-      <th>TalentNPCArtsCond4</th>
-      <th>TalentNPCArtsCond5</th>
-      <th>TalentNPCTalentArts</th>
-      <th>TalentNPCTalentArtsCond</th>
-      <th>TalentNPCSkill1</th>
-      <th>TalentNPCSkill2</th>
-      <th>TalentNPCSkill3</th>
-      <th>TalentNPCSkill4</th>
-      <th>TalentNPCSkill5</th>
-      <th>TalentNPCSkill6</th>
-      <th>TalentNPCSkillCond1</th>
-      <th>TalentNPCSkillCond2</th>
-      <th>TalentNPCSkillCond3</th>
-      <th>TalentNPCSkillCond4</th>
-      <th>TalentNPCSkillCond5</th>
-      <th>TalentNPCSkillCond6</th>
-      <th>OffsetID</th>
-      <th>EffScale</th>
-      <th>MeatType</th>
-      <th>BoneCamera</th>
-      <th>ChainOrder</th>
-      <th>Flag_WpnReinforced</th>
-      <th>TP_Min</th>
-      <th>TP_Max</th>
-      <th>PT_OutTiming</th>
-      <th>HeroChainEff</th>
-      <th>field_232B2159</th>
-      <th>field_9DB71964</th>
-      <th>UniqueDirection</th>
-      <th>field_6102FA17</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 2)">Name</th>
+      <th onclick="sortColumn(this, 4, 2)">DebugName</th>
+      <th onclick="sortColumn(this, 5, 0)">Atr</th>
+      <th onclick="sortColumn(this, 6, 0)">Gender</th>
+      <th onclick="sortColumn(this, 7, 0)">Race</th>
+      <th onclick="sortColumn(this, 8, 0)">Force</th>
+      <th onclick="sortColumn(this, 9, 2)">MealMountObj</th>
+      <th onclick="sortColumn(this, 10, 2)">CookMainMountObj</th>
+      <th onclick="sortColumn(this, 11, 2)">CookAssistMountObj</th>
+      <th onclick="sortColumn(this, 12, 2)">DefTalentModel</th>
+      <th onclick="sortColumn(this, 13, 2)">SpModel1</th>
+      <th onclick="sortColumn(this, 14, 0)">SpModelCond1</th>
+      <th onclick="sortColumn(this, 15, 2)">SpModel2</th>
+      <th onclick="sortColumn(this, 16, 0)">SpModelCond2</th>
+      <th onclick="sortColumn(this, 17, 0)">Type</th>
+      <th onclick="sortColumn(this, 18, 2)">Motion</th>
+      <th onclick="sortColumn(this, 19, 2)">ObjSlot1</th>
+      <th onclick="sortColumn(this, 20, 2)">ObjSlot2</th>
+      <th onclick="sortColumn(this, 21, 2)">ObjSlot3</th>
+      <th onclick="sortColumn(this, 22, 0)">IK</th>
+      <th onclick="sortColumn(this, 23, 2)">Effect</th>
+      <th onclick="sortColumn(this, 24, 2)">Still</th>
+      <th onclick="sortColumn(this, 25, 2)">Voice</th>
+      <th onclick="sortColumn(this, 26, 0)">AiID</th>
+      <th onclick="sortColumn(this, 27, 0)">ChestHeight</th>
+      <th onclick="sortColumn(this, 28, 0)">LandingHeight</th>
+      <th onclick="sortColumn(this, 29, 0)">Swim</th>
+      <th onclick="sortColumn(this, 30, 0)">FootStep</th>
+      <th onclick="sortColumn(this, 31, 0)">FootStepEff</th>
+      <th onclick="sortColumn(this, 32, 0)">FootPrintDetection</th>
+      <th onclick="sortColumn(this, 33, 0)">DefLvType</th>
+      <th onclick="sortColumn(this, 34, 0)">DefLv</th>
+      <th onclick="sortColumn(this, 35, 0)">DefTalent</th>
+      <th onclick="sortColumn(this, 36, 0)">DefTalentLv</th>
+      <th onclick="sortColumn(this, 37, 0)">DefAcce1</th>
+      <th onclick="sortColumn(this, 38, 0)">DefAcce2</th>
+      <th onclick="sortColumn(this, 39, 0)">DefAcce3</th>
+      <th onclick="sortColumn(this, 40, 0)">DefGem1</th>
+      <th onclick="sortColumn(this, 41, 0)">DefGem2</th>
+      <th onclick="sortColumn(this, 42, 0)">DefGem3</th>
+      <th onclick="sortColumn(this, 43, 0)">HpMaxLv1</th>
+      <th onclick="sortColumn(this, 44, 0)">StrengthLv1</th>
+      <th onclick="sortColumn(this, 45, 0)">PowHealLv1</th>
+      <th onclick="sortColumn(this, 46, 0)">DexLv1</th>
+      <th onclick="sortColumn(this, 47, 0)">AgilityLv1</th>
+      <th onclick="sortColumn(this, 48, 0)">HpMaxLv99</th>
+      <th onclick="sortColumn(this, 49, 0)">StrengthLv99</th>
+      <th onclick="sortColumn(this, 50, 0)">PowHealLv99</th>
+      <th onclick="sortColumn(this, 51, 0)">DexLv99</th>
+      <th onclick="sortColumn(this, 52, 0)">AgilityLv99</th>
+      <th onclick="sortColumn(this, 53, 0)">UroBody</th>
+      <th onclick="sortColumn(this, 54, 0)">UroPartner</th>
+      <th onclick="sortColumn(this, 55, 0)">UroCondition</th>
+      <th onclick="sortColumn(this, 56, 0)">TalentNPCArts1</th>
+      <th onclick="sortColumn(this, 57, 0)">TalentNPCArts2</th>
+      <th onclick="sortColumn(this, 58, 0)">TalentNPCArts3</th>
+      <th onclick="sortColumn(this, 59, 0)">TalentNPCArts4</th>
+      <th onclick="sortColumn(this, 60, 0)">TalentNPCArts5</th>
+      <th onclick="sortColumn(this, 61, 0)">TalentNPCArtsCond1</th>
+      <th onclick="sortColumn(this, 62, 0)">TalentNPCArtsCond2</th>
+      <th onclick="sortColumn(this, 63, 0)">TalentNPCArtsCond3</th>
+      <th onclick="sortColumn(this, 64, 0)">TalentNPCArtsCond4</th>
+      <th onclick="sortColumn(this, 65, 0)">TalentNPCArtsCond5</th>
+      <th onclick="sortColumn(this, 66, 0)">TalentNPCTalentArts</th>
+      <th onclick="sortColumn(this, 67, 0)">TalentNPCTalentArtsCond</th>
+      <th onclick="sortColumn(this, 68, 0)">TalentNPCSkill1</th>
+      <th onclick="sortColumn(this, 69, 0)">TalentNPCSkill2</th>
+      <th onclick="sortColumn(this, 70, 0)">TalentNPCSkill3</th>
+      <th onclick="sortColumn(this, 71, 0)">TalentNPCSkill4</th>
+      <th onclick="sortColumn(this, 72, 0)">TalentNPCSkill5</th>
+      <th onclick="sortColumn(this, 73, 0)">TalentNPCSkill6</th>
+      <th onclick="sortColumn(this, 74, 0)">TalentNPCSkillCond1</th>
+      <th onclick="sortColumn(this, 75, 0)">TalentNPCSkillCond2</th>
+      <th onclick="sortColumn(this, 76, 0)">TalentNPCSkillCond3</th>
+      <th onclick="sortColumn(this, 77, 0)">TalentNPCSkillCond4</th>
+      <th onclick="sortColumn(this, 78, 0)">TalentNPCSkillCond5</th>
+      <th onclick="sortColumn(this, 79, 0)">TalentNPCSkillCond6</th>
+      <th onclick="sortColumn(this, 80, 0)">OffsetID</th>
+      <th onclick="sortColumn(this, 81, 0)">EffScale</th>
+      <th onclick="sortColumn(this, 82, 0)">MeatType</th>
+      <th onclick="sortColumn(this, 83, 2)">BoneCamera</th>
+      <th onclick="sortColumn(this, 84, 0)">ChainOrder</th>
+      <th onclick="sortColumn(this, 85, 0)">Flag_WpnReinforced</th>
+      <th onclick="sortColumn(this, 86, 0)">TP_Min</th>
+      <th onclick="sortColumn(this, 87, 0)">TP_Max</th>
+      <th onclick="sortColumn(this, 88, 2)">PT_OutTiming</th>
+      <th onclick="sortColumn(this, 89, 0)">HeroChainEff</th>
+      <th onclick="sortColumn(this, 90, 2)">PowAugment</th>
+      <th onclick="sortColumn(this, 91, 0)">field_9DB71964</th>
+      <th onclick="sortColumn(this, 92, 0)">UniqueDirection</th>
+      <th onclick="sortColumn(this, 93, 0)">DefPair</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>
@@ -3998,7 +4037,7 @@ by inflicting Topple</a>
           <br/><a href="FLD_InterestEventReaction.html#2671">FLD_InterestEventReaction#2671</a>
           <br/><a href="FLD_InterestEventReaction.html#2677">FLD_InterestEventReaction#2677</a>
           <br/><a href="FLD_InterestEventReaction.html#2683">FLD_InterestEventReaction#2683</a>
-          <br/><a href="FLD_InterestEventReaction.html#2689">FLD_InterestEventReaction#2689</a>
+          <br/><a href="FLD_InterestEventReaction.html#2689">FLD_InterestEventReaction#ma15a_GMK_71_AFF_TALK_71032/pos_2-66_DLC04</a>
           <br/><a href="FLD_InterestEventReaction.html#2724">FLD_InterestEventReaction#2724</a>
           <br/><a href="FLD_InterestEventReaction.html#2727">FLD_InterestEventReaction#2727</a>
           <br/><a href="FLD_InterestEventReaction.html#2730">FLD_InterestEventReaction#2730</a>

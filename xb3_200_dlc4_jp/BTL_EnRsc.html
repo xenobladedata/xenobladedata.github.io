@@ -30,78 +30,117 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>BTL_EnRsc</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>DebugName</th>
-      <th>SoldierCategory1</th>
-      <th>SoldierCategory2</th>
-      <th>RscType</th>
-      <th>ChrID</th>
-      <th>Model</th>
-      <th>RscPreset</th>
-      <th>StoryRsc</th>
-      <th>SwitchModel1</th>
-      <th>Visible1</th>
-      <th>SwitchModel2</th>
-      <th>Visible2</th>
-      <th>SwitchModel3</th>
-      <th>Visible3</th>
-      <th>SwitchModel4</th>
-      <th>Visible4</th>
-      <th>Color</th>
-      <th>ActType</th>
-      <th>Radius</th>
-      <th>EffScale</th>
-      <th>ChestHeight</th>
-      <th>FlyHeight</th>
-      <th>SwimHeight</th>
-      <th>AngleFront</th>
-      <th>OffsetID</th>
-      <th>IK</th>
-      <th>field_DB52EFEF</th>
-      <th>field_20C8E401</th>
-      <th>BoneCenter</th>
-      <th>BoneCamera</th>
-      <th>WpnType</th>
-      <th>WeaponA</th>
-      <th>WeaponB</th>
-      <th>WeaponC</th>
-      <th>MountOut</th>
-      <th>MountIN</th>
-      <th>Motion</th>
-      <th>MotRetarget</th>
-      <th>Effect</th>
-      <th>EffStandLoop</th>
-      <th>Sound</th>
-      <th>VoiceID</th>
-      <th>VoiceRand</th>
-      <th>GoldDivideRev</th>
-      <th>MeatType</th>
-      <th>GuardEff</th>
-      <th>GuardSE</th>
-      <th>VoiceDead</th>
-      <th>UniqueDirection</th>
-      <th>modelDirection</th>
-      <th>Event</th>
-      <th>field_5E3BE057</th>
-      <th>field_28DE8575</th>
-      <th>MoveBtlRate</th>
-      <th>CollisionRadius</th>
-      <th>field_8281BB89</th>
-      <th>EffectType</th>
-      <th>field_B604D9F3</th>
-      <th>field_3B53F852</th>
-      <th>field_E4EB3419</th>
-      <th>field_9693E350</th>
-      <th>field_693A2A44</th>
-      <th>field_6D9580C6</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 2)">DebugName</th>
+      <th onclick="sortColumn(this, 4, 2)">SoldierCategory1</th>
+      <th onclick="sortColumn(this, 5, 2)">SoldierCategory2</th>
+      <th onclick="sortColumn(this, 6, 0)">RscType</th>
+      <th onclick="sortColumn(this, 7, 0)">ChrID</th>
+      <th onclick="sortColumn(this, 8, 2)">Model</th>
+      <th onclick="sortColumn(this, 9, 0)">RscPreset</th>
+      <th onclick="sortColumn(this, 10, 0)">StoryRsc</th>
+      <th onclick="sortColumn(this, 11, 2)">SwitchModel1</th>
+      <th onclick="sortColumn(this, 12, 1)">Visible1</th>
+      <th onclick="sortColumn(this, 13, 2)">SwitchModel2</th>
+      <th onclick="sortColumn(this, 14, 1)">Visible2</th>
+      <th onclick="sortColumn(this, 15, 2)">SwitchModel3</th>
+      <th onclick="sortColumn(this, 16, 1)">Visible3</th>
+      <th onclick="sortColumn(this, 17, 2)">SwitchModel4</th>
+      <th onclick="sortColumn(this, 18, 1)">Visible4</th>
+      <th onclick="sortColumn(this, 19, 0)">Color</th>
+      <th onclick="sortColumn(this, 20, 0)">ActType</th>
+      <th onclick="sortColumn(this, 21, 1)">Radius</th>
+      <th onclick="sortColumn(this, 22, 0)">EffScale</th>
+      <th onclick="sortColumn(this, 23, 0)">ChestHeight</th>
+      <th onclick="sortColumn(this, 24, 0)">FlyHeight</th>
+      <th onclick="sortColumn(this, 25, 0)">SwimHeight</th>
+      <th onclick="sortColumn(this, 26, 0)">AngleFront</th>
+      <th onclick="sortColumn(this, 27, 0)">OffsetID</th>
+      <th onclick="sortColumn(this, 28, 0)">IK</th>
+      <th onclick="sortColumn(this, 29, 2)">field_DB52EFEF</th>
+      <th onclick="sortColumn(this, 30, 2)">field_20C8E401</th>
+      <th onclick="sortColumn(this, 31, 2)">BoneCenter</th>
+      <th onclick="sortColumn(this, 32, 2)">BoneCamera</th>
+      <th onclick="sortColumn(this, 33, 0)">WpnType</th>
+      <th onclick="sortColumn(this, 34, 0)">WeaponA</th>
+      <th onclick="sortColumn(this, 35, 0)">WeaponB</th>
+      <th onclick="sortColumn(this, 36, 0)">WeaponC</th>
+      <th onclick="sortColumn(this, 37, 0)">MountOut</th>
+      <th onclick="sortColumn(this, 38, 0)">MountIN</th>
+      <th onclick="sortColumn(this, 39, 2)">Motion</th>
+      <th onclick="sortColumn(this, 40, 2)">MotRetarget</th>
+      <th onclick="sortColumn(this, 41, 2)">Effect</th>
+      <th onclick="sortColumn(this, 42, 2)">EffStandLoop</th>
+      <th onclick="sortColumn(this, 43, 2)">Sound</th>
+      <th onclick="sortColumn(this, 44, 0)">VoiceID</th>
+      <th onclick="sortColumn(this, 45, 0)">VoiceRand</th>
+      <th onclick="sortColumn(this, 46, 0)">GoldDivideRev</th>
+      <th onclick="sortColumn(this, 47, 0)">MeatType</th>
+      <th onclick="sortColumn(this, 48, 0)">GuardEff</th>
+      <th onclick="sortColumn(this, 49, 2)">GuardSE</th>
+      <th onclick="sortColumn(this, 50, 2)">VoiceDead</th>
+      <th onclick="sortColumn(this, 51, 0)">UniqueDirection</th>
+      <th onclick="sortColumn(this, 52, 0)">modelDirection</th>
+      <th onclick="sortColumn(this, 53, 2)">Event</th>
+      <th onclick="sortColumn(this, 54, 0)">field_5E3BE057</th>
+      <th onclick="sortColumn(this, 55, 0)">field_28DE8575</th>
+      <th onclick="sortColumn(this, 56, 0)">MoveBtlRate</th>
+      <th onclick="sortColumn(this, 57, 1)">CollisionRadius</th>
+      <th onclick="sortColumn(this, 58, 0)">field_8281BB89</th>
+      <th onclick="sortColumn(this, 59, 0)">EffectType</th>
+      <th onclick="sortColumn(this, 60, 0)">field_B604D9F3</th>
+      <th onclick="sortColumn(this, 61, 0)">field_3B53F852</th>
+      <th onclick="sortColumn(this, 62, 0)">field_E4EB3419</th>
+      <th onclick="sortColumn(this, 63, 0)">field_9693E350</th>
+      <th onclick="sortColumn(this, 64, 0)">field_693A2A44</th>
+      <th onclick="sortColumn(this, 65, 2)">field_6D9580C6</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>

@@ -30,31 +30,69 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>ma01a_GMK_Corpse</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>Condition</th>
-      <th>AccessCondition</th>
-      <th>AccessRange</th>
-      <th>IconOffset</th>
-      <th>Colony</th>
-      <th>Reward</th>
-      <th>EventID</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">Condition</th>
+      <th onclick="sortColumn(this, 4, 0)">AccessCondition</th>
+      <th onclick="sortColumn(this, 5, 0)">AccessRange</th>
+      <th onclick="sortColumn(this, 6, 0)">IconOffset</th>
+      <th onclick="sortColumn(this, 7, 0)">Colony</th>
+      <th onclick="sortColumn(this, 8, 0)">Reward</th>
+      <th onclick="sortColumn(this, 9, 2)">EventID</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="FLD_ConditionMapGimmick.html#12">FLD_ConditionMapGimmick#12</a>
           <br/><a href="SYS_GimmickLocation.html#24512">SYS_GimmickLocation#<7731CE5F></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24682">SYS_GimmickLocation_dlc02#24682</a>
         </details>
       </td>
       <td>&lt;7731CE5F&gt;</td>
@@ -70,9 +108,8 @@
       <td class="side">2</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#24513">SYS_GimmickLocation#<2A205887></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24683">SYS_GimmickLocation_dlc02#24683</a>
         </details>
       </td>
       <td>&lt;2A205887&gt;</td>
@@ -88,9 +125,8 @@
       <td class="side">3</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#24514">SYS_GimmickLocation#<97126BD1></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24684">SYS_GimmickLocation_dlc02#24684</a>
         </details>
       </td>
       <td>&lt;97126BD1&gt;</td>
@@ -106,9 +142,8 @@
       <td class="side">4</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#24515">SYS_GimmickLocation#<106649F5></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24685">SYS_GimmickLocation_dlc02#24685</a>
         </details>
       </td>
       <td>&lt;106649F5&gt;</td>
@@ -124,9 +159,8 @@
       <td class="side">5</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#24516">SYS_GimmickLocation#<DB3E4E44></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24686">SYS_GimmickLocation_dlc02#24686</a>
         </details>
       </td>
       <td>&lt;DB3E4E44&gt;</td>
@@ -136,15 +170,14 @@
       <td>179</td>
       <td><a href="FLD_ColonyList.html#1">コロニー9</a></td>
       <td><a href="ITM_RewardGrieve.html#25">25</a></td>
-      <td>gev_big_corpse</td>
+      <td><a href="EVT_listQst.html#17619">gev_big_corpse</a></td>
     </tr>
     <tr id="6">
       <td class="side">6</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#24518">SYS_GimmickLocation#<02BAB2E6></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24688">SYS_GimmickLocation_dlc02#24688</a>
         </details>
       </td>
       <td>&lt;02BAB2E6&gt;</td>
@@ -160,9 +193,8 @@
       <td class="side">7</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#24519">SYS_GimmickLocation#<EF6479D1></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24689">SYS_GimmickLocation_dlc02#24689</a>
         </details>
       </td>
       <td>&lt;EF6479D1&gt;</td>
@@ -178,9 +210,8 @@
       <td class="side">8</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#24527">SYS_GimmickLocation#<E17CA561></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24697">SYS_GimmickLocation_dlc02#24697</a>
         </details>
       </td>
       <td>&lt;E17CA561&gt;</td>
@@ -190,15 +221,14 @@
       <td>179</td>
       <td><a href="FLD_ColonyList.html#2">コロニーガンマ</a></td>
       <td><a href="ITM_RewardGrieve.html#27">27</a></td>
-      <td>gev_big_corpse</td>
+      <td><a href="EVT_listQst.html#17619">gev_big_corpse</a></td>
     </tr>
     <tr id="9">
       <td class="side">9</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#24521">SYS_GimmickLocation#<EF225C88></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24691">SYS_GimmickLocation_dlc02#24691</a>
         </details>
       </td>
       <td>&lt;EF225C88&gt;</td>
@@ -214,9 +244,8 @@
       <td class="side">10</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#24522">SYS_GimmickLocation#<37FB0954></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24692">SYS_GimmickLocation_dlc02#24692</a>
         </details>
       </td>
       <td>&lt;37FB0954&gt;</td>
@@ -232,9 +261,8 @@
       <td class="side">11</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#24523">SYS_GimmickLocation#<E39598B3></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24693">SYS_GimmickLocation_dlc02#24693</a>
         </details>
       </td>
       <td>&lt;E39598B3&gt;</td>
@@ -250,9 +278,8 @@
       <td class="side">12</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#24524">SYS_GimmickLocation#<F227FDE0></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24694">SYS_GimmickLocation_dlc02#24694</a>
         </details>
       </td>
       <td>&lt;F227FDE0&gt;</td>
@@ -268,9 +295,8 @@
       <td class="side">13</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#24526">SYS_GimmickLocation#<10702A1C></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24696">SYS_GimmickLocation_dlc02#24696</a>
         </details>
       </td>
       <td>&lt;10702A1C&gt;</td>
@@ -280,15 +306,14 @@
       <td>179</td>
       <td><a href="FLD_ColonyList.html#2">コロニーガンマ</a></td>
       <td><a href="ITM_RewardGrieve.html#27">27</a></td>
-      <td>gev_big_corpse</td>
+      <td><a href="EVT_listQst.html#17619">gev_big_corpse</a></td>
     </tr>
     <tr id="14">
       <td class="side">14</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#24528">SYS_GimmickLocation#<3CA52F93></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24698">SYS_GimmickLocation_dlc02#24698</a>
         </details>
       </td>
       <td>&lt;3CA52F93&gt;</td>
@@ -304,9 +329,8 @@
       <td class="side">15</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#24529">SYS_GimmickLocation#<6722918D></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24699">SYS_GimmickLocation_dlc02#24699</a>
         </details>
       </td>
       <td>&lt;6722918D&gt;</td>
@@ -322,9 +346,8 @@
       <td class="side">16</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#24530">SYS_GimmickLocation#<42EFAF14></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24700">SYS_GimmickLocation_dlc02#24700</a>
         </details>
       </td>
       <td>&lt;42EFAF14&gt;</td>
@@ -340,9 +363,8 @@
       <td class="side">17</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#24532">SYS_GimmickLocation#<71ACCB56></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24702">SYS_GimmickLocation_dlc02#24702</a>
         </details>
       </td>
       <td>&lt;71ACCB56&gt;</td>
@@ -352,17 +374,16 @@
       <td>179</td>
       <td><a href="FLD_ColonyList.html#1">コロニー9</a></td>
       <td><a href="ITM_RewardGrieve.html#25">25</a></td>
-      <td>gev_big_corpse</td>
+      <td><a href="EVT_listQst.html#17619">gev_big_corpse</a></td>
     </tr>
     <tr id="18">
       <td class="side">18</td>
       <td>
         <details>
-          <summary>4 refs</summary>
+          <summary>3 refs</summary>
                <a href="QST_TaskGimmick.html#15">QST_TaskGimmick#15</a>
           <br/><a href="QST_TaskGimmick.html#72">QST_TaskGimmick#72</a>
           <br/><a href="SYS_GimmickLocation.html#24535">SYS_GimmickLocation#<C0C98E2E></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24705">SYS_GimmickLocation_dlc02#24705</a>
         </details>
       </td>
       <td>&lt;C0C98E2E&gt;</td>
@@ -372,16 +393,15 @@
       <td>179</td>
       <td><a href="FLD_ColonyList.html#1">コロニー9</a></td>
       <td><a href="ITM_RewardGrieve.html#25">25</a></td>
-      <td>gev_big_corpse</td>
+      <td><a href="EVT_listQst.html#17619">gev_big_corpse</a></td>
     </tr>
     <tr id="19">
       <td class="side">19</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="QST_TaskGimmick.html#67">QST_TaskGimmick#67</a>
           <br/><a href="SYS_GimmickLocation.html#24536">SYS_GimmickLocation#<A03531FF></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24706">SYS_GimmickLocation_dlc02#24706</a>
         </details>
       </td>
       <td>&lt;A03531FF&gt;</td>
@@ -391,16 +411,15 @@
       <td>179</td>
       <td></td>
       <td></td>
-      <td>nq020405f</td>
+      <td><a href="EVT_listQst.html#16634">nq020405f</a></td>
     </tr>
     <tr id="20">
       <td class="side">20</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="QST_TaskGimmick.html#68">QST_TaskGimmick#68</a>
           <br/><a href="SYS_GimmickLocation.html#24537">SYS_GimmickLocation#<ED8D52FC></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24707">SYS_GimmickLocation_dlc02#24707</a>
         </details>
       </td>
       <td>&lt;ED8D52FC&gt;</td>
@@ -410,16 +429,15 @@
       <td>179</td>
       <td></td>
       <td></td>
-      <td>nq020404f</td>
+      <td><a href="EVT_listQst.html#16633">nq020404f</a></td>
     </tr>
     <tr id="21">
       <td class="side">21</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="QST_TaskGimmick.html#69">QST_TaskGimmick#69</a>
           <br/><a href="SYS_GimmickLocation.html#24538">SYS_GimmickLocation#<E67F0820></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24708">SYS_GimmickLocation_dlc02#24708</a>
         </details>
       </td>
       <td>&lt;E67F0820&gt;</td>
@@ -429,16 +447,15 @@
       <td>179</td>
       <td></td>
       <td></td>
-      <td>nq020403f</td>
+      <td><a href="EVT_listQst.html#16632">nq020403f</a></td>
     </tr>
     <tr id="22">
       <td class="side">22</td>
       <td>
         <details>
-          <summary>3 refs</summary>
+          <summary>2 refs</summary>
                <a href="QST_TaskGimmick.html#30">QST_TaskGimmick#30</a>
           <br/><a href="SYS_GimmickLocation.html#24539">SYS_GimmickLocation#<487AEAB3></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24709">SYS_GimmickLocation_dlc02#24709</a>
         </details>
       </td>
       <td>&lt;487AEAB3&gt;</td>
@@ -448,15 +465,14 @@
       <td>179</td>
       <td></td>
       <td></td>
-      <td>nq110305f</td>
+      <td><a href="EVT_listQst.html#16805">nq110305f</a></td>
     </tr>
     <tr id="23">
       <td class="side">23</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#24520">SYS_GimmickLocation#<720D3178></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24690">SYS_GimmickLocation_dlc02#24690</a>
         </details>
       </td>
       <td>&lt;720D3178&gt;</td>
@@ -472,9 +488,8 @@
       <td class="side">24</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#24525">SYS_GimmickLocation#<A2114DB8></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24695">SYS_GimmickLocation_dlc02#24695</a>
         </details>
       </td>
       <td>&lt;A2114DB8&gt;</td>
@@ -490,9 +505,8 @@
       <td class="side">25</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#24534">SYS_GimmickLocation#<9BDB7238></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24704">SYS_GimmickLocation_dlc02#24704</a>
         </details>
       </td>
       <td>&lt;9BDB7238&gt;</td>
@@ -502,15 +516,14 @@
       <td>179</td>
       <td><a href="FLD_ColonyList.html#2">コロニーガンマ</a></td>
       <td><a href="ITM_RewardGrieve.html#27">27</a></td>
-      <td>gev_big_corpse</td>
+      <td><a href="EVT_listQst.html#17619">gev_big_corpse</a></td>
     </tr>
     <tr id="26">
       <td class="side">26</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#24531">SYS_GimmickLocation#<27ED7EEB></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24701">SYS_GimmickLocation_dlc02#24701</a>
         </details>
       </td>
       <td>&lt;27ED7EEB&gt;</td>
@@ -526,9 +539,8 @@
       <td class="side">27</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#24533">SYS_GimmickLocation#<C9629758></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24703">SYS_GimmickLocation_dlc02#24703</a>
         </details>
       </td>
       <td>&lt;C9629758&gt;</td>
@@ -538,15 +550,14 @@
       <td>179</td>
       <td><a href="FLD_ColonyList.html#1">コロニー9</a></td>
       <td><a href="ITM_RewardGrieve.html#25">25</a></td>
-      <td>gev_big_corpse</td>
+      <td><a href="EVT_listQst.html#17619">gev_big_corpse</a></td>
     </tr>
     <tr id="28">
       <td class="side">28</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>1 refs</summary>
                <a href="SYS_GimmickLocation.html#24517">SYS_GimmickLocation#<42135957></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#24687">SYS_GimmickLocation_dlc02#24687</a>
         </details>
       </td>
       <td>&lt;42135957&gt;</td>

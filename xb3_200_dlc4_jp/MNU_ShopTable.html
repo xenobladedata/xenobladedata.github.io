@@ -30,95 +30,134 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>MNU_ShopTable</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>ShopItem1</th>
-      <th>AddCondition1</th>
-      <th>ShopItem2</th>
-      <th>AddCondition2</th>
-      <th>ShopItem3</th>
-      <th>AddCondition3</th>
-      <th>ShopItem4</th>
-      <th>AddCondition4</th>
-      <th>ShopItem5</th>
-      <th>AddCondition5</th>
-      <th>ShopItem6</th>
-      <th>AddCondition6</th>
-      <th>ShopItem7</th>
-      <th>AddCondition7</th>
-      <th>ShopItem8</th>
-      <th>AddCondition8</th>
-      <th>ShopItem9</th>
-      <th>AddCondition9</th>
-      <th>ShopItem10</th>
-      <th>AddCondition10</th>
-      <th>ShopItem11</th>
-      <th>AddCondition11</th>
-      <th>ShopItem12</th>
-      <th>AddCondition12</th>
-      <th>ShopItem13</th>
-      <th>AddCondition13</th>
-      <th>ShopItem14</th>
-      <th>AddCondition14</th>
-      <th>ShopItem15</th>
-      <th>AddCondition15</th>
-      <th>ShopItem16</th>
-      <th>AddCondition16</th>
-      <th>ShopItem17</th>
-      <th>AddCondition17</th>
-      <th>ShopItem18</th>
-      <th>AddCondition18</th>
-      <th>ShopItem19</th>
-      <th>AddCondition19</th>
-      <th>ShopItem20</th>
-      <th>AddCondition20</th>
-      <th>field_6143991F</th>
-      <th>field_B8160E53</th>
-      <th>field_D300BEDD</th>
-      <th>field_15D65328</th>
-      <th>field_42B919EA</th>
-      <th>field_B8E0F3C8</th>
-      <th>field_51AEBC0B</th>
-      <th>field_16E7BF2B</th>
-      <th>field_C4D98229</th>
-      <th>field_5CC8C870</th>
-      <th>field_FE1886F6</th>
-      <th>field_FEAF9101</th>
-      <th>field_BD8CD1E4</th>
-      <th>field_65C38551</th>
-      <th>field_EC889C32</th>
-      <th>field_9980A011</th>
-      <th>field_6A7B5A78</th>
-      <th>field_EB0C57FC</th>
-      <th>field_58182C18</th>
-      <th>field_42F3EBAC</th>
-      <th>field_08BA68C9</th>
-      <th>field_BA7E776D</th>
-      <th>field_22312C2F</th>
-      <th>field_84827B31</th>
-      <th>field_3D40B9C3</th>
-      <th>field_C69719DF</th>
-      <th>field_6D7CE3AB</th>
-      <th>field_CCD4120B</th>
-      <th>field_7121ACF7</th>
-      <th>field_57300836</th>
-      <th>field_7CD1D104</th>
-      <th>field_C4B205DB</th>
-      <th>field_5DFFAC73</th>
-      <th>field_1A648107</th>
-      <th>field_127DF955</th>
-      <th>field_4DCC6915</th>
-      <th>field_37C4D963</th>
-      <th>field_6DB4A42D</th>
-      <th>field_ECED6BA7</th>
-      <th>field_CA393343</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">ShopItem1</th>
+      <th onclick="sortColumn(this, 4, 0)">AddCondition1</th>
+      <th onclick="sortColumn(this, 5, 0)">ShopItem2</th>
+      <th onclick="sortColumn(this, 6, 0)">AddCondition2</th>
+      <th onclick="sortColumn(this, 7, 0)">ShopItem3</th>
+      <th onclick="sortColumn(this, 8, 0)">AddCondition3</th>
+      <th onclick="sortColumn(this, 9, 0)">ShopItem4</th>
+      <th onclick="sortColumn(this, 10, 0)">AddCondition4</th>
+      <th onclick="sortColumn(this, 11, 0)">ShopItem5</th>
+      <th onclick="sortColumn(this, 12, 0)">AddCondition5</th>
+      <th onclick="sortColumn(this, 13, 0)">ShopItem6</th>
+      <th onclick="sortColumn(this, 14, 0)">AddCondition6</th>
+      <th onclick="sortColumn(this, 15, 0)">ShopItem7</th>
+      <th onclick="sortColumn(this, 16, 0)">AddCondition7</th>
+      <th onclick="sortColumn(this, 17, 0)">ShopItem8</th>
+      <th onclick="sortColumn(this, 18, 0)">AddCondition8</th>
+      <th onclick="sortColumn(this, 19, 0)">ShopItem9</th>
+      <th onclick="sortColumn(this, 20, 0)">AddCondition9</th>
+      <th onclick="sortColumn(this, 21, 0)">ShopItem10</th>
+      <th onclick="sortColumn(this, 22, 0)">AddCondition10</th>
+      <th onclick="sortColumn(this, 23, 0)">ShopItem11</th>
+      <th onclick="sortColumn(this, 24, 0)">AddCondition11</th>
+      <th onclick="sortColumn(this, 25, 0)">ShopItem12</th>
+      <th onclick="sortColumn(this, 26, 0)">AddCondition12</th>
+      <th onclick="sortColumn(this, 27, 0)">ShopItem13</th>
+      <th onclick="sortColumn(this, 28, 0)">AddCondition13</th>
+      <th onclick="sortColumn(this, 29, 0)">ShopItem14</th>
+      <th onclick="sortColumn(this, 30, 0)">AddCondition14</th>
+      <th onclick="sortColumn(this, 31, 0)">ShopItem15</th>
+      <th onclick="sortColumn(this, 32, 0)">AddCondition15</th>
+      <th onclick="sortColumn(this, 33, 0)">ShopItem16</th>
+      <th onclick="sortColumn(this, 34, 0)">AddCondition16</th>
+      <th onclick="sortColumn(this, 35, 0)">ShopItem17</th>
+      <th onclick="sortColumn(this, 36, 0)">AddCondition17</th>
+      <th onclick="sortColumn(this, 37, 0)">ShopItem18</th>
+      <th onclick="sortColumn(this, 38, 0)">AddCondition18</th>
+      <th onclick="sortColumn(this, 39, 0)">ShopItem19</th>
+      <th onclick="sortColumn(this, 40, 0)">AddCondition19</th>
+      <th onclick="sortColumn(this, 41, 0)">ShopItem20</th>
+      <th onclick="sortColumn(this, 42, 0)">AddCondition20</th>
+      <th onclick="sortColumn(this, 43, 0)">field_6143991F</th>
+      <th onclick="sortColumn(this, 44, 0)">field_B8160E53</th>
+      <th onclick="sortColumn(this, 45, 0)">field_D300BEDD</th>
+      <th onclick="sortColumn(this, 46, 0)">field_15D65328</th>
+      <th onclick="sortColumn(this, 47, 0)">field_42B919EA</th>
+      <th onclick="sortColumn(this, 48, 0)">field_B8E0F3C8</th>
+      <th onclick="sortColumn(this, 49, 0)">field_51AEBC0B</th>
+      <th onclick="sortColumn(this, 50, 0)">field_16E7BF2B</th>
+      <th onclick="sortColumn(this, 51, 0)">field_C4D98229</th>
+      <th onclick="sortColumn(this, 52, 0)">field_5CC8C870</th>
+      <th onclick="sortColumn(this, 53, 0)">field_FE1886F6</th>
+      <th onclick="sortColumn(this, 54, 0)">field_FEAF9101</th>
+      <th onclick="sortColumn(this, 55, 0)">field_BD8CD1E4</th>
+      <th onclick="sortColumn(this, 56, 0)">field_65C38551</th>
+      <th onclick="sortColumn(this, 57, 0)">field_EC889C32</th>
+      <th onclick="sortColumn(this, 58, 0)">field_9980A011</th>
+      <th onclick="sortColumn(this, 59, 0)">field_6A7B5A78</th>
+      <th onclick="sortColumn(this, 60, 0)">field_EB0C57FC</th>
+      <th onclick="sortColumn(this, 61, 0)">field_58182C18</th>
+      <th onclick="sortColumn(this, 62, 0)">field_42F3EBAC</th>
+      <th onclick="sortColumn(this, 63, 0)">field_08BA68C9</th>
+      <th onclick="sortColumn(this, 64, 0)">field_BA7E776D</th>
+      <th onclick="sortColumn(this, 65, 0)">field_22312C2F</th>
+      <th onclick="sortColumn(this, 66, 0)">field_84827B31</th>
+      <th onclick="sortColumn(this, 67, 0)">field_3D40B9C3</th>
+      <th onclick="sortColumn(this, 68, 0)">field_C69719DF</th>
+      <th onclick="sortColumn(this, 69, 0)">field_6D7CE3AB</th>
+      <th onclick="sortColumn(this, 70, 0)">field_CCD4120B</th>
+      <th onclick="sortColumn(this, 71, 0)">field_7121ACF7</th>
+      <th onclick="sortColumn(this, 72, 0)">field_57300836</th>
+      <th onclick="sortColumn(this, 73, 0)">field_7CD1D104</th>
+      <th onclick="sortColumn(this, 74, 0)">field_C4B205DB</th>
+      <th onclick="sortColumn(this, 75, 0)">field_5DFFAC73</th>
+      <th onclick="sortColumn(this, 76, 0)">field_1A648107</th>
+      <th onclick="sortColumn(this, 77, 0)">field_127DF955</th>
+      <th onclick="sortColumn(this, 78, 0)">field_4DCC6915</th>
+      <th onclick="sortColumn(this, 79, 0)">field_37C4D963</th>
+      <th onclick="sortColumn(this, 80, 0)">field_6DB4A42D</th>
+      <th onclick="sortColumn(this, 81, 0)">field_ECED6BA7</th>
+      <th onclick="sortColumn(this, 82, 0)">field_CA393343</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>

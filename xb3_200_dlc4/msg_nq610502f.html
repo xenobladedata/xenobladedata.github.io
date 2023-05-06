@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <title>msg_nq610502f</title>
+  <style type="text/css">
+    table, th, td {border: 1px solid #000000; border-collapse: collapse;}
+    table {border-width: 3px;}
+    th, td {padding: 0.1em 0.2em;}
+    tr.head th, tr.head td {border-bottom-width: 3px;}
+    th.colbreak, td.colbreak {border-right-width: 3px;}
+    th {text-align: center; position: sticky; top: -1px; background-color: #F0F0F0;}
+    .side {position: sticky; left: -1px; background-color: #F0F0F0;}
+    th.side {z-index: 3;}
+    td {text-align: left;}
+    td.right {text-align: right;}
+    .sortable tbody tr:nth-child(odd) {background: #F5F5F5;}
+    .sortable th {background: #E4E4E4; cursor: pointer; white-space: nowrap; vertical-align: middle;}
+    .sortable th.dir-d::after {content:" ▾"; vertical-align: inherit;}
+    .sortable th.dir-u::after {content:" ▴"; vertical-align: inherit;}
+    :target td {background-color: #CCCCCC !important;}
+  </style>
+  <script type="text/javascript">
+    function offsetAnchor() {
+      if (location.hash.length !== 0) {
+        window.scrollTo(window.scrollX, window.scrollY - document.getElementById("header").clientHeight);
+      }
+    }
+    window.addEventListener("hashchange", offsetAnchor);
+    window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
+  </script>
+</head>
+<body>
+  <table class="sortable">
+    <h2>msg_nq610502f</h2>
+    <tr id="header">
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
+      <th>Referenced By</th>
+      <th onclick="sortColumn(this, 2, 2)">label</th>
+      <th onclick="sortColumn(this, 3, 2)">talker</th>
+      <th onclick="sortColumn(this, 4, 0)">talkattr</th>
+      <th onclick="sortColumn(this, 5, 0)">talkattr2</th>
+      <th onclick="sortColumn(this, 6, 0)">talkattr3</th>
+      <th onclick="sortColumn(this, 7, 0)">style</th>
+      <th onclick="sortColumn(this, 8, 2)">name</th>
+    </tr>
+    <tr id="1">
+      <td class="side">1</td>
+      <td></td>
+      <td>&lt;D7D46C78&gt;</td>
+      <td>sq1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Good on ya, lad! Now we've got the<br />resources, we'll get this canteen up on<br />its feet in no time!</td>
+    </tr>
+    <tr id="2">
+      <td class="side">2</td>
+      <td></td>
+      <td>&lt;EB02B332&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Wicked. Sooo, uh...</td>
+    </tr>
+    <tr id="3">
+      <td class="side">3</td>
+      <td></td>
+      <td>&lt;69957806&gt;</td>
+      <td>sq1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Yep, as promised, my grandad's<br />closely-guarded secret will be yours<br />to dine on in just a jiffy!</td>
+    </tr>
+    <tr id="4">
+      <td class="side">4</td>
+      <td></td>
+      <td>&lt;EA743601&gt;</td>
+      <td>sq1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>The length of said "jiffy" being dependent<br />on one tiny little detail...</td>
+    </tr>
+    <tr id="5">
+      <td class="side">5</td>
+      <td></td>
+      <td>&lt;F8EC6A44&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Orite, lay it on me.</td>
+    </tr>
+    <tr id="6">
+      <td class="side">6</td>
+      <td></td>
+      <td>&lt;64C63A9D&gt;</td>
+      <td>sq1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Thing is, you need a really particular<br />ingredient to really bring out the flavor.<br />And we've got exactly none of them.</td>
+    </tr>
+    <tr id="7">
+      <td class="side">7</td>
+      <td></td>
+      <td>&lt;25B1FDDE&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Are you talking about Dance Apples,<br />by any chance?</td>
+    </tr>
+    <tr id="8">
+      <td class="side">8</td>
+      <td></td>
+      <td>&lt;F82377FA&gt;</td>
+      <td>sq1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Oho! You sure know your delicacies!</td>
+    </tr>
+    <tr id="9">
+      <td class="side">9</td>
+      <td></td>
+      <td>&lt;D3090454&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>I suppose so. If it's Dance Apples<br />you need, there's only one meal I can<br />think of that springs to mind.</td>
+    </tr>
+    <tr id="10">
+      <td class="side">10</td>
+      <td></td>
+      <td>&lt;DA647A52&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>You had it before, Shulk?</td>
+    </tr>
+    <tr id="11">
+      <td class="side">11</td>
+      <td></td>
+      <td>&lt;4D1AC423&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>I have. And the taste of it always<br />brings me back home.</td>
+    </tr>
+    <tr id="12">
+      <td class="side">12</td>
+      <td></td>
+      <td>&lt;1D6729FE&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Even if we have to gather Dance Apples,<br />it will be more than worth it. And I'm not<br />just saying that.</td>
+    </tr>
+    <tr id="13">
+      <td class="side">13</td>
+      <td></td>
+      <td>&lt;54C7DB8B&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>You don't say...</td>
+    </tr>
+    <tr id="14">
+      <td class="side">14</td>
+      <td></td>
+      <td>&lt;2759F515&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>So we get you your apples, and<br />you make us the food. That's it?</td>
+    </tr>
+    <tr id="15">
+      <td class="side">15</td>
+      <td></td>
+      <td>&lt;4850A8DA&gt;</td>
+      <td>sq1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>That's it, lad. Sorry for making you<br />do all this running around.</td>
+    </tr>
+    <tr id="16">
+      <td class="side">16</td>
+      <td></td>
+      <td>&lt;C594E4DE&gt;</td>
+      <td>sq1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>If you could just fetch us 5 of 'em,<br />that'd be dandy. They're pretty easy<br />to find around Colony 9.</td>
+    </tr>
+  </table>
+</body>
+</html>

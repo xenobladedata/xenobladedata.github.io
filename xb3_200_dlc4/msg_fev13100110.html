@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <title>msg_fev13100110</title>
+  <style type="text/css">
+    table, th, td {border: 1px solid #000000; border-collapse: collapse;}
+    table {border-width: 3px;}
+    th, td {padding: 0.1em 0.2em;}
+    tr.head th, tr.head td {border-bottom-width: 3px;}
+    th.colbreak, td.colbreak {border-right-width: 3px;}
+    th {text-align: center; position: sticky; top: -1px; background-color: #F0F0F0;}
+    .side {position: sticky; left: -1px; background-color: #F0F0F0;}
+    th.side {z-index: 3;}
+    td {text-align: left;}
+    td.right {text-align: right;}
+    .sortable tbody tr:nth-child(odd) {background: #F5F5F5;}
+    .sortable th {background: #E4E4E4; cursor: pointer; white-space: nowrap; vertical-align: middle;}
+    .sortable th.dir-d::after {content:" ▾"; vertical-align: inherit;}
+    .sortable th.dir-u::after {content:" ▴"; vertical-align: inherit;}
+    :target td {background-color: #CCCCCC !important;}
+  </style>
+  <script type="text/javascript">
+    function offsetAnchor() {
+      if (location.hash.length !== 0) {
+        window.scrollTo(window.scrollX, window.scrollY - document.getElementById("header").clientHeight);
+      }
+    }
+    window.addEventListener("hashchange", offsetAnchor);
+    window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
+  </script>
+</head>
+<body>
+  <table class="sortable">
+    <h2>msg_fev13100110</h2>
+    <tr id="header">
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
+      <th>Referenced By</th>
+      <th onclick="sortColumn(this, 2, 2)">label</th>
+      <th onclick="sortColumn(this, 3, 2)">talker</th>
+      <th onclick="sortColumn(this, 4, 0)">talkattr</th>
+      <th onclick="sortColumn(this, 5, 0)">talkattr2</th>
+      <th onclick="sortColumn(this, 6, 0)">talkattr3</th>
+      <th onclick="sortColumn(this, 7, 0)">style</th>
+      <th onclick="sortColumn(this, 8, 2)">name</th>
+    </tr>
+    <tr id="1">
+      <td class="side">1</td>
+      <td></td>
+      <td>&lt;390300C6&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>...</td>
+    </tr>
+    <tr id="2">
+      <td class="side">2</td>
+      <td></td>
+      <td>&lt;52E27505&gt;</td>
+      <td>b1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Matthew...</td>
+    </tr>
+    <tr id="3">
+      <td class="side">3</td>
+      <td></td>
+      <td>&lt;EBD91E22&gt;</td>
+      <td>vp1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>This "Na'el"... She a relative of yours?</td>
+    </tr>
+    <tr id="4">
+      <td class="side">4</td>
+      <td></td>
+      <td>&lt;CD46C90B&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>...She's my little sister.<br />I've been looking for her for so long.</td>
+    </tr>
+    <tr id="5">
+      <td class="side">5</td>
+      <td></td>
+      <td>&lt;4DB38870&gt;</td>
+      <td>vp1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>...Right.</td>
+    </tr>
+    <tr id="6">
+      <td class="side">6</td>
+      <td></td>
+      <td>&lt;3CA0B6E6&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Hey, Linka, where was that emergency<br />transmission coming from?</td>
+    </tr>
+    <tr id="7">
+      <td class="side">7</td>
+      <td></td>
+      <td>&lt;3FE0D7C9&gt;</td>
+      <td>gq1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>According to the search team,<br />somewhere in the vicinity of Raguel Lake.</td>
+    </tr>
+    <tr id="8">
+      <td class="side">8</td>
+      <td></td>
+      <td>&lt;067C2105&gt;</td>
+      <td>f1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Oi, stop right there!<br />You're not seriously planning<br />to head out there alone?</td>
+    </tr>
+    <tr id="9">
+      <td class="side">9</td>
+      <td></td>
+      <td>&lt;7AE1E158&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Uh, yeah? This is my problem, nobody else's.<br />I've gotta see it for myself.</td>
+    </tr>
+    <tr id="10">
+      <td class="side">10</td>
+      <td></td>
+      <td>&lt;AEE6FCA0&gt;</td>
+      <td>gq1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Raguel Lake is quite a distance from here.<br />I'd strongly recommend that you at least<br />take some kind of escort...</td>
+    </tr>
+    <tr id="11">
+      <td class="side">11</td>
+      <td></td>
+      <td>&lt;A2C407DF&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>You don't get it!<br />I finally have a lead!</td>
+    </tr>
+    <tr id="12">
+      <td class="side">12</td>
+      <td></td>
+      <td>&lt;2511F7BA&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>If whoever attacked the search party's<br />still there, all the more reason for me to<br />go and rescue her!</td>
+    </tr>
+    <tr id="13">
+      <td class="side">13</td>
+      <td></td>
+      <td>&lt;3BBA9AC7&gt;</td>
+      <td>f1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>All right, all right, keep your shorts on.<br />Nobody's tellin' you no, here.</td>
+    </tr>
+    <tr id="14">
+      <td class="side">14</td>
+      <td></td>
+      <td>&lt;1EAE9D6B&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>We were planning to head there as well,<br />in fact. A whole search party taken out is<br />no trivial matter.</td>
+    </tr>
+    <tr id="15">
+      <td class="side">15</td>
+      <td></td>
+      <td>&lt;459C7807&gt;</td>
+      <td>a1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>...Sorry. I didn't mean<br />to go off on you.</td>
+    </tr>
+    <tr id="16">
+      <td class="side">16</td>
+      <td></td>
+      <td>&lt;8DC1EF6D&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>No need. We don't really have<br />the luxury of time, it's true.</td>
+    </tr>
+    <tr id="17">
+      <td class="side">17</td>
+      <td></td>
+      <td>&lt;FC449CEF&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Then I suppose it's time to<br />use the Ether Slide.</td>
+    </tr>
+    <tr id="18">
+      <td class="side">18</td>
+      <td></td>
+      <td>&lt;CE3A831D&gt;</td>
+      <td>d1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Ether...Slide?</td>
+    </tr>
+    <tr id="19">
+      <td class="side">19</td>
+      <td></td>
+      <td>&lt;96E6E3C2&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Take a look over here.</td>
+    </tr>
+    <tr id="20">
+      <td class="side">20</td>
+      <td></td>
+      <td>&lt;83844BB8&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>An Ether Slide is, well...</td>
+    </tr>
+    <tr id="21">
+      <td class="side">21</td>
+      <td></td>
+      <td>&lt;4ED7347A&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Put simply, it's a method of conveyance<br />that uses the flow of ether for propulsion.</td>
+    </tr>
+    <tr id="22">
+      <td class="side">22</td>
+      <td></td>
+      <td>&lt;1E8E8EE0&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>You can think of it as sliding<br />along a wire made of ether.</td>
+    </tr>
+    <tr id="23">
+      <td class="side">23</td>
+      <td></td>
+      <td>&lt;54EFEAB5&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Using an Ether Slide would get us<br />pretty close to Raguel Lake.</td>
+    </tr>
+    <tr id="24">
+      <td class="side">24</td>
+      <td></td>
+      <td>&lt;0ACABBDF&gt;</td>
+      <td>vp1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Teacher and Riku developed this technology<br />together. Amazing, or what?</td>
+    </tr>
+    <tr id="25">
+      <td class="side">25</td>
+      <td></td>
+      <td>&lt;1AB79B8F&gt;</td>
+      <td>c1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Yes, it's really impressive...!<br />The technology is fascinating...!</td>
+    </tr>
+    <tr id="26">
+      <td class="side">26</td>
+      <td></td>
+      <td>&lt;F7C28C6B&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Hah... If you're so curious about it,<br />would you mind lending me a hand?</td>
+    </tr>
+    <tr id="27">
+      <td class="side">27</td>
+      <td></td>
+      <td>&lt;2E609BD6&gt;</td>
+      <td>c1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Absolutely!</td>
+    </tr>
+    <tr id="28">
+      <td class="side">28</td>
+      <td></td>
+      <td>&lt;BF7ADC65&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Let me give you the necessary materials.</td>
+    </tr>
+    <tr id="29">
+      <td class="side">29</td>
+      <td></td>
+      <td>&lt;DE51469A&gt;</td>
+      <td>c1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Hmm... What odd ether crystal structure.</td>
+    </tr>
+    <tr id="30">
+      <td class="side">30</td>
+      <td></td>
+      <td>&lt;0E21324F&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>The ether in these was transformed<br />due to the effects of the black fog.<br />I call them Black Shards.</td>
+    </tr>
+    <tr id="31">
+      <td class="side">31</td>
+      <td></td>
+      <td>&lt;78F4110A&gt;</td>
+      <td>c1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>So they only form where there's black fog?</td>
+    </tr>
+    <tr id="32">
+      <td class="side">32</td>
+      <td></td>
+      <td>&lt;EE778664&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>That's right. They're pretty rare,<br />and all the more valuable for it.</td>
+    </tr>
+    <tr id="33">
+      <td class="side">33</td>
+      <td></td>
+      <td>&lt;789BB478&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>That said, we need them when building the<br />ether amplifiers used to project the wires.</td>
+    </tr>
+    <tr id="34">
+      <td class="side">34</td>
+      <td></td>
+      <td>&lt;03939ABF&gt;</td>
+      <td>c1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Got it...</td>
+    </tr>
+    <tr id="35">
+      <td class="side">35</td>
+      <td></td>
+      <td>&lt;7AEF7780&gt;</td>
+      <td>e1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Right, that'll do for exposition.<br />Let's get to crafting the equipment.</td>
+    </tr>
+    <tr id="36">
+      <td class="side">36</td>
+      <td></td>
+      <td>&lt;DAD410A9&gt;</td>
+      <td>c1</td>
+      <td>0x8100</td>
+      <td>0x4081</td>
+      <td>0x430</td>
+      <td>126</td>
+      <td>Yeah, can't wait!</td>
+    </tr>
+  </table>
+</body>
+</html>

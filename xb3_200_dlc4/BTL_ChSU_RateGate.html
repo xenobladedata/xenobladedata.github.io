@@ -30,37 +30,76 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>BTL_ChSU_RateGate</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>field_186594B7</th>
-      <th>RateGate01</th>
-      <th>RateGate02</th>
-      <th>RateGate03</th>
-      <th>RateGate04</th>
-      <th>RateGate05</th>
-      <th>RateGate06</th>
-      <th>RateGate07</th>
-      <th>RateGate08</th>
-      <th>RateGate09</th>
-      <th>RateGate10</th>
-      <th>RateGate11</th>
-      <th>RateGate12</th>
-      <th>RateGate13</th>
-      <th>RateGate14</th>
-      <th>RateGate15</th>
-      <th>RateGate16</th>
-      <th>RateGate17</th>
-      <th>RateGate18</th>
-      <th>RateGate19</th>
-      <th>RateGate20</th>
-      <th>RateGate21</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">field_186594B7</th>
+      <th onclick="sortColumn(this, 4, 0)">RateGate01</th>
+      <th onclick="sortColumn(this, 5, 0)">RateGate02</th>
+      <th onclick="sortColumn(this, 6, 0)">RateGate03</th>
+      <th onclick="sortColumn(this, 7, 0)">RateGate04</th>
+      <th onclick="sortColumn(this, 8, 0)">RateGate05</th>
+      <th onclick="sortColumn(this, 9, 0)">RateGate06</th>
+      <th onclick="sortColumn(this, 10, 0)">RateGate07</th>
+      <th onclick="sortColumn(this, 11, 0)">RateGate08</th>
+      <th onclick="sortColumn(this, 12, 0)">RateGate09</th>
+      <th onclick="sortColumn(this, 13, 0)">RateGate10</th>
+      <th onclick="sortColumn(this, 14, 0)">RateGate11</th>
+      <th onclick="sortColumn(this, 15, 0)">RateGate12</th>
+      <th onclick="sortColumn(this, 16, 0)">RateGate13</th>
+      <th onclick="sortColumn(this, 17, 0)">RateGate14</th>
+      <th onclick="sortColumn(this, 18, 0)">RateGate15</th>
+      <th onclick="sortColumn(this, 19, 0)">RateGate16</th>
+      <th onclick="sortColumn(this, 20, 0)">RateGate17</th>
+      <th onclick="sortColumn(this, 21, 0)">RateGate18</th>
+      <th onclick="sortColumn(this, 22, 0)">RateGate19</th>
+      <th onclick="sortColumn(this, 23, 0)">RateGate20</th>
+      <th onclick="sortColumn(this, 24, 0)">RateGate21</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>

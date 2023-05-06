@@ -30,36 +30,75 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>RSC_PcCostumeOpen</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>Talent</th>
-      <th>Flag1</th>
-      <th>Flag2</th>
-      <th>Flag3</th>
-      <th>Flag4</th>
-      <th>Flag5</th>
-      <th>Flag6</th>
-      <th>Name1</th>
-      <th>Name2</th>
-      <th>Name3</th>
-      <th>Name4</th>
-      <th>Name5</th>
-      <th>Name6</th>
-      <th>UIName1</th>
-      <th>UIName2</th>
-      <th>UIName3</th>
-      <th>UIName4</th>
-      <th>UIName5</th>
-      <th>UIName6</th>
-      <th>DLC</th>
-      <th>Comment</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">Talent</th>
+      <th onclick="sortColumn(this, 4, 0)">Flag1</th>
+      <th onclick="sortColumn(this, 5, 0)">Flag2</th>
+      <th onclick="sortColumn(this, 6, 0)">Flag3</th>
+      <th onclick="sortColumn(this, 7, 0)">Flag4</th>
+      <th onclick="sortColumn(this, 8, 0)">Flag5</th>
+      <th onclick="sortColumn(this, 9, 0)">Flag6</th>
+      <th onclick="sortColumn(this, 10, 2)">Name1</th>
+      <th onclick="sortColumn(this, 11, 2)">Name2</th>
+      <th onclick="sortColumn(this, 12, 2)">Name3</th>
+      <th onclick="sortColumn(this, 13, 2)">Name4</th>
+      <th onclick="sortColumn(this, 14, 2)">Name5</th>
+      <th onclick="sortColumn(this, 15, 2)">Name6</th>
+      <th onclick="sortColumn(this, 16, 2)">UIName1</th>
+      <th onclick="sortColumn(this, 17, 2)">UIName2</th>
+      <th onclick="sortColumn(this, 18, 2)">UIName3</th>
+      <th onclick="sortColumn(this, 19, 2)">UIName4</th>
+      <th onclick="sortColumn(this, 20, 2)">UIName5</th>
+      <th onclick="sortColumn(this, 21, 2)">UIName6</th>
+      <th onclick="sortColumn(this, 22, 0)">DLC</th>
+      <th onclick="sortColumn(this, 23, 2)">Comment</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>
@@ -765,7 +804,17 @@
     </tr>
     <tr id="28">
       <td class="side">28</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>6 refs</summary>
+               <a href="BTL_ChTA_Reward.html#1">BTL_ChTA_Reward#1</a>
+          <br/><a href="BTL_ChTA_Reward.html#2">BTL_ChTA_Reward#2</a>
+          <br/><a href="BTL_ChTA_Reward.html#3">BTL_ChTA_Reward#3</a>
+          <br/><a href="BTL_ChTA_Reward.html#4">BTL_ChTA_Reward#4</a>
+          <br/><a href="BTL_ChTA_Reward.html#5">BTL_ChTA_Reward#5</a>
+          <br/><a href="BTL_ChTA_Reward.html#6">BTL_ChTA_Reward#6</a>
+        </details>
+      </td>
       <td>&lt;C4910984&gt;</td>
       <td>0</td>
       <td>6319</td>
@@ -791,7 +840,17 @@
     </tr>
     <tr id="29">
       <td class="side">29</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>6 refs</summary>
+               <a href="BTL_ChTA_Reward.html#7">BTL_ChTA_Reward#7</a>
+          <br/><a href="BTL_ChTA_Reward.html#8">BTL_ChTA_Reward#8</a>
+          <br/><a href="BTL_ChTA_Reward.html#9">BTL_ChTA_Reward#9</a>
+          <br/><a href="BTL_ChTA_Reward.html#10">BTL_ChTA_Reward#10</a>
+          <br/><a href="BTL_ChTA_Reward.html#11">BTL_ChTA_Reward#11</a>
+          <br/><a href="BTL_ChTA_Reward.html#13">BTL_ChTA_Reward#13</a>
+        </details>
+      </td>
       <td>&lt;DBC5F7AC&gt;</td>
       <td>0</td>
       <td>6320</td>

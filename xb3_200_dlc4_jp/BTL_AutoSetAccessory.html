@@ -30,57 +30,96 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>BTL_AutoSetAccessory</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>Talent01</th>
-      <th>Talent02</th>
-      <th>Talent03</th>
-      <th>Talent04</th>
-      <th>Talent05</th>
-      <th>Talent06</th>
-      <th>Talent07</th>
-      <th>Talent08</th>
-      <th>Talent09</th>
-      <th>Talent10</th>
-      <th>Talent11</th>
-      <th>Talent12</th>
-      <th>Talent13</th>
-      <th>Talent14</th>
-      <th>Talent15</th>
-      <th>Talent16</th>
-      <th>Talent17</th>
-      <th>Talent18</th>
-      <th>Talent19</th>
-      <th>Talent20</th>
-      <th>Talent21</th>
-      <th>Talent22</th>
-      <th>Talent23</th>
-      <th>Talent24</th>
-      <th>Talent25</th>
-      <th>Talent26</th>
-      <th>Talent27</th>
-      <th>Talent28</th>
-      <th>Talent29</th>
-      <th>Talent30</th>
-      <th>Talent31</th>
-      <th>Talent32</th>
-      <th>Talent33</th>
-      <th>Talent34</th>
-      <th>Talent35</th>
-      <th>Talent36</th>
-      <th>Talent37</th>
-      <th>Talent38</th>
-      <th>Talent39</th>
-      <th>Talent40</th>
-      <th>Talent41</th>
-      <th>Talent42</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">Talent01</th>
+      <th onclick="sortColumn(this, 4, 0)">Talent02</th>
+      <th onclick="sortColumn(this, 5, 0)">Talent03</th>
+      <th onclick="sortColumn(this, 6, 0)">Talent04</th>
+      <th onclick="sortColumn(this, 7, 0)">Talent05</th>
+      <th onclick="sortColumn(this, 8, 0)">Talent06</th>
+      <th onclick="sortColumn(this, 9, 0)">Talent07</th>
+      <th onclick="sortColumn(this, 10, 0)">Talent08</th>
+      <th onclick="sortColumn(this, 11, 0)">Talent09</th>
+      <th onclick="sortColumn(this, 12, 0)">Talent10</th>
+      <th onclick="sortColumn(this, 13, 0)">Talent11</th>
+      <th onclick="sortColumn(this, 14, 0)">Talent12</th>
+      <th onclick="sortColumn(this, 15, 0)">Talent13</th>
+      <th onclick="sortColumn(this, 16, 0)">Talent14</th>
+      <th onclick="sortColumn(this, 17, 0)">Talent15</th>
+      <th onclick="sortColumn(this, 18, 0)">Talent16</th>
+      <th onclick="sortColumn(this, 19, 0)">Talent17</th>
+      <th onclick="sortColumn(this, 20, 0)">Talent18</th>
+      <th onclick="sortColumn(this, 21, 0)">Talent19</th>
+      <th onclick="sortColumn(this, 22, 0)">Talent20</th>
+      <th onclick="sortColumn(this, 23, 0)">Talent21</th>
+      <th onclick="sortColumn(this, 24, 0)">Talent22</th>
+      <th onclick="sortColumn(this, 25, 0)">Talent23</th>
+      <th onclick="sortColumn(this, 26, 0)">Talent24</th>
+      <th onclick="sortColumn(this, 27, 0)">Talent25</th>
+      <th onclick="sortColumn(this, 28, 0)">Talent26</th>
+      <th onclick="sortColumn(this, 29, 0)">Talent27</th>
+      <th onclick="sortColumn(this, 30, 0)">Talent28</th>
+      <th onclick="sortColumn(this, 31, 0)">Talent29</th>
+      <th onclick="sortColumn(this, 32, 0)">Talent30</th>
+      <th onclick="sortColumn(this, 33, 0)">Talent31</th>
+      <th onclick="sortColumn(this, 34, 0)">Talent32</th>
+      <th onclick="sortColumn(this, 35, 0)">Talent33</th>
+      <th onclick="sortColumn(this, 36, 0)">Talent34</th>
+      <th onclick="sortColumn(this, 37, 0)">Talent35</th>
+      <th onclick="sortColumn(this, 38, 0)">Talent36</th>
+      <th onclick="sortColumn(this, 39, 0)">Talent37</th>
+      <th onclick="sortColumn(this, 40, 0)">Talent38</th>
+      <th onclick="sortColumn(this, 41, 0)">Talent39</th>
+      <th onclick="sortColumn(this, 42, 0)">Talent40</th>
+      <th onclick="sortColumn(this, 43, 0)">Talent41</th>
+      <th onclick="sortColumn(this, 44, 0)">Talent42</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>

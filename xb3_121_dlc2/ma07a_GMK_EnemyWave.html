@@ -30,30 +30,68 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>ma07a_GMK_EnemyWave</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>Condition</th>
-      <th>BattleLockID</th>
-      <th>AccessRange</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">Condition</th>
+      <th onclick="sortColumn(this, 4, 2)">BattleLockID</th>
+      <th onclick="sortColumn(this, 5, 0)">AccessRange</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>
       <td>
         <details>
-          <summary>6 refs</summary>
+          <summary>5 refs</summary>
                <a href="QST_TaskBattle.html#77">QST_TaskBattle#77</a>
           <br/><a href="SYS_GimmickLocation.html#12450">SYS_GimmickLocation#<FC9390E8></a>
           <br/><a href="SYS_GimmickLocation.html#12451">SYS_GimmickLocation#<14E33A24></a>
           <br/><a href="SYS_GimmickLocation.html#12452">SYS_GimmickLocation#<893BCC1F></a>
           <br/><a href="SYS_GimmickLocation.html#14535">SYS_GimmickLocation#<AC0A95A8></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14591">SYS_GimmickLocation_dlc02#14591</a>
         </details>
       </td>
       <td>&lt;AC0A95A8&gt;</td>
@@ -65,12 +103,11 @@
       <td class="side">2</td>
       <td>
         <details>
-          <summary>5 refs</summary>
+          <summary>4 refs</summary>
                <a href="QST_TaskBattle.html#80">QST_TaskBattle#80</a>
           <br/><a href="SYS_GimmickLocation.html#12467">SYS_GimmickLocation#<21B97FC6></a>
           <br/><a href="SYS_GimmickLocation.html#12468">SYS_GimmickLocation#<DDFA8200></a>
           <br/><a href="SYS_GimmickLocation.html#14536">SYS_GimmickLocation#<3F81ED95></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14592">SYS_GimmickLocation_dlc02#14592</a>
         </details>
       </td>
       <td>&lt;3F81ED95&gt;</td>
@@ -82,12 +119,11 @@
       <td class="side">3</td>
       <td>
         <details>
-          <summary>5 refs</summary>
+          <summary>4 refs</summary>
                <a href="QST_TaskBattle.html#81">QST_TaskBattle#81</a>
           <br/><a href="SYS_GimmickLocation.html#12469">SYS_GimmickLocation#<3EBA1ADB></a>
           <br/><a href="SYS_GimmickLocation.html#12470">SYS_GimmickLocation#<2598E8A8></a>
           <br/><a href="SYS_GimmickLocation.html#14537">SYS_GimmickLocation#<1E7C3B96></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14593">SYS_GimmickLocation_dlc02#14593</a>
         </details>
       </td>
       <td>&lt;1E7C3B96&gt;</td>
@@ -99,13 +135,12 @@
       <td class="side">4</td>
       <td>
         <details>
-          <summary>6 refs</summary>
+          <summary>5 refs</summary>
                <a href="QST_TaskBattle.html#71">QST_TaskBattle#71</a>
           <br/><a href="SYS_GimmickLocation.html#12473">SYS_GimmickLocation#<DA758D4E></a>
           <br/><a href="SYS_GimmickLocation.html#12474">SYS_GimmickLocation#<6B0A6DFC></a>
           <br/><a href="SYS_GimmickLocation.html#12475">SYS_GimmickLocation#<A5489B1B></a>
           <br/><a href="SYS_GimmickLocation.html#14538">SYS_GimmickLocation#<A795D140></a>
-          <br/><a href="SYS_GimmickLocation_dlc02.html#14594">SYS_GimmickLocation_dlc02#14594</a>
         </details>
       </td>
       <td>&lt;A795D140&gt;</td>

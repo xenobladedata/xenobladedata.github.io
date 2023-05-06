@@ -30,38 +30,77 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>BTL_SetUp</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>Name</th>
-      <th>DebugName</th>
-      <th>Caption</th>
-      <th>Type</th>
-      <th>RangeType</th>
-      <th>BaseNum</th>
-      <th>Interval</th>
-      <th>BaseTime</th>
-      <th>MaxTimeRate</th>
-      <th>Effect</th>
-      <th>EffectID</th>
-      <th>BulletID</th>
-      <th>BulletEffID</th>
-      <th>TargetRole1</th>
-      <th>TargetRole2</th>
-      <th>OtherRole</th>
-      <th>HealType</th>
-      <th>VanishType</th>
-      <th>VanishParam1</th>
-      <th>VanishParam2</th>
-      <th>VanishEffectID</th>
-      <th>Icon</th>
-      <th>BaseNum2</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 2)">Name</th>
+      <th onclick="sortColumn(this, 4, 2)">DebugName</th>
+      <th onclick="sortColumn(this, 5, 2)">Caption</th>
+      <th onclick="sortColumn(this, 6, 0)">Type</th>
+      <th onclick="sortColumn(this, 7, 0)">RangeType</th>
+      <th onclick="sortColumn(this, 8, 1)">BaseNum</th>
+      <th onclick="sortColumn(this, 9, 0)">Interval</th>
+      <th onclick="sortColumn(this, 10, 0)">BaseTime</th>
+      <th onclick="sortColumn(this, 11, 0)">MaxTimeRate</th>
+      <th onclick="sortColumn(this, 12, 2)">Effect</th>
+      <th onclick="sortColumn(this, 13, 0)">EffectID</th>
+      <th onclick="sortColumn(this, 14, 0)">BulletID</th>
+      <th onclick="sortColumn(this, 15, 0)">BulletEffID</th>
+      <th onclick="sortColumn(this, 16, 0)">TargetRole1</th>
+      <th onclick="sortColumn(this, 17, 0)">TargetRole2</th>
+      <th onclick="sortColumn(this, 18, 0)">OtherRole</th>
+      <th onclick="sortColumn(this, 19, 0)">HealType</th>
+      <th onclick="sortColumn(this, 20, 0)">VanishType</th>
+      <th onclick="sortColumn(this, 21, 0)">VanishParam1</th>
+      <th onclick="sortColumn(this, 22, 0)">VanishParam2</th>
+      <th onclick="sortColumn(this, 23, 0)">VanishEffectID</th>
+      <th onclick="sortColumn(this, 24, 0)">Icon</th>
+      <th onclick="sortColumn(this, 25, 1)">BaseNum2</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>

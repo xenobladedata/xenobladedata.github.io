@@ -30,33 +30,72 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>D0502CF8</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>field_4F8A7BEA</th>
-      <th>field_D0D706EC</th>
-      <th>field_137470B1</th>
-      <th>field_37D3CC6D</th>
-      <th>field_5AA16434</th>
-      <th>field_A2CD12B8</th>
-      <th>field_44F24FC9</th>
-      <th>field_E4DCCC16</th>
-      <th>field_500E0006</th>
-      <th>field_0D978293</th>
-      <th>field_EA447C23</th>
-      <th>field_22476AC8</th>
-      <th>field_93630B1B</th>
-      <th>field_A1DA19BB</th>
-      <th>field_06821C2F</th>
-      <th>field_14CCBCF5</th>
-      <th>field_6A946AAC</th>
-      <th>field_51A4B71F</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">ProbLot0</th>
+      <th onclick="sortColumn(this, 4, 0)">ProbLot1</th>
+      <th onclick="sortColumn(this, 5, 0)">ProbLot2</th>
+      <th onclick="sortColumn(this, 6, 0)">ProbLot3</th>
+      <th onclick="sortColumn(this, 7, 0)">ProbLot4</th>
+      <th onclick="sortColumn(this, 8, 0)">ProbLot5</th>
+      <th onclick="sortColumn(this, 9, 0)">field_44F24FC9</th>
+      <th onclick="sortColumn(this, 10, 0)">GetNum</th>
+      <th onclick="sortColumn(this, 11, 0)">field_500E0006</th>
+      <th onclick="sortColumn(this, 12, 0)">field_0D978293</th>
+      <th onclick="sortColumn(this, 13, 0)">field_EA447C23</th>
+      <th onclick="sortColumn(this, 14, 0)">field_22476AC8</th>
+      <th onclick="sortColumn(this, 15, 0)">field_93630B1B</th>
+      <th onclick="sortColumn(this, 16, 0)">field_A1DA19BB</th>
+      <th onclick="sortColumn(this, 17, 0)">field_06821C2F</th>
+      <th onclick="sortColumn(this, 18, 0)">field_14CCBCF5</th>
+      <th onclick="sortColumn(this, 19, 0)">field_6A946AAC</th>
+      <th onclick="sortColumn(this, 20, 0)">field_51A4B71F</th>
     </tr>
   </table>
 </body>

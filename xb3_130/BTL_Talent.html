@@ -30,139 +30,178 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>BTL_Talent</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Caption</th>
-      <th>DebugName</th>
-      <th>PcTalentParts</th>
-      <th>Role</th>
-      <th>Region</th>
-      <th>WeaponType</th>
-      <th>WeaponType2</th>
-      <th>AiRole</th>
-      <th>AiPosition1</th>
-      <th>AiPosition2</th>
-      <th>AiPosition3</th>
-      <th>AiCycle</th>
-      <th>SpMax1</th>
-      <th>SpMax2</th>
-      <th>field_F5879741</th>
-      <th>field_3250D218</th>
-      <th>field_F5EB2655</th>
-      <th>field_10417A75</th>
-      <th>TalentParamRev</th>
-      <th>PArmor1</th>
-      <th>PArmor2</th>
-      <th>EArmor1</th>
-      <th>EArmor2</th>
-      <th>HpMaxRev1</th>
-      <th>HpMaxRev2</th>
-      <th>StrengthRev1</th>
-      <th>StrengthRev2</th>
-      <th>PowHealRev1</th>
-      <th>PowHealRev2</th>
-      <th>DexRev1</th>
-      <th>DexRev2</th>
-      <th>AgilityRev1</th>
-      <th>AgilityRev2</th>
-      <th>ArtsSlotType1</th>
-      <th>ArtsSlotType2</th>
-      <th>ArtsSlotType3</th>
-      <th>ArtsSlotType4</th>
-      <th>ArtsSlotType5</th>
-      <th>ArtsSlotType6</th>
-      <th>AddSkillSlot</th>
-      <th>GemSlot</th>
-      <th>field_62F3F067</th>
-      <th>NeedTalentPoint1</th>
-      <th>NeedTalentPoint2</th>
-      <th>NeedTalentPoint3</th>
-      <th>NeedTalentPoint4</th>
-      <th>NeedTalentPoint5</th>
-      <th>NeedTalentPoint6</th>
-      <th>NeedExpLv02</th>
-      <th>NeedExpLv03</th>
-      <th>NeedExpLv04</th>
-      <th>NeedExpLv05</th>
-      <th>NeedExpLv06</th>
-      <th>NeedExpLv07</th>
-      <th>NeedExpLv08</th>
-      <th>NeedExpLv09</th>
-      <th>NeedExpLv10</th>
-      <th>NeedExpLv11</th>
-      <th>NeedExpLv12</th>
-      <th>NeedExpLv13</th>
-      <th>NeedExpLv14</th>
-      <th>NeedExpLv15</th>
-      <th>NeedExpLv16</th>
-      <th>NeedExpLv17</th>
-      <th>NeedExpLv18</th>
-      <th>NeedExpLv19</th>
-      <th>NeedExpLv20</th>
-      <th>GrowSetting</th>
-      <th>field_F15C4844</th>
-      <th>Value1</th>
-      <th>Value2</th>
-      <th>Value3</th>
-      <th>Value4</th>
-      <th>NpType02</th>
-      <th>NpNum02</th>
-      <th>NpType03</th>
-      <th>NpNum03</th>
-      <th>NpType04</th>
-      <th>NpNum04</th>
-      <th>NpType05</th>
-      <th>NpNum05</th>
-      <th>NpType06</th>
-      <th>NpNum06</th>
-      <th>NpType07</th>
-      <th>NpNum07</th>
-      <th>NpType08</th>
-      <th>NpNum08</th>
-      <th>NpType09</th>
-      <th>NpNum09</th>
-      <th>NpType10</th>
-      <th>NpNum10</th>
-      <th>NpType11</th>
-      <th>NpNum11</th>
-      <th>NpType12</th>
-      <th>NpNum12</th>
-      <th>NpType13</th>
-      <th>NpNum13</th>
-      <th>NpType14</th>
-      <th>NpNum14</th>
-      <th>NpType15</th>
-      <th>NpNum15</th>
-      <th>NpType16</th>
-      <th>NpNum16</th>
-      <th>NpType17</th>
-      <th>NpNum17</th>
-      <th>NpType18</th>
-      <th>NpNum18</th>
-      <th>NpType19</th>
-      <th>NpNum19</th>
-      <th>NpType20</th>
-      <th>NpNum20</th>
-      <th>TalentAptitude1</th>
-      <th>TalentAptitude2</th>
-      <th>TalentAptitude3</th>
-      <th>TalentAptitude4</th>
-      <th>TalentAptitude5</th>
-      <th>TalentAptitude6</th>
-      <th>DirArtsNum</th>
-      <th>SetArtsNum</th>
-      <th>GetNumber</th>
-      <th>AutoSet1</th>
-      <th>AutoSet2</th>
-      <th>AutoSet3</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 2)">Name</th>
+      <th onclick="sortColumn(this, 4, 2)">Caption</th>
+      <th onclick="sortColumn(this, 5, 2)">DebugName</th>
+      <th onclick="sortColumn(this, 6, 0)">PcTalentParts</th>
+      <th onclick="sortColumn(this, 7, 0)">Role</th>
+      <th onclick="sortColumn(this, 8, 0)">Region</th>
+      <th onclick="sortColumn(this, 9, 0)">WeaponType</th>
+      <th onclick="sortColumn(this, 10, 0)">WeaponType2</th>
+      <th onclick="sortColumn(this, 11, 0)">AiRole</th>
+      <th onclick="sortColumn(this, 12, 0)">AiPosition1</th>
+      <th onclick="sortColumn(this, 13, 0)">AiPosition2</th>
+      <th onclick="sortColumn(this, 14, 0)">AiPosition3</th>
+      <th onclick="sortColumn(this, 15, 0)">AiCycle</th>
+      <th onclick="sortColumn(this, 16, 0)">SpMax1</th>
+      <th onclick="sortColumn(this, 17, 0)">SpMax2</th>
+      <th onclick="sortColumn(this, 18, 0)">field_F5879741</th>
+      <th onclick="sortColumn(this, 19, 0)">field_3250D218</th>
+      <th onclick="sortColumn(this, 20, 0)">field_F5EB2655</th>
+      <th onclick="sortColumn(this, 21, 0)">field_10417A75</th>
+      <th onclick="sortColumn(this, 22, 2)">TalentParamRev</th>
+      <th onclick="sortColumn(this, 23, 0)">PArmor1</th>
+      <th onclick="sortColumn(this, 24, 0)">PArmor2</th>
+      <th onclick="sortColumn(this, 25, 0)">EArmor1</th>
+      <th onclick="sortColumn(this, 26, 0)">EArmor2</th>
+      <th onclick="sortColumn(this, 27, 0)">HpMaxRev1</th>
+      <th onclick="sortColumn(this, 28, 0)">HpMaxRev2</th>
+      <th onclick="sortColumn(this, 29, 0)">StrengthRev1</th>
+      <th onclick="sortColumn(this, 30, 0)">StrengthRev2</th>
+      <th onclick="sortColumn(this, 31, 0)">PowHealRev1</th>
+      <th onclick="sortColumn(this, 32, 0)">PowHealRev2</th>
+      <th onclick="sortColumn(this, 33, 0)">DexRev1</th>
+      <th onclick="sortColumn(this, 34, 0)">DexRev2</th>
+      <th onclick="sortColumn(this, 35, 0)">AgilityRev1</th>
+      <th onclick="sortColumn(this, 36, 0)">AgilityRev2</th>
+      <th onclick="sortColumn(this, 37, 0)">ArtsSlotType1</th>
+      <th onclick="sortColumn(this, 38, 0)">ArtsSlotType2</th>
+      <th onclick="sortColumn(this, 39, 0)">ArtsSlotType3</th>
+      <th onclick="sortColumn(this, 40, 0)">ArtsSlotType4</th>
+      <th onclick="sortColumn(this, 41, 0)">ArtsSlotType5</th>
+      <th onclick="sortColumn(this, 42, 0)">ArtsSlotType6</th>
+      <th onclick="sortColumn(this, 43, 0)">AddSkillSlot</th>
+      <th onclick="sortColumn(this, 44, 0)">GemSlot</th>
+      <th onclick="sortColumn(this, 45, 0)">field_62F3F067</th>
+      <th onclick="sortColumn(this, 46, 0)">NeedTalentPoint1</th>
+      <th onclick="sortColumn(this, 47, 0)">NeedTalentPoint2</th>
+      <th onclick="sortColumn(this, 48, 0)">NeedTalentPoint3</th>
+      <th onclick="sortColumn(this, 49, 0)">NeedTalentPoint4</th>
+      <th onclick="sortColumn(this, 50, 0)">NeedTalentPoint5</th>
+      <th onclick="sortColumn(this, 51, 0)">NeedTalentPoint6</th>
+      <th onclick="sortColumn(this, 52, 0)">NeedExpLv02</th>
+      <th onclick="sortColumn(this, 53, 0)">NeedExpLv03</th>
+      <th onclick="sortColumn(this, 54, 0)">NeedExpLv04</th>
+      <th onclick="sortColumn(this, 55, 0)">NeedExpLv05</th>
+      <th onclick="sortColumn(this, 56, 0)">NeedExpLv06</th>
+      <th onclick="sortColumn(this, 57, 0)">NeedExpLv07</th>
+      <th onclick="sortColumn(this, 58, 0)">NeedExpLv08</th>
+      <th onclick="sortColumn(this, 59, 0)">NeedExpLv09</th>
+      <th onclick="sortColumn(this, 60, 0)">NeedExpLv10</th>
+      <th onclick="sortColumn(this, 61, 0)">NeedExpLv11</th>
+      <th onclick="sortColumn(this, 62, 0)">NeedExpLv12</th>
+      <th onclick="sortColumn(this, 63, 0)">NeedExpLv13</th>
+      <th onclick="sortColumn(this, 64, 0)">NeedExpLv14</th>
+      <th onclick="sortColumn(this, 65, 0)">NeedExpLv15</th>
+      <th onclick="sortColumn(this, 66, 0)">NeedExpLv16</th>
+      <th onclick="sortColumn(this, 67, 0)">NeedExpLv17</th>
+      <th onclick="sortColumn(this, 68, 0)">NeedExpLv18</th>
+      <th onclick="sortColumn(this, 69, 0)">NeedExpLv19</th>
+      <th onclick="sortColumn(this, 70, 0)">NeedExpLv20</th>
+      <th onclick="sortColumn(this, 71, 0)">GrowSetting</th>
+      <th onclick="sortColumn(this, 72, 0)">field_F15C4844</th>
+      <th onclick="sortColumn(this, 73, 0)">Value1</th>
+      <th onclick="sortColumn(this, 74, 0)">Value2</th>
+      <th onclick="sortColumn(this, 75, 0)">Value3</th>
+      <th onclick="sortColumn(this, 76, 0)">Value4</th>
+      <th onclick="sortColumn(this, 77, 0)">NpType02</th>
+      <th onclick="sortColumn(this, 78, 0)">NpNum02</th>
+      <th onclick="sortColumn(this, 79, 0)">NpType03</th>
+      <th onclick="sortColumn(this, 80, 0)">NpNum03</th>
+      <th onclick="sortColumn(this, 81, 0)">NpType04</th>
+      <th onclick="sortColumn(this, 82, 0)">NpNum04</th>
+      <th onclick="sortColumn(this, 83, 0)">NpType05</th>
+      <th onclick="sortColumn(this, 84, 0)">NpNum05</th>
+      <th onclick="sortColumn(this, 85, 0)">NpType06</th>
+      <th onclick="sortColumn(this, 86, 0)">NpNum06</th>
+      <th onclick="sortColumn(this, 87, 0)">NpType07</th>
+      <th onclick="sortColumn(this, 88, 0)">NpNum07</th>
+      <th onclick="sortColumn(this, 89, 0)">NpType08</th>
+      <th onclick="sortColumn(this, 90, 0)">NpNum08</th>
+      <th onclick="sortColumn(this, 91, 0)">NpType09</th>
+      <th onclick="sortColumn(this, 92, 0)">NpNum09</th>
+      <th onclick="sortColumn(this, 93, 0)">NpType10</th>
+      <th onclick="sortColumn(this, 94, 0)">NpNum10</th>
+      <th onclick="sortColumn(this, 95, 0)">NpType11</th>
+      <th onclick="sortColumn(this, 96, 0)">NpNum11</th>
+      <th onclick="sortColumn(this, 97, 0)">NpType12</th>
+      <th onclick="sortColumn(this, 98, 0)">NpNum12</th>
+      <th onclick="sortColumn(this, 99, 0)">NpType13</th>
+      <th onclick="sortColumn(this, 100, 0)">NpNum13</th>
+      <th onclick="sortColumn(this, 101, 0)">NpType14</th>
+      <th onclick="sortColumn(this, 102, 0)">NpNum14</th>
+      <th onclick="sortColumn(this, 103, 0)">NpType15</th>
+      <th onclick="sortColumn(this, 104, 0)">NpNum15</th>
+      <th onclick="sortColumn(this, 105, 0)">NpType16</th>
+      <th onclick="sortColumn(this, 106, 0)">NpNum16</th>
+      <th onclick="sortColumn(this, 107, 0)">NpType17</th>
+      <th onclick="sortColumn(this, 108, 0)">NpNum17</th>
+      <th onclick="sortColumn(this, 109, 0)">NpType18</th>
+      <th onclick="sortColumn(this, 110, 0)">NpNum18</th>
+      <th onclick="sortColumn(this, 111, 0)">NpType19</th>
+      <th onclick="sortColumn(this, 112, 0)">NpNum19</th>
+      <th onclick="sortColumn(this, 113, 0)">NpType20</th>
+      <th onclick="sortColumn(this, 114, 0)">NpNum20</th>
+      <th onclick="sortColumn(this, 115, 0)">TalentAptitude1</th>
+      <th onclick="sortColumn(this, 116, 0)">TalentAptitude2</th>
+      <th onclick="sortColumn(this, 117, 0)">TalentAptitude3</th>
+      <th onclick="sortColumn(this, 118, 0)">TalentAptitude4</th>
+      <th onclick="sortColumn(this, 119, 0)">TalentAptitude5</th>
+      <th onclick="sortColumn(this, 120, 0)">TalentAptitude6</th>
+      <th onclick="sortColumn(this, 121, 0)">DirArtsNum</th>
+      <th onclick="sortColumn(this, 122, 0)">SetArtsNum</th>
+      <th onclick="sortColumn(this, 123, 0)">GetNumber</th>
+      <th onclick="sortColumn(this, 124, 0)">AutoSet1</th>
+      <th onclick="sortColumn(this, 125, 0)">AutoSet2</th>
+      <th onclick="sortColumn(this, 126, 0)">AutoSet3</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>

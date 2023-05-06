@@ -30,99 +30,138 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>FLD_MobResource</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>DirtLow</th>
-      <th>DirtHigh</th>
-      <th>field_58A0D9D2</th>
-      <th>Assign1</th>
-      <th>Weight1</th>
-      <th>ScaleLow1</th>
-      <th>ScaleHigh1</th>
-      <th>field_F4B17AED</th>
-      <th>Assign2</th>
-      <th>Weight2</th>
-      <th>ScaleLow2</th>
-      <th>ScaleHigh2</th>
-      <th>field_F8E571FD</th>
-      <th>Assign3</th>
-      <th>Weight3</th>
-      <th>ScaleLow3</th>
-      <th>ScaleHigh3</th>
-      <th>field_1CF9A562</th>
-      <th>Assign4</th>
-      <th>Weight4</th>
-      <th>ScaleLow4</th>
-      <th>ScaleHigh4</th>
-      <th>field_175CEE09</th>
-      <th>Assign5</th>
-      <th>Weight5</th>
-      <th>ScaleLow5</th>
-      <th>ScaleHigh5</th>
-      <th>field_91099566</th>
-      <th>Assign6</th>
-      <th>Weight6</th>
-      <th>ScaleLow6</th>
-      <th>ScaleHigh6</th>
-      <th>field_DF3E9759</th>
-      <th>Assign7</th>
-      <th>Weight7</th>
-      <th>ScaleLow7</th>
-      <th>ScaleHigh7</th>
-      <th>field_E416AB1B</th>
-      <th>Assign8</th>
-      <th>Weight8</th>
-      <th>ScaleLow8</th>
-      <th>ScaleHigh8</th>
-      <th>field_CC5757B9</th>
-      <th>Assign9</th>
-      <th>Weight9</th>
-      <th>ScaleLow9</th>
-      <th>ScaleHigh9</th>
-      <th>field_37D9B6DC</th>
-      <th>Assign10</th>
-      <th>Weight10</th>
-      <th>ScaleLow10</th>
-      <th>ScaleHigh10</th>
-      <th>field_35FC5214</th>
-      <th>Assign11</th>
-      <th>Weight11</th>
-      <th>ScaleLow11</th>
-      <th>ScaleHigh11</th>
-      <th>field_F7069C81</th>
-      <th>Assign12</th>
-      <th>Weight12</th>
-      <th>ScaleLow12</th>
-      <th>ScaleHigh12</th>
-      <th>field_C9B953A1</th>
-      <th>Assign13</th>
-      <th>Weight13</th>
-      <th>ScaleLow13</th>
-      <th>ScaleHigh13</th>
-      <th>field_E6038ABA</th>
-      <th>Assign14</th>
-      <th>Weight14</th>
-      <th>ScaleLow14</th>
-      <th>ScaleHigh14</th>
-      <th>field_6CF9A9A5</th>
-      <th>Assign15</th>
-      <th>Weight15</th>
-      <th>ScaleLow15</th>
-      <th>ScaleHigh15</th>
-      <th>field_19C0A653</th>
-      <th>Assign16</th>
-      <th>Weight16</th>
-      <th>ScaleLow16</th>
-      <th>ScaleHigh16</th>
-      <th>field_84310A88</th>
-      <th>field_0130E453</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">DirtLow</th>
+      <th onclick="sortColumn(this, 4, 0)">DirtHigh</th>
+      <th onclick="sortColumn(this, 5, 0)">field_58A0D9D2</th>
+      <th onclick="sortColumn(this, 6, 0)">Assign1</th>
+      <th onclick="sortColumn(this, 7, 1)">Weight1</th>
+      <th onclick="sortColumn(this, 8, 0)">ScaleLow1</th>
+      <th onclick="sortColumn(this, 9, 0)">ScaleHigh1</th>
+      <th onclick="sortColumn(this, 10, 0)">field_F4B17AED</th>
+      <th onclick="sortColumn(this, 11, 0)">Assign2</th>
+      <th onclick="sortColumn(this, 12, 1)">Weight2</th>
+      <th onclick="sortColumn(this, 13, 0)">ScaleLow2</th>
+      <th onclick="sortColumn(this, 14, 0)">ScaleHigh2</th>
+      <th onclick="sortColumn(this, 15, 0)">field_F8E571FD</th>
+      <th onclick="sortColumn(this, 16, 0)">Assign3</th>
+      <th onclick="sortColumn(this, 17, 1)">Weight3</th>
+      <th onclick="sortColumn(this, 18, 0)">ScaleLow3</th>
+      <th onclick="sortColumn(this, 19, 0)">ScaleHigh3</th>
+      <th onclick="sortColumn(this, 20, 0)">field_1CF9A562</th>
+      <th onclick="sortColumn(this, 21, 0)">Assign4</th>
+      <th onclick="sortColumn(this, 22, 1)">Weight4</th>
+      <th onclick="sortColumn(this, 23, 0)">ScaleLow4</th>
+      <th onclick="sortColumn(this, 24, 0)">ScaleHigh4</th>
+      <th onclick="sortColumn(this, 25, 0)">field_175CEE09</th>
+      <th onclick="sortColumn(this, 26, 0)">Assign5</th>
+      <th onclick="sortColumn(this, 27, 1)">Weight5</th>
+      <th onclick="sortColumn(this, 28, 0)">ScaleLow5</th>
+      <th onclick="sortColumn(this, 29, 0)">ScaleHigh5</th>
+      <th onclick="sortColumn(this, 30, 0)">field_91099566</th>
+      <th onclick="sortColumn(this, 31, 0)">Assign6</th>
+      <th onclick="sortColumn(this, 32, 1)">Weight6</th>
+      <th onclick="sortColumn(this, 33, 0)">ScaleLow6</th>
+      <th onclick="sortColumn(this, 34, 0)">ScaleHigh6</th>
+      <th onclick="sortColumn(this, 35, 0)">field_DF3E9759</th>
+      <th onclick="sortColumn(this, 36, 0)">Assign7</th>
+      <th onclick="sortColumn(this, 37, 1)">Weight7</th>
+      <th onclick="sortColumn(this, 38, 0)">ScaleLow7</th>
+      <th onclick="sortColumn(this, 39, 0)">ScaleHigh7</th>
+      <th onclick="sortColumn(this, 40, 0)">field_E416AB1B</th>
+      <th onclick="sortColumn(this, 41, 0)">Assign8</th>
+      <th onclick="sortColumn(this, 42, 1)">Weight8</th>
+      <th onclick="sortColumn(this, 43, 0)">ScaleLow8</th>
+      <th onclick="sortColumn(this, 44, 0)">ScaleHigh8</th>
+      <th onclick="sortColumn(this, 45, 0)">field_CC5757B9</th>
+      <th onclick="sortColumn(this, 46, 0)">Assign9</th>
+      <th onclick="sortColumn(this, 47, 1)">Weight9</th>
+      <th onclick="sortColumn(this, 48, 0)">ScaleLow9</th>
+      <th onclick="sortColumn(this, 49, 0)">ScaleHigh9</th>
+      <th onclick="sortColumn(this, 50, 0)">field_37D9B6DC</th>
+      <th onclick="sortColumn(this, 51, 0)">Assign10</th>
+      <th onclick="sortColumn(this, 52, 1)">Weight10</th>
+      <th onclick="sortColumn(this, 53, 0)">ScaleLow10</th>
+      <th onclick="sortColumn(this, 54, 0)">ScaleHigh10</th>
+      <th onclick="sortColumn(this, 55, 0)">field_35FC5214</th>
+      <th onclick="sortColumn(this, 56, 0)">Assign11</th>
+      <th onclick="sortColumn(this, 57, 1)">Weight11</th>
+      <th onclick="sortColumn(this, 58, 0)">ScaleLow11</th>
+      <th onclick="sortColumn(this, 59, 0)">ScaleHigh11</th>
+      <th onclick="sortColumn(this, 60, 0)">field_F7069C81</th>
+      <th onclick="sortColumn(this, 61, 0)">Assign12</th>
+      <th onclick="sortColumn(this, 62, 1)">Weight12</th>
+      <th onclick="sortColumn(this, 63, 0)">ScaleLow12</th>
+      <th onclick="sortColumn(this, 64, 0)">ScaleHigh12</th>
+      <th onclick="sortColumn(this, 65, 0)">field_C9B953A1</th>
+      <th onclick="sortColumn(this, 66, 0)">Assign13</th>
+      <th onclick="sortColumn(this, 67, 1)">Weight13</th>
+      <th onclick="sortColumn(this, 68, 0)">ScaleLow13</th>
+      <th onclick="sortColumn(this, 69, 0)">ScaleHigh13</th>
+      <th onclick="sortColumn(this, 70, 0)">field_E6038ABA</th>
+      <th onclick="sortColumn(this, 71, 0)">Assign14</th>
+      <th onclick="sortColumn(this, 72, 1)">Weight14</th>
+      <th onclick="sortColumn(this, 73, 0)">ScaleLow14</th>
+      <th onclick="sortColumn(this, 74, 0)">ScaleHigh14</th>
+      <th onclick="sortColumn(this, 75, 0)">field_6CF9A9A5</th>
+      <th onclick="sortColumn(this, 76, 0)">Assign15</th>
+      <th onclick="sortColumn(this, 77, 1)">Weight15</th>
+      <th onclick="sortColumn(this, 78, 0)">ScaleLow15</th>
+      <th onclick="sortColumn(this, 79, 0)">ScaleHigh15</th>
+      <th onclick="sortColumn(this, 80, 0)">field_19C0A653</th>
+      <th onclick="sortColumn(this, 81, 0)">Assign16</th>
+      <th onclick="sortColumn(this, 82, 1)">Weight16</th>
+      <th onclick="sortColumn(this, 83, 0)">ScaleLow16</th>
+      <th onclick="sortColumn(this, 84, 0)">ScaleHigh16</th>
+      <th onclick="sortColumn(this, 85, 1)">field_84310A88</th>
+      <th onclick="sortColumn(this, 86, 0)">field_0130E453</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>

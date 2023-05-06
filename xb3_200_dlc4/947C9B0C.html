@@ -30,30 +30,69 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>947C9B0C</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>field_7A94A94B</th>
-      <th>Category</th>
-      <th>ItemID</th>
-      <th>ReqNum</th>
-      <th>SortID</th>
-      <th>Flag</th>
-      <th>Comment</th>
-      <th>RewardNum</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">field_7A94A94B</th>
+      <th onclick="sortColumn(this, 4, 0)">Category</th>
+      <th onclick="sortColumn(this, 5, 0)">ItemID</th>
+      <th onclick="sortColumn(this, 6, 0)">ReqNum</th>
+      <th onclick="sortColumn(this, 7, 0)">SortID</th>
+      <th onclick="sortColumn(this, 8, 0)">Flag</th>
+      <th onclick="sortColumn(this, 9, 2)">Comment</th>
+      <th onclick="sortColumn(this, 10, 0)">RewardNum</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>
       <td></td>
       <td>&lt;B475F95D&gt;</td>
-      <td>1</td>
-      <td>1</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
+      <td>Wood</td>
       <td><a href="ITM_Collection.html#3319">Pruning Wood</a></td>
       <td>1</td>
       <td>1</td>
@@ -65,8 +104,8 @@
       <td class="side">2</td>
       <td></td>
       <td>&lt;E2ED3D4A&gt;</td>
-      <td>1</td>
-      <td>1</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
+      <td>Wood</td>
       <td><a href="ITM_Collection.html#3320">Thirsty Oak</a></td>
       <td>4</td>
       <td>2</td>
@@ -78,8 +117,8 @@
       <td class="side">3</td>
       <td></td>
       <td>&lt;06A62C9C&gt;</td>
-      <td>1</td>
-      <td>1</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
+      <td>Wood</td>
       <td><a href="ITM_Collection.html#3321">Simmertree</a></td>
       <td>3</td>
       <td>3</td>
@@ -91,8 +130,8 @@
       <td class="side">4</td>
       <td></td>
       <td>&lt;DFA4512E&gt;</td>
-      <td>1</td>
-      <td>6</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
+      <td>Vegetables</td>
       <td><a href="ITM_Collection.html#3354">Comet Carrot</a></td>
       <td>2</td>
       <td>1</td>
@@ -104,8 +143,8 @@
       <td class="side">5</td>
       <td></td>
       <td>&lt;E6C46DBE&gt;</td>
-      <td>1</td>
-      <td>6</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
+      <td>Vegetables</td>
       <td><a href="ITM_Collection.html#3355">Filling Onion</a></td>
       <td>2</td>
       <td>2</td>
@@ -117,8 +156,8 @@
       <td class="side">6</td>
       <td></td>
       <td>&lt;1AC81714&gt;</td>
-      <td>1</td>
-      <td>7</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
+      <td>Mushrooms</td>
       <td><a href="ITM_Collection.html#3362">Dainty Shroom</a></td>
       <td>5</td>
       <td>1</td>
@@ -130,8 +169,8 @@
       <td class="side">7</td>
       <td></td>
       <td>&lt;FCF0C3B5&gt;</td>
-      <td>1</td>
-      <td>7</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
+      <td>Mushrooms</td>
       <td><a href="ITM_Collection.html#3363">Kelp Mushroom</a></td>
       <td>2</td>
       <td>2</td>
@@ -143,8 +182,8 @@
       <td class="side">8</td>
       <td></td>
       <td>&lt;84F9603E&gt;</td>
-      <td>1</td>
-      <td>7</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
+      <td>Mushrooms</td>
       <td><a href="ITM_Collection.html#3364">Mallow-o'-the-Marsh</a></td>
       <td>3</td>
       <td>3</td>
@@ -156,8 +195,8 @@
       <td class="side">9</td>
       <td></td>
       <td>&lt;AF02FA30&gt;</td>
-      <td>1</td>
-      <td>9</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
+      <td>Ore</td>
       <td><a href="ITM_Collection.html#3377">Flake Crystal</a></td>
       <td>2</td>
       <td>1</td>
@@ -169,8 +208,8 @@
       <td class="side">10</td>
       <td></td>
       <td>&lt;5BFC54E5&gt;</td>
-      <td>1</td>
-      <td>9</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
+      <td>Ore</td>
       <td><a href="ITM_Collection.html#3378">Demon Marble</a></td>
       <td>2</td>
       <td>2</td>
@@ -182,8 +221,8 @@
       <td class="side">11</td>
       <td></td>
       <td>&lt;4CEA33DF&gt;</td>
-      <td>1</td>
-      <td>11</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
+      <td>Machine Parts</td>
       <td><a href="ITM_Collection.html#3395">Warning Lamp</a></td>
       <td>1</td>
       <td>1</td>
@@ -195,8 +234,8 @@
       <td class="side">12</td>
       <td></td>
       <td>&lt;017618CB&gt;</td>
-      <td>1</td>
-      <td>11</td>
+      <td><a href="ma40a_GMK_Location.html#1">Vermilion Woods</a></td>
+      <td>Machine Parts</td>
       <td><a href="ITM_Collection.html#3396">Twin Generators</a></td>
       <td>2</td>
       <td>2</td>
@@ -208,8 +247,8 @@
       <td class="side">13</td>
       <td></td>
       <td>&lt;4A4D1992&gt;</td>
-      <td>2</td>
-      <td>2</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
+      <td>Seeds</td>
       <td><a href="ITM_Collection.html#3332">Silverseed</a></td>
       <td>4</td>
       <td>1</td>
@@ -221,8 +260,8 @@
       <td class="side">14</td>
       <td></td>
       <td>&lt;4CAB56C9&gt;</td>
-      <td>2</td>
-      <td>2</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
+      <td>Seeds</td>
       <td><a href="ITM_Collection.html#3333">Milky Soy</a></td>
       <td>4</td>
       <td>2</td>
@@ -234,8 +273,8 @@
       <td class="side">15</td>
       <td></td>
       <td>&lt;9AE81373&gt;</td>
-      <td>2</td>
-      <td>3</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
+      <td>Plants</td>
       <td><a href="ITM_Collection.html#3338">Plate Pothos</a></td>
       <td>4</td>
       <td>1</td>
@@ -247,8 +286,8 @@
       <td class="side">16</td>
       <td></td>
       <td>&lt;7C12BEFE&gt;</td>
-      <td>2</td>
-      <td>3</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
+      <td>Plants</td>
       <td><a href="ITM_Collection.html#3339">Armu Barley</a></td>
       <td>4</td>
       <td>2</td>
@@ -260,8 +299,8 @@
       <td class="side">17</td>
       <td></td>
       <td>&lt;A0F2E185&gt;</td>
-      <td>2</td>
-      <td>3</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
+      <td>Plants</td>
       <td><a href="ITM_Collection.html#3340">Bluesky Bark</a></td>
       <td>5</td>
       <td>3</td>
@@ -273,8 +312,8 @@
       <td class="side">18</td>
       <td></td>
       <td>&lt;5A3B57BA&gt;</td>
-      <td>2</td>
-      <td>5</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
+      <td>Fruit</td>
       <td><a href="ITM_Collection.html#3347">Walnut Grape</a></td>
       <td>6</td>
       <td>1</td>
@@ -286,8 +325,8 @@
       <td class="side">19</td>
       <td></td>
       <td>&lt;0298823A&gt;</td>
-      <td>2</td>
-      <td>5</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
+      <td>Fruit</td>
       <td><a href="ITM_Collection.html#3348">Sour Gooseberry</a></td>
       <td>2</td>
       <td>2</td>
@@ -299,8 +338,8 @@
       <td class="side">20</td>
       <td></td>
       <td>&lt;C173B11E&gt;</td>
-      <td>2</td>
-      <td>5</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
+      <td>Fruit</td>
       <td><a href="ITM_Collection.html#3349">Ruby Pineapple</a></td>
       <td>4</td>
       <td>3</td>
@@ -312,8 +351,8 @@
       <td class="side">21</td>
       <td></td>
       <td>&lt;1C0835BE&gt;</td>
-      <td>2</td>
-      <td>7</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
+      <td>Mushrooms</td>
       <td><a href="ITM_Collection.html#3367">Jalapenoki</a></td>
       <td>2</td>
       <td>1</td>
@@ -325,8 +364,8 @@
       <td class="side">22</td>
       <td></td>
       <td>&lt;859325D3&gt;</td>
-      <td>2</td>
-      <td>7</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
+      <td>Mushrooms</td>
       <td><a href="ITM_Collection.html#3368">Tootshroom</a></td>
       <td>4</td>
       <td>2</td>
@@ -338,8 +377,8 @@
       <td class="side">23</td>
       <td></td>
       <td>&lt;059F242B&gt;</td>
-      <td>2</td>
-      <td>8</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
+      <td>Gemstones</td>
       <td><a href="ITM_Collection.html#3369">Powder Pearl</a></td>
       <td>4</td>
       <td>1</td>
@@ -351,8 +390,8 @@
       <td class="side">24</td>
       <td></td>
       <td>&lt;3853B16A&gt;</td>
-      <td>2</td>
-      <td>8</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
+      <td>Gemstones</td>
       <td><a href="ITM_Collection.html#3370">Delicate Bell</a></td>
       <td>4</td>
       <td>2</td>
@@ -364,8 +403,8 @@
       <td class="side">25</td>
       <td></td>
       <td>&lt;28835947&gt;</td>
-      <td>2</td>
-      <td>9</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
+      <td>Ore</td>
       <td><a href="ITM_Collection.html#3379">Noise Bite</a></td>
       <td>2</td>
       <td>1</td>
@@ -377,8 +416,8 @@
       <td class="side">26</td>
       <td></td>
       <td>&lt;885E789F&gt;</td>
-      <td>2</td>
-      <td>9</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
+      <td>Ore</td>
       <td><a href="ITM_Collection.html#3380">Limelightstone</a></td>
       <td>3</td>
       <td>2</td>
@@ -390,8 +429,8 @@
       <td class="side">27</td>
       <td></td>
       <td>&lt;6B9FF26E&gt;</td>
-      <td>2</td>
-      <td>10</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
+      <td>Fossils</td>
       <td><a href="ITM_Collection.html#3389">Urchon Fossil</a></td>
       <td>4</td>
       <td>1</td>
@@ -403,8 +442,8 @@
       <td class="side">28</td>
       <td></td>
       <td>&lt;3863C802&gt;</td>
-      <td>2</td>
-      <td>10</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
+      <td>Fossils</td>
       <td><a href="ITM_Collection.html#3390">Torta Fossil</a></td>
       <td>4</td>
       <td>2</td>
@@ -416,8 +455,8 @@
       <td class="side">29</td>
       <td></td>
       <td>&lt;656F7A50&gt;</td>
-      <td>2</td>
-      <td>10</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
+      <td>Fossils</td>
       <td><a href="ITM_Collection.html#3391">Nebula Fossil</a></td>
       <td>2</td>
       <td>3</td>
@@ -429,8 +468,8 @@
       <td class="side">30</td>
       <td></td>
       <td>&lt;B3C774DE&gt;</td>
-      <td>2</td>
-      <td>11</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
+      <td>Machine Parts</td>
       <td><a href="ITM_Collection.html#3397">Blossom Belt</a></td>
       <td>2</td>
       <td>1</td>
@@ -442,8 +481,8 @@
       <td class="side">31</td>
       <td></td>
       <td>&lt;53E32BCF&gt;</td>
-      <td>2</td>
-      <td>11</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
+      <td>Machine Parts</td>
       <td><a href="ITM_Collection.html#3398">Fluid Cranker</a></td>
       <td>2</td>
       <td>2</td>
@@ -455,8 +494,8 @@
       <td class="side">32</td>
       <td></td>
       <td>&lt;5F7D8219&gt;</td>
-      <td>2</td>
-      <td>11</td>
+      <td><a href="ma40a_GMK_Location.html#2">Aurora Shelf</a></td>
+      <td>Machine Parts</td>
       <td><a href="ITM_Collection.html#3399">Bullet Screen</a></td>
       <td>2</td>
       <td>3</td>
@@ -468,8 +507,8 @@
       <td class="side">33</td>
       <td></td>
       <td>&lt;89B4F9EA&gt;</td>
-      <td>3</td>
-      <td>2</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
+      <td>Seeds</td>
       <td><a href="ITM_Collection.html#3336">Lucky Spice</a></td>
       <td>2</td>
       <td>1</td>
@@ -481,8 +520,8 @@
       <td class="side">34</td>
       <td></td>
       <td>&lt;C9223404&gt;</td>
-      <td>3</td>
-      <td>2</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
+      <td>Seeds</td>
       <td><a href="ITM_Collection.html#3337">Paste Bean</a></td>
       <td>2</td>
       <td>2</td>
@@ -494,8 +533,8 @@
       <td class="side">35</td>
       <td></td>
       <td>&lt;058BA895&gt;</td>
-      <td>3</td>
-      <td>4</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
+      <td>Flowers</td>
       <td><a href="ITM_Collection.html#3343">Strong Dandelion</a></td>
       <td>5</td>
       <td>1</td>
@@ -507,8 +546,8 @@
       <td class="side">36</td>
       <td></td>
       <td>&lt;FF27E984&gt;</td>
-      <td>3</td>
-      <td>4</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
+      <td>Flowers</td>
       <td><a href="ITM_Collection.html#3344">Dawn Hydrangea</a></td>
       <td>3</td>
       <td>2</td>
@@ -520,8 +559,8 @@
       <td class="side">37</td>
       <td></td>
       <td>&lt;99099DBF&gt;</td>
-      <td>3</td>
-      <td>6</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
+      <td>Vegetables</td>
       <td><a href="ITM_Collection.html#3356">Sweet Wasabi</a></td>
       <td>6</td>
       <td>1</td>
@@ -533,8 +572,8 @@
       <td class="side">38</td>
       <td></td>
       <td>&lt;017FC2BC&gt;</td>
-      <td>3</td>
-      <td>6</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
+      <td>Vegetables</td>
       <td><a href="ITM_Collection.html#3357">Cool Potato</a></td>
       <td>4</td>
       <td>2</td>
@@ -546,8 +585,8 @@
       <td class="side">39</td>
       <td></td>
       <td>&lt;0971F3CB&gt;</td>
-      <td>3</td>
-      <td>6</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
+      <td>Vegetables</td>
       <td><a href="ITM_Collection.html#3358">Baggy Swede</a></td>
       <td>3</td>
       <td>3</td>
@@ -559,8 +598,8 @@
       <td class="side">40</td>
       <td></td>
       <td>&lt;EB0746B8&gt;</td>
-      <td>3</td>
-      <td>7</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
+      <td>Mushrooms</td>
       <td><a href="ITM_Collection.html#3365">Varicini</a></td>
       <td>4</td>
       <td>2</td>
@@ -572,8 +611,8 @@
       <td class="side">41</td>
       <td></td>
       <td>&lt;999BCCDB&gt;</td>
-      <td>3</td>
-      <td>7</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
+      <td>Mushrooms</td>
       <td><a href="ITM_Collection.html#3366">Micropuff</a></td>
       <td>4</td>
       <td>1</td>
@@ -585,8 +624,8 @@
       <td class="side">42</td>
       <td></td>
       <td>&lt;ACD94DE2&gt;</td>
-      <td>3</td>
-      <td>9</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
+      <td>Ore</td>
       <td><a href="ITM_Collection.html#3381">Wool Rock</a></td>
       <td>2</td>
       <td>1</td>
@@ -598,8 +637,8 @@
       <td class="side">43</td>
       <td></td>
       <td>&lt;C91C53AF&gt;</td>
-      <td>3</td>
-      <td>9</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
+      <td>Ore</td>
       <td><a href="ITM_Collection.html#3382">Magnet Clay</a></td>
       <td>2</td>
       <td>2</td>
@@ -611,8 +650,8 @@
       <td class="side">44</td>
       <td></td>
       <td>&lt;75869C5B&gt;</td>
-      <td>3</td>
-      <td>11</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
+      <td>Machine Parts</td>
       <td><a href="ITM_Collection.html#3400">Rabbit Diode</a></td>
       <td>2</td>
       <td>1</td>
@@ -624,8 +663,8 @@
       <td class="side">45</td>
       <td></td>
       <td>&lt;2DE78507&gt;</td>
-      <td>3</td>
-      <td>11</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
+      <td>Machine Parts</td>
       <td><a href="ITM_Collection.html#3401">Rainbow Zirconia</a></td>
       <td>2</td>
       <td>2</td>
@@ -637,8 +676,8 @@
       <td class="side">46</td>
       <td></td>
       <td>&lt;0BC74EEF&gt;</td>
-      <td>3</td>
-      <td>12</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
+      <td>Shells</td>
       <td><a href="ITM_Collection.html#3407">Bizarrenacle</a></td>
       <td>2</td>
       <td>1</td>
@@ -650,8 +689,8 @@
       <td class="side">47</td>
       <td></td>
       <td>&lt;939FAC59&gt;</td>
-      <td>3</td>
-      <td>12</td>
+      <td><a href="ma40a_GMK_Location.html#3">Yesterdale</a></td>
+      <td>Shells</td>
       <td><a href="ITM_Collection.html#3408">Royal Red Scallop</a></td>
       <td>4</td>
       <td>2</td>
@@ -663,8 +702,8 @@
       <td class="side">48</td>
       <td></td>
       <td>&lt;E56D2590&gt;</td>
-      <td>4</td>
-      <td>1</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
+      <td>Wood</td>
       <td><a href="ITM_Collection.html#3326">Vinenut</a></td>
       <td>5</td>
       <td>1</td>
@@ -676,8 +715,8 @@
       <td class="side">49</td>
       <td></td>
       <td>&lt;3B51F0B6&gt;</td>
-      <td>4</td>
-      <td>1</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
+      <td>Wood</td>
       <td><a href="ITM_Collection.html#3327">Heyday Poplar</a></td>
       <td>4</td>
       <td>2</td>
@@ -689,8 +728,8 @@
       <td class="side">50</td>
       <td></td>
       <td>&lt;D7C6BEEE&gt;</td>
-      <td>4</td>
-      <td>1</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
+      <td>Wood</td>
       <td><a href="ITM_Collection.html#3328">Foolin' Ivy</a></td>
       <td>3</td>
       <td>3</td>
@@ -702,8 +741,8 @@
       <td class="side">51</td>
       <td></td>
       <td>&lt;210A27BC&gt;</td>
-      <td>4</td>
-      <td>2</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
+      <td>Seeds</td>
       <td><a href="ITM_Collection.html#3334">Oil Lentil</a></td>
       <td>2</td>
       <td>1</td>
@@ -715,8 +754,8 @@
       <td class="side">52</td>
       <td></td>
       <td>&lt;868DE412&gt;</td>
-      <td>4</td>
-      <td>2</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
+      <td>Seeds</td>
       <td><a href="ITM_Collection.html#3335">Cracker Nut</a></td>
       <td>3</td>
       <td>2</td>
@@ -728,8 +767,8 @@
       <td class="side">53</td>
       <td></td>
       <td>&lt;A388E619&gt;</td>
-      <td>4</td>
-      <td>3</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
+      <td>Plants</td>
       <td><a href="ITM_Collection.html#3341">Cutting-Edge Aloe</a></td>
       <td>2</td>
       <td>1</td>
@@ -741,8 +780,8 @@
       <td class="side">54</td>
       <td></td>
       <td>&lt;429441DC&gt;</td>
-      <td>4</td>
-      <td>3</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
+      <td>Plants</td>
       <td><a href="ITM_Collection.html#3342">Razzle Basil</a></td>
       <td>2</td>
       <td>2</td>
@@ -754,8 +793,8 @@
       <td class="side">55</td>
       <td></td>
       <td>&lt;9D60C73D&gt;</td>
-      <td>4</td>
-      <td>5</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
+      <td>Fruit</td>
       <td><a href="ITM_Collection.html#3350">Humming Plum</a></td>
       <td>2</td>
       <td>1</td>
@@ -767,8 +806,8 @@
       <td class="side">56</td>
       <td></td>
       <td>&lt;8790039A&gt;</td>
-      <td>4</td>
-      <td>5</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
+      <td>Fruit</td>
       <td><a href="ITM_Collection.html#3351">Red Durian</a></td>
       <td>3</td>
       <td>2</td>
@@ -780,8 +819,8 @@
       <td class="side">57</td>
       <td></td>
       <td>&lt;5C1408F0&gt;</td>
-      <td>4</td>
-      <td>8</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
+      <td>Gemstones</td>
       <td><a href="ITM_Collection.html#3371">Wyrdstone</a></td>
       <td>5</td>
       <td>1</td>
@@ -793,8 +832,8 @@
       <td class="side">58</td>
       <td></td>
       <td>&lt;CDAC0FD1&gt;</td>
-      <td>4</td>
-      <td>8</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
+      <td>Gemstones</td>
       <td><a href="ITM_Collection.html#3372">Blood Emerald</a></td>
       <td>4</td>
       <td>2</td>
@@ -806,8 +845,8 @@
       <td class="side">59</td>
       <td></td>
       <td>&lt;2383236A&gt;</td>
-      <td>4</td>
-      <td>8</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
+      <td>Gemstones</td>
       <td><a href="ITM_Collection.html#3373">Polar Pearl</a></td>
       <td>3</td>
       <td>3</td>
@@ -819,8 +858,8 @@
       <td class="side">60</td>
       <td></td>
       <td>&lt;B12E13FC&gt;</td>
-      <td>4</td>
-      <td>9</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
+      <td>Ore</td>
       <td><a href="ITM_Collection.html#3383">Monochromagnetite</a></td>
       <td>2</td>
       <td>1</td>
@@ -832,8 +871,8 @@
       <td class="side">61</td>
       <td></td>
       <td>&lt;5A6B9AC4&gt;</td>
-      <td>4</td>
-      <td>9</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
+      <td>Ore</td>
       <td><a href="ITM_Collection.html#3384">Capronite</a></td>
       <td>4</td>
       <td>2</td>
@@ -845,8 +884,8 @@
       <td class="side">62</td>
       <td></td>
       <td>&lt;BF2F16FA&gt;</td>
-      <td>4</td>
-      <td>9</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
+      <td>Ore</td>
       <td><a href="ITM_Collection.html#3385">Pione Stone</a></td>
       <td>4</td>
       <td>3</td>
@@ -858,8 +897,8 @@
       <td class="side">63</td>
       <td></td>
       <td>&lt;DF6030FC&gt;</td>
-      <td>4</td>
-      <td>11</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
+      <td>Machine Parts</td>
       <td><a href="ITM_Collection.html#3402">Rusty Bolt</a></td>
       <td>2</td>
       <td>1</td>
@@ -871,8 +910,8 @@
       <td class="side">64</td>
       <td></td>
       <td>&lt;30D957D7&gt;</td>
-      <td>4</td>
-      <td>11</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
+      <td>Machine Parts</td>
       <td><a href="ITM_Collection.html#3403">Winding Gear</a></td>
       <td>3</td>
       <td>2</td>
@@ -884,8 +923,8 @@
       <td class="side">65</td>
       <td></td>
       <td>&lt;13CB53FA&gt;</td>
-      <td>4</td>
-      <td>12</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
+      <td>Shells</td>
       <td><a href="ITM_Collection.html#3409">Mock-Lobster Pseudoshell</a></td>
       <td>2</td>
       <td>1</td>
@@ -897,8 +936,8 @@
       <td class="side">66</td>
       <td></td>
       <td>&lt;4D669796&gt;</td>
-      <td>4</td>
-      <td>12</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
+      <td>Shells</td>
       <td><a href="ITM_Collection.html#3410">Mudclam</a></td>
       <td>4</td>
       <td>2</td>
@@ -910,8 +949,8 @@
       <td class="side">67</td>
       <td></td>
       <td>&lt;5A775C35&gt;</td>
-      <td>4</td>
-      <td>12</td>
+      <td><a href="ma40a_GMK_Location.html#4">The Ragmos Desolation</a></td>
+      <td>Shells</td>
       <td><a href="ITM_Collection.html#3411">Tentacled Oyster</a></td>
       <td>4</td>
       <td>3</td>
@@ -923,8 +962,8 @@
       <td class="side">68</td>
       <td></td>
       <td>&lt;2E6E52B4&gt;</td>
-      <td>5</td>
-      <td>1</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
+      <td>Wood</td>
       <td><a href="ITM_Collection.html#3329">Gypsum Branch</a></td>
       <td>5</td>
       <td>1</td>
@@ -936,8 +975,8 @@
       <td class="side">69</td>
       <td></td>
       <td>&lt;8BFF5A57&gt;</td>
-      <td>5</td>
-      <td>1</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
+      <td>Wood</td>
       <td><a href="ITM_Collection.html#3330">Broom Icicle</a></td>
       <td>4</td>
       <td>2</td>
@@ -949,8 +988,8 @@
       <td class="side">70</td>
       <td></td>
       <td>&lt;D6FC200E&gt;</td>
-      <td>5</td>
-      <td>1</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
+      <td>Wood</td>
       <td><a href="ITM_Collection.html#3331">Absurd Branch</a></td>
       <td>4</td>
       <td>3</td>
@@ -962,8 +1001,8 @@
       <td class="side">71</td>
       <td></td>
       <td>&lt;0BFDA6A1&gt;</td>
-      <td>5</td>
-      <td>4</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
+      <td>Flowers</td>
       <td><a href="ITM_Collection.html#3345">Melancholy Rose</a></td>
       <td>6</td>
       <td>1</td>
@@ -975,8 +1014,8 @@
       <td class="side">72</td>
       <td></td>
       <td>&lt;B07F9F83&gt;</td>
-      <td>5</td>
-      <td>4</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
+      <td>Flowers</td>
       <td><a href="ITM_Collection.html#3346">Black Peony</a></td>
       <td>3</td>
       <td>2</td>
@@ -988,8 +1027,8 @@
       <td class="side">73</td>
       <td></td>
       <td>&lt;65B79E79&gt;</td>
-      <td>5</td>
-      <td>5</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
+      <td>Fruit</td>
       <td><a href="ITM_Collection.html#3352">Ether Plum</a></td>
       <td>5</td>
       <td>1</td>
@@ -1001,8 +1040,8 @@
       <td class="side">74</td>
       <td></td>
       <td>&lt;FA1D8A05&gt;</td>
-      <td>5</td>
-      <td>5</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
+      <td>Fruit</td>
       <td><a href="ITM_Collection.html#3353">Dry Lemon</a></td>
       <td>4</td>
       <td>2</td>
@@ -1014,8 +1053,8 @@
       <td class="side">75</td>
       <td></td>
       <td>&lt;3DA2A4AA&gt;</td>
-      <td>5</td>
-      <td>6</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
+      <td>Vegetables</td>
       <td><a href="ITM_Collection.html#3359">Amethyst Vanilla</a></td>
       <td>2</td>
       <td>1</td>
@@ -1027,8 +1066,8 @@
       <td class="side">76</td>
       <td></td>
       <td>&lt;A95556FC&gt;</td>
-      <td>5</td>
-      <td>6</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
+      <td>Vegetables</td>
       <td><a href="ITM_Collection.html#3360">Ice Cabbage</a></td>
       <td>2</td>
       <td>2</td>
@@ -1040,8 +1079,8 @@
       <td class="side">77</td>
       <td></td>
       <td>&lt;D459FF90&gt;</td>
-      <td>5</td>
-      <td>6</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
+      <td>Vegetables</td>
       <td><a href="ITM_Collection.html#3361">Ingot Carrot</a></td>
       <td>3</td>
       <td>3</td>
@@ -1053,8 +1092,8 @@
       <td class="side">78</td>
       <td></td>
       <td>&lt;B9789072&gt;</td>
-      <td>5</td>
-      <td>8</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
+      <td>Gemstones</td>
       <td><a href="ITM_Collection.html#3374">Clicky Topaz</a></td>
       <td>5</td>
       <td>1</td>
@@ -1066,8 +1105,8 @@
       <td class="side">79</td>
       <td></td>
       <td>&lt;5AEEBA36&gt;</td>
-      <td>5</td>
-      <td>8</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
+      <td>Gemstones</td>
       <td><a href="ITM_Collection.html#3375">Greedstone</a></td>
       <td>4</td>
       <td>2</td>
@@ -1079,8 +1118,8 @@
       <td class="side">80</td>
       <td></td>
       <td>&lt;EF6FA98E&gt;</td>
-      <td>5</td>
-      <td>8</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
+      <td>Gemstones</td>
       <td><a href="ITM_Collection.html#3376">Icicle Marine</a></td>
       <td>3</td>
       <td>3</td>
@@ -1092,8 +1131,8 @@
       <td class="side">81</td>
       <td></td>
       <td>&lt;BBC1EFF0&gt;</td>
-      <td>5</td>
-      <td>9</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
+      <td>Ore</td>
       <td><a href="ITM_Collection.html#3386">Lacquer Stone</a></td>
       <td>2</td>
       <td>1</td>
@@ -1105,8 +1144,8 @@
       <td class="side">82</td>
       <td></td>
       <td>&lt;2AFB5E61&gt;</td>
-      <td>5</td>
-      <td>9</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
+      <td>Ore</td>
       <td><a href="ITM_Collection.html#3387">Emerald Snow</a></td>
       <td>4</td>
       <td>2</td>
@@ -1118,8 +1157,8 @@
       <td class="side">83</td>
       <td></td>
       <td>&lt;6C6C0062&gt;</td>
-      <td>5</td>
-      <td>9</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
+      <td>Ore</td>
       <td><a href="ITM_Collection.html#3388">Rabbit Stone</a></td>
       <td>3</td>
       <td>3</td>
@@ -1131,8 +1170,8 @@
       <td class="side">84</td>
       <td></td>
       <td>&lt;ABAC16CF&gt;</td>
-      <td>5</td>
-      <td>10</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
+      <td>Fossils</td>
       <td><a href="ITM_Collection.html#3392">Peng Fossil</a></td>
       <td>4</td>
       <td>1</td>
@@ -1144,8 +1183,8 @@
       <td class="side">85</td>
       <td></td>
       <td>&lt;5F7930BC&gt;</td>
-      <td>5</td>
-      <td>10</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
+      <td>Fossils</td>
       <td><a href="ITM_Collection.html#3393">Garlus Fossil</a></td>
       <td>4</td>
       <td>2</td>
@@ -1157,8 +1196,8 @@
       <td class="side">86</td>
       <td></td>
       <td>&lt;FBB12280&gt;</td>
-      <td>5</td>
-      <td>10</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
+      <td>Fossils</td>
       <td><a href="ITM_Collection.html#3394">Squood Fossil</a></td>
       <td>3</td>
       <td>3</td>
@@ -1170,8 +1209,8 @@
       <td class="side">87</td>
       <td></td>
       <td>&lt;2C3E2A0A&gt;</td>
-      <td>5</td>
-      <td>11</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
+      <td>Machine Parts</td>
       <td><a href="ITM_Collection.html#3404">White Cover</a></td>
       <td>2</td>
       <td>1</td>
@@ -1183,8 +1222,8 @@
       <td class="side">88</td>
       <td></td>
       <td>&lt;8D33F3F3&gt;</td>
-      <td>5</td>
-      <td>11</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
+      <td>Machine Parts</td>
       <td><a href="ITM_Collection.html#3405">Strong Screw</a></td>
       <td>2</td>
       <td>2</td>
@@ -1196,8 +1235,8 @@
       <td class="side">89</td>
       <td></td>
       <td>&lt;8C734C82&gt;</td>
-      <td>5</td>
-      <td>11</td>
+      <td><a href="ma40a_GMK_Location.html#5">Black Mountains</a></td>
+      <td>Machine Parts</td>
       <td><a href="ITM_Collection.html#3406">Modern Resistor</a></td>
       <td>2</td>
       <td>3</td>

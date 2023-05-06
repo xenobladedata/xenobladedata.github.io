@@ -30,25 +30,64 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>C5C5F70E</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>Category</th>
-      <th>FormationTopWindow</th>
-      <th>FormationCooking</th>
-      <th>field_07F1CB46</th>
-      <th>FormationMeal</th>
-      <th>FormationBriefing</th>
-      <th>FormationCookingAction</th>
-      <th>FormationTraining</th>
-      <th>FormationAccessory</th>
-      <th>FormationTerminal</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">Category</th>
+      <th onclick="sortColumn(this, 4, 2)">FormationTopWindow</th>
+      <th onclick="sortColumn(this, 5, 2)">FormationCooking</th>
+      <th onclick="sortColumn(this, 6, 2)">field_07F1CB46</th>
+      <th onclick="sortColumn(this, 7, 0)">FormationMeal</th>
+      <th onclick="sortColumn(this, 8, 0)">FormationBriefing</th>
+      <th onclick="sortColumn(this, 9, 2)">FormationCookingAction</th>
+      <th onclick="sortColumn(this, 10, 2)">FormationTraining</th>
+      <th onclick="sortColumn(this, 11, 0)">FormationAccessory</th>
+      <th onclick="sortColumn(this, 12, 0)">FormationTerminal</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>
@@ -114,7 +153,7 @@
       <td class="side">5</td>
       <td>
         <details>
-          <summary>36 refs</summary>
+          <summary>72 refs</summary>
                <a href="8F29BCAF.html#10">8F29BCAF#10</a>
           <br/><a href="8F29BCAF.html#11">8F29BCAF#11</a>
           <br/><a href="8F29BCAF.html#12">8F29BCAF#12</a>
@@ -151,6 +190,42 @@
           <br/><a href="8F29BCAF.html#62">8F29BCAF#62</a>
           <br/><a href="8F29BCAF.html#63">8F29BCAF#63</a>
           <br/><a href="8F29BCAF.html#64">8F29BCAF#64</a>
+          <br/><a href="DF563EF6.html#37">DF563EF6#37</a>
+          <br/><a href="DF563EF6.html#38">DF563EF6#38</a>
+          <br/><a href="DF563EF6.html#39">DF563EF6#39</a>
+          <br/><a href="DF563EF6.html#40">DF563EF6#40</a>
+          <br/><a href="DF563EF6.html#41">DF563EF6#41</a>
+          <br/><a href="DF563EF6.html#42">DF563EF6#42</a>
+          <br/><a href="DF563EF6.html#43">DF563EF6#43</a>
+          <br/><a href="DF563EF6.html#44">DF563EF6#44</a>
+          <br/><a href="DF563EF6.html#45">DF563EF6#45</a>
+          <br/><a href="DF563EF6.html#52">DF563EF6#52</a>
+          <br/><a href="DF563EF6.html#59">DF563EF6#59</a>
+          <br/><a href="DF563EF6.html#60">DF563EF6#60</a>
+          <br/><a href="DF563EF6.html#61">DF563EF6#61</a>
+          <br/><a href="DF563EF6.html#62">DF563EF6#62</a>
+          <br/><a href="DF563EF6.html#63">DF563EF6#63</a>
+          <br/><a href="DF563EF6.html#64">DF563EF6#64</a>
+          <br/><a href="DF563EF6.html#66">DF563EF6#66</a>
+          <br/><a href="DF563EF6.html#68">DF563EF6#68</a>
+          <br/><a href="DF563EF6.html#69">DF563EF6#69</a>
+          <br/><a href="DF563EF6.html#70">DF563EF6#70</a>
+          <br/><a href="DF563EF6.html#71">DF563EF6#71</a>
+          <br/><a href="DF563EF6.html#72">DF563EF6#72</a>
+          <br/><a href="DF563EF6.html#73">DF563EF6#73</a>
+          <br/><a href="DF563EF6.html#74">DF563EF6#74</a>
+          <br/><a href="DF563EF6.html#75">DF563EF6#75</a>
+          <br/><a href="DF563EF6.html#76">DF563EF6#76</a>
+          <br/><a href="DF563EF6.html#77">DF563EF6#77</a>
+          <br/><a href="DF563EF6.html#83">DF563EF6#83</a>
+          <br/><a href="DF563EF6.html#84">DF563EF6#84</a>
+          <br/><a href="DF563EF6.html#85">DF563EF6#85</a>
+          <br/><a href="DF563EF6.html#86">DF563EF6#86</a>
+          <br/><a href="DF563EF6.html#87">DF563EF6#87</a>
+          <br/><a href="DF563EF6.html#88">DF563EF6#88</a>
+          <br/><a href="DF563EF6.html#89">DF563EF6#89</a>
+          <br/><a href="DF563EF6.html#90">DF563EF6#90</a>
+          <br/><a href="DF563EF6.html#91">DF563EF6#91</a>
         </details>
       </td>
       <td>&lt;B48FE2E8&gt;</td>
@@ -169,7 +244,7 @@
       <td class="side">6</td>
       <td>
         <details>
-          <summary>13 refs</summary>
+          <summary>26 refs</summary>
                <a href="8F29BCAF.html#2">8F29BCAF#2</a>
           <br/><a href="8F29BCAF.html#9">8F29BCAF#9</a>
           <br/><a href="8F29BCAF.html#22">8F29BCAF#22</a>
@@ -183,6 +258,19 @@
           <br/><a href="8F29BCAF.html#54">8F29BCAF#54</a>
           <br/><a href="8F29BCAF.html#65">8F29BCAF#65</a>
           <br/><a href="8F29BCAF.html#66">8F29BCAF#66</a>
+          <br/><a href="DF563EF6.html#29">DF563EF6#29</a>
+          <br/><a href="DF563EF6.html#36">DF563EF6#36</a>
+          <br/><a href="DF563EF6.html#49">DF563EF6#49</a>
+          <br/><a href="DF563EF6.html#50">DF563EF6#50</a>
+          <br/><a href="DF563EF6.html#53">DF563EF6#53</a>
+          <br/><a href="DF563EF6.html#54">DF563EF6#54</a>
+          <br/><a href="DF563EF6.html#65">DF563EF6#65</a>
+          <br/><a href="DF563EF6.html#67">DF563EF6#67</a>
+          <br/><a href="DF563EF6.html#78">DF563EF6#78</a>
+          <br/><a href="DF563EF6.html#80">DF563EF6#80</a>
+          <br/><a href="DF563EF6.html#81">DF563EF6#81</a>
+          <br/><a href="DF563EF6.html#92">DF563EF6#92</a>
+          <br/><a href="DF563EF6.html#93">DF563EF6#93</a>
         </details>
       </td>
       <td>&lt;78B25281&gt;</td>
@@ -201,12 +289,17 @@
       <td class="side">7</td>
       <td>
         <details>
-          <summary>5 refs</summary>
+          <summary>10 refs</summary>
                <a href="8F29BCAF.html#19">8F29BCAF#19</a>
           <br/><a href="8F29BCAF.html#20">8F29BCAF#20</a>
           <br/><a href="8F29BCAF.html#21">8F29BCAF#21</a>
           <br/><a href="8F29BCAF.html#52">8F29BCAF#52</a>
           <br/><a href="8F29BCAF.html#67">8F29BCAF#67</a>
+          <br/><a href="DF563EF6.html#46">DF563EF6#46</a>
+          <br/><a href="DF563EF6.html#47">DF563EF6#47</a>
+          <br/><a href="DF563EF6.html#48">DF563EF6#48</a>
+          <br/><a href="DF563EF6.html#79">DF563EF6#79</a>
+          <br/><a href="DF563EF6.html#94">DF563EF6#94</a>
         </details>
       </td>
       <td>&lt;1FE7722A&gt;</td>
@@ -225,8 +318,9 @@
       <td class="side">8</td>
       <td>
         <details>
-          <summary>1 refs</summary>
+          <summary>2 refs</summary>
                <a href="8F29BCAF.html#55">8F29BCAF#55</a>
+          <br/><a href="DF563EF6.html#82">DF563EF6#82</a>
         </details>
       </td>
       <td>&lt;5AA47CA2&gt;</td>
@@ -245,9 +339,11 @@
       <td class="side">9</td>
       <td>
         <details>
-          <summary>2 refs</summary>
+          <summary>4 refs</summary>
                <a href="8F29BCAF.html#3">8F29BCAF#3</a>
           <br/><a href="8F29BCAF.html#24">8F29BCAF#24</a>
+          <br/><a href="DF563EF6.html#30">DF563EF6#30</a>
+          <br/><a href="DF563EF6.html#51">DF563EF6#51</a>
         </details>
       </td>
       <td>&lt;553A2FC9&gt;</td>
@@ -266,7 +362,7 @@
       <td class="side">10</td>
       <td>
         <details>
-          <summary>10 refs</summary>
+          <summary>20 refs</summary>
                <a href="8F29BCAF.html#1">8F29BCAF#1</a>
           <br/><a href="8F29BCAF.html#4">8F29BCAF#4</a>
           <br/><a href="8F29BCAF.html#5">8F29BCAF#5</a>
@@ -277,6 +373,16 @@
           <br/><a href="8F29BCAF.html#29">8F29BCAF#29</a>
           <br/><a href="8F29BCAF.html#30">8F29BCAF#30</a>
           <br/><a href="8F29BCAF.html#31">8F29BCAF#31</a>
+          <br/><a href="DF563EF6.html#28">DF563EF6#28</a>
+          <br/><a href="DF563EF6.html#31">DF563EF6#31</a>
+          <br/><a href="DF563EF6.html#32">DF563EF6#32</a>
+          <br/><a href="DF563EF6.html#33">DF563EF6#33</a>
+          <br/><a href="DF563EF6.html#34">DF563EF6#34</a>
+          <br/><a href="DF563EF6.html#35">DF563EF6#35</a>
+          <br/><a href="DF563EF6.html#55">DF563EF6#55</a>
+          <br/><a href="DF563EF6.html#56">DF563EF6#56</a>
+          <br/><a href="DF563EF6.html#57">DF563EF6#57</a>
+          <br/><a href="DF563EF6.html#58">DF563EF6#58</a>
         </details>
       </td>
       <td>&lt;4EA27761&gt;</td>
@@ -293,7 +399,22 @@
     </tr>
     <tr id="11">
       <td class="side">11</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>11 refs</summary>
+               <a href="DF563EF6.html#1">DF563EF6#1</a>
+          <br/><a href="DF563EF6.html#2">DF563EF6#2</a>
+          <br/><a href="DF563EF6.html#3">DF563EF6#3</a>
+          <br/><a href="DF563EF6.html#4">DF563EF6#4</a>
+          <br/><a href="DF563EF6.html#5">DF563EF6#5</a>
+          <br/><a href="DF563EF6.html#6">DF563EF6#6</a>
+          <br/><a href="DF563EF6.html#7">DF563EF6#7</a>
+          <br/><a href="DF563EF6.html#8">DF563EF6#8</a>
+          <br/><a href="DF563EF6.html#9">DF563EF6#9</a>
+          <br/><a href="DF563EF6.html#10">DF563EF6#10</a>
+          <br/><a href="DF563EF6.html#11">DF563EF6#11</a>
+        </details>
+      </td>
       <td>&lt;032D7BB6&gt;</td>
       <td>6</td>
       <td>&lt;A28EE30B&gt;</td>
@@ -308,7 +429,15 @@
     </tr>
     <tr id="12">
       <td class="side">12</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>4 refs</summary>
+               <a href="DF563EF6.html#12">DF563EF6#12</a>
+          <br/><a href="DF563EF6.html#13">DF563EF6#13</a>
+          <br/><a href="DF563EF6.html#14">DF563EF6#14</a>
+          <br/><a href="DF563EF6.html#15">DF563EF6#15</a>
+        </details>
+      </td>
       <td>&lt;C0B3F468&gt;</td>
       <td>7</td>
       <td>&lt;012FBB0C&gt;</td>
@@ -323,7 +452,15 @@
     </tr>
     <tr id="13">
       <td class="side">13</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>4 refs</summary>
+               <a href="DF563EF6.html#16">DF563EF6#16</a>
+          <br/><a href="DF563EF6.html#17">DF563EF6#17</a>
+          <br/><a href="DF563EF6.html#18">DF563EF6#18</a>
+          <br/><a href="DF563EF6.html#19">DF563EF6#19</a>
+        </details>
+      </td>
       <td>&lt;B6855E91&gt;</td>
       <td>8</td>
       <td>&lt;012FBB0C&gt;</td>
@@ -338,7 +475,13 @@
     </tr>
     <tr id="14">
       <td class="side">14</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>2 refs</summary>
+               <a href="DF563EF6.html#20">DF563EF6#20</a>
+          <br/><a href="DF563EF6.html#21">DF563EF6#21</a>
+        </details>
+      </td>
       <td>&lt;3A82C0B5&gt;</td>
       <td>9</td>
       <td>&lt;2DCA3FBC&gt;</td>
@@ -353,7 +496,13 @@
     </tr>
     <tr id="15">
       <td class="side">15</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>2 refs</summary>
+               <a href="DF563EF6.html#22">DF563EF6#22</a>
+          <br/><a href="DF563EF6.html#23">DF563EF6#23</a>
+        </details>
+      </td>
       <td>&lt;52906B6D&gt;</td>
       <td>10</td>
       <td>&lt;2DCA3FBC&gt;</td>
@@ -368,7 +517,12 @@
     </tr>
     <tr id="16">
       <td class="side">16</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="DF563EF6.html#24">DF563EF6#24</a>
+        </details>
+      </td>
       <td>&lt;6FB39223&gt;</td>
       <td>11</td>
       <td>&lt;5EEBF64E&gt;</td>
@@ -383,7 +537,12 @@
     </tr>
     <tr id="17">
       <td class="side">17</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="DF563EF6.html#25">DF563EF6#25</a>
+        </details>
+      </td>
       <td>&lt;039E0DBF&gt;</td>
       <td>12</td>
       <td>&lt;5EEBF64E&gt;</td>
@@ -398,7 +557,12 @@
     </tr>
     <tr id="18">
       <td class="side">18</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="DF563EF6.html#26">DF563EF6#26</a>
+        </details>
+      </td>
       <td>&lt;6ADFD132&gt;</td>
       <td>13</td>
       <td>&lt;7E6DE126&gt;</td>
@@ -413,7 +577,12 @@
     </tr>
     <tr id="19">
       <td class="side">19</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="DF563EF6.html#27">DF563EF6#27</a>
+        </details>
+      </td>
       <td>&lt;B5118BF6&gt;</td>
       <td>14</td>
       <td>&lt;7E6DE126&gt;</td>

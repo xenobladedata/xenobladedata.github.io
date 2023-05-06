@@ -30,164 +30,203 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>AMB_CollectionLot</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>SetName</th>
-      <th>RewordID</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 2)">SetName</th>
+      <th onclick="sortColumn(this, 4, 0)">RewordID</th>
     </tr>
     <tr id="0">
       <td class="side">0</td>
       <td></td>
       <td>ITEM_SET_FIX_0１</td>
-      <td>4</td>
-      <td>408</td>
+      <td>コレクションアイテムセット01</td>
+      <td><a href="ITM_RewardAssort.html#408">AMIIBO_RECIPE_01</a></td>
     </tr>
     <tr id="1">
       <td class="side">1</td>
       <td></td>
       <td>ITEM_SET_FIX_02</td>
-      <td>5</td>
-      <td>409</td>
+      <td>コレクションアイテムセット02</td>
+      <td><a href="ITM_RewardAssort.html#409">AMIIBO_RECIPE_02</a></td>
     </tr>
     <tr id="2">
       <td class="side">2</td>
       <td></td>
       <td>ITEM_SET_FIX_03</td>
-      <td>6</td>
-      <td>410</td>
+      <td>コレクションアイテムセット03</td>
+      <td><a href="ITM_RewardAssort.html#410">AMIIBO_RECIPE_03</a></td>
     </tr>
     <tr id="3">
       <td class="side">3</td>
       <td></td>
       <td>ITEM_SET_FIX_04</td>
-      <td>7</td>
-      <td>411</td>
+      <td>コレクションアイテムセット04</td>
+      <td><a href="ITM_RewardAssort.html#411">AMIIBO_RECIPE_04</a></td>
     </tr>
     <tr id="4">
       <td class="side">4</td>
       <td></td>
       <td>ITEM_SET_FIX_05</td>
-      <td>8</td>
-      <td>412</td>
+      <td>コレクションアイテムセット05</td>
+      <td><a href="ITM_RewardAssort.html#412">AMIIBO_RECIPE_05</a></td>
     </tr>
     <tr id="5">
       <td class="side">5</td>
       <td></td>
       <td>ITEM_SET_FIX_06</td>
-      <td>9</td>
-      <td>413</td>
+      <td>コレクションアイテムセット06</td>
+      <td><a href="ITM_RewardAssort.html#413">AMIIBO_RECIPE_06</a></td>
     </tr>
     <tr id="6">
       <td class="side">6</td>
       <td></td>
       <td>ITEM_SET_FIX_07</td>
-      <td>10</td>
-      <td>414</td>
+      <td>コレクションアイテムセット07</td>
+      <td><a href="ITM_RewardAssort.html#414">AMIIBO_RECIPE_07</a></td>
     </tr>
     <tr id="7">
       <td class="side">7</td>
       <td></td>
       <td>ITEM_SET_FIX_08</td>
-      <td>11</td>
-      <td>415</td>
+      <td>コレクションアイテムセット08</td>
+      <td><a href="ITM_RewardAssort.html#415">AMIIBO_RECIPE_08</a></td>
     </tr>
     <tr id="8">
       <td class="side">8</td>
       <td></td>
       <td>ITEM_SET_FIX_09</td>
-      <td>12</td>
-      <td>416</td>
+      <td>コレクションアイテムセット09</td>
+      <td><a href="ITM_RewardAssort.html#416">AMIIBO_RECIPE_09</a></td>
     </tr>
     <tr id="9">
       <td class="side">9</td>
       <td></td>
       <td>ITEM_SET_FIX_10</td>
-      <td>13</td>
-      <td>417</td>
+      <td>コレクションアイテムセット10</td>
+      <td><a href="ITM_RewardAssort.html#417">AMIIBO_RECIPE_10</a></td>
     </tr>
     <tr id="10">
       <td class="side">10</td>
       <td></td>
       <td>ITEM_SET_FIX_11</td>
-      <td>14</td>
-      <td>418</td>
+      <td>コレクションアイテムセット11</td>
+      <td><a href="ITM_RewardAssort.html#418">AMIIBO_RECIPE_11</a></td>
     </tr>
     <tr id="11">
       <td class="side">11</td>
       <td></td>
       <td>ITEM_SET_FIX_12</td>
-      <td>15</td>
-      <td>419</td>
+      <td>コレクションアイテムセット12</td>
+      <td><a href="ITM_RewardAssort.html#419">AMIIBO_RECIPE_12</a></td>
     </tr>
     <tr id="12">
       <td class="side">12</td>
       <td></td>
       <td>ITEM_SET_FIX_13</td>
-      <td>16</td>
-      <td>420</td>
+      <td>コレクションアイテムセット13</td>
+      <td><a href="ITM_RewardAssort.html#420">AMIIBO_RECIPE_13</a></td>
     </tr>
     <tr id="13">
       <td class="side">13</td>
       <td></td>
       <td>ITEM_SET_FIX_14</td>
-      <td>17</td>
-      <td>421</td>
+      <td>コレクションアイテムセット14</td>
+      <td><a href="ITM_RewardAssort.html#421">AMIIBO_RECIPE_14</a></td>
     </tr>
     <tr id="14">
       <td class="side">14</td>
       <td></td>
       <td>ITEM_SET_FIX_15</td>
-      <td>18</td>
-      <td>422</td>
+      <td>コレクションアイテムセット15</td>
+      <td><a href="ITM_RewardAssort.html#422">AMIIBO_RECIPE_15</a></td>
     </tr>
     <tr id="15">
       <td class="side">15</td>
       <td></td>
       <td>ITEM_SET_FIX_16</td>
-      <td>19</td>
-      <td>423</td>
+      <td>コレクションアイテムセット16</td>
+      <td><a href="ITM_RewardAssort.html#423">AMIIBO_RECIPE_16</a></td>
     </tr>
     <tr id="16">
       <td class="side">16</td>
       <td></td>
       <td>ITEM_SET_FIX_17</td>
-      <td>20</td>
-      <td>424</td>
+      <td>コレクションアイテムセット17</td>
+      <td><a href="ITM_RewardAssort.html#424">AMIIBO_RECIPE_17</a></td>
     </tr>
     <tr id="17">
       <td class="side">17</td>
       <td></td>
       <td>ITEM_SET_FIX_18</td>
-      <td>21</td>
-      <td>425</td>
+      <td>コレクションアイテムセット18</td>
+      <td><a href="ITM_RewardAssort.html#425">AMIIBO_RECIPE_18</a></td>
     </tr>
     <tr id="18">
       <td class="side">18</td>
       <td></td>
       <td>ITEM_SET_FIX_19</td>
-      <td>22</td>
-      <td>426</td>
+      <td>コレクションアイテムセット19</td>
+      <td><a href="ITM_RewardAssort.html#426">AMIIBO_RECIPE_19</a></td>
     </tr>
     <tr id="19">
       <td class="side">19</td>
       <td></td>
       <td>ITEM_SET_FIX_20</td>
-      <td>23</td>
-      <td>427</td>
+      <td>コレクションアイテムセット20</td>
+      <td><a href="ITM_RewardAssort.html#427">AMIIBO_RECIPE_20</a></td>
     </tr>
     <tr id="20">
       <td class="side">20</td>
       <td></td>
       <td>ITEM_SET_FIX_21</td>
-      <td>24</td>
-      <td>428</td>
+      <td>コレクションアイテムセット21</td>
+      <td><a href="ITM_RewardAssort.html#428">AMIIBO_RECIPE_21</a></td>
     </tr>
   </table>
 </body>

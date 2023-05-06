@@ -30,113 +30,152 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>BTL_HitEffectSp</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>DebugName</th>
-      <th>x1</th>
-      <th>y1</th>
-      <th>z1</th>
-      <th>x2</th>
-      <th>y2</th>
-      <th>z2</th>
-      <th>x3</th>
-      <th>y3</th>
-      <th>z3</th>
-      <th>x4</th>
-      <th>y4</th>
-      <th>z4</th>
-      <th>x5</th>
-      <th>y5</th>
-      <th>z5</th>
-      <th>x6</th>
-      <th>y6</th>
-      <th>z6</th>
-      <th>x7</th>
-      <th>y7</th>
-      <th>z7</th>
-      <th>x8</th>
-      <th>y8</th>
-      <th>z8</th>
-      <th>x9</th>
-      <th>y9</th>
-      <th>z9</th>
-      <th>x10</th>
-      <th>y10</th>
-      <th>z10</th>
-      <th>x11</th>
-      <th>y11</th>
-      <th>z11</th>
-      <th>x12</th>
-      <th>y12</th>
-      <th>z12</th>
-      <th>x13</th>
-      <th>y13</th>
-      <th>z13</th>
-      <th>x14</th>
-      <th>y14</th>
-      <th>z14</th>
-      <th>x15</th>
-      <th>y15</th>
-      <th>z15</th>
-      <th>x16</th>
-      <th>y16</th>
-      <th>z16</th>
-      <th>type1</th>
-      <th>type2</th>
-      <th>type3</th>
-      <th>type4</th>
-      <th>type5</th>
-      <th>type6</th>
-      <th>type7</th>
-      <th>type8</th>
-      <th>type9</th>
-      <th>type10</th>
-      <th>type11</th>
-      <th>type12</th>
-      <th>type13</th>
-      <th>type14</th>
-      <th>type15</th>
-      <th>type16</th>
-      <th>name1</th>
-      <th>name2</th>
-      <th>name3</th>
-      <th>name4</th>
-      <th>name5</th>
-      <th>name6</th>
-      <th>name7</th>
-      <th>name8</th>
-      <th>name9</th>
-      <th>name10</th>
-      <th>name11</th>
-      <th>name12</th>
-      <th>name13</th>
-      <th>name14</th>
-      <th>name15</th>
-      <th>name16</th>
-      <th>pos1</th>
-      <th>pos2</th>
-      <th>pos3</th>
-      <th>pos4</th>
-      <th>pos5</th>
-      <th>pos6</th>
-      <th>pos7</th>
-      <th>pos8</th>
-      <th>pos9</th>
-      <th>pos10</th>
-      <th>pos11</th>
-      <th>pos12</th>
-      <th>pos13</th>
-      <th>pos14</th>
-      <th>pos15</th>
-      <th>pos16</th>
-      <th>field_BF255EEA</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 2)">DebugName</th>
+      <th onclick="sortColumn(this, 4, 0)">x1</th>
+      <th onclick="sortColumn(this, 5, 0)">y1</th>
+      <th onclick="sortColumn(this, 6, 0)">z1</th>
+      <th onclick="sortColumn(this, 7, 0)">x2</th>
+      <th onclick="sortColumn(this, 8, 0)">y2</th>
+      <th onclick="sortColumn(this, 9, 0)">z2</th>
+      <th onclick="sortColumn(this, 10, 0)">x3</th>
+      <th onclick="sortColumn(this, 11, 0)">y3</th>
+      <th onclick="sortColumn(this, 12, 0)">z3</th>
+      <th onclick="sortColumn(this, 13, 0)">x4</th>
+      <th onclick="sortColumn(this, 14, 0)">y4</th>
+      <th onclick="sortColumn(this, 15, 0)">z4</th>
+      <th onclick="sortColumn(this, 16, 0)">x5</th>
+      <th onclick="sortColumn(this, 17, 0)">y5</th>
+      <th onclick="sortColumn(this, 18, 0)">z5</th>
+      <th onclick="sortColumn(this, 19, 0)">x6</th>
+      <th onclick="sortColumn(this, 20, 0)">y6</th>
+      <th onclick="sortColumn(this, 21, 0)">z6</th>
+      <th onclick="sortColumn(this, 22, 0)">x7</th>
+      <th onclick="sortColumn(this, 23, 0)">y7</th>
+      <th onclick="sortColumn(this, 24, 0)">z7</th>
+      <th onclick="sortColumn(this, 25, 0)">x8</th>
+      <th onclick="sortColumn(this, 26, 0)">y8</th>
+      <th onclick="sortColumn(this, 27, 0)">z8</th>
+      <th onclick="sortColumn(this, 28, 0)">x9</th>
+      <th onclick="sortColumn(this, 29, 0)">y9</th>
+      <th onclick="sortColumn(this, 30, 0)">z9</th>
+      <th onclick="sortColumn(this, 31, 0)">x10</th>
+      <th onclick="sortColumn(this, 32, 0)">y10</th>
+      <th onclick="sortColumn(this, 33, 0)">z10</th>
+      <th onclick="sortColumn(this, 34, 0)">x11</th>
+      <th onclick="sortColumn(this, 35, 0)">y11</th>
+      <th onclick="sortColumn(this, 36, 0)">z11</th>
+      <th onclick="sortColumn(this, 37, 0)">x12</th>
+      <th onclick="sortColumn(this, 38, 0)">y12</th>
+      <th onclick="sortColumn(this, 39, 0)">z12</th>
+      <th onclick="sortColumn(this, 40, 0)">x13</th>
+      <th onclick="sortColumn(this, 41, 0)">y13</th>
+      <th onclick="sortColumn(this, 42, 0)">z13</th>
+      <th onclick="sortColumn(this, 43, 0)">x14</th>
+      <th onclick="sortColumn(this, 44, 0)">y14</th>
+      <th onclick="sortColumn(this, 45, 0)">z14</th>
+      <th onclick="sortColumn(this, 46, 0)">x15</th>
+      <th onclick="sortColumn(this, 47, 0)">y15</th>
+      <th onclick="sortColumn(this, 48, 0)">z15</th>
+      <th onclick="sortColumn(this, 49, 0)">x16</th>
+      <th onclick="sortColumn(this, 50, 0)">y16</th>
+      <th onclick="sortColumn(this, 51, 0)">z16</th>
+      <th onclick="sortColumn(this, 52, 0)">type1</th>
+      <th onclick="sortColumn(this, 53, 0)">type2</th>
+      <th onclick="sortColumn(this, 54, 0)">type3</th>
+      <th onclick="sortColumn(this, 55, 0)">type4</th>
+      <th onclick="sortColumn(this, 56, 0)">type5</th>
+      <th onclick="sortColumn(this, 57, 0)">type6</th>
+      <th onclick="sortColumn(this, 58, 0)">type7</th>
+      <th onclick="sortColumn(this, 59, 0)">type8</th>
+      <th onclick="sortColumn(this, 60, 0)">type9</th>
+      <th onclick="sortColumn(this, 61, 0)">type10</th>
+      <th onclick="sortColumn(this, 62, 0)">type11</th>
+      <th onclick="sortColumn(this, 63, 0)">type12</th>
+      <th onclick="sortColumn(this, 64, 0)">type13</th>
+      <th onclick="sortColumn(this, 65, 0)">type14</th>
+      <th onclick="sortColumn(this, 66, 0)">type15</th>
+      <th onclick="sortColumn(this, 67, 0)">type16</th>
+      <th onclick="sortColumn(this, 68, 0)">name1</th>
+      <th onclick="sortColumn(this, 69, 0)">name2</th>
+      <th onclick="sortColumn(this, 70, 0)">name3</th>
+      <th onclick="sortColumn(this, 71, 0)">name4</th>
+      <th onclick="sortColumn(this, 72, 0)">name5</th>
+      <th onclick="sortColumn(this, 73, 0)">name6</th>
+      <th onclick="sortColumn(this, 74, 0)">name7</th>
+      <th onclick="sortColumn(this, 75, 0)">name8</th>
+      <th onclick="sortColumn(this, 76, 0)">name9</th>
+      <th onclick="sortColumn(this, 77, 0)">name10</th>
+      <th onclick="sortColumn(this, 78, 0)">name11</th>
+      <th onclick="sortColumn(this, 79, 0)">name12</th>
+      <th onclick="sortColumn(this, 80, 0)">name13</th>
+      <th onclick="sortColumn(this, 81, 0)">name14</th>
+      <th onclick="sortColumn(this, 82, 0)">name15</th>
+      <th onclick="sortColumn(this, 83, 0)">name16</th>
+      <th onclick="sortColumn(this, 84, 0)">pos1</th>
+      <th onclick="sortColumn(this, 85, 0)">pos2</th>
+      <th onclick="sortColumn(this, 86, 0)">pos3</th>
+      <th onclick="sortColumn(this, 87, 0)">pos4</th>
+      <th onclick="sortColumn(this, 88, 0)">pos5</th>
+      <th onclick="sortColumn(this, 89, 0)">pos6</th>
+      <th onclick="sortColumn(this, 90, 0)">pos7</th>
+      <th onclick="sortColumn(this, 91, 0)">pos8</th>
+      <th onclick="sortColumn(this, 92, 0)">pos9</th>
+      <th onclick="sortColumn(this, 93, 0)">pos10</th>
+      <th onclick="sortColumn(this, 94, 0)">pos11</th>
+      <th onclick="sortColumn(this, 95, 0)">pos12</th>
+      <th onclick="sortColumn(this, 96, 0)">pos13</th>
+      <th onclick="sortColumn(this, 97, 0)">pos14</th>
+      <th onclick="sortColumn(this, 98, 0)">pos15</th>
+      <th onclick="sortColumn(this, 99, 0)">pos16</th>
+      <th onclick="sortColumn(this, 100, 0)">EffPack_dlc04</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>

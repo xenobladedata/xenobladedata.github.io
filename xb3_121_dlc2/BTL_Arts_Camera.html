@@ -30,30 +30,69 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>BTL_Arts_Camera</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>DebugMemo</th>
-      <th>Camera01</th>
-      <th>Camera02</th>
-      <th>Camera03</th>
-      <th>Camera04</th>
-      <th>Camera05</th>
-      <th>Camera06</th>
-      <th>Camera07</th>
-      <th>SlowDirection01</th>
-      <th>SlowDirection02</th>
-      <th>SlowDirection03</th>
-      <th>SlowDirection04</th>
-      <th>SlowDirection05</th>
-      <th>SlowDirection06</th>
-      <th>SlowDirection07</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 2)">DebugMemo</th>
+      <th onclick="sortColumn(this, 4, 2)">Camera01</th>
+      <th onclick="sortColumn(this, 5, 2)">Camera02</th>
+      <th onclick="sortColumn(this, 6, 2)">Camera03</th>
+      <th onclick="sortColumn(this, 7, 2)">Camera04</th>
+      <th onclick="sortColumn(this, 8, 2)">Camera05</th>
+      <th onclick="sortColumn(this, 9, 2)">Camera06</th>
+      <th onclick="sortColumn(this, 10, 2)">Camera07</th>
+      <th onclick="sortColumn(this, 11, 0)">SlowDirection01</th>
+      <th onclick="sortColumn(this, 12, 0)">SlowDirection02</th>
+      <th onclick="sortColumn(this, 13, 0)">SlowDirection03</th>
+      <th onclick="sortColumn(this, 14, 0)">SlowDirection04</th>
+      <th onclick="sortColumn(this, 15, 0)">SlowDirection05</th>
+      <th onclick="sortColumn(this, 16, 0)">SlowDirection06</th>
+      <th onclick="sortColumn(this, 17, 0)">SlowDirection07</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>

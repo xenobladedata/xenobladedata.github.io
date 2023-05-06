@@ -30,28 +30,62 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>ma01a_GMK_EtherSphere</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>Condition</th>
-      <th>field_42779EBB</th>
-      <th>field_3551FA65</th>
-      <th>field_F37AD195</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">Condition</th>
+      <th onclick="sortColumn(this, 4, 0)">field_42779EBB</th>
+      <th onclick="sortColumn(this, 5, 0)">field_3551FA65</th>
+      <th onclick="sortColumn(this, 6, 0)">field_F37AD195</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>
-      <td>
-        <details>
-          <summary>1 refs</summary>
-               <a href="SYS_GimmickLocation_dlc02.html#25694">SYS_GimmickLocation_dlc02#25694</a>
-        </details>
-      </td>
+      <td></td>
       <td>ethersphere_ma01a_001</td>
       <td><a href="FLD_ConditionList.html#14308">14308</a></td>
       <td>1</td>
@@ -60,12 +94,7 @@
     </tr>
     <tr id="2">
       <td class="side">2</td>
-      <td>
-        <details>
-          <summary>1 refs</summary>
-               <a href="SYS_GimmickLocation_dlc02.html#25695">SYS_GimmickLocation_dlc02#25695</a>
-        </details>
-      </td>
+      <td></td>
       <td>ethersphere_ma01a_002</td>
       <td><a href="FLD_ConditionList.html#14308">14308</a></td>
       <td>1</td>
@@ -74,12 +103,7 @@
     </tr>
     <tr id="3">
       <td class="side">3</td>
-      <td>
-        <details>
-          <summary>1 refs</summary>
-               <a href="SYS_GimmickLocation_dlc02.html#25696">SYS_GimmickLocation_dlc02#25696</a>
-        </details>
-      </td>
+      <td></td>
       <td>ethersphere_ma01a_003</td>
       <td><a href="FLD_ConditionList.html#14308">14308</a></td>
       <td>1</td>
@@ -88,12 +112,7 @@
     </tr>
     <tr id="4">
       <td class="side">4</td>
-      <td>
-        <details>
-          <summary>1 refs</summary>
-               <a href="SYS_GimmickLocation_dlc02.html#25697">SYS_GimmickLocation_dlc02#25697</a>
-        </details>
-      </td>
+      <td></td>
       <td>ethersphere_ma01a_004</td>
       <td><a href="FLD_ConditionList.html#14308">14308</a></td>
       <td>1</td>
@@ -102,12 +121,7 @@
     </tr>
     <tr id="5">
       <td class="side">5</td>
-      <td>
-        <details>
-          <summary>1 refs</summary>
-               <a href="SYS_GimmickLocation_dlc02.html#25698">SYS_GimmickLocation_dlc02#25698</a>
-        </details>
-      </td>
+      <td></td>
       <td>ethersphere_ma01a_005</td>
       <td><a href="FLD_ConditionList.html#14308">14308</a></td>
       <td>2</td>
@@ -116,12 +130,7 @@
     </tr>
     <tr id="6">
       <td class="side">6</td>
-      <td>
-        <details>
-          <summary>1 refs</summary>
-               <a href="SYS_GimmickLocation_dlc02.html#25699">SYS_GimmickLocation_dlc02#25699</a>
-        </details>
-      </td>
+      <td></td>
       <td>ethersphere_ma01a_006</td>
       <td><a href="FLD_ConditionList.html#14308">14308</a></td>
       <td>2</td>
@@ -130,12 +139,7 @@
     </tr>
     <tr id="7">
       <td class="side">7</td>
-      <td>
-        <details>
-          <summary>1 refs</summary>
-               <a href="SYS_GimmickLocation_dlc02.html#25700">SYS_GimmickLocation_dlc02#25700</a>
-        </details>
-      </td>
+      <td></td>
       <td>ethersphere_ma01a_007</td>
       <td><a href="FLD_ConditionList.html#14308">14308</a></td>
       <td>3</td>
@@ -144,12 +148,7 @@
     </tr>
     <tr id="8">
       <td class="side">8</td>
-      <td>
-        <details>
-          <summary>1 refs</summary>
-               <a href="SYS_GimmickLocation_dlc02.html#25701">SYS_GimmickLocation_dlc02#25701</a>
-        </details>
-      </td>
+      <td></td>
       <td>ethersphere_ma01a_008</td>
       <td><a href="FLD_ConditionList.html#14308">14308</a></td>
       <td>4</td>
@@ -158,12 +157,7 @@
     </tr>
     <tr id="9">
       <td class="side">9</td>
-      <td>
-        <details>
-          <summary>1 refs</summary>
-               <a href="SYS_GimmickLocation_dlc02.html#25702">SYS_GimmickLocation_dlc02#25702</a>
-        </details>
-      </td>
+      <td></td>
       <td>ethersphere_ma01a_009</td>
       <td><a href="FLD_ConditionList.html#14308">14308</a></td>
       <td>7</td>
@@ -172,12 +166,7 @@
     </tr>
     <tr id="10">
       <td class="side">10</td>
-      <td>
-        <details>
-          <summary>1 refs</summary>
-               <a href="SYS_GimmickLocation_dlc02.html#25703">SYS_GimmickLocation_dlc02#25703</a>
-        </details>
-      </td>
+      <td></td>
       <td>ethersphere_ma01a_010</td>
       <td><a href="FLD_ConditionList.html#14308">14308</a></td>
       <td>4</td>
@@ -186,12 +175,7 @@
     </tr>
     <tr id="11">
       <td class="side">11</td>
-      <td>
-        <details>
-          <summary>1 refs</summary>
-               <a href="SYS_GimmickLocation_dlc02.html#25704">SYS_GimmickLocation_dlc02#25704</a>
-        </details>
-      </td>
+      <td></td>
       <td>ethersphere_ma01a_011</td>
       <td><a href="FLD_ConditionList.html#14308">14308</a></td>
       <td>4</td>

@@ -30,34 +30,73 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>FLD_NpcTalkList</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>BaseTalkID</th>
-      <th>QuestTalk1</th>
-      <th>QuestTalk2</th>
-      <th>QuestTalk3</th>
-      <th>QuestTalk4</th>
-      <th>QuestTalk5</th>
-      <th>QuestTalk6</th>
-      <th>QuestTalk7</th>
-      <th>QuestTalk8</th>
-      <th>AffordanceType1</th>
-      <th>TalkID1</th>
-      <th>AffordanceType2</th>
-      <th>TalkID2</th>
-      <th>AffordanceType3</th>
-      <th>TalkID3</th>
-      <th>AffordanceType4</th>
-      <th>TalkID4</th>
-      <th>AffordanceType5</th>
-      <th>TalkID5</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">BaseTalkID</th>
+      <th onclick="sortColumn(this, 4, 0)">QuestTalk1</th>
+      <th onclick="sortColumn(this, 5, 0)">QuestTalk2</th>
+      <th onclick="sortColumn(this, 6, 0)">QuestTalk3</th>
+      <th onclick="sortColumn(this, 7, 0)">QuestTalk4</th>
+      <th onclick="sortColumn(this, 8, 0)">QuestTalk5</th>
+      <th onclick="sortColumn(this, 9, 0)">QuestTalk6</th>
+      <th onclick="sortColumn(this, 10, 0)">QuestTalk7</th>
+      <th onclick="sortColumn(this, 11, 0)">QuestTalk8</th>
+      <th onclick="sortColumn(this, 12, 0)">AffordanceType1</th>
+      <th onclick="sortColumn(this, 13, 0)">TalkID1</th>
+      <th onclick="sortColumn(this, 14, 0)">AffordanceType2</th>
+      <th onclick="sortColumn(this, 15, 0)">TalkID2</th>
+      <th onclick="sortColumn(this, 16, 0)">AffordanceType3</th>
+      <th onclick="sortColumn(this, 17, 0)">TalkID3</th>
+      <th onclick="sortColumn(this, 18, 0)">AffordanceType4</th>
+      <th onclick="sortColumn(this, 19, 0)">TalkID4</th>
+      <th onclick="sortColumn(this, 20, 0)">AffordanceType5</th>
+      <th onclick="sortColumn(this, 21, 0)">TalkID5</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>

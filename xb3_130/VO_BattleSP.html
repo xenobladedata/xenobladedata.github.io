@@ -30,40 +30,79 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>VO_BattleSP</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>DebugName</th>
-      <th>MotionState1</th>
-      <th>Motionf1</th>
-      <th>Voice1</th>
-      <th>MotionState2</th>
-      <th>Motionf2</th>
-      <th>Voice2</th>
-      <th>MotionState3</th>
-      <th>Motionf3</th>
-      <th>Voice3</th>
-      <th>MotionState4</th>
-      <th>Motionf4</th>
-      <th>Voice4</th>
-      <th>MotionState5</th>
-      <th>Motionf5</th>
-      <th>Voice5</th>
-      <th>MotionState6</th>
-      <th>Motionf6</th>
-      <th>Voice6</th>
-      <th>MotionState7</th>
-      <th>Motionf7</th>
-      <th>Voice7</th>
-      <th>MotionState8</th>
-      <th>Motionf8</th>
-      <th>Voice8</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 2)">DebugName</th>
+      <th onclick="sortColumn(this, 4, 0)">MotionState1</th>
+      <th onclick="sortColumn(this, 5, 0)">Motionf1</th>
+      <th onclick="sortColumn(this, 6, 2)">Voice1</th>
+      <th onclick="sortColumn(this, 7, 0)">MotionState2</th>
+      <th onclick="sortColumn(this, 8, 0)">Motionf2</th>
+      <th onclick="sortColumn(this, 9, 2)">Voice2</th>
+      <th onclick="sortColumn(this, 10, 0)">MotionState3</th>
+      <th onclick="sortColumn(this, 11, 0)">Motionf3</th>
+      <th onclick="sortColumn(this, 12, 2)">Voice3</th>
+      <th onclick="sortColumn(this, 13, 0)">MotionState4</th>
+      <th onclick="sortColumn(this, 14, 0)">Motionf4</th>
+      <th onclick="sortColumn(this, 15, 2)">Voice4</th>
+      <th onclick="sortColumn(this, 16, 0)">MotionState5</th>
+      <th onclick="sortColumn(this, 17, 0)">Motionf5</th>
+      <th onclick="sortColumn(this, 18, 2)">Voice5</th>
+      <th onclick="sortColumn(this, 19, 0)">MotionState6</th>
+      <th onclick="sortColumn(this, 20, 0)">Motionf6</th>
+      <th onclick="sortColumn(this, 21, 2)">Voice6</th>
+      <th onclick="sortColumn(this, 22, 0)">MotionState7</th>
+      <th onclick="sortColumn(this, 23, 0)">Motionf7</th>
+      <th onclick="sortColumn(this, 24, 2)">Voice7</th>
+      <th onclick="sortColumn(this, 25, 0)">MotionState8</th>
+      <th onclick="sortColumn(this, 26, 0)">Motionf8</th>
+      <th onclick="sortColumn(this, 27, 2)">Voice8</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>

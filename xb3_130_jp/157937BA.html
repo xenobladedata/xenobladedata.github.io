@@ -30,167 +30,206 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>157937BA</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>Comment</th>
-      <th>resourceFace</th>
-      <th>resourceHair</th>
-      <th>resourceBody</th>
-      <th>resourceMotionField</th>
-      <th>resourceMotionEvent</th>
-      <th>resourceMotionEnemy</th>
-      <th>resourceAnnotation</th>
-      <th>resourceCollision</th>
-      <th>IkName</th>
-      <th>Dirt</th>
-      <th>sex</th>
-      <th>physical</th>
-      <th>race</th>
-      <th>assign</th>
-      <th>influence</th>
-      <th>job</th>
-      <th>unique</th>
-      <th>modelType</th>
-      <th>field_1055BF7B</th>
-      <th>OffsetId</th>
-      <th>ColorHair</th>
-      <th>ColorEye</th>
-      <th>ColorSkin</th>
-      <th>MountPath1</th>
-      <th>MountPath2</th>
-      <th>MountPath3</th>
-      <th>MountPath4</th>
-      <th>field_D95B9E5C</th>
-      <th>field_03394DB0</th>
-      <th>field_4C02ADF7</th>
-      <th>field_24472A4F</th>
-      <th>field_73D371DF</th>
-      <th>field_35286F49</th>
-      <th>field_0AF534C0</th>
-      <th>field_E30100AE</th>
-      <th>field_BBF75B3D</th>
-      <th>field_1856C03D</th>
-      <th>field_1036DED1</th>
-      <th>field_F6669B47</th>
-      <th>field_244E6A4C</th>
-      <th>field_4EEAD8B5</th>
-      <th>field_3717BCD4</th>
-      <th>field_5B9213C6</th>
-      <th>field_BC1BCB76</th>
-      <th>field_24984B41</th>
-      <th>field_526EC27F</th>
-      <th>field_E6D6BE9C</th>
-      <th>field_3F7B7F02</th>
-      <th>field_A11240D9</th>
-      <th>field_64F161F5</th>
-      <th>field_F93BF4C5</th>
-      <th>field_4959ED79</th>
-      <th>field_352DC2CB</th>
-      <th>field_6F52E346</th>
-      <th>field_9DC4BCB7</th>
-      <th>field_BD7DE019</th>
-      <th>field_0EAB2A69</th>
-      <th>field_99FD7D9F</th>
-      <th>field_180AED9D</th>
-      <th>field_BC3B8F23</th>
-      <th>field_5E933068</th>
-      <th>field_99390C42</th>
-      <th>field_7B4B8AD4</th>
-      <th>field_49659CE4</th>
-      <th>field_E5F75966</th>
-      <th>field_69AA0B1E</th>
-      <th>field_D54FA1EA</th>
-      <th>field_A309AF1F</th>
-      <th>field_50B2D39B</th>
-      <th>field_6B04D8BA</th>
-      <th>field_9B2F00D8</th>
-      <th>field_9ACB852D</th>
-      <th>field_DDE9E4BC</th>
-      <th>field_9BED548F</th>
-      <th>field_1746251B</th>
-      <th>field_32C95E40</th>
-      <th>field_AE157AC2</th>
-      <th>field_2A4B0815</th>
-      <th>field_BD2F1370</th>
-      <th>field_0485913F</th>
-      <th>field_29A375AD</th>
-      <th>field_7E0BDF29</th>
-      <th>field_DA0DA068</th>
-      <th>field_96B364C5</th>
-      <th>field_A1E23743</th>
-      <th>field_6C1077DA</th>
-      <th>field_80B10887</th>
-      <th>field_A2B47AD9</th>
-      <th>field_F13D47B3</th>
-      <th>field_FCB03C6F</th>
-      <th>field_B9222C5E</th>
-      <th>field_B89EF61E</th>
-      <th>field_FA13F92F</th>
-      <th>field_6CE6E03F</th>
-      <th>field_ADC4017B</th>
-      <th>field_76D7FB64</th>
-      <th>field_21F69534</th>
-      <th>field_7B3E8917</th>
-      <th>field_E74A1BBD</th>
-      <th>field_A95D6955</th>
-      <th>field_5C53961C</th>
-      <th>field_0D71F9B7</th>
-      <th>field_8A211FF5</th>
-      <th>field_A8FC242C</th>
-      <th>field_CD0FB82C</th>
-      <th>field_72FBA7DD</th>
-      <th>field_5CBAB64F</th>
-      <th>field_5FE2B513</th>
-      <th>field_D288BC8B</th>
-      <th>field_60BF1CA8</th>
-      <th>field_0E5B99DE</th>
-      <th>field_4D18607A</th>
-      <th>field_2A23EFBC</th>
-      <th>field_821E726F</th>
-      <th>field_954DD4F2</th>
-      <th>field_09E32CF6</th>
-      <th>field_12F788B8</th>
-      <th>field_5E480D56</th>
-      <th>field_4084A7C3</th>
-      <th>field_D51DFE95</th>
-      <th>field_28057E0A</th>
-      <th>field_59B911E5</th>
-      <th>field_8ABEAD20</th>
-      <th>field_57D4A5D0</th>
-      <th>field_935E63C3</th>
-      <th>field_3949887D</th>
-      <th>field_4EDA9865</th>
-      <th>field_D16AF816</th>
-      <th>field_6E39F615</th>
-      <th>field_FDB4110B</th>
-      <th>field_B096BFED</th>
-      <th>field_4A3C0606</th>
-      <th>field_052CA3BD</th>
-      <th>field_54E14C12</th>
-      <th>field_26045792</th>
-      <th>field_A5E2F1D5</th>
-      <th>field_FC38EF30</th>
-      <th>field_06528E03</th>
-      <th>field_8DE062D5</th>
-      <th>field_17A47ADE</th>
-      <th>field_51222075</th>
-      <th>field_DB4A9B9B</th>
-      <th>field_BDFCEDD7</th>
-      <th>field_04D56081</th>
-      <th>field_5C6CB7E3</th>
-      <th>field_5E148375</th>
-      <th>field_69E70011</th>
-      <th>field_63ACCCBC</th>
-      <th>field_62E251E6</th>
-      <th>field_AA4E0610</th>
-      <th>field_6A335B1D</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 2)">Comment</th>
+      <th onclick="sortColumn(this, 4, 2)">resourceFace</th>
+      <th onclick="sortColumn(this, 5, 2)">resourceHair</th>
+      <th onclick="sortColumn(this, 6, 2)">resourceBody</th>
+      <th onclick="sortColumn(this, 7, 2)">resourceMotionField</th>
+      <th onclick="sortColumn(this, 8, 2)">resourceMotionEvent</th>
+      <th onclick="sortColumn(this, 9, 2)">resourceMotionEnemy</th>
+      <th onclick="sortColumn(this, 10, 2)">resourceAnnotation</th>
+      <th onclick="sortColumn(this, 11, 2)">resourceCollision</th>
+      <th onclick="sortColumn(this, 12, 2)">IkName</th>
+      <th onclick="sortColumn(this, 13, 1)">Dirt</th>
+      <th onclick="sortColumn(this, 14, 0)">sex</th>
+      <th onclick="sortColumn(this, 15, 0)">physical</th>
+      <th onclick="sortColumn(this, 16, 0)">race</th>
+      <th onclick="sortColumn(this, 17, 0)">assign</th>
+      <th onclick="sortColumn(this, 18, 0)">influence</th>
+      <th onclick="sortColumn(this, 19, 0)">job</th>
+      <th onclick="sortColumn(this, 20, 0)">unique</th>
+      <th onclick="sortColumn(this, 21, 0)">modelType</th>
+      <th onclick="sortColumn(this, 22, 0)">field_1055BF7B</th>
+      <th onclick="sortColumn(this, 23, 2)">OffsetId</th>
+      <th onclick="sortColumn(this, 24, 2)">ColorHair</th>
+      <th onclick="sortColumn(this, 25, 2)">ColorEye</th>
+      <th onclick="sortColumn(this, 26, 2)">ColorSkin</th>
+      <th onclick="sortColumn(this, 27, 2)">MountPath1</th>
+      <th onclick="sortColumn(this, 28, 2)">MountPath2</th>
+      <th onclick="sortColumn(this, 29, 2)">MountPath3</th>
+      <th onclick="sortColumn(this, 30, 2)">MountPath4</th>
+      <th onclick="sortColumn(this, 31, 2)">field_D95B9E5C</th>
+      <th onclick="sortColumn(this, 32, 2)">field_03394DB0</th>
+      <th onclick="sortColumn(this, 33, 2)">field_4C02ADF7</th>
+      <th onclick="sortColumn(this, 34, 2)">field_24472A4F</th>
+      <th onclick="sortColumn(this, 35, 2)">field_73D371DF</th>
+      <th onclick="sortColumn(this, 36, 2)">field_35286F49</th>
+      <th onclick="sortColumn(this, 37, 2)">field_0AF534C0</th>
+      <th onclick="sortColumn(this, 38, 2)">field_E30100AE</th>
+      <th onclick="sortColumn(this, 39, 2)">field_BBF75B3D</th>
+      <th onclick="sortColumn(this, 40, 2)">field_1856C03D</th>
+      <th onclick="sortColumn(this, 41, 2)">field_1036DED1</th>
+      <th onclick="sortColumn(this, 42, 2)">field_F6669B47</th>
+      <th onclick="sortColumn(this, 43, 2)">field_244E6A4C</th>
+      <th onclick="sortColumn(this, 44, 2)">field_4EEAD8B5</th>
+      <th onclick="sortColumn(this, 45, 2)">field_3717BCD4</th>
+      <th onclick="sortColumn(this, 46, 2)">field_5B9213C6</th>
+      <th onclick="sortColumn(this, 47, 2)">field_BC1BCB76</th>
+      <th onclick="sortColumn(this, 48, 2)">field_24984B41</th>
+      <th onclick="sortColumn(this, 49, 2)">field_526EC27F</th>
+      <th onclick="sortColumn(this, 50, 2)">field_E6D6BE9C</th>
+      <th onclick="sortColumn(this, 51, 2)">field_3F7B7F02</th>
+      <th onclick="sortColumn(this, 52, 2)">field_A11240D9</th>
+      <th onclick="sortColumn(this, 53, 2)">field_64F161F5</th>
+      <th onclick="sortColumn(this, 54, 2)">field_F93BF4C5</th>
+      <th onclick="sortColumn(this, 55, 1)">field_4959ED79</th>
+      <th onclick="sortColumn(this, 56, 1)">field_352DC2CB</th>
+      <th onclick="sortColumn(this, 57, 1)">field_6F52E346</th>
+      <th onclick="sortColumn(this, 58, 1)">field_9DC4BCB7</th>
+      <th onclick="sortColumn(this, 59, 1)">field_BD7DE019</th>
+      <th onclick="sortColumn(this, 60, 1)">field_0EAB2A69</th>
+      <th onclick="sortColumn(this, 61, 1)">field_99FD7D9F</th>
+      <th onclick="sortColumn(this, 62, 1)">field_180AED9D</th>
+      <th onclick="sortColumn(this, 63, 1)">field_BC3B8F23</th>
+      <th onclick="sortColumn(this, 64, 1)">field_5E933068</th>
+      <th onclick="sortColumn(this, 65, 1)">field_99390C42</th>
+      <th onclick="sortColumn(this, 66, 1)">field_7B4B8AD4</th>
+      <th onclick="sortColumn(this, 67, 1)">field_49659CE4</th>
+      <th onclick="sortColumn(this, 68, 1)">field_E5F75966</th>
+      <th onclick="sortColumn(this, 69, 1)">field_69AA0B1E</th>
+      <th onclick="sortColumn(this, 70, 1)">field_D54FA1EA</th>
+      <th onclick="sortColumn(this, 71, 1)">field_A309AF1F</th>
+      <th onclick="sortColumn(this, 72, 1)">field_50B2D39B</th>
+      <th onclick="sortColumn(this, 73, 1)">field_6B04D8BA</th>
+      <th onclick="sortColumn(this, 74, 1)">field_9B2F00D8</th>
+      <th onclick="sortColumn(this, 75, 2)">field_9ACB852D</th>
+      <th onclick="sortColumn(this, 76, 2)">field_DDE9E4BC</th>
+      <th onclick="sortColumn(this, 77, 2)">field_9BED548F</th>
+      <th onclick="sortColumn(this, 78, 2)">field_1746251B</th>
+      <th onclick="sortColumn(this, 79, 2)">field_32C95E40</th>
+      <th onclick="sortColumn(this, 80, 2)">field_AE157AC2</th>
+      <th onclick="sortColumn(this, 81, 2)">field_2A4B0815</th>
+      <th onclick="sortColumn(this, 82, 2)">field_BD2F1370</th>
+      <th onclick="sortColumn(this, 83, 2)">field_0485913F</th>
+      <th onclick="sortColumn(this, 84, 2)">field_29A375AD</th>
+      <th onclick="sortColumn(this, 85, 2)">field_7E0BDF29</th>
+      <th onclick="sortColumn(this, 86, 2)">field_DA0DA068</th>
+      <th onclick="sortColumn(this, 87, 2)">field_96B364C5</th>
+      <th onclick="sortColumn(this, 88, 2)">field_A1E23743</th>
+      <th onclick="sortColumn(this, 89, 2)">field_6C1077DA</th>
+      <th onclick="sortColumn(this, 90, 2)">field_80B10887</th>
+      <th onclick="sortColumn(this, 91, 2)">field_A2B47AD9</th>
+      <th onclick="sortColumn(this, 92, 2)">field_F13D47B3</th>
+      <th onclick="sortColumn(this, 93, 2)">field_FCB03C6F</th>
+      <th onclick="sortColumn(this, 94, 2)">field_B9222C5E</th>
+      <th onclick="sortColumn(this, 95, 1)">field_B89EF61E</th>
+      <th onclick="sortColumn(this, 96, 1)">field_FA13F92F</th>
+      <th onclick="sortColumn(this, 97, 1)">field_6CE6E03F</th>
+      <th onclick="sortColumn(this, 98, 1)">field_ADC4017B</th>
+      <th onclick="sortColumn(this, 99, 1)">field_76D7FB64</th>
+      <th onclick="sortColumn(this, 100, 1)">field_21F69534</th>
+      <th onclick="sortColumn(this, 101, 1)">field_7B3E8917</th>
+      <th onclick="sortColumn(this, 102, 1)">field_E74A1BBD</th>
+      <th onclick="sortColumn(this, 103, 1)">field_A95D6955</th>
+      <th onclick="sortColumn(this, 104, 1)">field_5C53961C</th>
+      <th onclick="sortColumn(this, 105, 1)">field_0D71F9B7</th>
+      <th onclick="sortColumn(this, 106, 1)">field_8A211FF5</th>
+      <th onclick="sortColumn(this, 107, 1)">field_A8FC242C</th>
+      <th onclick="sortColumn(this, 108, 1)">field_CD0FB82C</th>
+      <th onclick="sortColumn(this, 109, 1)">field_72FBA7DD</th>
+      <th onclick="sortColumn(this, 110, 1)">field_5CBAB64F</th>
+      <th onclick="sortColumn(this, 111, 1)">field_5FE2B513</th>
+      <th onclick="sortColumn(this, 112, 1)">field_D288BC8B</th>
+      <th onclick="sortColumn(this, 113, 1)">field_60BF1CA8</th>
+      <th onclick="sortColumn(this, 114, 1)">field_0E5B99DE</th>
+      <th onclick="sortColumn(this, 115, 2)">field_4D18607A</th>
+      <th onclick="sortColumn(this, 116, 2)">field_2A23EFBC</th>
+      <th onclick="sortColumn(this, 117, 2)">field_821E726F</th>
+      <th onclick="sortColumn(this, 118, 2)">field_954DD4F2</th>
+      <th onclick="sortColumn(this, 119, 2)">field_09E32CF6</th>
+      <th onclick="sortColumn(this, 120, 2)">field_12F788B8</th>
+      <th onclick="sortColumn(this, 121, 2)">field_5E480D56</th>
+      <th onclick="sortColumn(this, 122, 2)">field_4084A7C3</th>
+      <th onclick="sortColumn(this, 123, 2)">field_D51DFE95</th>
+      <th onclick="sortColumn(this, 124, 2)">field_28057E0A</th>
+      <th onclick="sortColumn(this, 125, 2)">field_59B911E5</th>
+      <th onclick="sortColumn(this, 126, 2)">field_8ABEAD20</th>
+      <th onclick="sortColumn(this, 127, 2)">field_57D4A5D0</th>
+      <th onclick="sortColumn(this, 128, 2)">field_935E63C3</th>
+      <th onclick="sortColumn(this, 129, 2)">field_3949887D</th>
+      <th onclick="sortColumn(this, 130, 2)">field_4EDA9865</th>
+      <th onclick="sortColumn(this, 131, 2)">field_D16AF816</th>
+      <th onclick="sortColumn(this, 132, 2)">field_6E39F615</th>
+      <th onclick="sortColumn(this, 133, 2)">field_FDB4110B</th>
+      <th onclick="sortColumn(this, 134, 2)">field_B096BFED</th>
+      <th onclick="sortColumn(this, 135, 1)">field_4A3C0606</th>
+      <th onclick="sortColumn(this, 136, 1)">field_052CA3BD</th>
+      <th onclick="sortColumn(this, 137, 1)">field_54E14C12</th>
+      <th onclick="sortColumn(this, 138, 1)">field_26045792</th>
+      <th onclick="sortColumn(this, 139, 1)">field_A5E2F1D5</th>
+      <th onclick="sortColumn(this, 140, 1)">field_FC38EF30</th>
+      <th onclick="sortColumn(this, 141, 1)">field_06528E03</th>
+      <th onclick="sortColumn(this, 142, 1)">field_8DE062D5</th>
+      <th onclick="sortColumn(this, 143, 1)">field_17A47ADE</th>
+      <th onclick="sortColumn(this, 144, 1)">field_51222075</th>
+      <th onclick="sortColumn(this, 145, 1)">field_DB4A9B9B</th>
+      <th onclick="sortColumn(this, 146, 1)">field_BDFCEDD7</th>
+      <th onclick="sortColumn(this, 147, 1)">field_04D56081</th>
+      <th onclick="sortColumn(this, 148, 1)">field_5C6CB7E3</th>
+      <th onclick="sortColumn(this, 149, 1)">field_5E148375</th>
+      <th onclick="sortColumn(this, 150, 1)">field_69E70011</th>
+      <th onclick="sortColumn(this, 151, 1)">field_63ACCCBC</th>
+      <th onclick="sortColumn(this, 152, 1)">field_62E251E6</th>
+      <th onclick="sortColumn(this, 153, 1)">field_AA4E0610</th>
+      <th onclick="sortColumn(this, 154, 1)">field_6A335B1D</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>

@@ -30,18 +30,57 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("en").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>SYS_MapJumpList</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>MapID</th>
-      <th>FormationID</th>
-      <th>ShipStart</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 0)">MapID</th>
+      <th onclick="sortColumn(this, 4, 2)">FormationID</th>
+      <th onclick="sortColumn(this, 5, 0)">ShipStart</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>
@@ -10296,9 +10335,8 @@
       <td class="side">1126</td>
       <td>
         <details>
-          <summary>2 refs</summary>
-               <a href="SYS_GimmickLocation_dlc02.html#4654">SYS_GimmickLocation_dlc02#4654</a>
-          <br/><a href="ma15a_GMK_Location.html#1231">ma15a_GMK_Location#City Entrance</a>
+          <summary>1 refs</summary>
+               <a href="ma15a_GMK_Location.html#1231">ma15a_GMK_Location#City Entrance</a>
         </details>
       </td>
       <td>&lt;7FF30581&gt;</td>
@@ -12424,7 +12462,7 @@
       <td>
         <details>
           <summary>1 refs</summary>
-               <a href="BD8CC364.html#1">BD8CC364#ma04a_GJPotal_01</a>
+               <a href="ma04a_GMK_JumpPortal.html#1">ma04a_GMK_JumpPortal#ma04a_GJPotal_01</a>
         </details>
       </td>
       <td>&lt;49FECA62&gt;</td>
@@ -12437,7 +12475,7 @@
       <td>
         <details>
           <summary>1 refs</summary>
-               <a href="46AB3A67.html#1">46AB3A67#ma25a_GJPotal_01</a>
+               <a href="ma25a_GMK_JumpPortal.html#1">ma25a_GMK_JumpPortal#ma25a_GJPotal_01</a>
         </details>
       </td>
       <td>&lt;C791F711&gt;</td>
@@ -12447,7 +12485,12 @@
     </tr>
     <tr id="1370">
       <td class="side">1370</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_ChTA_List.html#1">BTL_ChTA_List#1</a>
+        </details>
+      </td>
       <td>&lt;E8E38700&gt;</td>
       <td><a href="SYS_MapList.html#57">57</a></td>
       <td>MAPJUMP_POS_MA25A_01_CHBTL</td>
@@ -12455,7 +12498,12 @@
     </tr>
     <tr id="1371">
       <td class="side">1371</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_ChTA_List.html#2">BTL_ChTA_List#2</a>
+        </details>
+      </td>
       <td>&lt;080C3807&gt;</td>
       <td><a href="SYS_MapList.html#58">58</a></td>
       <td>MAPJUMP_POS_MA25A_02_CHBTL</td>
@@ -12463,7 +12511,12 @@
     </tr>
     <tr id="1372">
       <td class="side">1372</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_ChTA_List.html#3">BTL_ChTA_List#3</a>
+        </details>
+      </td>
       <td>&lt;6954F364&gt;</td>
       <td><a href="SYS_MapList.html#59">59</a></td>
       <td>MAPJUMP_POS_MA25A_03_CHBTL</td>
@@ -12471,7 +12524,12 @@
     </tr>
     <tr id="1373">
       <td class="side">1373</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_ChTA_List.html#4">BTL_ChTA_List#4</a>
+        </details>
+      </td>
       <td>&lt;032A261B&gt;</td>
       <td><a href="SYS_MapList.html#60">60</a></td>
       <td>MAPJUMP_POS_MA25A_04_CHBTL</td>
@@ -12479,7 +12537,12 @@
     </tr>
     <tr id="1374">
       <td class="side">1374</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_ChTA_List.html#5">BTL_ChTA_List#5</a>
+        </details>
+      </td>
       <td>&lt;F90C0E39&gt;</td>
       <td><a href="SYS_MapList.html#61">61</a></td>
       <td>MAPJUMP_POS_MA25A_05_CHBTL</td>
@@ -12487,7 +12550,12 @@
     </tr>
     <tr id="1375">
       <td class="side">1375</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_ChTA_List.html#6">BTL_ChTA_List#6</a>
+        </details>
+      </td>
       <td>&lt;1A12E1EC&gt;</td>
       <td><a href="SYS_MapList.html#62">62</a></td>
       <td>MAPJUMP_POS_MA25A_06_CHBTL</td>
@@ -12495,7 +12563,12 @@
     </tr>
     <tr id="1376">
       <td class="side">1376</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_ChTA_List.html#7">BTL_ChTA_List#7</a>
+        </details>
+      </td>
       <td>&lt;747684B3&gt;</td>
       <td><a href="SYS_MapList.html#63">63</a></td>
       <td>MAPJUMP_POS_MA25A_07_CHBTL</td>
@@ -12503,7 +12576,12 @@
     </tr>
     <tr id="1377">
       <td class="side">1377</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_ChTA_List.html#8">BTL_ChTA_List#8</a>
+        </details>
+      </td>
       <td>&lt;AF7BDD41&gt;</td>
       <td><a href="SYS_MapList.html#64">64</a></td>
       <td>MAPJUMP_POS_MA25A_08_CHBTL</td>
@@ -12511,7 +12589,12 @@
     </tr>
     <tr id="1378">
       <td class="side">1378</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_ChTA_List.html#9">BTL_ChTA_List#9</a>
+        </details>
+      </td>
       <td>&lt;0457AF40&gt;</td>
       <td><a href="SYS_MapList.html#65">65</a></td>
       <td>MAPJUMP_POS_MA25A_09_CHBTL</td>
@@ -12519,7 +12602,12 @@
     </tr>
     <tr id="1379">
       <td class="side">1379</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_ChTA_List.html#10">BTL_ChTA_List#10</a>
+        </details>
+      </td>
       <td>&lt;29F3F363&gt;</td>
       <td><a href="SYS_MapList.html#66">66</a></td>
       <td>MAPJUMP_POS_MA25A_10_CHBTL</td>
@@ -12527,7 +12615,12 @@
     </tr>
     <tr id="1380">
       <td class="side">1380</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_ChTA_List.html#11">BTL_ChTA_List#11</a>
+        </details>
+      </td>
       <td>&lt;AC95F8A4&gt;</td>
       <td><a href="SYS_MapList.html#67">67</a></td>
       <td>MAPJUMP_POS_MA25A_11_CHBTL</td>
@@ -12535,7 +12628,12 @@
     </tr>
     <tr id="1381">
       <td class="side">1381</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_ChTA_List.html#12">BTL_ChTA_List#12</a>
+        </details>
+      </td>
       <td>&lt;8C4375AB&gt;</td>
       <td><a href="SYS_MapList.html#68">68</a></td>
       <td>MAPJUMP_POS_MA25A_12_CHBTL</td>
@@ -12543,7 +12641,12 @@
     </tr>
     <tr id="1382">
       <td class="side">1382</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_ChTA_List.html#13">BTL_ChTA_List#13</a>
+        </details>
+      </td>
       <td>&lt;CA8125B8&gt;</td>
       <td><a href="SYS_MapList.html#69">69</a></td>
       <td>MAPJUMP_POS_MA25A_13_CHBTL</td>
@@ -12551,7 +12654,12 @@
     </tr>
     <tr id="1383">
       <td class="side">1383</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_ChTA_List.html#14">BTL_ChTA_List#14</a>
+        </details>
+      </td>
       <td>&lt;14528C80&gt;</td>
       <td><a href="SYS_MapList.html#70">70</a></td>
       <td>MAPJUMP_POS_MA25A_14_CHBTL</td>
@@ -12559,7 +12667,12 @@
     </tr>
     <tr id="1384">
       <td class="side">1384</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_ChTA_List.html#15">BTL_ChTA_List#15</a>
+        </details>
+      </td>
       <td>&lt;FC3D9559&gt;</td>
       <td><a href="SYS_MapList.html#71">71</a></td>
       <td>MAPJUMP_POS_MA25A_15_CHBTL</td>
@@ -12567,7 +12680,12 @@
     </tr>
     <tr id="1385">
       <td class="side">1385</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_ChTA_List.html#16">BTL_ChTA_List#16</a>
+        </details>
+      </td>
       <td>&lt;70786BDF&gt;</td>
       <td><a href="SYS_MapList.html#72">72</a></td>
       <td>MAPJUMP_POS_MA25A_16_CHBTL</td>
@@ -12575,7 +12693,12 @@
     </tr>
     <tr id="1386">
       <td class="side">1386</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_ChTA_List.html#17">BTL_ChTA_List#17</a>
+        </details>
+      </td>
       <td>&lt;8FC822C8&gt;</td>
       <td><a href="SYS_MapList.html#73">73</a></td>
       <td>MAPJUMP_POS_MA25A_17_CHBTL</td>
@@ -12583,7 +12706,12 @@
     </tr>
     <tr id="1387">
       <td class="side">1387</td>
-      <td></td>
+      <td>
+        <details>
+          <summary>1 refs</summary>
+               <a href="BTL_ChTA_List.html#18">BTL_ChTA_List#18</a>
+        </details>
+      </td>
       <td>&lt;5A797E83&gt;</td>
       <td><a href="SYS_MapList.html#74">74</a></td>
       <td>MAPJUMP_POS_MA25A_18_CHBTL</td>

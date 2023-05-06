@@ -30,264 +30,303 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>BTL_Arts_PC</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>Name</th>
-      <th>DebugName</th>
-      <th>DebugName2</th>
-      <th>Caption</th>
-      <th>ArtsCategory</th>
-      <th>Region</th>
-      <th>UseTalent</th>
-      <th>UseChr</th>
-      <th>WpnType</th>
-      <th>StateName</th>
-      <th>StateName2</th>
-      <th>StateLoopNum</th>
-      <th>MountChange</th>
-      <th>EffType</th>
-      <th>ActSpeed</th>
-      <th>MoveRev</th>
-      <th>IKStartF</th>
-      <th>IKEndF</th>
-      <th>quads</th>
-      <th>LookAt</th>
-      <th>ArtsType</th>
-      <th>ArtsSpEffect</th>
-      <th>field_AD5295A4</th>
-      <th>field_03A416AA</th>
-      <th>ArtsBuffDebuff</th>
-      <th>field_E2A48EC4</th>
-      <th>field_FD494829</th>
-      <th>field_80F3ED84</th>
-      <th>field_83D11FDA</th>
-      <th>field_0C28D41B</th>
-      <th>field_29EEFF83</th>
-      <th>Target</th>
-      <th>Distance</th>
-      <th>RangeType</th>
-      <th>Radius</th>
-      <th>Length</th>
-      <th>Hate</th>
-      <th>HitRev</th>
-      <th>CriRev</th>
-      <th>BulletID</th>
-      <th>BulletEffID</th>
-      <th>EfpType</th>
-      <th>BulletNum</th>
-      <th>BulletAngle</th>
-      <th>SetUpType</th>
-      <th>field_274AFC3F</th>
-      <th>HitFrm01</th>
-      <th>HitFrm02</th>
-      <th>HitFrm03</th>
-      <th>HitFrm04</th>
-      <th>HitFrm05</th>
-      <th>HitFrm06</th>
-      <th>HitFrm07</th>
-      <th>HitFrm08</th>
-      <th>HitFrm09</th>
-      <th>HitFrm10</th>
-      <th>HitFrm11</th>
-      <th>HitFrm12</th>
-      <th>HitFrm13</th>
-      <th>HitFrm14</th>
-      <th>HitFrm15</th>
-      <th>HitFrm16</th>
-      <th>Efp01</th>
-      <th>EfpT01</th>
-      <th>Efp02</th>
-      <th>EfpT02</th>
-      <th>Efp03</th>
-      <th>EfpT03</th>
-      <th>Efp04</th>
-      <th>EfpT04</th>
-      <th>Efp05</th>
-      <th>EfpT05</th>
-      <th>Efp06</th>
-      <th>EfpT06</th>
-      <th>Efp07</th>
-      <th>EfpT07</th>
-      <th>Efp08</th>
-      <th>EfpT08</th>
-      <th>Efp09</th>
-      <th>EfpT09</th>
-      <th>Efp10</th>
-      <th>EfpT10</th>
-      <th>Efp11</th>
-      <th>EfpT11</th>
-      <th>Efp12</th>
-      <th>EfpT12</th>
-      <th>Efp13</th>
-      <th>EfpT13</th>
-      <th>Efp14</th>
-      <th>EfpT14</th>
-      <th>Efp15</th>
-      <th>EfpT15</th>
-      <th>Efp16</th>
-      <th>EfpT16</th>
-      <th>HitDirID01</th>
-      <th>HitDirID02</th>
-      <th>HitDirID03</th>
-      <th>HitDirID04</th>
-      <th>HitDirID05</th>
-      <th>HitDirID06</th>
-      <th>HitDirID07</th>
-      <th>HitDirID08</th>
-      <th>HitDirID09</th>
-      <th>HitDirID10</th>
-      <th>HitDirID11</th>
-      <th>HitDirID12</th>
-      <th>HitDirID13</th>
-      <th>HitDirID14</th>
-      <th>HitDirID15</th>
-      <th>HitDirID16</th>
-      <th>DmgRt01</th>
-      <th>DmgRt02</th>
-      <th>DmgRt03</th>
-      <th>DmgRt04</th>
-      <th>DmgRt05</th>
-      <th>DmgRt06</th>
-      <th>DmgRt07</th>
-      <th>DmgRt08</th>
-      <th>DmgRt09</th>
-      <th>DmgRt10</th>
-      <th>DmgRt11</th>
-      <th>DmgRt12</th>
-      <th>DmgRt13</th>
-      <th>DmgRt14</th>
-      <th>DmgRt15</th>
-      <th>DmgRt16</th>
-      <th>ReAct01</th>
-      <th>ReAct02</th>
-      <th>ReAct03</th>
-      <th>ReAct04</th>
-      <th>ReAct05</th>
-      <th>ReAct06</th>
-      <th>ReAct07</th>
-      <th>ReAct08</th>
-      <th>ReAct09</th>
-      <th>ReAct10</th>
-      <th>ReAct11</th>
-      <th>ReAct12</th>
-      <th>ReAct13</th>
-      <th>ReAct14</th>
-      <th>ReAct15</th>
-      <th>ReAct16</th>
-      <th>EnhanceOff01</th>
-      <th>EnhanceOff02</th>
-      <th>EnhanceOff03</th>
-      <th>EnhanceOff04</th>
-      <th>EnhanceOff05</th>
-      <th>EnhanceOff06</th>
-      <th>EnhanceOff07</th>
-      <th>EnhanceOff08</th>
-      <th>EnhanceOff09</th>
-      <th>EnhanceOff10</th>
-      <th>EnhanceOff11</th>
-      <th>EnhanceOff12</th>
-      <th>EnhanceOff13</th>
-      <th>EnhanceOff14</th>
-      <th>EnhanceOff15</th>
-      <th>EnhanceOff16</th>
-      <th>RoleActOff01</th>
-      <th>RoleActOff02</th>
-      <th>RoleActOff03</th>
-      <th>RoleActOff04</th>
-      <th>RoleActOff05</th>
-      <th>RoleActOff06</th>
-      <th>RoleActOff07</th>
-      <th>RoleActOff08</th>
-      <th>RoleActOff09</th>
-      <th>RoleActOff10</th>
-      <th>RoleActOff11</th>
-      <th>RoleActOff12</th>
-      <th>RoleActOff13</th>
-      <th>RoleActOff14</th>
-      <th>RoleActOff15</th>
-      <th>RoleActOff16</th>
-      <th>DmgMgn1</th>
-      <th>DmgMgn2</th>
-      <th>DmgMgn3</th>
-      <th>DmgMgn4</th>
-      <th>DmgMgn5</th>
-      <th>RecastType</th>
-      <th>TwinBonus</th>
-      <th>TwinHitFrm</th>
-      <th>TwinEff</th>
-      <th>TwinRadius</th>
-      <th>TwinBulletType</th>
-      <th>TwinBulletNum</th>
-      <th>TwinBulletID</th>
-      <th>field_663927D7</th>
-      <th>TwinBulletAngle</th>
-      <th>Recast1</th>
-      <th>Recast2</th>
-      <th>Recast3</th>
-      <th>Recast4</th>
-      <th>Recast5</th>
-      <th>Enhance1</th>
-      <th>Enhance2</th>
-      <th>Enhance3</th>
-      <th>Enhance4</th>
-      <th>Enhance5</th>
-      <th>Stance1</th>
-      <th>Stance2</th>
-      <th>Stance3</th>
-      <th>Stance4</th>
-      <th>Stance5</th>
-      <th>SpRecast1</th>
-      <th>SpRecast2</th>
-      <th>VoiceProb</th>
-      <th>Voice1</th>
-      <th>field_0578E8FF</th>
-      <th>Voice2</th>
-      <th>field_4243E2A1</th>
-      <th>VoiceSP</th>
-      <th>GravOffF</th>
-      <th>GravOnF</th>
-      <th>CoolDown</th>
-      <th>FlagCoolDown</th>
-      <th>field_A1692BE6</th>
-      <th>UseHP</th>
-      <th>field_506BD1C0</th>
-      <th>IntervalAT</th>
-      <th>IntervalArts</th>
-      <th>AiCond1</th>
-      <th>AiRate1</th>
-      <th>AiParam1</th>
-      <th>AiCond2</th>
-      <th>AiRate2</th>
-      <th>AiParam2</th>
-      <th>CameraTable</th>
-      <th>HitEff</th>
-      <th>EnArtsAchieve</th>
-      <th>field_A2275574</th>
-      <th>field_58E19D84</th>
-      <th>field_5B9F25D1</th>
-      <th>ChainDirEf</th>
-      <th>ChainDirCa</th>
-      <th>field_1390AB7E</th>
-      <th>field_168862DF</th>
-      <th>ReActUI</th>
-      <th>field_826D8668</th>
-      <th>SetUpUI</th>
-      <th>RoleActMain</th>
-      <th>FlagDirArts</th>
-      <th>FlagSetArts</th>
-      <th>FlagNoLimit</th>
-      <th>field_8C2C0893</th>
-      <th>field_77A752B8</th>
-      <th>field_A9748389</th>
-      <th>field_76DD2758</th>
-      <th>field_E06E1844</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 2)">Name</th>
+      <th onclick="sortColumn(this, 4, 2)">DebugName</th>
+      <th onclick="sortColumn(this, 5, 2)">DebugName2</th>
+      <th onclick="sortColumn(this, 6, 2)">Caption</th>
+      <th onclick="sortColumn(this, 7, 0)">ArtsCategory</th>
+      <th onclick="sortColumn(this, 8, 0)">Region</th>
+      <th onclick="sortColumn(this, 9, 0)">UseTalent</th>
+      <th onclick="sortColumn(this, 10, 0)">UseChr</th>
+      <th onclick="sortColumn(this, 11, 0)">WpnType</th>
+      <th onclick="sortColumn(this, 12, 0)">StateName</th>
+      <th onclick="sortColumn(this, 13, 0)">StateName2</th>
+      <th onclick="sortColumn(this, 14, 0)">StateLoopNum</th>
+      <th onclick="sortColumn(this, 15, 0)">MountChange</th>
+      <th onclick="sortColumn(this, 16, 0)">EffType</th>
+      <th onclick="sortColumn(this, 17, 0)">ActSpeed</th>
+      <th onclick="sortColumn(this, 18, 0)">MoveRev</th>
+      <th onclick="sortColumn(this, 19, 0)">IKStartF</th>
+      <th onclick="sortColumn(this, 20, 0)">IKEndF</th>
+      <th onclick="sortColumn(this, 21, 0)">quads</th>
+      <th onclick="sortColumn(this, 22, 0)">LookAt</th>
+      <th onclick="sortColumn(this, 23, 0)">ArtsType</th>
+      <th onclick="sortColumn(this, 24, 0)">ArtsSpEffect</th>
+      <th onclick="sortColumn(this, 25, 0)">field_AD5295A4</th>
+      <th onclick="sortColumn(this, 26, 0)">field_03A416AA</th>
+      <th onclick="sortColumn(this, 27, 0)">ArtsBuffDebuff</th>
+      <th onclick="sortColumn(this, 28, 0)">field_E2A48EC4</th>
+      <th onclick="sortColumn(this, 29, 0)">field_FD494829</th>
+      <th onclick="sortColumn(this, 30, 0)">field_80F3ED84</th>
+      <th onclick="sortColumn(this, 31, 0)">field_83D11FDA</th>
+      <th onclick="sortColumn(this, 32, 0)">field_0C28D41B</th>
+      <th onclick="sortColumn(this, 33, 0)">field_29EEFF83</th>
+      <th onclick="sortColumn(this, 34, 0)">Target</th>
+      <th onclick="sortColumn(this, 35, 0)">Distance</th>
+      <th onclick="sortColumn(this, 36, 0)">RangeType</th>
+      <th onclick="sortColumn(this, 37, 0)">Radius</th>
+      <th onclick="sortColumn(this, 38, 0)">Length</th>
+      <th onclick="sortColumn(this, 39, 0)">Hate</th>
+      <th onclick="sortColumn(this, 40, 0)">HitRev</th>
+      <th onclick="sortColumn(this, 41, 0)">CriRev</th>
+      <th onclick="sortColumn(this, 42, 0)">BulletID</th>
+      <th onclick="sortColumn(this, 43, 0)">BulletEffID</th>
+      <th onclick="sortColumn(this, 44, 0)">EfpType</th>
+      <th onclick="sortColumn(this, 45, 0)">BulletNum</th>
+      <th onclick="sortColumn(this, 46, 0)">BulletAngle</th>
+      <th onclick="sortColumn(this, 47, 0)">SetUpType</th>
+      <th onclick="sortColumn(this, 48, 0)">field_274AFC3F</th>
+      <th onclick="sortColumn(this, 49, 0)">HitFrm01</th>
+      <th onclick="sortColumn(this, 50, 0)">HitFrm02</th>
+      <th onclick="sortColumn(this, 51, 0)">HitFrm03</th>
+      <th onclick="sortColumn(this, 52, 0)">HitFrm04</th>
+      <th onclick="sortColumn(this, 53, 0)">HitFrm05</th>
+      <th onclick="sortColumn(this, 54, 0)">HitFrm06</th>
+      <th onclick="sortColumn(this, 55, 0)">HitFrm07</th>
+      <th onclick="sortColumn(this, 56, 0)">HitFrm08</th>
+      <th onclick="sortColumn(this, 57, 0)">HitFrm09</th>
+      <th onclick="sortColumn(this, 58, 0)">HitFrm10</th>
+      <th onclick="sortColumn(this, 59, 0)">HitFrm11</th>
+      <th onclick="sortColumn(this, 60, 0)">HitFrm12</th>
+      <th onclick="sortColumn(this, 61, 0)">HitFrm13</th>
+      <th onclick="sortColumn(this, 62, 0)">HitFrm14</th>
+      <th onclick="sortColumn(this, 63, 0)">HitFrm15</th>
+      <th onclick="sortColumn(this, 64, 0)">HitFrm16</th>
+      <th onclick="sortColumn(this, 65, 2)">Efp01</th>
+      <th onclick="sortColumn(this, 66, 0)">EfpT01</th>
+      <th onclick="sortColumn(this, 67, 2)">Efp02</th>
+      <th onclick="sortColumn(this, 68, 0)">EfpT02</th>
+      <th onclick="sortColumn(this, 69, 2)">Efp03</th>
+      <th onclick="sortColumn(this, 70, 0)">EfpT03</th>
+      <th onclick="sortColumn(this, 71, 2)">Efp04</th>
+      <th onclick="sortColumn(this, 72, 0)">EfpT04</th>
+      <th onclick="sortColumn(this, 73, 2)">Efp05</th>
+      <th onclick="sortColumn(this, 74, 0)">EfpT05</th>
+      <th onclick="sortColumn(this, 75, 2)">Efp06</th>
+      <th onclick="sortColumn(this, 76, 0)">EfpT06</th>
+      <th onclick="sortColumn(this, 77, 2)">Efp07</th>
+      <th onclick="sortColumn(this, 78, 0)">EfpT07</th>
+      <th onclick="sortColumn(this, 79, 2)">Efp08</th>
+      <th onclick="sortColumn(this, 80, 0)">EfpT08</th>
+      <th onclick="sortColumn(this, 81, 2)">Efp09</th>
+      <th onclick="sortColumn(this, 82, 0)">EfpT09</th>
+      <th onclick="sortColumn(this, 83, 2)">Efp10</th>
+      <th onclick="sortColumn(this, 84, 0)">EfpT10</th>
+      <th onclick="sortColumn(this, 85, 2)">Efp11</th>
+      <th onclick="sortColumn(this, 86, 0)">EfpT11</th>
+      <th onclick="sortColumn(this, 87, 2)">Efp12</th>
+      <th onclick="sortColumn(this, 88, 0)">EfpT12</th>
+      <th onclick="sortColumn(this, 89, 2)">Efp13</th>
+      <th onclick="sortColumn(this, 90, 0)">EfpT13</th>
+      <th onclick="sortColumn(this, 91, 2)">Efp14</th>
+      <th onclick="sortColumn(this, 92, 0)">EfpT14</th>
+      <th onclick="sortColumn(this, 93, 2)">Efp15</th>
+      <th onclick="sortColumn(this, 94, 0)">EfpT15</th>
+      <th onclick="sortColumn(this, 95, 2)">Efp16</th>
+      <th onclick="sortColumn(this, 96, 0)">EfpT16</th>
+      <th onclick="sortColumn(this, 97, 0)">HitDirID01</th>
+      <th onclick="sortColumn(this, 98, 0)">HitDirID02</th>
+      <th onclick="sortColumn(this, 99, 0)">HitDirID03</th>
+      <th onclick="sortColumn(this, 100, 0)">HitDirID04</th>
+      <th onclick="sortColumn(this, 101, 0)">HitDirID05</th>
+      <th onclick="sortColumn(this, 102, 0)">HitDirID06</th>
+      <th onclick="sortColumn(this, 103, 0)">HitDirID07</th>
+      <th onclick="sortColumn(this, 104, 0)">HitDirID08</th>
+      <th onclick="sortColumn(this, 105, 0)">HitDirID09</th>
+      <th onclick="sortColumn(this, 106, 0)">HitDirID10</th>
+      <th onclick="sortColumn(this, 107, 0)">HitDirID11</th>
+      <th onclick="sortColumn(this, 108, 0)">HitDirID12</th>
+      <th onclick="sortColumn(this, 109, 0)">HitDirID13</th>
+      <th onclick="sortColumn(this, 110, 0)">HitDirID14</th>
+      <th onclick="sortColumn(this, 111, 0)">HitDirID15</th>
+      <th onclick="sortColumn(this, 112, 0)">HitDirID16</th>
+      <th onclick="sortColumn(this, 113, 0)">DmgRt01</th>
+      <th onclick="sortColumn(this, 114, 0)">DmgRt02</th>
+      <th onclick="sortColumn(this, 115, 0)">DmgRt03</th>
+      <th onclick="sortColumn(this, 116, 0)">DmgRt04</th>
+      <th onclick="sortColumn(this, 117, 0)">DmgRt05</th>
+      <th onclick="sortColumn(this, 118, 0)">DmgRt06</th>
+      <th onclick="sortColumn(this, 119, 0)">DmgRt07</th>
+      <th onclick="sortColumn(this, 120, 0)">DmgRt08</th>
+      <th onclick="sortColumn(this, 121, 0)">DmgRt09</th>
+      <th onclick="sortColumn(this, 122, 0)">DmgRt10</th>
+      <th onclick="sortColumn(this, 123, 0)">DmgRt11</th>
+      <th onclick="sortColumn(this, 124, 0)">DmgRt12</th>
+      <th onclick="sortColumn(this, 125, 0)">DmgRt13</th>
+      <th onclick="sortColumn(this, 126, 0)">DmgRt14</th>
+      <th onclick="sortColumn(this, 127, 0)">DmgRt15</th>
+      <th onclick="sortColumn(this, 128, 0)">DmgRt16</th>
+      <th onclick="sortColumn(this, 129, 0)">ReAct01</th>
+      <th onclick="sortColumn(this, 130, 0)">ReAct02</th>
+      <th onclick="sortColumn(this, 131, 0)">ReAct03</th>
+      <th onclick="sortColumn(this, 132, 0)">ReAct04</th>
+      <th onclick="sortColumn(this, 133, 0)">ReAct05</th>
+      <th onclick="sortColumn(this, 134, 0)">ReAct06</th>
+      <th onclick="sortColumn(this, 135, 0)">ReAct07</th>
+      <th onclick="sortColumn(this, 136, 0)">ReAct08</th>
+      <th onclick="sortColumn(this, 137, 0)">ReAct09</th>
+      <th onclick="sortColumn(this, 138, 0)">ReAct10</th>
+      <th onclick="sortColumn(this, 139, 0)">ReAct11</th>
+      <th onclick="sortColumn(this, 140, 0)">ReAct12</th>
+      <th onclick="sortColumn(this, 141, 0)">ReAct13</th>
+      <th onclick="sortColumn(this, 142, 0)">ReAct14</th>
+      <th onclick="sortColumn(this, 143, 0)">ReAct15</th>
+      <th onclick="sortColumn(this, 144, 0)">ReAct16</th>
+      <th onclick="sortColumn(this, 145, 0)">EnhanceOff01</th>
+      <th onclick="sortColumn(this, 146, 0)">EnhanceOff02</th>
+      <th onclick="sortColumn(this, 147, 0)">EnhanceOff03</th>
+      <th onclick="sortColumn(this, 148, 0)">EnhanceOff04</th>
+      <th onclick="sortColumn(this, 149, 0)">EnhanceOff05</th>
+      <th onclick="sortColumn(this, 150, 0)">EnhanceOff06</th>
+      <th onclick="sortColumn(this, 151, 0)">EnhanceOff07</th>
+      <th onclick="sortColumn(this, 152, 0)">EnhanceOff08</th>
+      <th onclick="sortColumn(this, 153, 0)">EnhanceOff09</th>
+      <th onclick="sortColumn(this, 154, 0)">EnhanceOff10</th>
+      <th onclick="sortColumn(this, 155, 0)">EnhanceOff11</th>
+      <th onclick="sortColumn(this, 156, 0)">EnhanceOff12</th>
+      <th onclick="sortColumn(this, 157, 0)">EnhanceOff13</th>
+      <th onclick="sortColumn(this, 158, 0)">EnhanceOff14</th>
+      <th onclick="sortColumn(this, 159, 0)">EnhanceOff15</th>
+      <th onclick="sortColumn(this, 160, 0)">EnhanceOff16</th>
+      <th onclick="sortColumn(this, 161, 0)">RoleActOff01</th>
+      <th onclick="sortColumn(this, 162, 0)">RoleActOff02</th>
+      <th onclick="sortColumn(this, 163, 0)">RoleActOff03</th>
+      <th onclick="sortColumn(this, 164, 0)">RoleActOff04</th>
+      <th onclick="sortColumn(this, 165, 0)">RoleActOff05</th>
+      <th onclick="sortColumn(this, 166, 0)">RoleActOff06</th>
+      <th onclick="sortColumn(this, 167, 0)">RoleActOff07</th>
+      <th onclick="sortColumn(this, 168, 0)">RoleActOff08</th>
+      <th onclick="sortColumn(this, 169, 0)">RoleActOff09</th>
+      <th onclick="sortColumn(this, 170, 0)">RoleActOff10</th>
+      <th onclick="sortColumn(this, 171, 0)">RoleActOff11</th>
+      <th onclick="sortColumn(this, 172, 0)">RoleActOff12</th>
+      <th onclick="sortColumn(this, 173, 0)">RoleActOff13</th>
+      <th onclick="sortColumn(this, 174, 0)">RoleActOff14</th>
+      <th onclick="sortColumn(this, 175, 0)">RoleActOff15</th>
+      <th onclick="sortColumn(this, 176, 0)">RoleActOff16</th>
+      <th onclick="sortColumn(this, 177, 0)">DmgMgn1</th>
+      <th onclick="sortColumn(this, 178, 0)">DmgMgn2</th>
+      <th onclick="sortColumn(this, 179, 0)">DmgMgn3</th>
+      <th onclick="sortColumn(this, 180, 0)">DmgMgn4</th>
+      <th onclick="sortColumn(this, 181, 0)">DmgMgn5</th>
+      <th onclick="sortColumn(this, 182, 0)">RecastType</th>
+      <th onclick="sortColumn(this, 183, 0)">TwinBonus</th>
+      <th onclick="sortColumn(this, 184, 0)">TwinHitFrm</th>
+      <th onclick="sortColumn(this, 185, 0)">TwinEff</th>
+      <th onclick="sortColumn(this, 186, 0)">TwinRadius</th>
+      <th onclick="sortColumn(this, 187, 0)">TwinBulletType</th>
+      <th onclick="sortColumn(this, 188, 0)">TwinBulletNum</th>
+      <th onclick="sortColumn(this, 189, 0)">TwinBulletID</th>
+      <th onclick="sortColumn(this, 190, 0)">field_663927D7</th>
+      <th onclick="sortColumn(this, 191, 0)">TwinBulletAngle</th>
+      <th onclick="sortColumn(this, 192, 0)">Recast1</th>
+      <th onclick="sortColumn(this, 193, 0)">Recast2</th>
+      <th onclick="sortColumn(this, 194, 0)">Recast3</th>
+      <th onclick="sortColumn(this, 195, 0)">Recast4</th>
+      <th onclick="sortColumn(this, 196, 0)">Recast5</th>
+      <th onclick="sortColumn(this, 197, 0)">Enhance1</th>
+      <th onclick="sortColumn(this, 198, 0)">Enhance2</th>
+      <th onclick="sortColumn(this, 199, 0)">Enhance3</th>
+      <th onclick="sortColumn(this, 200, 0)">Enhance4</th>
+      <th onclick="sortColumn(this, 201, 0)">Enhance5</th>
+      <th onclick="sortColumn(this, 202, 0)">Stance1</th>
+      <th onclick="sortColumn(this, 203, 0)">Stance2</th>
+      <th onclick="sortColumn(this, 204, 0)">Stance3</th>
+      <th onclick="sortColumn(this, 205, 0)">Stance4</th>
+      <th onclick="sortColumn(this, 206, 0)">Stance5</th>
+      <th onclick="sortColumn(this, 207, 0)">SpRecast1</th>
+      <th onclick="sortColumn(this, 208, 0)">SpRecast2</th>
+      <th onclick="sortColumn(this, 209, 0)">VoiceProb</th>
+      <th onclick="sortColumn(this, 210, 2)">Voice1</th>
+      <th onclick="sortColumn(this, 211, 0)">field_0578E8FF</th>
+      <th onclick="sortColumn(this, 212, 2)">Voice2</th>
+      <th onclick="sortColumn(this, 213, 0)">field_4243E2A1</th>
+      <th onclick="sortColumn(this, 214, 0)">VoiceSP</th>
+      <th onclick="sortColumn(this, 215, 0)">GravOffF</th>
+      <th onclick="sortColumn(this, 216, 0)">GravOnF</th>
+      <th onclick="sortColumn(this, 217, 0)">CoolDown</th>
+      <th onclick="sortColumn(this, 218, 0)">FlagCoolDown</th>
+      <th onclick="sortColumn(this, 219, 0)">field_A1692BE6</th>
+      <th onclick="sortColumn(this, 220, 0)">UseHP</th>
+      <th onclick="sortColumn(this, 221, 0)">field_506BD1C0</th>
+      <th onclick="sortColumn(this, 222, 0)">IntervalAT</th>
+      <th onclick="sortColumn(this, 223, 0)">IntervalArts</th>
+      <th onclick="sortColumn(this, 224, 0)">AiCond1</th>
+      <th onclick="sortColumn(this, 225, 0)">AiRate1</th>
+      <th onclick="sortColumn(this, 226, 0)">AiParam1</th>
+      <th onclick="sortColumn(this, 227, 0)">AiCond2</th>
+      <th onclick="sortColumn(this, 228, 0)">AiRate2</th>
+      <th onclick="sortColumn(this, 229, 0)">AiParam2</th>
+      <th onclick="sortColumn(this, 230, 0)">CameraTable</th>
+      <th onclick="sortColumn(this, 231, 0)">HitEff</th>
+      <th onclick="sortColumn(this, 232, 0)">EnArtsAchieve</th>
+      <th onclick="sortColumn(this, 233, 0)">field_A2275574</th>
+      <th onclick="sortColumn(this, 234, 0)">field_58E19D84</th>
+      <th onclick="sortColumn(this, 235, 0)">field_5B9F25D1</th>
+      <th onclick="sortColumn(this, 236, 0)">ChainDirEf</th>
+      <th onclick="sortColumn(this, 237, 2)">ChainDirCa</th>
+      <th onclick="sortColumn(this, 238, 0)">field_1390AB7E</th>
+      <th onclick="sortColumn(this, 239, 0)">field_168862DF</th>
+      <th onclick="sortColumn(this, 240, 0)">ReActUI</th>
+      <th onclick="sortColumn(this, 241, 0)">field_826D8668</th>
+      <th onclick="sortColumn(this, 242, 0)">SetUpUI</th>
+      <th onclick="sortColumn(this, 243, 0)">RoleActMain</th>
+      <th onclick="sortColumn(this, 244, 0)">FlagDirArts</th>
+      <th onclick="sortColumn(this, 245, 0)">FlagSetArts</th>
+      <th onclick="sortColumn(this, 246, 0)">FlagNoLimit</th>
+      <th onclick="sortColumn(this, 247, 0)">field_8C2C0893</th>
+      <th onclick="sortColumn(this, 248, 0)">field_77A752B8</th>
+      <th onclick="sortColumn(this, 249, 0)">field_A9748389</th>
+      <th onclick="sortColumn(this, 250, 0)">field_76DD2758</th>
+      <th onclick="sortColumn(this, 251, 0)">EffType_dlc04</th>
     </tr>
     <tr id="1">
       <td class="side">1</td>

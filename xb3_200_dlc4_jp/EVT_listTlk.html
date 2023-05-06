@@ -30,60 +30,99 @@
     }
     window.addEventListener("hashchange", offsetAnchor);
     window.setTimeout(offsetAnchor, 1);
+
+    // Sort a table.  Also updates column header sort indicators.
+    // table: <table> element of table to sort
+    // column: column index (zero-based)
+    // dataType: 0 = int, 1 = float, 2 = string
+    // dir: >0 to sort ascending, <0 to sort descending
+    function sortTable(table, column, numericType, dir) {
+      for (var c = 0; c < table.rows[0].cells.length; c++) {
+        var th = table.rows[0].cells[c];
+        th.classList.remove("dir-u");
+        th.classList.remove("dir-d");
+        if (c == column) {
+          th.classList.add(dir>0 ? "dir-u" : "dir-d");
+        }
+      }
+      var cmp;
+      if (numericType == 0) {
+        cmp = function(a, b) {a = parseInt(a.cells[column].innerHTML);
+                              b = parseInt(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else if (numericType == 1) {
+        cmp = function(a, b) {a = parseFloat(a.cells[column].innerHTML);
+                              b = parseFloat(b.cells[column].innerHTML);
+                              return a<b ? -dir : a>b ? dir : 0};
+      } else {
+        var strcmp = Intl.Collator("ja").compare;;
+        cmp = function(a, b) {return dir * strcmp(a.cells[column].innerHTML,
+                                                  b.cells[column].innerHTML);}
+      }
+      var rows = Array.prototype.slice.call(table.querySelectorAll("tr"), 1);
+      rows.sort(cmp);
+      rows.forEach(function(tr){table.appendChild(tr);});
+    }
+
+    // Wrapper for use as column header click handler.
+    function sortColumn(th, column, dataType) {
+      sortTable(th.parentElement.parentElement, column,
+                dataType, th.classList.contains("dir-u") ? -1 : 1);
+    }
   </script>
 </head>
 <body>
   <table class="sortable">
     <h2>EVT_listTlk</h2>
     <tr id="header">
-      <th class="side dir-d ">ID</th>
+      <th class="side dir-u" onclick="sortColumn(this, 0, 0)">ID</th>
       <th>Referenced By</th>
-      <th>ID</th>
-      <th>mstxt</th>
-      <th>setupID</th>
-      <th>chapter</th>
-      <th>category</th>
-      <th>linkID</th>
-      <th>linkCondition</th>
-      <th>field_01FB515A</th>
-      <th>flowEventID</th>
-      <th>weatherA</th>
-      <th>weatherB</th>
-      <th>weatherC</th>
-      <th>clockHour</th>
-      <th>clockMinute</th>
-      <th>clockStop</th>
-      <th>hideWpn</th>
-      <th>hideNpc</th>
-      <th>hideEne</th>
-      <th>hideMob</th>
-      <th>hideMap</th>
-      <th>voice</th>
-      <th>cssnd</th>
-      <th>opFadeOutEnable</th>
-      <th>opFadeOut</th>
-      <th>opFadeWait</th>
-      <th>opFadeInEnable</th>
-      <th>opFadeIn</th>
-      <th>opFadeColR</th>
-      <th>opFadeColG</th>
-      <th>opFadeColB</th>
-      <th>edFadeOutEnable</th>
-      <th>edFadeOut</th>
-      <th>edFadeWait</th>
-      <th>edFadeInEnable</th>
-      <th>edFadeIn</th>
-      <th>edFadeColR</th>
-      <th>edFadeColG</th>
-      <th>edFadeColB</th>
-      <th>colFilterNear</th>
-      <th>colFilterFar</th>
-      <th>toneMap</th>
-      <th>playMap</th>
-      <th>playMapX</th>
-      <th>playMapY</th>
-      <th>playMapZ</th>
-      <th>DebScenarioFlag</th>
+      <th onclick="sortColumn(this, 2, 2)">ID</th>
+      <th onclick="sortColumn(this, 3, 2)">mstxt</th>
+      <th onclick="sortColumn(this, 4, 0)">setupID</th>
+      <th onclick="sortColumn(this, 5, 0)">chapter</th>
+      <th onclick="sortColumn(this, 6, 0)">category</th>
+      <th onclick="sortColumn(this, 7, 0)">linkID</th>
+      <th onclick="sortColumn(this, 8, 0)">linkCondition</th>
+      <th onclick="sortColumn(this, 9, 0)">field_01FB515A</th>
+      <th onclick="sortColumn(this, 10, 0)">flowEventID</th>
+      <th onclick="sortColumn(this, 11, 0)">weatherA</th>
+      <th onclick="sortColumn(this, 12, 0)">weatherB</th>
+      <th onclick="sortColumn(this, 13, 0)">weatherC</th>
+      <th onclick="sortColumn(this, 14, 0)">clockHour</th>
+      <th onclick="sortColumn(this, 15, 0)">clockMinute</th>
+      <th onclick="sortColumn(this, 16, 0)">clockStop</th>
+      <th onclick="sortColumn(this, 17, 0)">hideWpn</th>
+      <th onclick="sortColumn(this, 18, 0)">hideNpc</th>
+      <th onclick="sortColumn(this, 19, 0)">hideEne</th>
+      <th onclick="sortColumn(this, 20, 0)">hideMob</th>
+      <th onclick="sortColumn(this, 21, 0)">hideMap</th>
+      <th onclick="sortColumn(this, 22, 0)">voice</th>
+      <th onclick="sortColumn(this, 23, 0)">cssnd</th>
+      <th onclick="sortColumn(this, 24, 0)">opFadeOutEnable</th>
+      <th onclick="sortColumn(this, 25, 0)">opFadeOut</th>
+      <th onclick="sortColumn(this, 26, 0)">opFadeWait</th>
+      <th onclick="sortColumn(this, 27, 0)">opFadeInEnable</th>
+      <th onclick="sortColumn(this, 28, 0)">opFadeIn</th>
+      <th onclick="sortColumn(this, 29, 0)">opFadeColR</th>
+      <th onclick="sortColumn(this, 30, 0)">opFadeColG</th>
+      <th onclick="sortColumn(this, 31, 0)">opFadeColB</th>
+      <th onclick="sortColumn(this, 32, 0)">edFadeOutEnable</th>
+      <th onclick="sortColumn(this, 33, 0)">edFadeOut</th>
+      <th onclick="sortColumn(this, 34, 0)">edFadeWait</th>
+      <th onclick="sortColumn(this, 35, 0)">edFadeInEnable</th>
+      <th onclick="sortColumn(this, 36, 0)">edFadeIn</th>
+      <th onclick="sortColumn(this, 37, 0)">edFadeColR</th>
+      <th onclick="sortColumn(this, 38, 0)">edFadeColG</th>
+      <th onclick="sortColumn(this, 39, 0)">edFadeColB</th>
+      <th onclick="sortColumn(this, 40, 0)">colFilterNear</th>
+      <th onclick="sortColumn(this, 41, 0)">colFilterFar</th>
+      <th onclick="sortColumn(this, 42, 1)">toneMap</th>
+      <th onclick="sortColumn(this, 43, 2)">playMap</th>
+      <th onclick="sortColumn(this, 44, 1)">playMapX</th>
+      <th onclick="sortColumn(this, 45, 1)">playMapY</th>
+      <th onclick="sortColumn(this, 46, 1)">playMapZ</th>
+      <th onclick="sortColumn(this, 47, 0)">DebScenarioFlag</th>
     </tr>
     <tr id="20001">
       <td class="side">20001</td>
