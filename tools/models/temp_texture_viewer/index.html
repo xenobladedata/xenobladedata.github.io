@@ -1,0 +1,83 @@
+<html>
+	<head>
+		<link href="/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+		<script src="js/image-js.min.js"></script>
+
+		<script>
+			function onFileSelected(event) {
+			  let selectedFile = event.target.files[0];
+			  let reader = new FileReader();
+
+			  reader.onload = async function(event) {
+				document.getElementById("originalImage").src = event.target.result;
+				
+				let image = await IJS.Image.load(event.target.result);
+				let red = image.getChannel(0);
+				let green = image.getChannel(1);
+				let blue = image.getChannel(2);
+				document.getElementById('redImage').src = red.toDataURL();
+				document.getElementById('greenImage').src = green.toDataURL();
+				document.getElementById('blueImage').src = blue.toDataURL();
+			  };
+
+			  reader.readAsDataURL(selectedFile);
+			}
+		</script>
+		<title>"Temp" texture viewer</title>
+		<!-- Primary Meta Tags -->
+		<meta name="title" content="Xenoblade Data Hub - Temp texture viewer">
+		<meta name="description" content="Viewer utility for temp textures">
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://xenobladedata.github.io/tools/models/temp_texture_viewer/">
+		<meta property="og:title" content="Xenoblade Data Hub - Temp texture viewer">
+		<meta property="og:description" content="Viewer utility for temp textures">
+		<!--<meta property="og:image" content="">-->
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image">
+		<meta property="twitter:url" content="https://xenobladedata.github.io/tools/models/temp_texture_viewer/">
+		<meta property="twitter:title" content="Xenoblade Data Hub - Temp texture viewer">
+		<meta property="twitter:description" content="Viewer utility for temp textures">
+		<!--<meta property="twitter:image" content="">-->
+	</head>
+	<body style="text-align:center; background-color: RGBA(33,37,41,1); color:white;">
+		<div class="container-fluid py-4 px-5">
+			<header class="pb-3 mb-4 d-flex justify-content-between">
+				<a href="/" class="d-flex align-items-center text-white text-decoration-none">
+					<img src="/images/xc1_icon.svg" width="32"/>
+					<span class="fs-4 px-2">
+						Xenoblade Data Hub<br/>
+						<sub>"Temp" texture viewer</sub>
+					</span>
+				</a>
+				<span class="text-center">
+					<a href="https://xenobladedata.github.io"><< Go back to Xenoblade Data Hub</a>
+				</span>
+			</header>
+			
+			<p>
+				Select a file:<br/>
+				<input type="file" onchange="onFileSelected(event)">
+			</p>
+
+			<p>Image data:</p>
+			<table style="margin-left: auto; margin-right: auto; text-align:center;">
+				<tr>
+					<th>Original texture</th>
+					<th>Red channel</th>
+					<th>Green channel</th>
+					<th>Blue channel</th>
+				</tr>
+				<tr>
+					<td><img id="originalImage" width="256"/></td>
+					<td><img id="redImage" width="256"/></td>
+					<td><img id="greenImage" width="256"/></td>
+					<td><img id="blueImage" width="256"/></td>
+				</tr>
+			</table>
+		</div>
+		<script src="/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+	</body>
+</html>
