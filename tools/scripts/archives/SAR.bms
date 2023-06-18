@@ -1,0 +1,51 @@
+# Xenoblade Chronicles sar unpacker
+# Author Lukas Cone in 2016-2018
+# script for QuickBMS http://quickbms.aluigi.org
+
+get FOURCC long
+
+if FOURCC == 0x31524153   
+	endian big
+elif FOURCC == 0x53415231
+	endian little
+else
+	cleanexit
+endif
+
+
+get filesize long
+get Version long
+get FILES long
+get OFFSET long
+get DataOffset long
+get dummy long
+get dummy long
+getdstring PATH 128
+
+goto OFFSET
+
+for i = 0 < FILES
+    get iOffset long
+    get iLen long
+    get dummy long
+    putarray 0 i iOffset
+    putarray 1 i iLen
+    set _fname PATH
+	string _fname + "/"
+	if Version > 500 
+		getdstring iFname 36
+		string _fname + iFname
+		goto 48 0 SEEK_CUR
+	else
+		getdstring iFname 52
+		string _fname + iFname
+	endif
+	putarray 2 i _fname	
+next i
+
+for i = 0 < FILES
+  getarray iOffset 0 i
+  getarray iLen 1 i
+  getarray iFname 2 i
+  log iFname iOffset iLen
+next i   
