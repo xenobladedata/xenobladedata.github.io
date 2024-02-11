@@ -11,3 +11,6 @@ Thanks to [RoccoDev](https://github.com/RoccoDev) for their help with audio mapp
 Icons and images are provided by [Xeno Series Wiki](https://www.xenoserieswiki.org/).
 
 [Home page](https://xenobladedata.github.io)
+
+## Contributing
+Please refer to CONTRIBUTING.md
