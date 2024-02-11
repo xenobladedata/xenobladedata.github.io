@@ -2,6 +2,7 @@
 <html>
   <head>
 	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<title>Xenoblade Data Hub</title>
 	<link href="/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 	<style>
@@ -43,35 +44,40 @@
   </head>
   <body>
 	<div class="container-fluid py-4 px-5">
-		<header class="pb-3 mb-4 d-flex justify-content-between">
-			<a href="/" class="d-flex align-items-center text-white text-decoration-none">
-				<img src="/images/xc1_icon.svg" width="32"/>
-				<span class="fs-4 px-2">Xenoblade Data Hub</span>
-			</a>
-			<span class="text-center">
-			Last update: February 11, 2024<br/>
-			<a href="https://github.com/xenobladedata/xenobladedata.github.io/commits/master" target="_blank">View update history on GitHub</a>
-			</span>
+		<header class="pb-3 mb-4 row">
+			<div class="col col-12 col-md-auto">
+				<a href="/" class="d-flex align-items-center text-white text-decoration-none">
+					<img src="/images/xc1_icon.svg" width="32"/>
+					<span class="fs-4 px-2">Xenoblade Data Hub</span>
+				</a>
+			</div>
+			<!-- Align left on small displays, align right on larger displays -->
+			<div class="col text-md-end">
+				<span class="text-center">
+				Last update: February 11, 2024<br/>
+				<a href="https://github.com/xenobladedata/xenobladedata.github.io/commits/master" target="_blank">View update history on GitHub</a>
+				</span>
+			</div>
 		</header>
 		<div class="d-flex justify-content-center">
-			<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-			  <li class="nav-item" role="presentation">
-				<button class="nav-link active" id="pills-xc-tab" data-bs-toggle="pill" data-bs-target="#pills-xc" type="button" role="tab" aria-controls="pills-xc" aria-selected="true"><img src="/images/xc1_icon.svg" width="32"/><img src="/images/xcde_icon.svg" width="32"/></button>
+			<ul class="nav nav-pills mb-3 justify-content-center row" id="pills-tab" role="tablist">
+			  <li class="nav-item col col-6 col-md-auto" role="presentation">
+				<button class="nav-link active w-100 d-flex" id="pills-xc-tab" data-bs-toggle="pill" data-bs-target="#pills-xc" type="button" role="tab" aria-controls="pills-xc" aria-selected="true"><img src="/images/xc1_icon.svg" width="32"/><img src="/images/xcde_icon.svg" width="32"/></button>
 			  </li>
-			  <li class="nav-item" role="presentation">
-				<button class="nav-link" id="pills-xcx-tab" data-bs-toggle="pill" data-bs-target="#pills-xcx" type="button" role="tab" aria-controls="pills-xcx" aria-selected="false"><img src="/images/xcx_icon.svg" width="32"/></button>
+			  <li class="nav-item col col-6 col-md-auto" role="presentation">
+				<button class="nav-link w-100" id="pills-xcx-tab" data-bs-toggle="pill" data-bs-target="#pills-xcx" type="button" role="tab" aria-controls="pills-xcx" aria-selected="false"><img src="/images/xcx_icon.svg" width="32"/></button>
 			  </li>
-			  <li class="nav-item" role="presentation">
-				<button class="nav-link" id="pills-xc2-tab" data-bs-toggle="pill" data-bs-target="#pills-xc2" type="button" role="tab" aria-controls="pills-xc2" aria-selected="false"><img src="/images/xc2_icon.svg" width="32"/></button>
+			  <li class="nav-item col col-6 col-md-auto" role="presentation">
+				<button class="nav-link w-100" id="pills-xc2-tab" data-bs-toggle="pill" data-bs-target="#pills-xc2" type="button" role="tab" aria-controls="pills-xc2" aria-selected="false"><img src="/images/xc2_icon.svg" width="32"/></button>
 			  </li>
-			  <li class="nav-item" role="presentation">
-				<button class="nav-link" id="pills-xc3-tab" data-bs-toggle="pill" data-bs-target="#pills-xc3" type="button" role="tab" aria-controls="pills-xc3" aria-selected="false"><img src="/images/xc3_icon.svg" width="32"/></button>
+			  <li class="nav-item col col-6 col-md-auto" role="presentation">
+				<button class="nav-link w-100" id="pills-xc3-tab" data-bs-toggle="pill" data-bs-target="#pills-xc3" type="button" role="tab" aria-controls="pills-xc3" aria-selected="false"><img src="/images/xc3_icon.svg" width="32"/></button>
 			  </li>
-			  <li class="nav-item" role="presentation">
-				<button class="nav-link" id="pills-tools-tab" data-bs-toggle="pill" data-bs-target="#pills-tools" type="button" role="tab" aria-controls="pills-tools" aria-selected="false"><h5 class="text-white">Tools</h3></button>
+			  <li class="nav-item col col-6 col-md-auto" role="presentation">
+				<button class="nav-link w-100" id="pills-tools-tab" data-bs-toggle="pill" data-bs-target="#pills-tools" type="button" role="tab" aria-controls="pills-tools" aria-selected="false"><h5 class="text-white">Tools</h3></button>
 			  </li>
-			  <li class="nav-item" role="presentation">
-				<button class="nav-link" id="pills-links-tab" data-bs-toggle="pill" data-bs-target="#pills-links" type="button" role="tab" aria-controls="pills-links" aria-selected="false"><h5 class="text-white">Useful links</h3></button>
+			  <li class="nav-item col col-6 col-md-auto" role="presentation">
+				<button class="nav-link w-100" id="pills-links-tab" data-bs-toggle="pill" data-bs-target="#pills-links" type="button" role="tab" aria-controls="pills-links" aria-selected="false"><h5 class="text-white">Useful links</h3></button>
 			  </li>
 			</ul>
 		</div>
