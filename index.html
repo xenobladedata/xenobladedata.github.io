@@ -2,6 +2,7 @@
 <html>
   <head>
 	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	<title>Xenoblade Data Hub</title>
 	<link href="/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 	<style>
@@ -43,35 +44,40 @@
   </head>
   <body>
 	<div class="container-fluid py-4 px-5">
-		<header class="pb-3 mb-4 d-flex justify-content-between">
-			<a href="/" class="d-flex align-items-center text-white text-decoration-none">
-				<img src="/images/xc1_icon.svg" width="32"/>
-				<span class="fs-4 px-2">Xenoblade Data Hub</span>
-			</a>
-			<span class="text-center">
-			Last update: February 11, 2024<br/>
-			<a href="https://github.com/xenobladedata/xenobladedata.github.io/commits/master" target="_blank">View update history on GitHub</a>
-			</span>
+		<header class="pb-3 mb-4 row">
+			<div class="col col-12 col-md-auto">
+				<a href="/" class="d-flex align-items-center text-white text-decoration-none">
+					<img src="/images/xc1_icon.svg" width="32"/>
+					<span class="fs-4 px-2">Xenoblade Data Hub</span>
+				</a>
+			</div>
+			<!-- Align left on small displays, align right on larger displays -->
+			<div class="col text-md-end">
+				<span class="text-center">
+				Last update: February 11, 2024<br/>
+				<a href="https://github.com/xenobladedata/xenobladedata.github.io/commits/master" target="_blank">View update history on GitHub</a>
+				</span>
+			</div>
 		</header>
 		<div class="d-flex justify-content-center">
-			<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-			  <li class="nav-item" role="presentation">
-				<button class="nav-link active" id="pills-xc-tab" data-bs-toggle="pill" data-bs-target="#pills-xc" type="button" role="tab" aria-controls="pills-xc" aria-selected="true"><img src="/images/xc1_icon.svg" width="32"/><img src="/images/xcde_icon.svg" width="32"/></button>
+			<ul class="nav nav-pills mb-3 justify-content-center row" id="pills-tab" role="tablist">
+			  <li class="nav-item col col-6 col-md-auto" role="presentation">
+				<button class="nav-link active w-100 d-flex" id="pills-xc-tab" data-bs-toggle="pill" data-bs-target="#pills-xc" type="button" role="tab" aria-controls="pills-xc" aria-selected="true"><img src="/images/xc1_icon.svg" width="32"/><img src="/images/xcde_icon.svg" width="32"/></button>
 			  </li>
-			  <li class="nav-item" role="presentation">
-				<button class="nav-link" id="pills-xcx-tab" data-bs-toggle="pill" data-bs-target="#pills-xcx" type="button" role="tab" aria-controls="pills-xcx" aria-selected="false"><img src="/images/xcx_icon.svg" width="32"/></button>
+			  <li class="nav-item col col-6 col-md-auto" role="presentation">
+				<button class="nav-link w-100" id="pills-xcx-tab" data-bs-toggle="pill" data-bs-target="#pills-xcx" type="button" role="tab" aria-controls="pills-xcx" aria-selected="false"><img src="/images/xcx_icon.svg" width="32"/></button>
 			  </li>
-			  <li class="nav-item" role="presentation">
-				<button class="nav-link" id="pills-xc2-tab" data-bs-toggle="pill" data-bs-target="#pills-xc2" type="button" role="tab" aria-controls="pills-xc2" aria-selected="false"><img src="/images/xc2_icon.svg" width="32"/></button>
+			  <li class="nav-item col col-6 col-md-auto" role="presentation">
+				<button class="nav-link w-100" id="pills-xc2-tab" data-bs-toggle="pill" data-bs-target="#pills-xc2" type="button" role="tab" aria-controls="pills-xc2" aria-selected="false"><img src="/images/xc2_icon.svg" width="32"/></button>
 			  </li>
-			  <li class="nav-item" role="presentation">
-				<button class="nav-link" id="pills-xc3-tab" data-bs-toggle="pill" data-bs-target="#pills-xc3" type="button" role="tab" aria-controls="pills-xc3" aria-selected="false"><img src="/images/xc3_icon.svg" width="32"/></button>
+			  <li class="nav-item col col-6 col-md-auto" role="presentation">
+				<button class="nav-link w-100" id="pills-xc3-tab" data-bs-toggle="pill" data-bs-target="#pills-xc3" type="button" role="tab" aria-controls="pills-xc3" aria-selected="false"><img src="/images/xc3_icon.svg" width="32"/></button>
 			  </li>
-			  <li class="nav-item" role="presentation">
-				<button class="nav-link" id="pills-tools-tab" data-bs-toggle="pill" data-bs-target="#pills-tools" type="button" role="tab" aria-controls="pills-tools" aria-selected="false"><h5 class="text-white">Tools</h3></button>
+			  <li class="nav-item col col-6 col-md-auto" role="presentation">
+				<button class="nav-link w-100" id="pills-tools-tab" data-bs-toggle="pill" data-bs-target="#pills-tools" type="button" role="tab" aria-controls="pills-tools" aria-selected="false"><h5 class="text-white">Tools</h3></button>
 			  </li>
-			  <li class="nav-item" role="presentation">
-				<button class="nav-link" id="pills-links-tab" data-bs-toggle="pill" data-bs-target="#pills-links" type="button" role="tab" aria-controls="pills-links" aria-selected="false"><h5 class="text-white">Useful links</h3></button>
+			  <li class="nav-item col col-6 col-md-auto" role="presentation">
+				<button class="nav-link w-100" id="pills-links-tab" data-bs-toggle="pill" data-bs-target="#pills-links" type="button" role="tab" aria-controls="pills-links" aria-selected="false"><h5 class="text-white">Useful links</h3></button>
 			  </li>
 			</ul>
 		</div>
@@ -81,7 +87,7 @@
 				<div class="h-100 p-5 rounded-3">
 					<img class="d-block mx-auto mb-4 img-fluid" src="/images/XC1_logo_small.png">
 					<div class="d-flex justify-content-center row text-center">
-						<div class="col-md-3 mt-2">
+						<div class="col-md-4 col-lg-3 mt-2">
 							<div class="card text-white card-bg card-height">
 								<div class="card-body">
 									<h4 class="card-title">Xenoblade 1 Data</h4>
@@ -94,7 +100,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3 mt-2">
+						<div class="col-md-4 col-lg-3 mt-2">
 							<div class="card text-white card-bg card-height">
 								<div class="card-body">
 									<h4 class="card-title">Definitive Edition Data</h4>
@@ -107,7 +113,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3 mt-2">
+						<div class="col-md-4 col-lg-3 mt-2">
 							<div class="card text-white card-bg card-height">
 								<div class="card-body">
 									<h4 class="card-title">Xenoblade 1 PKH file contents</h4>
@@ -121,7 +127,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3 mt-2">
+						<div class="col-md-4 col-lg-3 mt-2">
 							<div class="card text-white card-bg card-height">
 								<div class="card-body">
 									<h4 class="card-title">Xenoblade DE Audio Mapping data<br/>(🇬🇧 English / 🇯🇵 日本語)</h4>
@@ -167,7 +173,7 @@
 				<div class="h-100 p-2 rounded-3 text-center">
 					<img class="d-block mx-auto mb-4 img-fluid" src="/images/XC3_logo_small.png">
 					<div class="d-flex justify-content-center row">
-						<div class="col-md-3 mt-2">
+						<div class="col-md-4 col-lg-3 mt-2">
 							<div class="card text-white card-bg card-height">
 								<div class="card-body">
 									<h4 class="card-title">Xenoblade 3 1.2.1 + DLC2 Data</h4>
@@ -181,7 +187,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3 mt-2">
+						<div class="col-md-4 col-lg-3 mt-2">
 							<div class="card text-white card-bg card-height">
 								<div class="card-body">
 									<h4 class="card-title">Xenoblade 3 1.3.0 Data*</h4>
@@ -195,7 +201,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3 mt-2">
+						<div class="col-md-4 col-lg-3 mt-2">
 							<div class="card text-white card-bg card-height">
 								<div class="card-body">
 									<h4 class="card-title">Xenoblade 3 DLC3 Data*</h4>
@@ -209,7 +215,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3 mt-2">
+						<div class="col-md-4 col-lg-3 mt-2">
 							<div class="card text-white card-bg card-height">
 								<div class="card-body">
 									<h4 class="card-title">Xenoblade 3 2.0.0 + DLC 1-3 + Future Redeemed Data</h4>
@@ -225,7 +231,7 @@
 						</div>
 					</div>
 					<div class="d-flex justify-content-center row">
-						<div class="col-md-3 mt-2">
+						<div class="col-md-4 col-lg-3 mt-2">
 							<div class="card text-white card-bg card-height">
 								<div class="card-body">
 									<h4 class="card-title">Xenoblade 3 Audio Mapping data<br/>(🇬🇧 English / 🇯🇵 日本語)</h4>
@@ -239,7 +245,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="col-md-3 mt-2">
+						<div class="col-md-4 col-lg-3 mt-2">
 							<div class="card text-white card-bg card-height">
 								<div class="card-body">
 									<h4 class="card-title">Xenoblade 3 BDAT hashes</h4>
@@ -264,7 +270,7 @@
 			<div class="text-center">
 				<h3>General purpose file manipulation tools</h3>
 				<div class="d-flex justify-content-center row">
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">XbTool</h5>
@@ -280,7 +286,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">XenoLib/XenobladeToolset</h5>
@@ -296,7 +302,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">QuickBMS</h5>
@@ -312,7 +318,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">SimpleDimple</h5>
@@ -331,7 +337,7 @@
 					</div>
 				</div>
 				<div class="d-flex justify-content-center row">
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">SAR.bms</h5>
@@ -347,7 +353,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">Nenkai's XenoTools</h5>
@@ -363,7 +369,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">Recordkeeper</h5>
@@ -383,7 +389,7 @@
 				<hr>
 				<h3>Data table tools</h3>
 				<div class="d-flex justify-content-center row">
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">bdat-rs</h5>
@@ -400,7 +406,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">xb3tool</h5>
@@ -416,7 +422,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">xc3_data_sheet</h5>
@@ -436,7 +442,7 @@
 				<hr>
 				<h3>Model tools</h3>
 				<div class="d-flex justify-content-center row">
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">Xenoblade Importer For Noesis</h5>
@@ -452,7 +458,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">Xenoblade Shape Key Tool</h5>
@@ -468,7 +474,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">Monado Forge</h5>
@@ -484,7 +490,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">XenoMax</h5>
@@ -505,7 +511,7 @@
 					</div>
 				</div>
 				<div class="d-flex justify-content-center row">
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">"Temp" texture viewer</h5>
@@ -521,7 +527,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">fmt_XC3_wimdo.py</h5>
@@ -541,7 +547,7 @@
 				<hr>
 				<h3>Mods</h3>
 				<div class="d-flex justify-content-center row">
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">Xenomods</h5>
@@ -557,7 +563,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">xc3-file-loader</h5>
@@ -573,7 +579,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">xc3-difficulty-unlocker</h5>
@@ -595,7 +601,7 @@
 				<hr>
 				<h3>Developer resources</h3>
 				<div class="d-flex justify-content-center row">
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">xc3_lib</h5>
@@ -611,7 +617,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">imgui-xeno</h5>
@@ -627,7 +633,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">xc3_model_py</h5>
@@ -647,7 +653,7 @@
 				<hr>
 				<h3>Audio tools</h3>
 				<div class="d-flex justify-content-center row">
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">vgmstream</h5>
@@ -663,7 +669,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">WWISER</h5>
@@ -679,7 +685,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">xeno3_PCK.bms</h5>
@@ -699,7 +705,7 @@
 				<hr>
 				<h3>Legacy game tools</h3>
 				<div class="d-flex justify-content-center row">
-					<div class="col-md-3 mt-1">
+					<div class="col-md-4 col-lg-3 mt-1">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">Brresviewer</h5>
@@ -723,7 +729,7 @@
 				<h4>Useful links</h4>
 				<h3>Discord servers</h3>
 				<div class="d-flex justify-content-center row">
-					<div class="col-md-3 mt-2">
+					<div class="col-md-4 col-lg-3 mt-2">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">World Tree Research Discord</h5>
@@ -739,7 +745,7 @@
 				<hr/>
 				<h3>Knowledge bases/wikis</h3>
 				<div class="d-flex justify-content-center row">
-					<div class="col-md-3 mt-2">
+					<div class="col-md-4 col-lg-3 mt-2">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">Alrest Wiki</h5>
@@ -751,7 +757,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-2">
+					<div class="col-md-4 col-lg-3 mt-2">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">The Cutting Room Floor's Xeno series category</h5>
@@ -763,7 +769,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-2">
+					<div class="col-md-4 col-lg-3 mt-2">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">Xeno Series Wiki</h5>
@@ -775,7 +781,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-2">
+					<div class="col-md-4 col-lg-3 mt-2">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">xc2f - Xenoblade 2 file formats</h5>
@@ -789,7 +795,7 @@
 					</div>
 				</div>
 				<div class="d-flex justify-content-center row">
-					<div class="col-md-3 mt-2">
+					<div class="col-md-4 col-lg-3 mt-2">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">RoccoDev's personal blog</h5>
@@ -801,7 +807,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-2">
+					<div class="col-md-4 col-lg-3 mt-2">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">Nenkai's Xeno Docs</h5>
@@ -817,7 +823,7 @@
 				<hr/>
 				<h3>Databases/data lists</h3>
 				<div class="d-flex justify-content-center row">
-					<div class="col-md-3 mt-2">
+					<div class="col-md-4 col-lg-3 mt-2">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">Xenoblade 3 Model Database</h5>
@@ -829,7 +835,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-2">
+					<div class="col-md-4 col-lg-3 mt-2">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">Xenoblade 3 Cutscene Database</h5>
@@ -841,7 +847,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-2">
+					<div class="col-md-4 col-lg-3 mt-2">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">Xenoblade Chronicles 3 voice lines list</h5>
@@ -853,7 +859,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 mt-2">
+					<div class="col-md-4 col-lg-3 mt-2">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">XC3 Enemy Compendium</h5>
@@ -867,7 +873,7 @@
 					</div>
 				</div>
 				<div class="d-flex justify-content-center row">
-					<div class="col-md-3 mt-2">
+					<div class="col-md-4 col-lg-3 mt-2">
 						<div class="card text-white card-bg card-height">
 							<div class="card-body">
 								<h5 class="card-title">Xenoblade 3 devxml spreadsheet</h5>
